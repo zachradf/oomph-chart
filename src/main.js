@@ -22,11 +22,16 @@ options.width = 600;
 options.height = 400;
 options.radius = 5;
 options.color = "blue";
+options.showLabels = true;
+
+const input = {
+    data: testDataScatterPlot,
+    selector: "#chart",
+    options: options
+}
+const testObject = new D3Object(["SCATTER"], input);
 
 
-const testObject = new D3Object();
-
-testObject.createScatterPlot(testDataScatterPlot, "#chart", options);
-testObject.createBarChart(testDataBarChart, "#chart");
-testObject.createBarChart(testDataBarChart);
-testObject.createLineGraph(testDataScatterPlot);
+console.log(testObject.graphArray);
+testObject.addGraphs(["AREA", "LINE"]);
+console.log(testObject.graphArray);

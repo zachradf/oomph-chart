@@ -1,4 +1,3 @@
-// Description: This file contains the wrapper function for the D3 bar chart
 export default function createD3BarChart(data, selector, options) {
     const width = options.width;
     const height = options.height

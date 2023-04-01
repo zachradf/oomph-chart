@@ -32,8 +32,8 @@ export default function createD3LineGraph(data, selector, options ) {
     svg.append("path")
       .datum(data) //TO DO LOOK INTO DATA VS DATUM
       .attr("fill", "none")
-      .attr("stroke", options.strokeColor || "steelblue")
-      .attr("stroke-width", options.strokeWidth || 1.5)
+      .attr("stroke", options.strokeColor || "steelblue")//Unique to line graph
+      .attr("stroke-width", options.strokeWidth || 1.5)//Unique to line graph
       .attr("d", line);
   
     svg.append("g")
