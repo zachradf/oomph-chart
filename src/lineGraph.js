@@ -1,7 +1,7 @@
 export default function createD3LineGraph(data, selector, options ) {
-    const width = options.width;//USED IN BOTH
-    const height = options.height//USED IN BOTH
-    const margin = options.margin//USED IN BOTH
+    const width = options.width;
+    const height = options.height;
+    const margin = options.margin;
   
     const x = d3.scaleLinear()
       .domain(d3.extent(data, d => d.x)).nice()
