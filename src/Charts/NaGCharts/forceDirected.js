@@ -12,6 +12,7 @@ export default function createForceDirectedGraph(data, selector, options = {}) {
       .classed("force-directed", true)
       .attr("width", width)
       .attr("height", height);
+  //TODO create a generalized SVG function that can be used for all charts
   
     // Create a force simulation
     const simulation = d3.forceSimulation(data.nodes)
@@ -44,6 +45,7 @@ export default function createForceDirectedGraph(data, selector, options = {}) {
         .on("start", dragstarted)
         .on("drag", dragged)
         .on("end", dragended));
+      //TODO create a node and generalized drag function that can be used for all charts
   
     // Add labels
     const label = svg.selectAll(".label")

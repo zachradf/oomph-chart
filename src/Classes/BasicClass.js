@@ -1,10 +1,10 @@
-import createBarChart from '/src/simpleCharts/barChart.js';
-import createScatterPlot from '/src/simpleCharts/scatterPlot.js';
-import createLineGraph from '/src/simpleCharts/lineGraph.js';
-import createPieChart from '/src/simpleCharts/pieChart.js';
-import createAreaChart from '/src/simpleCharts/areaChart.js';
+import createBarChart from '/src/Charts/simpleCharts/barChart.js';
+import createScatterPlot from '/src/Charts/simpleCharts/scatterPlot.js';
+import createLineGraph from '/src/Charts/simpleCharts/lineGraph.js';
+import createPieChart from '/src/Charts/simpleCharts/pieChart.js';
+import createAreaChart from '/src/Charts/simpleCharts/areaChart.js';
 
-export class D3Object {
+export class BasicClass {
     constructor(graphArray, input) {
         //EVENTUALLY ALL COMMON CHART FUNCTIONS WILL BE HERE
         this.graphArray = graphArray;

@@ -1,8 +1,8 @@
-import createSunburstChart from "/src/hierarchicalCharts/sunBurst.js";
-import createTreeMap from "/src/hierarchicalCharts/treeMap.js";
-import createForceDirectedGraph from "/src/hierarchicalCharts/forceDirected.js";
+import createSunburstChart from "/src/Charts/hierarchicalCharts/sunBurst.js";
+import createTreeMap from "/src/Charts/hierarchicalCharts/treeMap.js";
+import createTreeDiagram from "/src/Charts/hierarchicalCharts/treeDiagram.js";
 
-export class hierarchyObject {
+export class HierarchyClass {
     constructor(graphArray, input) {
         this.graphArray = graphArray;
         this.input = input;
@@ -19,18 +19,20 @@ export class hierarchyObject {
 
         } else {
             this.input.options = input.options;
-
         }
+
         this.createGraph = {
             'SUNBURST' : createSunburstChart,
             'TREEMAP' : createTreeMap,
-            'FORCE' : createForceDirectedGraph,
+            'TREEDIAGRAM' : createTreeDiagram,
         }
+
         this.iterateGraphs = () => {
             for (let i = 0; i < this.graphArray.length; i++) {
                 this.createGraph[this.graphArray[i]](this.input.data, this.input.selector, this.input.options);
             }
         }
+
         this.iterateGraphs();
     }
     createSunburstChart(data, selector, options){
@@ -39,9 +41,10 @@ export class hierarchyObject {
     createTreeMap(data, selector, options){     
         createTreeMap(data, selector, options);
     }
-    createForceDirectedGraph(data, selector, options){  
-        createForceDirectedGraph(data, selector, options);
+    createTreeDiagram(data, selector, options){
+        createTreeDiagram(data, selector, options);
     }
+
     addGraphs(type){
         this.graphArray.push(...type);
         if(!Array.isArray(type)){
@@ -57,7 +60,7 @@ export class hierarchyObject {
         const svgTypeMap = {
             'SUNBURST': 'sun-burst',
             'TREEMAP': 'tree-map',
-            'FORCE': 'force-directed',
+            'TREEDIAGRAM': 'tree-diagram',
         };
         const svgSelector = svgTypeMap[type];
         if (svgSelector) {

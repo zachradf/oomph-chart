@@ -38,14 +38,16 @@ export default function createD3SunburstChart(data, selector, options = {}) {
   
     // Generate sunburst chart using the partition layout and arc generator
     svg.selectAll("path")
-      .data(partition(data).descendants())
+      .data(partition(data).descendants())//TODO - what is the difference between descendants and leaves? +partition
       .enter().append("path")
-      .attr("fill", d => { while (d.depth > 1) d = d.parent; return color(d.data.name); })
+      .attr("fill", d => { while (d.depth > 1) d = d.parent; return color(d.data.name); })//elements with the same second-level parent have the same color.
       .attr("fill-opacity", d => d.children ? 0.6 : 0.4)
       .attr("d", arc)
       .append("title")
+      //to display a hierarchical path of names, followed by the data value on a new line to provide readable labels for each element, including its position in the hierarchy and its value.
       .text(d => `${d.ancestors().map(d => d.data.name).reverse().join("/")}\n${d.value}`);
-  }
+      
+}
   
 
   
