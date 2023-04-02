@@ -1,8 +1,8 @@
 import createBarChart from '/src/simpleCharts/barChart.js';
 import createScatterPlot from '/src/simpleCharts/scatterPlot.js';
-import createD3LineGraph from '/src/simpleCharts/lineGraph.js';
-import createD3PieChart from '/src/simpleCharts/pieChart.js';
-import createD3AreaChart from '/src/simpleCharts/areaChart.js';
+import createLineGraph from '/src/simpleCharts/lineGraph.js';
+import createPieChart from '/src/simpleCharts/pieChart.js';
+import createAreaChart from '/src/simpleCharts/areaChart.js';
 
 export class D3Object {
     constructor(graphArray, input) {
@@ -28,9 +28,9 @@ export class D3Object {
         this.createGraph = {
             'BAR' : createBarChart,
             'SCATTER' : createScatterPlot,
-            'LINE' : createD3LineGraph,
-            'PIE' : createD3PieChart,
-            'AREA' : createD3AreaChart,
+            'LINE' : createLineGraph,
+            'PIE' : createPieChart,
+            'AREA' : createAreaChart,
         }
         this.iterateGraphs = () => {
             for (let i = 0; i < this.graphArray.length; i++) {
@@ -49,15 +49,15 @@ export class D3Object {
     }
 
     createLineGraph(data, selector, options){
-        createD3LineGraph(data, selector, options);
+        createLineGraph(data, selector, options);
     }
 
     createPieChart(data, selector, options){
-        createD3PieChart(data, selector, options);
+        createPieChart(data, selector, options);
     }
 
     createAreaChart(data, selector, options){
-        createD3AreaChart(data, selector, options);
+        createAreaChart(data, selector, options);
     }
 
     addGraphs(type){
@@ -87,12 +87,7 @@ export class D3Object {
             'AREA': 'area-chart'
         };
         const svgSelector = svgTypeMap[type];
-        const chartSelector = chartTypeMap[type];
-        if (chartSelector) {
-            d3.select(this.input.selector)
-                .selectAll(chartSelector)
-                .remove();
-
+        if (svgSelector) {
             // Remove the x and y axes
             d3.select(this.input.selector)
                 .selectAll(`.x-axis, .y-axis, .${svgSelector}`)

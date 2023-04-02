@@ -1,5 +1,6 @@
-import createD3SunburstChart from "/src/hierarchicalCharts/sunBurst.js";
-import createD3TreeMap from "/src/hierarchicalCharts/treeMap.js";
+import createSunburstChart from "/src/hierarchicalCharts/sunBurst.js";
+import createTreeMap from "/src/hierarchicalCharts/treeMap.js";
+import createForceDirectedGraph from "/src/hierarchicalCharts/forceDirected.js";
 
 export class hierarchyObject {
     constructor(graphArray, input) {
@@ -21,8 +22,9 @@ export class hierarchyObject {
 
         }
         this.createGraph = {
-            'SUNBURST' : createD3SunburstChart,
-            'TREEMAP' : createD3TreeMap,
+            'SUNBURST' : createSunburstChart,
+            'TREEMAP' : createTreeMap,
+            'FORCE' : createForceDirectedGraph,
         }
         this.iterateGraphs = () => {
             for (let i = 0; i < this.graphArray.length; i++) {
@@ -31,11 +33,14 @@ export class hierarchyObject {
         }
         this.iterateGraphs();
     }
-    createD3SunburstChart(data, selector, options){
-        createD3SunburstChart(data, selector, options);
+    createSunburstChart(data, selector, options){
+        createSunburstChart(data, selector, options);
     }
-    createD3TreeMap(data, selector, options){     
-        createD3TreeMap(data, selector, options);
+    createTreeMap(data, selector, options){     
+        createTreeMap(data, selector, options);
+    }
+    createForceDirectedGraph(data, selector, options){  
+        createForceDirectedGraph(data, selector, options);
     }
     addGraphs(type){
         this.graphArray.push(...type);
@@ -49,25 +54,17 @@ export class hierarchyObject {
     }
 
     removeChart(type) {
-        // const chartTypeMap = {
-        //     'SUNBURST': 'rect',
-        //     'TREEMAP': 'circle',
-        // };
         const svgTypeMap = {
             'SUNBURST': 'sun-burst',
             'TREEMAP': 'tree-map',
+            'FORCE': 'force-directed',
         };
-        // const svgSelector = svgTypeMap[type];
-        const chartSelector = chartTypeMap[type];
-        if (chartSelector) {
+        const svgSelector = svgTypeMap[type];
+        if (svgSelector) {
             d3.select(this.input.selector)
-                .selectAll(chartSelector)
+                .selectAll(`.${svgSelector}`)
                 .remove();
 
-            // Remove the x and y axes
-            // d3.select(this.input.selector)
-            //     .selectAll(`.x-axis, .y-axis, .${svgSelector}`)
-            //     .remove();
         } else {
             console.error(`Invalid chart type: ${type}`);
         }

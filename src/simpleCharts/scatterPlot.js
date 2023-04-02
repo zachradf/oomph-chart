@@ -1,4 +1,5 @@
 export default function createD3ScatterPlot(data, selector, options) {
+  console.log(d3.version)
     const width = options.width;//USED IN LINE, SCATTER AND BAR
     const height = options.height//USED IN LINE, SCATTER AND BAR
     const margin = options.margin//USED IN LINE, SCATTER AND BAR
