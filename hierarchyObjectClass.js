@@ -1,12 +1,8 @@
-import createBarChart from '/src/simpleCharts/barChart.js';
-import createScatterPlot from '/src/simpleCharts/scatterPlot.js';
-import createD3LineGraph from '/src/simpleCharts/lineGraph.js';
-import createD3PieChart from '/src/simpleCharts/pieChart.js';
-import createD3AreaChart from '/src/simpleCharts/areaChart.js';
+import createD3SunburstChart from "/src/hierarchicalCharts/sunBurst.js";
+import createD3TreeMap from "/src/hierarchicalCharts/treeMap.js";
 
-export class D3Object {
+export class hierarchyObject {
     constructor(graphArray, input) {
-        //EVENTUALLY ALL COMMON CHART FUNCTIONS WILL BE HERE
         this.graphArray = graphArray;
         this.input = input;
         this.input.selector = input.selector ? input.selector : "#chart";
@@ -24,13 +20,9 @@ export class D3Object {
             this.input.options = input.options;
 
         }
-        
         this.createGraph = {
-            'BAR' : createBarChart,
-            'SCATTER' : createScatterPlot,
-            'LINE' : createD3LineGraph,
-            'PIE' : createD3PieChart,
-            'AREA' : createD3AreaChart,
+            'SUNBURST' : createD3SunburstChart,
+            'TREEMAP' : createD3TreeMap,
         }
         this.iterateGraphs = () => {
             for (let i = 0; i < this.graphArray.length; i++) {
@@ -39,27 +31,12 @@ export class D3Object {
         }
         this.iterateGraphs();
     }
-
-    createBarChart(data, selector, options){
-         createBarChart(data, selector, options);
+    createD3SunburstChart(data, selector, options){
+        createD3SunburstChart(data, selector, options);
     }
-
-    createScatterPlot(data, selector, options){
-        createScatterPlot(data, selector, options);
+    createD3TreeMap(data, selector, options){     
+        createD3TreeMap(data, selector, options);
     }
-
-    createLineGraph(data, selector, options){
-        createD3LineGraph(data, selector, options);
-    }
-
-    createPieChart(data, selector, options){
-        createD3PieChart(data, selector, options);
-    }
-
-    createAreaChart(data, selector, options){
-        createD3AreaChart(data, selector, options);
-    }
-
     addGraphs(type){
         this.graphArray.push(...type);
         if(!Array.isArray(type)){
@@ -72,21 +49,15 @@ export class D3Object {
     }
 
     removeChart(type) {
-        const chartTypeMap = {
-            'BAR': 'rect',
-            'SCATTER': 'circle',
-            'LINE': 'path.line',
-            'PIE': 'path.arc',
-            'AREA': 'path.area'
-        };
+        // const chartTypeMap = {
+        //     'SUNBURST': 'rect',
+        //     'TREEMAP': 'circle',
+        // };
         const svgTypeMap = {
-            'BAR': 'bar-chart',
-            'SCATTER': 'scatter-plot',
-            'LINE': 'line-graph',
-            'PIE': 'pie-chart',
-            'AREA': 'area-chart'
+            'SUNBURST': 'sun-burst',
+            'TREEMAP': 'tree-map',
         };
-        const svgSelector = svgTypeMap[type];
+        // const svgSelector = svgTypeMap[type];
         const chartSelector = chartTypeMap[type];
         if (chartSelector) {
             d3.select(this.input.selector)
@@ -94,9 +65,9 @@ export class D3Object {
                 .remove();
 
             // Remove the x and y axes
-            d3.select(this.input.selector)
-                .selectAll(`.x-axis, .y-axis, .${svgSelector}`)
-                .remove();
+            // d3.select(this.input.selector)
+            //     .selectAll(`.x-axis, .y-axis, .${svgSelector}`)
+            //     .remove();
         } else {
             console.error(`Invalid chart type: ${type}`);
         }
@@ -120,4 +91,3 @@ export class D3Object {
         this.iterateGraphs()
     }
 }
-

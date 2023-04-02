@@ -1,0 +1,29 @@
+Basic chart types:
+
+Bar chart: Represents data using rectangular bars with lengths proportional to the values they represent.
+Line chart: Displays data as a series of points connected by straight line segments.
+Scatter plot: Represents data as a collection of points, with each point's position determined by its values on two axes.
+Pie chart: Shows proportions of a whole using a circular chart divided into sectors.
+Area chart: Similar to a line chart, but the area between the line and the axis is filled with color or pattern.
+Hierarchical and tree-based charts:
+
+Treemap: Displays hierarchical data using nested rectangles.
+Sunburst: Represents hierarchical data using concentric circles, with each level of the hierarchy being a ring.
+Tree diagram: Shows hierarchical data as a tree structure, with nodes connected by branches.
+Cluster layout: Similar to a tree diagram, but the nodes are positioned based on their similarity or distance from one another.
+Network and graph-based charts:
+
+Force-directed graph: Represents a network of nodes connected by links, with the layout determined by a force simulation.
+Chord diagram: Visualizes relationships between entities in a circular layout, with arcs connecting related entities.
+Sankey diagram: Displays the flow of data between nodes using a flow-based layout with variable-width links.
+Geographical and map-based charts:
+
+Choropleth map: Visualizes geographic regions with color or pattern based on an associated data value.
+Bubble map: Displays geographic data using circles or bubbles, with the size of each circle representing a data value.
+Heatmap: Represents data density or intensity using color gradients on a geographical map.
+Statistical and specialized charts:
+
+Histogram: Shows the distribution of data by dividing the data into bins and representing each bin's count or density using bars.
+Box plot: Summarizes data distribution using five key statistics: minimum, first quartile, median, third quartile, and maximum.
+Violin plot: Combines aspects of a box plot and a kernel density plot to display the distribution of data.
+Parallel coordinates: Represents multi-dimensional data using parallel axes, with lines connecting each data point's values across the axes.

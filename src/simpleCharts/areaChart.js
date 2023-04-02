@@ -35,6 +35,7 @@ function createD3AreaChart(data, selector, options) {
   // Select the target HTML element and append an SVG element to it
   const svg = d3.select(selector)
     .append("svg")
+    .classed("area-chart", true)
     .attr("width", width)
     .attr("height", height);
 
@@ -46,10 +47,12 @@ function createD3AreaChart(data, selector, options) {
     .attr("d", area);
 
   // Append the x-axis to the SVG element
-  svg.append("g")
-    .call(xAxis);
+  svg.append("g")//USED IN LINE, SCATTER AND BAR
+  .classed("x-axis", true)
+  .call(xAxis);//USED IN LINE, SCATTER AND BAR
 
-  // Append the y-axis to the SVG element
-  svg.append("g")
-    .call(yAxis);
+  // Append the y-axis to the SVG
+  svg.append("g")//USED IN LINE, SCATTER AND BAR
+  .classed("y-axis", true)
+  .call(yAxis);//USED IN LINE, SCATTER AND BAR
 }

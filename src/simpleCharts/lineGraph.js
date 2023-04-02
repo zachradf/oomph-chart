@@ -26,6 +26,7 @@ export default function createD3LineGraph(data, selector, options ) {
   
     const svg = d3.select(selector)
       .append("svg")
+      .classed("line-graph", true)
       .attr("width", width)
       .attr("height", height);
   
@@ -36,10 +37,13 @@ export default function createD3LineGraph(data, selector, options ) {
       .attr("stroke-width", options.strokeWidth || 1.5)//Unique to line graph
       .attr("d", line);
   
-    svg.append("g")
-      .call(xAxis);
-  
-    svg.append("g")
-      .call(yAxis);
+      svg.append("g")//USED IN LINE, SCATTER AND BAR
+      .classed("x-axis", true)
+      .call(xAxis);//USED IN LINE, SCATTER AND BAR
+    
+      // Append the y-axis to the SVG
+      svg.append("g")//USED IN LINE, SCATTER AND BAR
+      .classed("y-axis", true)
+      .call(yAxis);//USED IN LINE, SCATTER AND BAR
   }
   

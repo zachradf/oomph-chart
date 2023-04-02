@@ -27,25 +27,28 @@ export default function createD3ScatterPlot(data, selector, options) {
     // Select the HTML element with the given selector and append an SVG element to it
     const svg = d3.select(selector)//USED IN LINE, SCATTER AND BAR
       .append("svg")//USED IN LINE, SCATTER AND BAR
+      .classed("scatter-plot", true)
       .attr("width", width)//USED IN LINE, SCATTER AND BAR
       .attr("height", height);//USED IN LINE, SCATTER AND BAR
-  
+
     // Create circles for each data point
     svg.append("g")//USED IN BOTH SCATTER AND BAR
-      .attr("fill", `${options.color}`)//USED IN LINE, SCATTER AND BAR
-      .selectAll("circle")
-      .data(data)//USED IN BOTH SCATTER AND BAR
-      .join("circle")
-      .attr("cx", d => x(d.x)) // Set the x-coordinate of the circle center //COULD BE USED IN BOTH SCATTER AND BAR
-      .attr("cy", d => y(d.y)) // Set the y-coordinate of the circle center //COULD BE USED IN BOTH SCATTER AND BAR
-      .attr("r", options.radius); // Set the circle radius
-  
+    .attr("fill", `${options.color}`)//USED IN LINE, SCATTER AND BAR
+    .selectAll("circle")
+    .data(data)//USED IN BOTH SCATTER AND BAR
+    .join("circle")
+    .attr("cx", d => x(d.x)) // Set the x-coordinate of the circle center //COULD BE USED IN BOTH SCATTER AND BAR
+    .attr("cy", d => y(d.y)) // Set the y-coordinate of the circle center //COULD BE USED IN BOTH SCATTER AND BAR
+    .attr("r", options.radius); // Set the circle radius
+
     // Append the x-axis to the SVG
     svg.append("g")//USED IN LINE, SCATTER AND BAR
-      .call(xAxis);//USED IN LINE, SCATTER AND BAR
+    .classed("x-axis", true)
+    .call(xAxis);//USED IN LINE, SCATTER AND BAR
   
     // Append the y-axis to the SVG
     svg.append("g")//USED IN LINE, SCATTER AND BAR
-      .call(yAxis);//USED IN LINE, SCATTER AND BAR
+    .classed("y-axis", true)
+    .call(yAxis);//USED IN LINE, SCATTER AND BAR
   }
   

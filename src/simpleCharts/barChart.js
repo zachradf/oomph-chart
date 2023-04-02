@@ -27,6 +27,7 @@ export default function createD3BarChart(data, selector, options) {
     // Select the element with the given selector and create an SVG container
     const svg = d3.select(selector)
       .append("svg")
+      .classed("bar-chart", true)
       .attr("width", width)
       .attr("height", height);
   
@@ -42,12 +43,14 @@ export default function createD3BarChart(data, selector, options) {
       .attr("width", x.bandwidth()); // Set the width based on the x scale's bandwidth
   
     // Append a group element for the x-axis and call the xAxis function
-    svg.append("g")
-      .call(xAxis);
+    svg.append("g")//USED IN LINE, SCATTER AND BAR
+    .classed("x-axis", true)
+    .call(xAxis);//USED IN LINE, SCATTER AND BAR
   
-    // Append a group element for the y-axis and call the yAxis function
-    svg.append("g")
-      .call(yAxis);
+    // Append the y-axis to the SVG
+    svg.append("g")//USED IN LINE, SCATTER AND BAR
+    .classed("y-axis", true)
+    .call(yAxis);//USED IN LINE, SCATTER AND BAR
   }
   
   
