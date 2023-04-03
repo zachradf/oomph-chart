@@ -30,7 +30,6 @@ Heatmap: Represents data as a matrix of colored cells, with colors representing 
 Point map: Displays data points on a geographic map, often using size or color to represent additional variables.
 Line map: Visualizes paths or routes on a geographic map, often used for transportation or migration data.
 Hexbin map: Aggregates data points into hexagonal bins, with colors or heights representing aggregated values.
-
 Statistical and specialized charts:
 
 Histogram: Displays the distribution of a continuous variable by dividing it into bins and representing the counts as bars.

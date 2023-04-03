@@ -1,18 +1,12 @@
-const validateInputs = require('../../ValidatorFunctions/optionsValid.js');
-const optionObject = require('../../SampleData/optionsData.js');
-const options = optionObject.options;
+import validateInputs from '../../ValidatorFunctions/optionsValid.js';
+import { options }  from '../../SampleData/optionsData.js';
 
-console.log("THIS IS OPTIONS", options, "AND THIS IS OPTIONS WIDTH", options.width)
 describe('validateInputs', () => {
   const data = [
     { label: 'A', value: 1 },
     { label: 'B', value: 2 },
   ];
   const selector = '#chart';
-//   const options = {
-//     width: 600,
-//     height: 400,
-//   };
 
   test('Does not throw for valid inputs', () => {
     expect(() => validateInputs(data, selector, options)).not.toThrow();

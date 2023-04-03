@@ -1,6 +1,10 @@
 // Import your createD3BarChart function and D3 library
 import createD3BarChart from '../../Charts/simpleCharts/barChart.js';
 import * as d3 from 'd3';
+// const d3 = require('d3');
+global.d3 = d3;
+
+jest.mock('d3', () => require('d3'));
 
 // Create a div element in the DOM for the chart
 beforeAll(() => {
@@ -8,6 +12,11 @@ beforeAll(() => {
   div.id = 'chart';
   document.body.appendChild(div);
 });
+
+// Remove the svg element from the DOM after each test
+afterEach(() => {
+    d3.select('#chart').select('svg').remove();
+  });
 
 // Remove the div element from the DOM after testing
 afterAll(() => {
@@ -23,13 +32,13 @@ describe('createD3BarChart', () => {
     ];
     const selector = '#chart';
     const options = {
-      width: 500,
+      width: 400,
       height: 300,
       margin: { top: 20, right: 20, bottom: 30, left: 40 },
       color: 'steelblue',
     };
 
-    createD3BarChart(data, selector, options);
+    createD3BarChart(data, selector, options, d3);
 
     const svg = d3.select(selector).select('svg');
     expect(svg).toBeDefined();
@@ -52,7 +61,7 @@ describe('createD3BarChart', () => {
       color: 'orange',
     };
 
-    createD3BarChart(data, selector, options);
+    createD3BarChart(data, selector, options, d3);
 
     const svg = d3.select(selector).select('svg');
     expect(svg).toBeDefined();

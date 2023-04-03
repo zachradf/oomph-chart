@@ -1,5 +1,4 @@
-export default 
-function createD3AreaChart(data, selector, options) {
+export default function createD3AreaChart(data, selector, options, d3) {
   // Set default values for width, height, and margin based on provided options
   const width = options.width 
   const height = options.height 

@@ -1,4 +1,5 @@
-export default function createD3BarChart(data, selector, options) {
+//using d3 as a dependency injection to make it easier to test (for some reason, jest doesn't like d3 as a global)
+export default function createD3BarChart(data, selector, options, d3) {
     const width = options.width;
     const height = options.height
     const margin = options.margin
