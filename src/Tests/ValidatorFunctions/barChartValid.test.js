@@ -1,10 +1,10 @@
 import validateInputs from '../../ValidatorFunctions/optionsValid.js';
-import { options }  from '../../SampleData/optionsData.js';
+import { options } from '../../SampleData/optionsData.js';
 
 describe('validateInputs', () => {
   const data = [
     { label: 'A', value: 1 },
-    { label: 'B', value: 2 },
+    { label: 'B', value: 2 }
   ];
   const selector = '#chart';
 
