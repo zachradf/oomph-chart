@@ -2,7 +2,8 @@
   "name": "oomph",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
+  "type": "module",
   "scripts": {
     "test": "jest --verbose --coverage"
   },
@@ -11,5 +12,10 @@
   "license": "ISC",
   "dependencies": {
     "jest": "^29.5.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.4",
+    "@babel/preset-env": "^7.21.4",
+    "babel-jest": "^29.5.0"
   }
 }
