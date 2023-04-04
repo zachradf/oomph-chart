@@ -1,5 +1,5 @@
-import validateInputs from '../../ValidatorFunctions/optionsValid.js';
-import { options } from '../../SampleData/optionsData.js';
+import validateInputs from '../../ValidatorFunctions/optionsValidator';
+import { options } from '../../SampleData/optionsData';
 
 describe('validateInputs', () => {
   const data = [

@@ -1,8 +1,9 @@
-import createBarChart from '../../../../../../src/Charts/simpleCharts/barChart.js';
-import createScatterPlot from '../../../../../../src/Charts/simpleCharts/scatterPlot.js';
-import createLineGraph from '../../../../../../src/Charts/simpleCharts/lineGraph.js';
-import createPieChart from '../../../../../../src/Charts/simpleCharts/pieChart.js';
-import createAreaChart from '../../../../../../src/Charts/simpleCharts/areaChart.js';
+import * as d3 from '../../node_modules/d3';
+import createBarChart from '../Charts/simpleCharts/barChart';
+import createScatterPlot from '../Charts/simpleCharts/scatterPlot';
+import createLineGraph from '../Charts/simpleCharts/lineGraph';
+import createPieChart from '../Charts/simpleCharts/pieChart';
+import createAreaChart from '../Charts/simpleCharts/areaChart';
 
 export default class BasicClass {
   constructor(graphArray, input) {
@@ -34,7 +35,7 @@ export default class BasicClass {
     };
     this.iterateGraphs = () => {
       for (let i = 0; i < this.graphArray.length; i++) {
-        this.createGraph[this.graphArray[i]](this.input.data, this.input.selector, this.input.options);
+        this.createGraph[this.graphArray[i]](this.input.data, this.input.selector, this.input.options, d3);
       }
     };
     this.iterateGraphs();

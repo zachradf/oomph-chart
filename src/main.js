@@ -1,7 +1,7 @@
 import BasicClass from './Classes/BasicClass.js';  
 import HierarchyClass from './Classes/HierarchyClass.js';
-import { testDataScatterPlot, treeMapData, testDataBarChart } from '../../../../../src/SampleData/chartData.js';
-import { options, options2, optionsForceDirected } from '../../../../../src/SampleData/optionsData.js';
+import { testDataScatterPlot, treeMapData, testDataBarChart } from './SampleData/chartData.js';
+import { options, options2, optionsForceDirected } from './SampleData/optionsData.js';
 
 const input = {
   data: testDataScatterPlot,

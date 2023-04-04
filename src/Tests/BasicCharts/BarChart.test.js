@@ -4,7 +4,7 @@ import createD3BarChart from '../../Charts/simpleCharts/barChart.js';
 // const d3 = require('d3');
 global.d3 = d3;
 
-jest.mock('d3', () => require('d3'));
+// jest.mock('d3', () => require('d3'));
 
 // Create a div element in the DOM for the chart
 beforeAll(() => {

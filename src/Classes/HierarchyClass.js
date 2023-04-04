@@ -1,6 +1,6 @@
-import createSunburstChart from '../../../../../../src/Charts/hierarchicalCharts/sunBurst.js';
-import createTreeMap from '../../../../../../src/Charts/hierarchicalCharts/treeMap.js';
-import createTreeDiagram from '../../../../../../src/Charts/hierarchicalCharts/treeDiagram.js';
+import createSunburstChart from '../Charts/hierarchicalCharts/sunBurst';
+import createTreeMap from '../Charts/hierarchicalCharts/treeMap';
+import createTreeDiagram from '../Charts/hierarchicalCharts/treeDiagram';
 
 export default class HierarchyClass {
   constructor(graphArray, input) {

@@ -1,4 +1,4 @@
-export default function createD3PieChart(data, selector, options = {}) {
+export default function createD3PieChart(data, selector, options) {
   const { width } = options;
   const { height } = options;
   const radius = Math.min(width, height) / 2;
