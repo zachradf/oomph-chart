@@ -1,5 +1,5 @@
-import { BasicClass } from './Classes/BasicClass.js';
-import { HierarchyClass } from './Classes/HierarchyClass.js';
+import BasicClass from './Classes/BasicClass.js';
+import HierarchyClass from './Classes/HierarchyClass.js';
 import { testDataScatterPlot, treeMapData, testDataBarChart } from '../../../../../src/SampleData/chartData.js';
 import { options, options2, optionsForceDirected } from '../../../../../src/SampleData/optionsData.js';
 
