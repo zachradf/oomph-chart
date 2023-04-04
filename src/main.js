@@ -22,3 +22,4 @@ testObject.addGraphs('PIE');// update data
 // testObject.removeChart("SCATTER");
 // testObject.removeChart("AREA");
 
+
