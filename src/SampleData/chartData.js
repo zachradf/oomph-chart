@@ -70,3 +70,23 @@ export const dataSet1 = Array.from({ length: 1000 }, (_, i) => ({
   label: i,
   value: Math.floor(Math.random() * 1000),
 }));
+// bubble chart data
+export const bubbleChartData = [
+  {
+    name: 'Category 1',
+    value: 20,
+    children: [
+      { name: 'Subcategory 1A', value: 10 },
+      { name: 'Subcategory 1B', value: 5 },
+      { name: 'Subcategory 1C', value: 5 }
+    ],
+  },
+  {
+    name: 'Category 2',
+    value: 10,
+    children: [
+      { name: 'Subcategory 2A', value: 7.5 },
+      { name: 'Subcategory 2B', value: 2 }
+    ],
+  }
+];

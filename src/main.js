@@ -1,6 +1,6 @@
 import BasicClass from './Classes/BasicClass';
 import HierarchyClass from './Classes/HierarchyClass';
-import { testDataScatterPlot, treeMapData, dataSet1, testDataBarChart } from './SampleData/chartData';
+import { bubbleChartData, testDataScatterPlot, treeMapData, dataSet1, testDataBarChart } from './SampleData/chartData';
 import { options, options2, optionsForceDirected } from './SampleData/optionsData';
 
 const input = {
@@ -26,7 +26,14 @@ const input4 = {
   selector: '#chart',
   options,
 };
-const testObject = new BasicClass(['SCATTER', 'LINE', 'AREA', 'BUBBLE'], input);
+const input5 = {
+  data: bubbleChartData,
+  selector: '#chart',
+  options: options2,
+};
+
+const testObject = new BasicClass(['SCATTER', 'LINE', 'AREA'], input);
+const testObject5 = new BasicClass(['BUBBLE'], input5);
 const testObject2 = new HierarchyClass(['TREEMAP', 'SUNBURST'], input2);
 const testObject3 = new BasicClass(['BAR'], input3);
 const testObject4 = new BasicClass(['PIE'], input4);

@@ -18,12 +18,14 @@ export const options = {
   diameter: 600,
 };
 
-export const options2 = {};
-options2.margin = {
-  top: 20, right: 20, bottom: 30, left: 40,
+export const options2 = {
+  margin: {
+    top: 20, right: 20, bottom: 30, left: 40,
+  },
+  width: 1600,
+  height: 1400,
+  radius: 5,
+  color: 'red',
+  showLabels: true,
+  diameter: 400,
 };
-options2.width = 600;
-options2.height = 400;
-options2.radius = 5;
-options2.color = 'black';
-options2.showLabels = true;
