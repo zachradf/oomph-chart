@@ -1,9 +1,10 @@
-import * as d3 from '../../node_modules/d3';
-import createBarChart from '../Charts/simpleCharts/barChart';
-import createScatterPlot from '../Charts/simpleCharts/scatterPlot';
-import createLineGraph from '../Charts/simpleCharts/lineGraph';
-import createPieChart from '../Charts/simpleCharts/pieChart';
-import createAreaChart from '../Charts/simpleCharts/areaChart';
+// import * as d3 from 'd3/src';
+import createBubbleChart from '../Charts/basicCharts/bubbleChart';
+import createBarChart from '../Charts/basicCharts/barChart';
+import createScatterPlot from '../Charts/basicCharts/scatterPlot';
+import createLineGraph from '../Charts/basicCharts/lineGraph';
+import createPieChart from '../Charts/basicCharts/pieChart';
+import createAreaChart from '../Charts/basicCharts/areaChart';
 
 export default class BasicClass {
   constructor(graphArray, input) {
@@ -28,6 +29,7 @@ export default class BasicClass {
 
     this.createGraph = {
       BAR: createBarChart,
+      BUBBLE: createBubbleChart,
       SCATTER: createScatterPlot,
       LINE: createLineGraph,
       PIE: createPieChart,
@@ -43,6 +45,10 @@ export default class BasicClass {
 
   createBarChart(data, selector, options) {
     createBarChart(data, selector, options);
+  }
+
+  createBubbleChart(data, selector, options) {
+    createBubbleChart(data, selector, options);
   }
 
   createScatterPlot(data, selector, options) {
@@ -73,13 +79,6 @@ export default class BasicClass {
   }
 
   removeChart(type) {
-    const chartTypeMap = {
-      BAR: 'rect',
-      SCATTER: 'circle',
-      LINE: 'path.line',
-      PIE: 'path.arc',
-      AREA: 'path.area',
-    };
     const svgTypeMap = {
       BAR: 'bar-chart',
       SCATTER: 'scatter-plot',

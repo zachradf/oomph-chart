@@ -15,6 +15,7 @@ export const options = {
   radius: 5,
   color: 'red',
   showLabels: true,
+  diameter: 600,
 };
 
 export const options2 = {};

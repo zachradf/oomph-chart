@@ -1,31 +1,33 @@
-export default function createTreeDiagram(data, selector = '#chart', options) {
+export default function createTreeDiagram(data, selector, options) {
   // Set default options if not provided
   // TODO Refactor this to use the default options/be consistent with other charts
-  options = options || {};
-  options.width = options.width || 600;
-  options.height = options.height || 600;
-  options.nodeColor = options.nodeColor || 'steelblue';
-  options.nodeRadius = options.nodeRadius || 5;
-  options.linkColor = options.linkColor || '#ccc';
+  const {
+    width,
+    height,
+    nodeColor,
+    nodeRadius,
+    linkColor,
+  } = options;
 
   // Create the SVG container for the tree diagram
   const svg = d3
     .select(selector)
     .append('svg')
     .classed('tree-diagram', true)
-    .attr('width', options.width)
-    .attr('height', options.height)
+    .attr('width', width)
+    .attr('height', height)
     .append('g')
-    .attr('transform', `translate(${options.width / 2}, ${options.nodeRadius})`);
+    .attr('transform', `translate(${width / 2}, ${nodeRadius})`);
 
   // Initialize the tree layout with the size set to the provided options
-  const tree = d3.tree().size([options.height - 2 * options.nodeRadius, (options.width - 2 * options.nodeRadius) / 2]);
+  const tree = d3.tree().size([height - 2 * nodeRadius, (width - 2 * nodeRadius) / 2]);
 
   // TODO replace treemap with a partition function you can generalize for sunburst and tree map
 
   // Create the hierarchy from the data using d3.hierarchy
   // This assigns additional properties like depth, height, and parent to each node
   const root = d3.hierarchy(data);
+
   // Compute the layout using the tree layout
   tree(root);
 
@@ -40,7 +42,7 @@ export default function createTreeDiagram(data, selector = '#chart', options) {
     .join('path')
     .attr('class', 'link')
     .attr('fill', 'none')
-    .attr('stroke', options.linkColor)
+    .attr('stroke', linkColor)
     .attr('stroke-width', 1.5)
     .attr('d', d3.linkHorizontal().x((d) => d.y).y((d) => d.x));
 
@@ -62,8 +64,8 @@ export default function createTreeDiagram(data, selector = '#chart', options) {
   // 3. Set the fill style based on the provided options
   node
     .append('circle')
-    .attr('r', options.nodeRadius)
-    .style('fill', options.nodeColor);
+    .attr('r', nodeRadius)
+    .style('fill', nodeColor);
 
   // Add node labels (text) to the node groups
   // 1. Append a 'text' element to each node group
@@ -72,7 +74,7 @@ export default function createTreeDiagram(data, selector = '#chart', options) {
   node
     .append('text')
     .attr('dy', '0.31em')
-    .attr('x', (d) => (d.children ? -options.nodeRadius : options.nodeRadius))
+    .attr('x', (d) => (d.children ? -nodeRadius : nodeRadius))
     .text((d) => d.data.name)
     .style('font-size', '10px')
     .style('fill', '#333');

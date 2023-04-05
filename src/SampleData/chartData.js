@@ -65,3 +65,8 @@ export const testDataScatterPlot = [
   { x: 60, y: 90 },
   { x: 80, y: 60 }
 ];
+  // extreme barchart data
+export const dataSet1 = Array.from({ length: 1000 }, (_, i) => ({
+  label: i,
+  value: Math.floor(Math.random() * 1000),
+}));
