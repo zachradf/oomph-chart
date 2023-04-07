@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1680897889210" clover="3.2.0">
-  <project timestamp="1680897889210" name="All files">
-    <metrics statements="113" coveredstatements="109" conditionals="30" coveredconditionals="23" methods="47" coveredmethods="47" elements="190" coveredelements="179" complexity="0" loc="113" ncloc="113" packages="4" files="8" classes="8"/>
+<coverage generated="1680903473856" clover="3.2.0">
+  <project timestamp="1680903473856" name="All files">
+    <metrics statements="110" coveredstatements="106" conditionals="30" coveredconditionals="23" methods="47" coveredmethods="47" elements="187" coveredelements="176" complexity="0" loc="110" ncloc="110" packages="3" files="7" classes="7"/>
     <package name="Charts.basicCharts">
       <metrics statements="83" coveredstatements="83" conditionals="6" coveredconditionals="3" methods="39" coveredmethods="39"/>
       <file name="areaChart.js" path="/Users/zacharyradford/Desktop/Oomph/src/Charts/basicCharts/areaChart.js">
@@ -120,15 +120,6 @@
         <line num="129" count="4" type="stmt"/>
         <line num="132" count="24" type="cond" truecount="2" falsecount="0"/>
         <line num="133" count="24" type="stmt"/>
-      </file>
-    </package>
-    <package name="SampleData">
-      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="optionsData.js" path="/Users/zacharyradford/Desktop/Oomph/src/SampleData/optionsData.js">
-        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="27" count="1" type="stmt"/>
       </file>
     </package>
     <package name="ValidatorFunctions">

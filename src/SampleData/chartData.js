@@ -70,11 +70,50 @@ export const testDataScatterPlot = [
   { x: 45, y: 10 },
   { x: 60, y: 90 },
   { x: 87, y: 60 },
-  { x: 15, y: 25 },
-  { x: 38, y: 10 },
-  { x: 42, y: 103 },
-  { x: 66, y: 98 },
-  { x: 89, y: 70 }
+  { x: 95, y: 25 },
+  { x: 108, y: 10 },
+  { x: 142, y: 103 },
+  { x: 166, y: 98 },
+  { x: 189, y: 70 }
+];
+
+export const heatMapData2 =[
+  { xLabel: 'A', yLabel: '1', value: 50 },
+  { xLabel: 'A', yLabel: '2', value: 100 },
+  { xLabel: 'A', yLabel: '3', value: 150 },
+  { xLabel: 'B', yLabel: '1', value: 200 },
+  { xLabel: 'B', yLabel: '2', value: 250 },
+  { xLabel: 'B', yLabel: '3', value: 300 },
+  { xLabel: 'C', yLabel: '1', value: 350 },
+  { xLabel: 'C', yLabel: '2', value: 400 },
+  { xLabel: 'C', yLabel: '3', value: 450 }
+];
+
+export const stackedBarChartData2 = [
+  {
+    label: 'Jan',
+    values: [
+      { group: 'Group A', value: 10 },
+      { group: 'Group B', value: 20 },
+      { group: 'Group C', value: 30 }
+    ],
+  },
+  {
+    label: 'Feb',
+    values: [
+      { group: 'Group A', value: 15 },
+      { group: 'Group B', value: 25 },
+      { group: 'Group C', value: 35 }
+    ],
+  },
+  {
+    label: 'Mar',
+    values: [
+      { group: 'Group A', value: 20 },
+      { group: 'Group B', value: 30 },
+      { group: 'Group C', value: 40 }
+    ],
+  }
 ];
 
 // extreme scatter plot data

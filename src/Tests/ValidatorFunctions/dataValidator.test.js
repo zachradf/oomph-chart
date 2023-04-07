@@ -1,7 +1,24 @@
 import validateInputs from '../../ValidatorFunctions/optionsValidator';
-import { options } from '../../SampleData/optionsData';
+// import options from '../../SampleData/optionsData';
+// console.log(options)
 
 describe('validateInputs', () => {
+  const options = {
+    margin: {
+      top: 20, right: 20, bottom: 30, left: 40,
+    },
+    width: 500,
+    height: 400,
+    radius: 5,
+    color: 'blue',
+    showLabels: true,
+    diameter: 600,
+    fillColor: 'blue',
+    strokeColor: 'blue',
+    xLabel: 'xLabel',
+    yLabel: 'yLabel',
+    colorScale: 'red',
+  };
   const data = [
     { label: 'A', value: 1 },
     { label: 'B', value: 2 }
