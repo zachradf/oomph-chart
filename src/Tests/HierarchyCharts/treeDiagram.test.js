@@ -33,7 +33,7 @@ describe('createTreeDiagram', () => {
       height: 600,
       color: 'steelblue',
       radius: 5,
-      linkColor: '#ccc',
+      strokeColor: '#ccc',
     };
   });
   let jsdom;
@@ -108,7 +108,7 @@ describe('createTreeDiagram', () => {
     // console.log('THIS IS LINK', links.length);
 
     links.forEach((link) => {
-      expect(link.getAttribute('stroke')).toBe(options.linkColor);
+      expect(link.getAttribute('stroke')).toBe(options.strokeColor);
       expect(link.getAttribute('stroke-width')).toBe('1.5');
     });
   });
