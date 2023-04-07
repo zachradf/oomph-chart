@@ -34,7 +34,7 @@ describe('createD3ScatterPlot', () => {
       </html>
     `);
 
-    global.window = jsdom.window;
+    // global.window = jsdom.window;
   });
 
   test('creates an SVG element', () => {
@@ -61,15 +61,16 @@ describe('createD3ScatterPlot', () => {
     expect(circles).toHaveLength(data.length);
   });
 // TODO: fix this test or function for fill color
-//   test('sets the correct fill color for circles', () => {
-//     const { document } = jsdom.window;
+  test('sets the correct fill color for circles', () => {
+    const { document } = jsdom.window;
 
-//     createD3ScatterPlot(data, document.querySelector('#chart'), options);
-//     const circles = document.querySelectorAll('#chart svg.scatter-plot circle');
-//     circles.forEach((circle) => {
-//       expect(circle.getAttribute('fill')).toBe(options.color);
-//     });
-//   });
+    createD3ScatterPlot(data, document.querySelector('#chart'), options);
+    const circles = document.querySelectorAll('#chart svg.scatter-plot circle');
+    // console.log('THIS IS CIRCLES', circles[0])
+    circles.forEach((circle) => {
+      expect(circle.getAttribute('fill')).toBe(options.color);
+    });
+  });
 
   test('creates x-axis and y-axis', () => {
     const { document } = jsdom.window;

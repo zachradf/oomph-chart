@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1680705756602" clover="3.2.0">
-  <project timestamp="1680705756602" name="All files">
-    <metrics statements="119" coveredstatements="111" conditionals="32" coveredconditionals="22" methods="47" coveredmethods="42" elements="198" coveredelements="175" complexity="0" loc="119" ncloc="119" packages="4" files="8" classes="8"/>
+<coverage generated="1680889649205" clover="3.2.0">
+  <project timestamp="1680889649205" name="All files">
+    <metrics statements="113" coveredstatements="109" conditionals="30" coveredconditionals="23" methods="47" coveredmethods="47" elements="190" coveredelements="179" complexity="0" loc="113" ncloc="113" packages="4" files="8" classes="8"/>
     <package name="Charts.basicCharts">
-      <metrics statements="83" coveredstatements="83" conditionals="8" coveredconditionals="4" methods="39" coveredmethods="39"/>
+      <metrics statements="83" coveredstatements="83" conditionals="6" coveredconditionals="3" methods="39" coveredmethods="39"/>
       <file name="areaChart.js" path="/Users/zacharyradford/Desktop/Oomph/src/Charts/basicCharts/areaChart.js">
-        <metrics statements="17" coveredstatements="17" conditionals="2" coveredconditionals="1" methods="8" coveredmethods="8"/>
+        <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="8"/>
         <line num="3" count="5" type="stmt"/>
         <line num="4" count="5" type="stmt"/>
         <line num="5" count="5" type="stmt"/>
@@ -85,56 +85,50 @@
       </file>
       <file name="scatterPlot.js" path="/Users/zacharyradford/Desktop/Oomph/src/Charts/basicCharts/scatterPlot.js">
         <metrics statements="16" coveredstatements="16" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="8"/>
-        <line num="2" count="4" type="stmt"/>
-        <line num="3" count="4" type="stmt"/>
-        <line num="4" count="4" type="stmt"/>
-        <line num="7" count="4" type="stmt"/>
-        <line num="8" count="12" type="stmt"/>
-        <line num="12" count="4" type="stmt"/>
-        <line num="13" count="12" type="stmt"/>
-        <line num="17" count="4" type="stmt"/>
-        <line num="22" count="4" type="stmt"/>
-        <line num="25" count="4" type="stmt"/>
-        <line num="28" count="4" type="stmt"/>
-        <line num="35" count="4" type="stmt"/>
-        <line num="40" count="12" type="stmt"/>
-        <line num="41" count="12" type="stmt"/>
-        <line num="45" count="4" type="stmt"/>
-        <line num="50" count="4" type="stmt"/>
+        <line num="2" count="5" type="stmt"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="4" count="5" type="stmt"/>
+        <line num="7" count="5" type="stmt"/>
+        <line num="8" count="15" type="stmt"/>
+        <line num="12" count="5" type="stmt"/>
+        <line num="13" count="15" type="stmt"/>
+        <line num="17" count="5" type="stmt"/>
+        <line num="22" count="5" type="stmt"/>
+        <line num="25" count="5" type="stmt"/>
+        <line num="28" count="5" type="stmt"/>
+        <line num="35" count="5" type="stmt"/>
+        <line num="40" count="15" type="stmt"/>
+        <line num="41" count="15" type="stmt"/>
+        <line num="45" count="5" type="stmt"/>
+        <line num="50" count="5" type="stmt"/>
       </file>
     </package>
     <package name="Charts.hierarchicalCharts">
-      <metrics statements="13" coveredstatements="9" conditionals="2" coveredconditionals="0" methods="6" coveredmethods="1"/>
+      <metrics statements="13" coveredstatements="13" conditionals="2" coveredconditionals="2" methods="6" coveredmethods="6"/>
       <file name="treeDiagram.js" path="/Users/zacharyradford/Desktop/Oomph/src/Charts/hierarchicalCharts/treeDiagram.js">
-        <metrics statements="13" coveredstatements="9" conditionals="2" coveredconditionals="0" methods="6" coveredmethods="1"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
-        <line num="39" count="1" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="54" count="1" type="stmt"/>
-        <line num="59" count="0" type="stmt"/>
-        <line num="65" count="1" type="stmt"/>
-        <line num="74" count="1" type="stmt"/>
-        <line num="77" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="78" count="0" type="stmt"/>
+        <metrics statements="13" coveredstatements="13" conditionals="2" coveredconditionals="2" methods="6" coveredmethods="6"/>
+        <line num="90" count="4" type="stmt"/>
+        <line num="92" count="4" type="stmt"/>
+        <line num="101" count="4" type="stmt"/>
+        <line num="103" count="4" type="stmt"/>
+        <line num="105" count="4" type="stmt"/>
+        <line num="107" count="4" type="stmt"/>
+        <line num="115" count="40" type="stmt"/>
+        <line num="117" count="4" type="stmt"/>
+        <line num="122" count="24" type="stmt"/>
+        <line num="124" count="4" type="stmt"/>
+        <line num="129" count="4" type="stmt"/>
+        <line num="132" count="24" type="cond" truecount="2" falsecount="0"/>
+        <line num="133" count="24" type="stmt"/>
       </file>
     </package>
     <package name="SampleData">
-      <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="optionsData.js" path="/Users/zacharyradford/Desktop/Oomph/src/SampleData/optionsData.js">
-        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
-        <line num="27" count="1" type="stmt"/>
-        <line num="28" count="1" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
       </file>
     </package>
     <package name="ValidatorFunctions">

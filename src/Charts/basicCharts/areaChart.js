@@ -42,7 +42,7 @@ export default function createD3AreaChart(data, selector, options) {
   // Fill the area with a color specified in the options or a default color
   svg.append('path')
     .datum(data)
-    .attr('fill', options.fillColor || 'steelblue')
+    .attr('fill', `${options.fillColor}`)
     .attr('d', area);
 
   // Append the x-axis to the SVG element

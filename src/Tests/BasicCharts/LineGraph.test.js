@@ -30,7 +30,7 @@ describe('createD3LineGraph', () => {
       </html>
     `);
 
-    global.window = jsdom.window;
+    // global.window = jsdom.window;
   });
 
   test('creates an SVG element', () => {

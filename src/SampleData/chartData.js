@@ -4,15 +4,14 @@ export const treeDiagramData = {
     {
       name: 'B',
       children: [
-        { name: 'D' },
-        { name: 'E' }
+        { name: 'C' },
+        { name: 'D' }
       ],
     },
     {
-      name: 'C',
+      name: 'E',
       children: [
-        { name: 'F' },
-        { name: 'G' }
+        { name: 'F' }
       ],
     }
   ],
@@ -65,7 +64,20 @@ export const testDataScatterPlot = [
   { x: 60, y: 90 },
   { x: 80, y: 60 }
 ];
-  // extreme barchart data
+
+// extreme scatter plot data
+// Generate a high volume data set with 1 million data points
+export const extremeScatterPlot1 = Array.from({ length: 10000 }, () => ({
+  x: Math.random(),
+  y: Math.random(),
+}));
+// Generate a high variation data set with values between -1000 and 1000
+export const extremeScatterPlot2 = Array.from({ length: 25000 }, () => ({
+  x: Math.random() * 2000 - 1000,
+  y: Math.random() * 2000 - 1000,
+}));
+
+// extreme barchart data
 export const dataSet1 = Array.from({ length: 1000 }, (_, i) => ({
   label: i,
   value: Math.floor(Math.random() * 1000),

@@ -5,7 +5,7 @@ export default function createBubbleChart(data, selector, options) {
     .hierarchy({ children: data })
     .sum((d) => d.value)
     .sort((a, b) => b.value - a.value);
-  console.log('THIS IS ROOT', root);
+
   // Create the bubble layout
   const bubbleLayout = d3
     .pack()
@@ -29,11 +29,8 @@ export default function createBubbleChart(data, selector, options) {
     .enter()
     .append('g')
     .attr('class', 'node')
-    .attr('transform', (d) => { `translate(${+d.x},${+d.y})`; });
-  console.log('THIS IS NODES', nodes);
-  nodes.each((d) => {
-    console.log(d);
-  });
+    .attr('transform', (d) => `translate(${+d.x},${+d.y})`);
+
   // // Add circles to the bubbles
   nodes
     .append('circle')

@@ -34,7 +34,7 @@ describe('createD3AreaChart', () => {
       </html>
     `);
 
-    global.window = jsdom.window;
+    // global.window = jsdom.window;
   });
 
   test('creates an SVG element', () => {

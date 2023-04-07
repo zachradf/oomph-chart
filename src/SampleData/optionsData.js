@@ -12,10 +12,13 @@ export const options = {
   },
   width: 600,
   height: 400,
-  radius: 5,
+  radius: 2.5,
   color: 'red',
   showLabels: true,
   diameter: 600,
+  fillColor: 'red',
+  strokeColor: 'blue',
+
 };
 
 export const options2 = {
@@ -28,4 +31,5 @@ export const options2 = {
   color: 'red',
   showLabels: true,
   diameter: 400,
+  fillColor: 'red',
 };

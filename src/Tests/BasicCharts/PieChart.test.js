@@ -32,7 +32,7 @@ describe('createD3PieChart', () => {
       </html>
     `);
 
-    global.window = jsdom.window;
+    // global.window.document = jsdom.window;
   });
 
   test('creates an SVG element', () => {

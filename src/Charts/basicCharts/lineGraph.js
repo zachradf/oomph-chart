@@ -20,7 +20,7 @@ export default function createD3LineGraph(data, selector, options) {
     .call(d3.axisLeft(y).ticks(height / 80))
     .call((g) => g.select('.domain').remove());
 
-  const line = d3.line()// Unique to line graph
+  const line = d3.line()// Unique to line graph?
     .x((d) => x(d.x))
     .y((d) => y(d.y));
 
