@@ -10,9 +10,9 @@ export const options = {
   margin: {
     top: 20, right: 20, bottom: 30, left: 40,
   },
-  width: 50,
-  height: 40,
-  radius: 0.5,
+  width: 500,
+  height: 400,
+  radius: 5,
   color: 'red',
   showLabels: true,
   diameter: 600,

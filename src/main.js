@@ -55,7 +55,7 @@ const input2 = {
 };
 
 const input3 = {
-  data: dataSet1,
+  data: testDataScatterPlot,
   selector: '#chart',
   options,
 };
@@ -93,12 +93,12 @@ const input5 = {
 const testObject3 = new BasicClass(['HEATMAP'], input4);
 
 const testObject = new BasicClass(['STACKEDBAR'], input);
-// const testObject5 = new BasicClass(['BUBBLE'], input5);
+const testObject5 = new BasicClass(['BUBBLE'], input5);
 // zoom('#chart');
-// const testObject2 = new HierarchyClass(['TREEDIAGRAM'], input2);
+const testObject2 = new HierarchyClass(['TREEDIAGRAM'], input2);
 // gradient('#chart', 'red', 'blue', 'y');
 // zoom('#chart');
-
+const scatterObject = new BasicClass(['SCATTER', 'AREA', 'LINE'], input3);
 // const testObject4 = new BasicClass(['PIE'], input4);
 // testObject.addGraphs('BAR');// update data
 // testObject.updateInput(input2);
