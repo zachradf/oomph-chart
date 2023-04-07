@@ -5,6 +5,9 @@ import createScatterPlot from '../Charts/basicCharts/scatterPlot';
 import createLineGraph from '../Charts/basicCharts/lineGraph';
 import createPieChart from '../Charts/basicCharts/pieChart';
 import createAreaChart from '../Charts/basicCharts/areaChart';
+import createDonutChart from '../Charts/basicCharts/donutChart';
+import createStackedBarChart from '../Charts/basicCharts/stackedBarChart';
+import createHeatMap from '../Charts/basicCharts/heatMap';
 
 export default class BasicClass {
   constructor(graphArray, input) {
@@ -34,6 +37,9 @@ export default class BasicClass {
       LINE: createLineGraph,
       PIE: createPieChart,
       AREA: createAreaChart,
+      DONUT: createDonutChart,
+      STACKEDBAR: createStackedBarChart,
+      HEATMAP: createHeatMap,
     };
     this.iterateGraphs = () => {
       for (let i = 0; i < this.graphArray.length; i++) {
@@ -49,6 +55,18 @@ export default class BasicClass {
 
   createBubbleChart(data, selector, options) {
     createBubbleChart(data, selector, options);
+  }
+
+  createDonutChart(data, selector, options) {
+    createDonutChart(data, selector, options);
+  }
+
+  createHeatMap(data, selector, options) {
+    createHeatMap(data, selector, options);
+  }
+
+  createStackedBarChart(data, selector, options) {
+    createStackedBarChart(data, selector, options);
   }
 
   createScatterPlot(data, selector, options) {
@@ -85,6 +103,9 @@ export default class BasicClass {
       LINE: 'line-graph',
       PIE: 'pie-chart',
       AREA: 'area-chart',
+      DONUT: 'donut-chart',
+      STACKEDBAR: 'stacked-bar-chart',
+      HEATMAP: 'heat-map',
     };
     const svgSelector = svgTypeMap[type];
     if (svgSelector) {

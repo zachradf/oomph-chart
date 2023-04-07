@@ -10,14 +10,17 @@ export const options = {
   margin: {
     top: 20, right: 20, bottom: 30, left: 40,
   },
-  width: 600,
-  height: 400,
-  radius: 2.5,
+  width: 50,
+  height: 40,
+  radius: 0.5,
   color: 'red',
   showLabels: true,
   diameter: 600,
   fillColor: 'red',
   strokeColor: 'blue',
+  xLabel: 'xLabel',
+  yLabel: 'yLabel',
+  colorScale: 'red',
 
 };
 
@@ -27,7 +30,7 @@ export const options2 = {
   },
   width: 1600,
   height: 1400,
-  radius: 5,
+  radius: 0.5,
   color: 'red',
   showLabels: true,
   diameter: 400,
