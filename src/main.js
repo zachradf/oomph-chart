@@ -3,9 +3,9 @@ import BasicClass from './Classes/BasicClass';
 import HierarchyClass from './Classes/HierarchyClass';
 import {
   bubbleChartData, testDataScatterPlot, treeDiagramData, treeMapData, dataSet1, testDataBarChart, extremeScatterPlot1, extremeScatterPlot2,
-  stackedBarChartData2, heatMapData2, testDataDonutChart
+  stackedBarChartData2, heatMapData2, testDataDonutChart, sunburstData
 } from './SampleData/chartData';
-import { options, options2, options3, optionsForceDirected } from './SampleData/optionsData';
+import { options, options2, options3, options4, optionsForceDirected } from './SampleData/optionsData';
 import onHover from './AddFunctionality/onHover';
 import zoom from './AddFunctionality/zoom';
 import gradient from './AddFunctionality/gradient';
@@ -51,17 +51,34 @@ const input6 = {
   selector: '#chart',
   options: options2,
 };
+const input7 = {
+  data: treeDiagramData,
+  selector: '#chart',
+  options: options,
+};
+const input8 = {
+  data: treeMapData,
+  selector: '#chart',
+  options: options,
+};
+const input9 = {
+  data: sunburstData,
+  selector: '#chart',
+  options: options4,
+};
 
-// const lineObject = new BasicClass(['LINE'], input3);
-// const areaObject = new BasicClass(['AREA'], input3);
-// const scatterObject = new BasicClass(['SCATTER'], input3);
+const lineObject = new BasicClass(['LINE'], input3);
+const areaObject = new BasicClass(['AREA'], input3);
+const scatterObject = new BasicClass(['SCATTER'], input3);
 const barObject = new BasicClass(['BAR'], input2);
-// const stackedBarObject = new BasicClass(['STACKEDBAR'], input);
-// const bubbleObject = new BasicClass(['BUBBLE'], input5);
-// const heatMapObject = new BasicClass(['HEATMAP'], input4);
-// const donutChartObject = new BasicClass(['DONUT'], input6);
-// const pieChartObject = new BasicClass(['PIE'], input6);
-// const treeDiagramObject = new HierarchyClass(['TREEDIAGRAM'], input2);
-gradient('#chart', 'red', 'blue', 'BAR', 'y');
-zoom('#chart', 'STACKEDBAR');
+const stackedBarObject = new BasicClass(['STACKEDBAR'], input);
+const bubbleObject = new BasicClass(['BUBBLE'], input5);
+const heatMapObject = new BasicClass(['HEATMAP'], input4);
+const donutChartObject = new BasicClass(['DONUT'], input6);
+const pieChartObject = new BasicClass(['PIE'], input6);
+const treeDiagramObject = new HierarchyClass(['TREEDIAGRAM'], input7);
+const treeMapObject = new HierarchyClass(['TREEMAP'], input8);
+const sunburstObject = new HierarchyClass(['SUNBURST'], input9);
+// gradient('#chart', 'red', 'blue', 'BAR', 'y');
+// zoom('#chart', 'STACKEDBAR');
 

@@ -46,3 +46,21 @@ export const options3 = {
   xLabel: 'X Axis Label',
   yLabel: 'Y Axis Label',
 };
+
+export const options4 = {
+  margin: {
+    top: 20, right: 20, bottom: 30, left: 40,
+  },
+  width: 500,
+  height: 400,
+  radius: 50,
+  color: 'blue',
+  showLabels: true,
+  diameter: 6,
+  fillColor: 'blue',
+  strokeColor: 'blue',
+  xLabel: 'xLabel',
+  yLabel: 'yLabel',
+  colorScale: 'red',
+  // colorScheme: d3.schemeCategory10,
+};
