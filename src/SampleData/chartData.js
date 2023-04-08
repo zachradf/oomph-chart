@@ -220,7 +220,7 @@ export const stackedBarChartData = [
   }
 ];
 
-export const sunburstData ={
+export const sunburstData = {
   name: 'A',
   children: [
     {
@@ -231,7 +231,7 @@ export const sunburstData ={
         { name: 'B3', value: 4 },
         { name: 'B4', value: 4 },
         { name: 'B5', value: 4 }
-      ]
+      ],
     },
     {
       name: 'C',
@@ -241,7 +241,7 @@ export const sunburstData ={
         { name: 'C3', value: 3 },
         { name: 'C4', value: 3 },
         { name: 'C5', value: 3 }
-      ]
+      ],
     },
     {
       name: 'D',
@@ -251,7 +251,7 @@ export const sunburstData ={
         { name: 'D3', value: 2 },
         { name: 'D4', value: 2 },
         { name: 'D5', value: 2 }
-      ]
+      ],
     },
     {
       name: 'E',
@@ -261,7 +261,7 @@ export const sunburstData ={
         { name: 'E3', value: 1 },
         { name: 'E4', value: 1 },
         { name: 'E5', value: 1 }
-      ]
+      ],
     },
     {
       name: 'F',
@@ -271,7 +271,41 @@ export const sunburstData ={
         { name: 'F3', value: 1 },
         { name: 'F4', value: 1 },
         { name: 'F5', value: 1 }
-      ]
+      ],
     }
-  ]
+  ],
 };
+
+export const waterfallData =  [
+  { category: 'A', value: 20, start: 0, end: 20 },
+  { category: 'B', value: 10, start: 20, end: 30 },
+  { category: 'C', value: -5, start: 30, end: 25 },
+  { category: 'D', value: 15, start: 25, end: 40 },
+  { category: 'E', value: -10, start: 40, end: 30 },
+  { category: 'F', value: 5, start: 30, end: 35 },
+  { category: 'G', value: 15, start: 35, end: 50 }
+];
+
+export const funnelChartData = [
+  { name: 'Stage 1', value: 1000 },
+  { name: 'Stage 2', value: 800 },
+  { name: 'Stage 3', value: 600 },
+  { name: 'Stage 4', value: 400 },
+  { name: 'Stage 5', value: 200 },
+];
+
+export const polarChartData = [
+  { name: 'A', value: 100 },
+  { name: 'B', value: 200 },
+  { name: 'C', value: 150 },
+  { name: 'D', value: 75 },
+  { name: 'E', value: 125 },
+];
+
+export const radarChartData = [
+  { name: 'A', value: 100 },
+  { name: 'B', value: 100 },
+  { name: 'C', value: 10 },
+  { name: 'D', value: 75 },
+  { name: 'E', value: 25 },
+];

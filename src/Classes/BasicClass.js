@@ -8,6 +8,11 @@ import createAreaChart from '../Charts/basicCharts/areaChart';
 import createDonutChart from '../Charts/basicCharts/donutChart';
 import createStackedBarChart from '../Charts/basicCharts/stackedBarChart';
 import createHeatMap from '../Charts/basicCharts/heatMap';
+import createRadarChart from '../Charts/basicCharts/radarChart';
+import createPolarChart from '../Charts/basicCharts/polarChart';
+import createWaterfallChart from '../Charts/basicCharts/waterfallChart';
+import createFunnelChart from '../Charts/basicCharts/funnelChart';
+import createGaugeChart from '../Charts/basicCharts/gaugeChart';
 
 export default class BasicClass {
   constructor(graphArray, input) {
@@ -40,6 +45,11 @@ export default class BasicClass {
       DONUT: createDonutChart,
       STACKEDBAR: createStackedBarChart,
       HEATMAP: createHeatMap,
+      RADAR: createRadarChart,
+      POLAR: createPolarChart,
+      WATERFALL: createWaterfallChart,
+      FUNNEL: createFunnelChart,
+      GAUGE: createGaugeChart,
     };
     this.iterateGraphs = () => {
       for (let i = 0; i < this.graphArray.length; i++) {
@@ -47,6 +57,27 @@ export default class BasicClass {
       }
     };
     this.iterateGraphs();
+  }
+
+  // You can probably put all of this in the create graph object
+  createFunnelChart(data, selector, options) {
+    createFunnelChart(data, selector, options);
+  }
+
+  createGaugeChart(data, selector, options) {
+    createGaugeChart(data, selector, options);
+  }
+
+  createWaterfallChart(data, selector, options) {
+    createWaterfallChart(data, selector, options);
+  }
+
+  createPolarChart(data, selector, options) {
+    createPolarChart(data, selector, options);
+  }
+
+  createRadarChart(data, selector, options) {
+    createRadarChart(data, selector, options);
   }
 
   createBarChart(data, selector, options) {
@@ -107,6 +138,11 @@ export default class BasicClass {
       DONUT: 'donut-chart',
       STACKEDBAR: 'stacked-bar-chart',
       HEATMAP: 'heat-map',
+      RADAR: 'radar-chart',
+      POLAR: 'polar-chart',
+      WATERFALL: 'waterfall-chart',
+      FUNNEL: 'funnel-chart',
+      GAUGE: 'gauge-chart',
     };
     const svgSelector = svgTypeMap[type];
     if (svgSelector) {
