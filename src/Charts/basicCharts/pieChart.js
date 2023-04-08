@@ -22,6 +22,7 @@ export default function createD3PieChart(data, selector, options) {
   // Position the group element at the center of the SVG
   const svg = d3.select(selector)
     .append('svg')
+    .classed('pie-chart', true)
     .attr('width', width)
     .attr('height', height)
     .append('g')

@@ -99,6 +99,7 @@ export default class BasicClass {
   removeChart(type) {
     const svgTypeMap = {
       BAR: 'bar-chart',
+      BUBBLE: 'bubble-chart',
       SCATTER: 'scatter-plot',
       LINE: 'line-graph',
       PIE: 'pie-chart',

@@ -1,4 +1,4 @@
-import * as d3 from 'd3';
+// import * as d3 from 'd3';
 import BasicClass from './Classes/BasicClass';
 import HierarchyClass from './Classes/HierarchyClass';
 import {
@@ -79,6 +79,18 @@ const pieChartObject = new BasicClass(['PIE'], input6);
 const treeDiagramObject = new HierarchyClass(['TREEDIAGRAM'], input7);
 const treeMapObject = new HierarchyClass(['TREEMAP'], input8);
 const sunburstObject = new HierarchyClass(['SUNBURST'], input9);
+sunburstObject.removeChart('SUNBURST');
+treeMapObject.removeChart('TREEMAP');
+treeDiagramObject.removeChart('TREEDIAGRAM');
+pieChartObject.removeChart('PIE');
+donutChartObject.removeChart('DONUT');
+heatMapObject.removeChart('HEATMAP');
+bubbleObject.removeChart('BUBBLE');
+stackedBarObject.removeChart('STACKEDBAR');
+barObject.removeChart('BAR');
+scatterObject.removeChart('SCATTER');
+areaObject.removeChart('AREA');
+lineObject.removeChart('LINE');
+
 // gradient('#chart', 'red', 'blue', 'BAR', 'y');
 // zoom('#chart', 'STACKEDBAR');
-
