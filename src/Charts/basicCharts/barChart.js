@@ -33,6 +33,7 @@ export default function createD3BarChart(data, selector, options) {
 
   // Append a group element for the bars, set the fill color and bind the data
   svg.append('g')
+    // .attr('class', 'data-points') // Add a class to the container of the data points
     .attr('fill', `${options.color}`)
     .selectAll('rect')
     .data(data)
@@ -52,7 +53,6 @@ export default function createD3BarChart(data, selector, options) {
     .classed('y-axis', true)
     .call(yAxis);// USED IN LINE, SCATTER AND BAR
 }
-
 
 // Attempt at adding orientation option
 // export default function createD3BarChart(data, selector, options) {

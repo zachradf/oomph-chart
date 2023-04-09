@@ -276,14 +276,28 @@ export const sunburstData = {
   ],
 };
 
-export const waterfallData =  [
-  { category: 'A', value: 20, start: 0, end: 20 },
-  { category: 'B', value: 10, start: 20, end: 30 },
-  { category: 'C', value: -5, start: 30, end: 25 },
-  { category: 'D', value: 15, start: 25, end: 40 },
-  { category: 'E', value: -10, start: 40, end: 30 },
-  { category: 'F', value: 5, start: 30, end: 35 },
-  { category: 'G', value: 15, start: 35, end: 50 }
+export const waterfallData = [
+  {
+    category: 'A', value: 20, start: 0, end: 20,
+  },
+  {
+    category: 'B', value: 10, start: 20, end: 30,
+  },
+  {
+    category: 'C', value: -5, start: 30, end: 25,
+  },
+  {
+    category: 'D', value: 15, start: 25, end: 40,
+  },
+  {
+    category: 'E', value: -10, start: 40, end: 30,
+  },
+  {
+    category: 'F', value: 5, start: 30, end: 35,
+  },
+  {
+    category: 'G', value: 15, start: 35, end: 50,
+  }
 ];
 
 export const funnelChartData = [
@@ -291,7 +305,7 @@ export const funnelChartData = [
   { name: 'Stage 2', value: 800 },
   { name: 'Stage 3', value: 600 },
   { name: 'Stage 4', value: 400 },
-  { name: 'Stage 5', value: 200 },
+  { name: 'Stage 5', value: 200 }
 ];
 
 export const polarChartData = [
@@ -299,7 +313,7 @@ export const polarChartData = [
   { name: 'B', value: 200 },
   { name: 'C', value: 150 },
   { name: 'D', value: 75 },
-  { name: 'E', value: 125 },
+  { name: 'E', value: 125 }
 ];
 
 export const radarChartData = [
@@ -307,5 +321,36 @@ export const radarChartData = [
   { name: 'B', value: 100 },
   { name: 'C', value: 10 },
   { name: 'D', value: 75 },
-  { name: 'E', value: 25 },
+  { name: 'E', value: 25 }
+];
+
+export const boxPlotData = [
+  {
+    category: 'A',
+    min: 10,
+    q1: 20,
+    q3: 40,
+    max: 60
+  },
+  {
+    category: 'B',
+    min: 5,
+    q1: 25,
+    q3: 45,
+    max: 75
+  },
+  {
+    category: 'C',
+    min: 15,
+    q1: 30,
+    q3: 50,
+    max: 80
+  },
+  {
+    category: 'D',
+    min: 8,
+    q1: 28,
+    q3: 48,
+    max: 68
+  }
 ];

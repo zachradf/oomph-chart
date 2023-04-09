@@ -1,18 +1,20 @@
+/* eslint-disable import/extensions */
 // import * as d3 from 'd3/src';
-import createBubbleChart from '../Charts/basicCharts/bubbleChart';
-import createBarChart from '../Charts/basicCharts/barChart';
-import createScatterPlot from '../Charts/basicCharts/scatterPlot';
-import createLineGraph from '../Charts/basicCharts/lineGraph';
-import createPieChart from '../Charts/basicCharts/pieChart';
-import createAreaChart from '../Charts/basicCharts/areaChart';
-import createDonutChart from '../Charts/basicCharts/donutChart';
-import createStackedBarChart from '../Charts/basicCharts/stackedBarChart';
-import createHeatMap from '../Charts/basicCharts/heatMap';
-import createRadarChart from '../Charts/basicCharts/radarChart';
-import createPolarChart from '../Charts/basicCharts/polarChart';
-import createWaterfallChart from '../Charts/basicCharts/waterfallChart';
-import createFunnelChart from '../Charts/basicCharts/funnelChart';
-import createGaugeChart from '../Charts/basicCharts/gaugeChart';
+import createBubbleChart from '../Charts/basicCharts/bubbleChart.js';
+import createBarChart from '../Charts/basicCharts/barChart.js';
+import createScatterPlot from '../Charts/basicCharts/scatterPlot.js';
+import createLineGraph from '../Charts/basicCharts/lineGraph.js';
+import createPieChart from '../Charts/basicCharts/pieChart.js';
+import createAreaChart from '../Charts/basicCharts/areaChart.js';
+import createDonutChart from '../Charts/basicCharts/donutChart.js';
+import createStackedBarChart from '../Charts/basicCharts/stackedBarChart.js';
+import createHeatMap from '../Charts/basicCharts/heatMap.js';
+import createRadarChart from '../Charts/basicCharts/radarChart.js';
+import createPolarChart from '../Charts/basicCharts/polarChart.js';
+import createWaterfallChart from '../Charts/basicCharts/waterfallChart.js';
+import createFunnelChart from '../Charts/basicCharts/funnelChart.js';
+import createGaugeChart from '../Charts/basicCharts/gaugeChart.js';
+import createBoxPlot from '../Charts/basicCharts/boxPlot.js';
 
 export default class BasicClass {
   constructor(graphArray, input) {
@@ -50,6 +52,7 @@ export default class BasicClass {
       WATERFALL: createWaterfallChart,
       FUNNEL: createFunnelChart,
       GAUGE: createGaugeChart,
+      BOX: createBoxPlot,
     };
     this.iterateGraphs = () => {
       for (let i = 0; i < this.graphArray.length; i++) {
@@ -60,6 +63,10 @@ export default class BasicClass {
   }
 
   // You can probably put all of this in the create graph object
+  createBoxPlot(data, selector, options) {
+    createBoxPlot(data, selector, options);
+  }
+
   createFunnelChart(data, selector, options) {
     createFunnelChart(data, selector, options);
   }
@@ -143,6 +150,7 @@ export default class BasicClass {
       WATERFALL: 'waterfall-chart',
       FUNNEL: 'funnel-chart',
       GAUGE: 'gauge-chart',
+      BOX: 'box-plot',
     };
     const svgSelector = svgTypeMap[type];
     if (svgSelector) {

@@ -1,21 +1,27 @@
+/* eslint-disable import/extensions */
 // import * as d3 from 'd3';
-import BasicClass from './Classes/BasicClass';
-import HierarchyClass from './Classes/HierarchyClass';
+import BasicClass from './Classes/BasicClass.js';
+import HierarchyClass from './Classes/HierarchyClass.js';
 import {
-  bubbleChartData, testDataScatterPlot, treeDiagramData, treeMapData, dataSet1, testDataBarChart, extremeScatterPlot1, extremeScatterPlot2,
-  stackedBarChartData2, heatMapData2, testDataDonutChart, sunburstData, waterfallData, funnelChartData, polarChartData, radarChartData
-} from './SampleData/chartData';
+  bubbleChartData, testDataScatterPlot, treeDiagramData, treeMapData,
+  dataSet1, testDataBarChart, extremeScatterPlot1, extremeScatterPlot2,
+  stackedBarChartData2, heatMapData2, testDataDonutChart, sunburstData,
+  waterfallData, funnelChartData, polarChartData, radarChartData, boxPlotData
+} from './SampleData/chartData.js';
 import {
-  options, options2, options3, options4, options5, waterfallOptions, funnelChartOptions, polarChartOptions, radarChartOptions, gaugeOptions
-} from './SampleData/optionsData';
-import onHover from './AddFunctionality/onHover';
-import zoom from './AddFunctionality/zoom';
-import gradient from './AddFunctionality/gradient';
-import waterfallChart from './Charts/basicCharts/waterfallChart';
-import funnelChart from './Charts/basicCharts/funnelChart';
-import polarChart from './Charts/basicCharts/polarChart';
-import radarChart from './Charts/basicCharts/radarChart';
-import gaugeChart from './Charts/basicCharts/gaugeChart';
+  options, options2, options3, options4,
+  options5, waterfallOptions, funnelChartOptions,
+  polarChartOptions, radarChartOptions, gaugeOptions,
+} from './SampleData/optionsData.js';
+import onHover from './AddFunctionality/onHover.js';
+import zoom from './AddFunctionality/zoom.js';
+import gradient from './AddFunctionality/gradient.js';
+import addAnimation from './AddFunctionality/animate.js';
+import waterfallChart from './Charts/basicCharts/waterfallChart.js';
+import funnelChart from './Charts/basicCharts/funnelChart.js';
+import polarChart from './Charts/basicCharts/polarChart.js';
+import radarChart from './Charts/basicCharts/radarChart.js';
+import gaugeChart from './Charts/basicCharts/gaugeChart.js';
 
 const input = {
   data: stackedBarChartData2,
@@ -92,24 +98,36 @@ const input14 = {
   options: gaugeOptions,
 };
 
+const input15 = {
+  data: boxPlotData,
+  selector: '#chart',
+  options: options,
+};
 // Adds Charts
 // const lineObject = new BasicClass(['LINE'], input3);
-// const areaObject = new BasicClass(['AREA'], input3);
-// const scatterObject = new BasicClass(['SCATTER'], input3);
+// const areaObject = new BasicClass(['SCATTER'], input3);
+// const scatterObject = new BasicClass(['AREA', 'LINE'], input3);
 // const barObject = new BasicClass(['BAR'], input2);
 // const stackedBarObject = new BasicClass(['STACKEDBAR'], input);
 // const bubbleObject = new BasicClass(['BUBBLE'], input5);
 // const heatMapObject = new BasicClass(['HEATMAP'], input4);
-// const donutChartObject = new BasicClass(['DONUT'], input6);
 // const pieChartObject = new BasicClass(['PIE'], input6);
+// const waterfallObject = new BasicClass(['WATERFALL'], input10);
+// const funnelObject = new BasicClass(['FUNNEL'], input11);
+// const polarObject = new BasicClass(['POLAR'], input12);
+// const radarObject = new BasicClass(['RADAR'], input13);
+// const donutChartObject = new BasicClass(['DONUT'], input6);
+// const boxPlotObject = new BasicClass(['BOX'], input15);
+// const gaugeObject = new BasicClass(['GAUGE'], input14);// STILL NEEDS WORK
 // const treeDiagramObject = new HierarchyClass(['TREEDIAGRAM'], input7);
 // const treeMapObject = new HierarchyClass(['TREEMAP'], input8);
-// const sunburstObject = new HierarchyClass(['SUNBURST'], input9);
-const waterfallObject = new BasicClass(['WATERFALL'], input10);
-const funnelObject = new BasicClass(['FUNNEL'], input11);
-const polarObject = new BasicClass(['POLAR'], input12);
-const radarObject = new BasicClass(['RADAR'], input13);
-// const gaugeObject = new BasicClass(['GAUGE'], input14);// STILL NEEDS WORK
+// const sunburstObject = new HierarchyClass(['SUNBURST'], input9);// fix labels
+// gradient('#chart', 'blue', 'green', 'BAR', 'y', boxPlotData);// fix for waterfall and stackedbar chart x axis, funnel y axis
+// addAnimation('#chart', waterfallData, options);
+// onHover('#chart');
+// gradient('#chart', 'red', 'blue', 'SCATTER', 'y');
+// gradient('#chart', 'red', 'blue', 'BAR', 'x');
+// zoom('#chart', 'SCATTER');
 
 // Removes Charts
 // sunburstObject.removeChart('SUNBURST');
@@ -124,10 +142,10 @@ const radarObject = new BasicClass(['RADAR'], input13);
 // scatterObject.removeChart('SCATTER');
 // areaObject.removeChart('AREA');
 // lineObject.removeChart('LINE');
-waterfallObject.removeChart('WATERFALL');
-funnelObject.removeChart('FUNNEL');
-polarObject.removeChart('POLAR');
-radarObject.removeChart('RADAR');
+// waterfallObject.removeChart('WATERFALL');
+// funnelObject.removeChart('FUNNEL');
+// polarObject.removeChart('POLAR');
+// radarObject.removeChart('RADAR');
 // gaugeObject.removeChart('GAUGE');
 
 // TODO: set a default value in each class for options, also add updated options objects to pass these

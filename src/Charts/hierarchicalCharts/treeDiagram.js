@@ -49,6 +49,6 @@ export default function createTreeDiagram(data, selector, options) {
     .attr('dy', '0.31em')
     .attr('x', (d) => (d.children ? -radius : radius))
     .text((d) => d.data.name)
-    .style('font-size', '10px')
-    .style('fill', '#333');
+    .style('font-size', '15px')
+    .style('fill', '#000');
 }

@@ -12,7 +12,7 @@ export const options = {
   },
   width: 500,
   height: 400,
-  radius: 5,
+  radius: 8,
   color: 'blue',
   showLabels: true,
   diameter: 600,
@@ -21,7 +21,8 @@ export const options = {
   xLabel: 'xLabel',
   yLabel: 'yLabel',
   colorScale: 'red',
-
+  sortBy: 'value',
+  hoverColor: 'blue',
 };
 
 export const options2 = {
@@ -116,8 +117,8 @@ export const radarChartOptions = {
     top: 50, right: 50, bottom: 50, left: 50,
   },
   colors: ['#1f77b4', '#2ca02c'],
-  maxValue: 100, // needs to be calculated from data
-  levels: 5, // needs to be calculated from data
+  maxValue: 100, // maybe should be calculated from data
+  levels: 5, // maybe should be calculated from data
 };
 
 export const gaugeOptions = {
