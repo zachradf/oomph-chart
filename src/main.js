@@ -2,6 +2,7 @@
 // import * as d3 from 'd3';
 import BasicClass from './Classes/BasicClass.js';
 import HierarchyClass from './Classes/HierarchyClass.js';
+import GraphSuperClass from './Classes/data/graphSuperClass.js';
 import {
   bubbleChartData, testDataScatterPlot, treeDiagramData, treeMapData,
   dataSet1, testDataBarChart, extremeScatterPlot1, extremeScatterPlot2,
@@ -22,6 +23,10 @@ import funnelChart from './Charts/basicCharts/funnelChart.js';
 import polarChart from './Charts/basicCharts/polarChart.js';
 import radarChart from './Charts/basicCharts/radarChart.js';
 import gaugeChart from './Charts/basicCharts/gaugeChart.js';
+
+const data = new GraphSuperClass();
+console.log(data);
+console.log(data.charts.types);
 
 const input = {
   data: stackedBarChartData2,
