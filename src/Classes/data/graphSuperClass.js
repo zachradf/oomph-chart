@@ -1,5 +1,5 @@
-import InputTypes from './graphTypes/inputTypes';
 import ChartTypes from './graphTypes/chartTypes';
+import InputTypes from './graphTypes/inputTypes';
 import TagTypes from './graphTypes/tagTypes';
 
 /**
