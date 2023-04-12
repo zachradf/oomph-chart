@@ -10,7 +10,7 @@ describe('createD3PieChart', () => {
     { label: 'B', value: 20 },
     { label: 'C', value: 30 },
     { label: 'D', value: 40 },
-    { label: 'E', value: 50 },
+    { label: 'E', value: 50 }
   ];
   const options = {
     width: 500,
@@ -31,8 +31,6 @@ describe('createD3PieChart', () => {
         </body>
       </html>
     `);
-
-    // global.window.document = jsdom.window;
   });
 
   test('creates an SVG element', () => {

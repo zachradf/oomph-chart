@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1681045565042" clover="3.2.0">
-  <project timestamp="1681045565042" name="All files">
+<coverage generated="1681051957045" clover="3.2.0">
+  <project timestamp="1681051957045" name="All files">
     <metrics statements="110" coveredstatements="106" conditionals="30" coveredconditionals="23" methods="47" coveredmethods="47" elements="187" coveredelements="176" complexity="0" loc="110" ncloc="110" packages="3" files="7" classes="7"/>
     <package name="Charts.basicCharts">
       <metrics statements="83" coveredstatements="83" conditionals="6" coveredconditionals="3" methods="39" coveredmethods="39"/>

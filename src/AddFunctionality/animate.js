@@ -19,7 +19,7 @@ export default function addAnimation(selector, data, options) {
 
   // Hide the data points by setting their opacity to 0
   d3.select(selector)
-    // .select('.data-points') // Select the container with the class 'data-points'
+    .select('.data-points') // Select the container with the class 'data-points'
     .selectAll('path') // Select only the path elements within the container
     .style('opacity', 0);
 

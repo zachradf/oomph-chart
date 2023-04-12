@@ -28,8 +28,6 @@ describe('createD3BarChart', () => {
         </body>
       </html>
     `);
-
-    // global.window = jsdom.window;
   });
 
   test('creates an SVG element', () => {
@@ -65,9 +63,9 @@ describe('createD3BarChart', () => {
     const bars = document.querySelectorAll('#chart svg.bar-chart rect');
     expect(bars.length).toBe(data.length);
   });
-// TODO: fix this test or function for fill color
-//   test('fills bars with the correct color', () => {
-//     const { document } = jsdom.window;
+  // TODO: fix this test or function for fill color
+  //   test('fills bars with the correct color', () => {
+  //     const { document } = jsdom.window;
 
 //     createD3BarChart(data, document.querySelector('#chart'), options);
 //     const bars = document.querySelectorAll('#chart svg.bar-chart rect');

@@ -5,7 +5,7 @@ import createD3LineGraph from '../../Charts/basicCharts/lineGraph';
 global.d3 = d3;
 
 describe('createD3LineGraph', () => {
-  const data = [    { x: 1, y: 2 },    { x: 2, y: 4 },    { x: 3, y: 6 }  ];
+  const data = [{ x: 1, y: 2 }, { x: 2, y: 4 }, { x: 3, y: 6 }];
   const options = {
     width: 500,
     height: 300,
@@ -13,7 +13,7 @@ describe('createD3LineGraph', () => {
       top: 20, right: 20, bottom: 30, left: 40,
     },
     strokeColor: 'steelblue',
-    strokeWidth: 1.5
+    strokeWidth: 1.5,
   };
   let jsdom;
   beforeEach(() => {
@@ -29,8 +29,6 @@ describe('createD3LineGraph', () => {
         </body>
       </html>
     `);
-
-    // global.window = jsdom.window;
   });
 
   test('creates an SVG element', () => {

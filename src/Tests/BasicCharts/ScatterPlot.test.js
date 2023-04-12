@@ -33,8 +33,6 @@ describe('createD3ScatterPlot', () => {
         </body>
       </html>
     `);
-
-    // global.window = jsdom.window;
   });
 
   test('creates an SVG element', () => {
@@ -60,7 +58,7 @@ describe('createD3ScatterPlot', () => {
     const circles = document.querySelectorAll('#chart svg.scatter-plot circle');
     expect(circles).toHaveLength(data.length);
   });
-// TODO: fix this test or function for fill color
+  // TODO: fix this test or function for fill color
   test('sets the correct fill color for circles', () => {
     const { document } = jsdom.window;
 

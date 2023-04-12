@@ -12,7 +12,7 @@ export const options = {
   },
   width: 500,
   height: 400,
-  radius: 8,
+  radius: 14,
   color: 'blue',
   showLabels: true,
   diameter: 600,
