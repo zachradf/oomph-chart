@@ -59,20 +59,15 @@ describe('createD3Heatmap', () => {
     const heatmapCells = document.querySelectorAll('#chart svg.heat-map rect.heatmap-cell');
     expect(heatmapCells).toHaveLength(data.length);
   });
-// All test seem to be having trouble getting color values
-//   test('fills heatmap cells with the correct color', () => {
-//     const { document } = jsdom.window;
-
-//     createD3Heatmap(data, document.querySelector('#chart'), options);
-
-//     const heatmapCells = document.querySelectorAll('.heat-map .heatmap-cell');
-
-//     heatmapCells.forEach((cell) => {
-//       const cellData = data.find((d) => d.xLabel === cell.getAttribute('x') && d.yLabel === cell.getAttribute('y'));
-//       const color = d3.interpolateBlues(cellData.__data__.value / d3.max(data, (d) => d.value));
-//       expect(cell.__data__.value).toBe(color);
-//     });
-//   });
+  // Correctly getting colors but the comparison is still off
+  // test('fills heatmap cells with the correct color', () => {
+  //   const { document } = jsdom.window;
+  //   createD3Heatmap(data, document.querySelector('#chart'), options);
+  //   const cells = document.querySelectorAll('#chart svg.heat-map rect.heatmap-cell');
+  //   cells.forEach((cell, i) => {
+  //     expect(cells[i].getAttribute('fill')).toBe(d3.interpolateBlues(data[i].value));
+  //   });
+  // });
 
   test('creates x-axis and y-axis with labels', () => {
     const { document } = jsdom.window;

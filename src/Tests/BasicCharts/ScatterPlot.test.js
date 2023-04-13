@@ -58,15 +58,14 @@ describe('createD3ScatterPlot', () => {
     const circles = document.querySelectorAll('#chart svg.scatter-plot circle');
     expect(circles).toHaveLength(data.length);
   });
-  // TODO: fix this test or function for fill color
+
   test('sets the correct fill color for circles', () => {
     const { document } = jsdom.window;
 
     createD3ScatterPlot(data, document.querySelector('#chart'), options);
     const circles = document.querySelectorAll('#chart svg.scatter-plot circle');
-    // console.log('THIS IS CIRCLES', circles[0])
-    circles.forEach((circle) => {
-      expect(circle.getAttribute('fill')).toBe(options.color);
+    circles.forEach((circle, i) => {
+      expect(circles[i].getAttribute('fill')).toBe(options.color);
     });
   });
 

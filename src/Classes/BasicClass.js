@@ -1,5 +1,4 @@
 /* eslint-disable import/extensions */
-// import * as d3 from 'd3/src';
 import createBubbleChart from '../Charts/basicCharts/bubbleChart.js';
 import createBarChart from '../Charts/basicCharts/barChart.js';
 import createScatterPlot from '../Charts/basicCharts/scatterPlot.js';
@@ -59,25 +58,10 @@ export default class BasicClass {
       BOX: createBoxPlot,
     };
     this.iterateGraphs = () => {
-      if (this.input.options.overlay) {
-        const chartFunctions = [];
-        for (let i = 0; i < this.graphArray.length; i++) {
-          // const chartDiv = document.createElement('div');
-          // chartDiv.id = `chart${this.input.options.chartNumber}`;
-          // document.body.appendChild(chartDiv);
-          // this.input.options.selector += this.input.options.chartNumber;
-          // this.input.options.chartNumber++;
-          // this.input.selector = chartDiv.id;
-          chartFunctions.push(this.createGraph[this.graphArray[i]]);
-          // this.createGraph[this.graphArray[i]](this.input.data, this.input.selector, this.input.options);
-          // chartArray.push(this.input.selector);
-        }
-        stack(chartFunctions, this.input.data, this.input.selector, this.input.options);
-      } else {
-        for (let i = 0; i < this.graphArray.length; i++) {
-          this.createGraph[this.graphArray[i]](this.input.data, this.input.selector, this.input.options);
-          console.log(this.input.options)
-        }
+    
+      for (let i = 0; i < this.graphArray.length; i++) {
+        this.createGraph[this.graphArray[i]](this.input.data, this.input.selector, this.input.options);
+        console.log(this.input.options);
       }
     };
     this.iterateGraphs();
@@ -203,3 +187,21 @@ export default class BasicClass {
     this.iterateGraphs();
   }
 }
+
+
+//Experiment with stacking and saving certain chart function results to the class
+  // if (this.input.options.overlay) {
+      //   const chartFunctions = [];
+      //   for (let i = 0; i < this.graphArray.length; i++) {
+      //     // const chartDiv = document.createElement('div');
+      //     // chartDiv.id = `chart${this.input.options.chartNumber}`;
+      //     // document.body.appendChild(chartDiv);
+      //     // this.input.options.selector += this.input.options.chartNumber;
+      //     // this.input.options.chartNumber++;
+      //     // this.input.selector = chartDiv.id;
+      //     chartFunctions.push(this.createGraph[this.graphArray[i]]);
+      //     // this.createGraph[this.graphArray[i]](this.input.data, this.input.selector, this.input.options);
+      //     // chartArray.push(this.input.selector);
+      //   }
+      //   stack(chartFunctions, this.input.data, this.input.selector, this.input.options);
+      // } else {    //  }

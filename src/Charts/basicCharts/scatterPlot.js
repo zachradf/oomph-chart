@@ -34,13 +34,13 @@ export default function createD3ScatterPlot(data, selector, options) {
   // Create circles for each data point
   svg.append('g')// USED IN BOTH SCATTER AND BAR
     // .attr('class', 'data-points')
-    .attr('fill', `${options.color}`)// USED IN LINE, SCATTER AND BAR
     .selectAll('circle')
     .data(data)// USED IN BOTH SCATTER AND BAR
     .join('circle')
     .attr('cx', (d) => x(d.x)) // Set the x-coordinate of the circle center //COULD BE USED IN BOTH SCATTER AND BAR
     .attr('cy', (d) => y(d.y)) // Set the y-coordinate of the circle center //COULD BE USED IN BOTH SCATTER AND BAR
-    .attr('r', options.radius); // Set the circle radius
+    .attr('r', options.radius) // Set the circle radius
+    .attr('fill', `${options.color}`);// USED IN LINE, SCATTER AND BAR
 
   // Append the x-axis to the SVG
   svg.append('g')// USED IN LINE, SCATTER AND BAR

@@ -1,4 +1,5 @@
 export default function createD3BoxPlot(data, selector, options) {
+  //TODO try to accept multiple data set shapes, and calculate the mean, median, etc. from the data
   const margin = options.margin || {
     top: 10, right: 50, bottom: 20, left: 50,
   };

@@ -35,7 +35,7 @@ export default function createD3Heatmap(data, selector, options) {
     .attr('y', (d) => y(d.yLabel))
     .attr('width', x.bandwidth())
     .attr('height', y.bandwidth())
-    .style('fill', (d) => color(d.value));
+    .attr('fill', (d) => color(d.value));
 
   // Append a group element for the x-axis and call the xAxis function
   svg.append('g')

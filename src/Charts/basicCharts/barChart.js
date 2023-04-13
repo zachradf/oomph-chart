@@ -33,14 +33,13 @@ export default function createD3BarChart(data, selector, options) {
 
   // Append a group element for the bars, set the fill color and bind the data
   svg.append('g')
-    // .attr('class', 'data-points') // Add a class to the container of the data points
-    .attr('fill', `${options.color}`)
     .selectAll('rect')
     .data(data)
     .join('rect') // Create a rectangle for each data point
     .attr('x', (d) => x(d.label)) // Set the x position using the x scale
     .attr('y', (d) => y(d.value)) // Set the y position using the y scale
     .attr('height', (d) => y(0) - y(d.value)) // Set the height based on the y scale
+    .attr('fill', `${options.color}`) // Set the fill color
     .attr('width', x.bandwidth()); // Set the width based on the x scale's bandwidth
 
   // Append a group element for the x-axis and call the xAxis function

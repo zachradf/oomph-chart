@@ -10,7 +10,7 @@ describe('createD3WaterfallChart', () => {
     { category: 'Cost of goods sold', start: 10, end: 5 },
     { category: 'Gross margin', start: 5, end: 25 },
     { category: 'Operating expenses', start: 25, end: 10 },
-    { category: 'Operating income', start: 10, end: 20 },
+    { category: 'Operating income', start: 10, end: 20 }
   ];
   const options = {
     width: 500,
@@ -70,24 +70,13 @@ describe('createD3WaterfallChart', () => {
     expect(bars.length).toBe(data.length);
   });
 
-//   test('fills bars with the correct color', () => {
-//     const { document } = jsdom.window;
+  test('fills bars with the correct color', () => {
+    const { document } = jsdom.window;
 
-//     createD3WaterfallChart(data, document.querySelector('#chart'), options);
-//     // const bars = document.querySelectorAll('rect');
-//     const bars = document.querySelectorAll('rect');
-//     console.log('THIS IS BARs', bars[0]);
-
-//     // const firstBarComputedStyle = window.getComputedStyle(bars[0]);
-//     // console.log('THIS IS BAR style', firstBarComputedStyle);
-
-//     // const firstBarFill = firstBarComputedStyle.getPropertyValue('fill');
-//     // console.log('THIS IS BAR FILL', firstBarFill);
-//     bars.forEach((bar, i) => {
-//         console.log(bar)
-//         const domBar = bar;
-//         console.log('THIS IS DOM BAR', domBar.style.getPropertyValue('fill'))
-//         expect(window.getComputedStyle(domBar).fill).toBe(options.color);
-//       });
-//   });
+    createD3WaterfallChart(data, document.querySelector('#chart'), options);
+    const bars = document.querySelectorAll('#chart svg.waterfall-chart rect');
+    bars.forEach((bar, i) => {
+      expect(bars[i].getAttribute('fill')).toBe(options.color);
+    });
+  });
 });

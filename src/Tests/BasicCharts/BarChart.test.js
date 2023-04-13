@@ -64,18 +64,15 @@ describe('createD3BarChart', () => {
     expect(bars.length).toBe(data.length);
   });
   // TODO: fix this test or function for fill color
-  //   test('fills bars with the correct color', () => {
-  //     const { document } = jsdom.window;
+    test('fills bars with the correct color', () => {
+      const { document } = jsdom.window;
 
-//     createD3BarChart(data, document.querySelector('#chart'), options);
-//     const bars = document.querySelectorAll('#chart svg.bar-chart rect');
-//     console.log('THIS IS BARS', bars[0])
-//     // bars.forEach((bar, i) => {
-//     //   console.log('THIS IS BARS', bar.getAttribute('fill'));
-//     //   expect(bar.getAttribute('fill')).toBe(options.color);
-//     // });
-//     bars.forEach((bar, i) => {
-//       expect(bar.style.fill).toBe(options.color);
-//     });
-//   });
+    createD3BarChart(data, document.querySelector('#chart'), options);
+    const bars = document.querySelectorAll('#chart svg.bar-chart rect');
+    console.log('THIS IS BARS', bars[0])
+    bars.forEach((bar, i) => {
+      console.log('THIS IS BARS', bar.getAttribute('fill'));
+      expect(bars[i].getAttribute('fill')).toBe(options.color);
+    });
+  });
 });
