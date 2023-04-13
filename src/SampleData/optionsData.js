@@ -102,7 +102,7 @@ export const funnelChartOptions = {
   margin: {
     top: 20, right: 20, bottom: 30, left: 100,
   },
-  colors: ['#4285F4', '#DB4437', '#F4B400', '#0F9D58', '#3F51B5'],
+  colors: ['steelblue', 'grey'],
   overlay: false,
 };
 
