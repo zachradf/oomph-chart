@@ -6,9 +6,9 @@ global.d3 = d3;
 
 describe('createD3DonutChart', () => {
   const data = [
-    { label: 'A', value: 10 },
-    { label: 'B', value: 20 },
-    { label: 'C', value: 30 }
+    { category: 'A', value: 10 },
+    { category: 'B', value: 20 },
+    { category: 'C', value: 30 }
   ];
   const options = {
     width: 500,
@@ -75,7 +75,7 @@ describe('createD3DonutChart', () => {
     });
   });
 
-  test('creates arc labels', () => {
+  test('creates arc categories', () => {
     const { document } = jsdom.window;
 
     createD3DonutChart(data, document.querySelector('#chart'), options);
@@ -83,13 +83,13 @@ describe('createD3DonutChart', () => {
     expect(arcLabels.length).toBe(data.length);
   });
 
-  test('labels arcs with the correct label', () => {
+  test('adds labels to arcs with the correct category', () => {
     const { document } = jsdom.window;
 
     createD3DonutChart(data, document.querySelector('#chart'), options);
     const arcLabels = document.querySelectorAll('#chart svg.donut-chart .arc text');
     arcLabels.forEach((arcLabel, i) => {
-      expect(arcLabel.textContent).toBe(data[i].label);
+      expect(arcLabel.textContent).toBe(data[i].category);
     });
   });
 });

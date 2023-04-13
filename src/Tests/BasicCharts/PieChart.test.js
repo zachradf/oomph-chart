@@ -6,16 +6,16 @@ global.d3 = d3;
 
 describe('createD3PieChart', () => {
   const data = [
-    { label: 'A', value: 10 },
-    { label: 'B', value: 20 },
-    { label: 'C', value: 30 },
-    { label: 'D', value: 40 },
-    { label: 'E', value: 50 }
+    { category: 'A', value: 10 },
+    { category: 'B', value: 20 },
+    { category: 'C', value: 30 },
+    { category: 'D', value: 40 },
+    { category: 'E', value: 50 }
   ];
   const options = {
     width: 500,
     height: 300,
-    showLabels: true,
+    showCategories: true,
   };
   let jsdom;
   beforeEach(() => {

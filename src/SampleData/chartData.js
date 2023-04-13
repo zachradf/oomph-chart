@@ -69,18 +69,18 @@ export const forceDirectedData = {
 
 // any chart with one categorical and one numerical value: donut chart, pie chart, bar chart etc.
 export const testDataBarChart = [
-  { label: 'A', value: 10 },
-  { label: 'B', value: 20 },
-  { label: 'C', value: 30 },
-  { label: 'D', value: 40 },
-  { label: 'E', value: 50 }
+  { x: 'A', y: 10 },
+  { x: 'B', y: 20 },
+  { x: 'C', y: 30 },
+  { x: 'D', y: 40 },
+  { x: 'E', y: 50 }
 ];
 export const testDataDonutChart = [
-  { label: 'Apple', value: 30 },
-  { label: 'Orange', value: 20 },
-  { label: 'Banana', value: 25 },
-  { label: 'Mango', value: 15 },
-  { label: 'Pineapple', value: 10 }
+  { category: 'Apple', value: 30 },
+  { category: 'Orange', value: 20 },
+  { category: 'Banana', value: 25 },
+  { category: 'Mango', value: 15 },
+  { category: 'Pineapple', value: 10 }
 ];
 
 // any chart with numerical x and y values
@@ -98,20 +98,20 @@ export const testDataScatterPlot = [
 ];
 
 export const heatMapData2 = [
-  { xLabel: 'A', yLabel: '1', value: 50 },
-  { xLabel: 'A', yLabel: '2', value: 100 },
-  { xLabel: 'A', yLabel: '3', value: 150 },
-  { xLabel: 'B', yLabel: '1', value: 200 },
-  { xLabel: 'B', yLabel: '2', value: 250 },
-  { xLabel: 'B', yLabel: '3', value: 300 },
-  { xLabel: 'C', yLabel: '1', value: 350 },
-  { xLabel: 'C', yLabel: '2', value: 400 },
-  { xLabel: 'C', yLabel: '3', value: 450 }
+  { x: 'A', y: '1', value: 50 },
+  { x: 'A', y: '2', value: 100 },
+  { x: 'A', y: '3', value: 150 },
+  { x: 'B', y: '1', value: 200 },
+  { x: 'B', y: '2', value: 250 },
+  { x: 'B', y: '3', value: 300 },
+  { x: 'C', y: '1', value: 350 },
+  { x: 'C', y: '2', value: 400 },
+  { x: 'C', y: '3', value: 450 }
 ];
 
 export const stackedBarChartData2 = [
   {
-    label: 'Jan',
+    category: 'Jan',
     values: [
       { group: 'Group A', value: 10 },
       { group: 'Group B', value: 20 },
@@ -119,7 +119,7 @@ export const stackedBarChartData2 = [
     ],
   },
   {
-    label: 'Feb',
+    category: 'Feb',
     values: [
       { group: 'Group A', value: 15 },
       { group: 'Group B', value: 25 },
@@ -127,7 +127,7 @@ export const stackedBarChartData2 = [
     ],
   },
   {
-    label: 'Mar',
+    category: 'Mar',
     values: [
       { group: 'Group A', value: 20 },
       { group: 'Group B', value: 30 },
@@ -150,7 +150,7 @@ export const extremeScatterPlot2 = Array.from({ length: 25000 }, () => ({
 
 // extreme barchart data
 export const dataSet1 = Array.from({ length: 1000 }, (_, i) => ({
-  label: i,
+  category: i,
   value: Math.floor(Math.random() * 1000),
 }));
 // bubble chart data
@@ -176,26 +176,26 @@ export const bubbleChartData = [
 
 // Heat map data
 export const heatMapData = [
-  { label: 'Monday', value: 10, group: 'A' },
-  { label: 'Tuesday', value: 20, group: 'A' },
-  { label: 'Wednesday', value: 30, group: 'A' },
-  { label: 'Thursday', value: 40, group: 'A' },
-  { label: 'Friday', value: 50, group: 'A' },
-  { label: 'Saturday', value: 60, group: 'A' },
-  { label: 'Sunday', value: 70, group: 'A' },
-  { label: 'Monday', value: 80, group: 'B' },
-  { label: 'Tuesday', value: 90, group: 'B' },
-  { label: 'Wednesday', value: 100, group: 'B' },
-  { label: 'Thursday', value: 110, group: 'B' },
-  { label: 'Friday', value: 120, group: 'B' },
-  { label: 'Saturday', value: 130, group: 'B' },
-  { label: 'Sunday', value: 140, group: 'B' }
+  { category: 'Monday', value: 10, group: 'A' },
+  { category: 'Tuesday', value: 20, group: 'A' },
+  { category: 'Wednesday', value: 30, group: 'A' },
+  { category: 'Thursday', value: 40, group: 'A' },
+  { category: 'Friday', value: 50, group: 'A' },
+  { category: 'Saturday', value: 60, group: 'A' },
+  { category: 'Sunday', value: 70, group: 'A' },
+  { category: 'Monday', value: 80, group: 'B' },
+  { category: 'Tuesday', value: 90, group: 'B' },
+  { category: 'Wednesday', value: 100, group: 'B' },
+  { category: 'Thursday', value: 110, group: 'B' },
+  { category: 'Friday', value: 120, group: 'B' },
+  { category: 'Saturday', value: 130, group: 'B' },
+  { category: 'Sunday', value: 140, group: 'B' }
 ];
 
 // stacked bar chart data
 export const stackedBarChartData = [
   {
-    label: 'Category A',
+    category: 'Category A',
     values: [
       { name: 'Value 1', value: 10 },
       { name: 'Value 2', value: 20 },
@@ -203,7 +203,7 @@ export const stackedBarChartData = [
     ],
   },
   {
-    label: 'Category B',
+    category: 'Category B',
     values: [
       { name: 'Value 1', value: 25 },
       { name: 'Value 2', value: 5 },
@@ -211,7 +211,7 @@ export const stackedBarChartData = [
     ],
   },
   {
-    label: 'Category C',
+    category: 'Category C',
     values: [
       { name: 'Value 1', value: 12 },
       { name: 'Value 2', value: 30 },

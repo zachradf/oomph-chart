@@ -5,7 +5,7 @@ export default function createD3StackedBarChart(data, selector, options) {
 
   // Create the x scale using scaleBand to handle categorical data
   const x = d3.scaleBand()
-    .domain(data.map((d) => d.label))
+    .domain(data.map((d) => d.category))
     .range([margin.left, width - margin.right])
     .padding(0.1);
 
@@ -54,7 +54,7 @@ export default function createD3StackedBarChart(data, selector, options) {
   bars.selectAll('rect')
     .data((d) => d)
     .join('rect')
-    .attr('x', (d, i) => x(data[i].label))
+    .attr('x', (d, i) => x(data[i].category))
     .attr('y', (d) => y(d[1]))
     .attr('height', (d) => y(d[0]) - y(d[1]))
     .attr('width', x.bandwidth());

@@ -20,8 +20,8 @@ describe('validateInputs', () => {
     colorScale: 'red',
   };
   const data = [
-    { label: 'A', value: 1 },
-    { label: 'B', value: 2 }
+    { category: 'A', value: 1 },
+    { category: 'B', value: 2 }
   ];
   const selector = '#chart';
 

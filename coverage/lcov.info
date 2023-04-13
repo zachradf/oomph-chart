@@ -48,9 +48,9 @@ FN:13,(anonymous_2)
 FN:17,(anonymous_3)
 FN:22,(anonymous_4)
 FN:25,(anonymous_5)
-FN:40,(anonymous_6)
-FN:41,(anonymous_7)
-FN:42,(anonymous_8)
+FN:39,(anonymous_6)
+FN:40,(anonymous_7)
+FN:41,(anonymous_8)
 FNF:9
 FNH:9
 FNDA:5,createD3BarChart
@@ -74,11 +74,11 @@ DA:22,5
 DA:25,5
 DA:28,5
 DA:35,5
+DA:39,20
 DA:40,20
 DA:41,20
-DA:42,20
-DA:47,5
-DA:52,5
+DA:46,5
+DA:51,5
 LF:17
 LH:17
 BRF:0

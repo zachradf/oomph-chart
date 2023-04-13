@@ -6,12 +6,12 @@ global.d3 = d3;
 
 describe('createD3Heatmap', () => {
   const data = [
-    { xLabel: 'A', yLabel: 'X', value: 4 },
-    { xLabel: 'B', yLabel: 'X', value: 8 },
-    { xLabel: 'C', yLabel: 'X', value: 2 },
-    { xLabel: 'A', yLabel: 'Y', value: 7 },
-    { xLabel: 'B', yLabel: 'Y', value: 3 },
-    { xLabel: 'C', yLabel: 'Y', value: 6 }
+    { x: 'A', y: 'X', value: 4 },
+    { x: 'B', y: 'X', value: 8 },
+    { x: 'C', y: 'X', value: 2 },
+    { x: 'A', y: 'Y', value: 7 },
+    { x: 'B', y: 'Y', value: 3 },
+    { x: 'C', y: 'Y', value: 6 }
   ];
   const options = {
     width: 500,

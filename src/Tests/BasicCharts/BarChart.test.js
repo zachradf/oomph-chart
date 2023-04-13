@@ -5,7 +5,7 @@ import createD3BarChart from '../../Charts/basicCharts/barChart';
 global.d3 = d3;
 
 describe('createD3BarChart', () => {
-  const data = [{ label: 'A', value: 10 }, { label: 'B', value: 20 }, { label: 'C', value: 30 }, { label: 'D', value: 40 }];
+  const data = [{ category: 'A', value: 10 }, { category: 'B', value: 20 }, { category: 'C', value: 30 }, { label: 'D', value: 40 }];
   const options = {
     width: 500,
     height: 300,
@@ -63,8 +63,8 @@ describe('createD3BarChart', () => {
     const bars = document.querySelectorAll('#chart svg.bar-chart rect');
     expect(bars.length).toBe(data.length);
   });
-  // TODO: fix this test or function for fill color
-    test('fills bars with the correct color', () => {
+
+  test('fills bars with the correct color', () => {
       const { document } = jsdom.window;
 
     createD3BarChart(data, document.querySelector('#chart'), options);

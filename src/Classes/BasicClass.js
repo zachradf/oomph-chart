@@ -33,7 +33,7 @@ export default class BasicClass {
       this.input.options.height = 400;
       this.input.options.radius = 5;
       this.input.options.color = 'red';
-      this.input.options.showLabels = true;
+      this.input.options.showCategories = true;
       this.input.options.chartNumber = 1;
     } else {
       this.input.options = input.options;

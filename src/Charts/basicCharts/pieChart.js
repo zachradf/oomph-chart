@@ -6,7 +6,7 @@ export default function createD3PieChart(data, selector, options) {
 
   // Create a color scale using the provided data labels and a predefined color scheme
   const color = d3.scaleOrdinal()
-    .domain(data.map((d) => d.label))
+    .domain(data.map((d) => d.category))
     .range(d3.schemeCategory10);
 
   // Define the pie layout function with value accessor and sort function
@@ -36,15 +36,15 @@ export default function createD3PieChart(data, selector, options) {
   svg.selectAll('path')
     .data(pie(data))
     .join('path')
-    .attr('fill', (d) => color(d.data.label))
+    .attr('fill', (d) => color(d.data.category))
     .attr('d', arc)
     .attr('stroke', 'white')
     .attr('stroke-width', '2px');
 
-  // If the showLabels option is set, add labels to the pie chart
-  if (options.showLabels) {
+  // If the showCategories option is set, add categories to the pie chart
+  if (options.showCategories) {
     // Define a label arc generator with a fixed radius value
-    const labelArc = d3.arc()
+    const categoryArc = d3.arc()
       .innerRadius(radius * 0.6)
       .outerRadius(radius * 0.6);
 
@@ -55,9 +55,9 @@ export default function createD3PieChart(data, selector, options) {
     svg.selectAll('text')
       .data(pie(data))
       .join('text')
-      .attr('transform', (d) => `translate(${labelArc.centroid(d)})`)
+      .attr('transform', (d) => `translate(${categoryArc.centroid(d)})`)
       .attr('text-anchor', 'middle')
       .attr('alignment-baseline', 'central')
-      .text((d) => d.data.label);
+      .text((d) => d.data.category);
   }
 }

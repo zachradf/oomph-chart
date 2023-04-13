@@ -57,7 +57,7 @@ export default function createD3RadarChart(data, selector, options) {
     .attr('class', 'label')
     .attr('x', (d, i) => rScale(maxValue) * Math.cos(angleSlice * i - Math.PI / 2))
     .attr('y', (d, i) => rScale(maxValue) * Math.sin(angleSlice * i - Math.PI / 2))
-    .text((d) => d.name)
+    .text((d) => d.category)
     .attr('text-anchor', 'middle')
     .attr('font-size', '12px');
 

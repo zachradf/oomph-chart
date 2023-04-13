@@ -18,7 +18,7 @@ export default class HierarchyClass {
       this.input.options.height = 400;
       this.input.options.radius = 5;
       this.input.options.color = 'red';
-      this.input.options.showLabels = true;
+      this.input.options.showCategories = true;
     } else {
       this.input.options = input.options;
     }

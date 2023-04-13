@@ -47,7 +47,7 @@ export default function createD3DonutChart(data, selector, options) {
   arcs.append('text')
     .attr('transform', (d) => `translate(${arc.centroid(d)})`)
     .attr('text-anchor', 'middle')
-    .text((d) => d.data.label)
+    .text((d) => d.data.category)
     .style('fill', 'red')
     .style('font-size', '12px')
     .style('font-weight', 'bold');

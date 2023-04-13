@@ -7,7 +7,7 @@ global.d3 = d3;
 describe('createD3StackedBarChart', () => {
   const data = [
     {
-      label: 'A',
+      category: 'A',
       values: [
         { group: 'X', value: 10 },
         { group: 'Y', value: 20 },
@@ -15,7 +15,7 @@ describe('createD3StackedBarChart', () => {
       ],
     },
     {
-      label: 'B',
+      category: 'B',
       values: [
         { group: 'X', value: 40 },
         { group: 'Y', value: 50 },
@@ -23,7 +23,7 @@ describe('createD3StackedBarChart', () => {
       ],
     },
     {
-      label: 'C',
+      category: 'C',
       values: [
         { group: 'X', value: 70 },
         { group: 'Y', value: 80 },
