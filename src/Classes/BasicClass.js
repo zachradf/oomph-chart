@@ -16,6 +16,8 @@ import createFunnelChart from '../Charts/basicCharts/funnelChart.js';
 import createGaugeChart from '../Charts/basicCharts/gaugeChart.js';
 import createBoxPlot from '../Charts/basicCharts/boxPlot.js';
 
+import stack from '../AddFunctionality/stack.js';
+
 export default class BasicClass {
   constructor(graphArray, input) {
     // EVENTUALLY ALL COMMON CHART FUNCTIONS WILL BE HERE
@@ -33,8 +35,10 @@ export default class BasicClass {
       this.input.options.radius = 5;
       this.input.options.color = 'red';
       this.input.options.showLabels = true;
+      this.input.options.chartNumber = 1;
     } else {
       this.input.options = input.options;
+      this.input.options.chartNumber = 1;
     }
 
     this.createGraph = {
@@ -55,8 +59,25 @@ export default class BasicClass {
       BOX: createBoxPlot,
     };
     this.iterateGraphs = () => {
-      for (let i = 0; i < this.graphArray.length; i++) {
-        this.createGraph[this.graphArray[i]](this.input.data, this.input.selector, this.input.options, d3);
+      if (this.input.options.overlay) {
+        const chartFunctions = [];
+        for (let i = 0; i < this.graphArray.length; i++) {
+          // const chartDiv = document.createElement('div');
+          // chartDiv.id = `chart${this.input.options.chartNumber}`;
+          // document.body.appendChild(chartDiv);
+          // this.input.options.selector += this.input.options.chartNumber;
+          // this.input.options.chartNumber++;
+          // this.input.selector = chartDiv.id;
+          chartFunctions.push(this.createGraph[this.graphArray[i]]);
+          // this.createGraph[this.graphArray[i]](this.input.data, this.input.selector, this.input.options);
+          // chartArray.push(this.input.selector);
+        }
+        stack(chartFunctions, this.input.data, this.input.selector, this.input.options);
+      } else {
+        for (let i = 0; i < this.graphArray.length; i++) {
+          this.createGraph[this.graphArray[i]](this.input.data, this.input.selector, this.input.options);
+          console.log(this.input.options)
+        }
       }
     };
     this.iterateGraphs();

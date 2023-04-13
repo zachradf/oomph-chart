@@ -1,4 +1,5 @@
 export default function createD3PieChart(data, selector, options) {
+  console.log('createD3PieChart', data, selector);
   const { width } = options;
   const { height } = options;
   const radius = Math.min(width, height) / 2;
@@ -20,13 +21,18 @@ export default function createD3PieChart(data, selector, options) {
 
   // Select the target HTML element, append an SVG, and create a group element (g)
   // Position the group element at the center of the SVG
+  // const svg = d3.select(selector)
+  //   .append('svg')
+  //   .classed('pie-chart', true)
+  //   .attr('width', width)
+  //   .attr('height', height)
+  //   .append('g')
+  //   .attr('transform', `translate(${width / 2}, ${height / 2})`);
   const svg = d3.select(selector)
-    .append('svg')
-    .classed('pie-chart', true)
-    .attr('width', width)
-    .attr('height', height)
-    .append('g')
-    .attr('transform', `translate(${width / 2}, ${height / 2})`);
+  .append('g')
+  .classed('pie-chart', true)
+  .attr('transform', `translate(${width / 2}, ${height / 2})`);
+
 
   // Create the pie chart sectors by binding the data to path elements
   // Fill the sectors with colors based on the data labels

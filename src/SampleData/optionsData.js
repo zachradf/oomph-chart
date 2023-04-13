@@ -23,6 +23,7 @@ export const options = {
   colorScale: 'red',
   sortBy: 'value',
   hoverColor: 'blue',
+  overlay: true,
 };
 
 export const options2 = {
@@ -37,6 +38,7 @@ export const options2 = {
   diameter: 400,
   fillColor: ['red', 'blue', 'green', 'yellow', 'orange', 'purple'],
   orientation: 'horizontal',
+  overlay: true,
 };
 export const options3 = {
   width: 800, // adjust as necessary
@@ -47,6 +49,7 @@ export const options3 = {
   colorScale: d3.interpolateRdYlBu, // use a diverging color scale
   xLabel: 'X Axis Label',
   yLabel: 'Y Axis Label',
+  overlay: false,
 };
 
 export const options4 = {
@@ -64,6 +67,7 @@ export const options4 = {
   xLabel: 'xLabel',
   yLabel: 'yLabel',
   colorScale: 'red',
+  overlay: false,
   // colorScheme: d3.schemeCategory10,
 };
 
@@ -74,6 +78,7 @@ export const options5 = {
     top: 20, right: 20, bottom: 50, left: 50,
   },
   color: ['#98abc5', '#8a89a6', '#7b6888'],
+  overlay: false,
 };
 
 export const waterfallOptions = {
@@ -88,6 +93,7 @@ export const waterfallOptions = {
   color: 'steelblue',
   positiveColor: 'green',
   negativeColor: 'red',
+  overlay: false,
 };
 
 export const funnelChartOptions = {
@@ -97,6 +103,7 @@ export const funnelChartOptions = {
     top: 20, right: 20, bottom: 30, left: 100,
   },
   colors: ['#4285F4', '#DB4437', '#F4B400', '#0F9D58', '#3F51B5'],
+  overlay: false,
 };
 
 export const polarChartOptions = {
@@ -108,6 +115,7 @@ export const polarChartOptions = {
   colors: ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd'],
   innerRadius: 50,
   outerRadius: 250,
+  overlay: false,
 };
 
 export const radarChartOptions = {
@@ -119,6 +127,7 @@ export const radarChartOptions = {
   colors: ['#1f77b4', '#2ca02c'],
   maxValue: 100, // maybe should be calculated from data
   levels: 5, // maybe should be calculated from data
+  overlay: false,
 };
 
 export const gaugeOptions = {
@@ -133,4 +142,5 @@ export const gaugeOptions = {
   minorTickColor: 'black',
   interval: 2000,
   pointerWidth: 10,
+  overlay: false,
 };
