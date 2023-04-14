@@ -16,29 +16,33 @@ import createGaugeChart from '../Charts/basicCharts/gaugeChart.js';
 import createBoxPlot from '../Charts/basicCharts/boxPlot.js';
 
 import stack from '../AddFunctionality/stack.js';
+import createAxes from './classFunctions/XY.js';
+import createSVG from './classFunctions/SVG.js';
 
 export default class BasicClass {
   constructor(graphArray, input) {
-    // EVENTUALLY ALL COMMON CHART FUNCTIONS WILL BE HERE
     this.graphArray = graphArray;
     this.input = input;
-    this.input.selector = input.selector ? input.selector : '#chart';
+    this.selector = input.selector ? input.selector : '#chart';
+    this.data = input.data;
 
     if (!input.options) {
-      this.input.options = {};
-      this.input.options.margin = {
+      this.options = {};
+      this.options.margin = {
         top: 20, right: 20, bottom: 30, left: 40,
       };
-      this.input.options.width = 600;
-      this.input.options.height = 400;
-      this.input.options.radius = 5;
-      this.input.options.color = 'red';
-      this.input.options.showCategories = true;
-      this.input.options.chartNumber = 1;
+      this.options.width = 600;
+      this.options.height = 400;
+      this.options.radius = 5;
+      this.options.color = 'red';
+      this.options.showCategories = true;
+      this.options.chartNumber = 1;
+      this.options.padding = 0.1;
     } else {
-      this.input.options = input.options;
-      this.input.options.chartNumber = 1;
+      this.options = input.options;
+      this.options.chartNumber = 1;
     }
+    // this.options.chartClass = this.svgTypeMap[graphArray[0]];
 
     this.createGraph = {
       BAR: createBarChart,
@@ -57,90 +61,7 @@ export default class BasicClass {
       GAUGE: createGaugeChart,
       BOX: createBoxPlot,
     };
-    this.iterateGraphs = () => {
-    
-      for (let i = 0; i < this.graphArray.length; i++) {
-        this.createGraph[this.graphArray[i]](this.input.data, this.input.selector, this.input.options);
-        console.log(this.input.options);
-      }
-    };
-    this.iterateGraphs();
-  }
-
-  // You can probably put all of this in the create graph object
-  createBoxPlot(data, selector, options) {
-    createBoxPlot(data, selector, options);
-  }
-
-  createFunnelChart(data, selector, options) {
-    createFunnelChart(data, selector, options);
-  }
-
-  createGaugeChart(data, selector, options) {
-    createGaugeChart(data, selector, options);
-  }
-
-  createWaterfallChart(data, selector, options) {
-    createWaterfallChart(data, selector, options);
-  }
-
-  createPolarChart(data, selector, options) {
-    createPolarChart(data, selector, options);
-  }
-
-  createRadarChart(data, selector, options) {
-    createRadarChart(data, selector, options);
-  }
-
-  createBarChart(data, selector, options) {
-    createBarChart(data, selector, options);
-  }
-
-  createBubbleChart(data, selector, options) {
-    createBubbleChart(data, selector, options);
-  }
-
-  createDonutChart(data, selector, options) {
-    createDonutChart(data, selector, options);
-  }
-
-  createHeatMap(data, selector, options) {
-    createHeatMap(data, selector, options);
-  }
-
-  createStackedBarChart(data, selector, options) {
-    createStackedBarChart(data, selector, options);
-  }
-
-  createScatterPlot(data, selector, options) {
-    createScatterPlot(data, selector, options);
-  }
-
-  createLineGraph(data, selector, options) {
-    createLineGraph(data, selector, options);
-  }
-
-  createPieChart(data, selector, options) {
-    createPieChart(data, selector, options);
-  }
-
-  createAreaChart(data, selector, options) {
-    createAreaChart(data, selector, options);
-  }
-
-  addGraphs(type) {
-    this.graphArray.push(...type);
-    if (!Array.isArray(type)) {
-      this.createGraph[type](this.input.data, this.input.selector, this.input.options);
-    } else {
-      for (let i = 0; i < type.length; i++) {
-        this.createGraph[type[i]](this.input.data, this.input.selector, this.input.options);
-      }
-    }
-  }
-
-  removeChart(type) {
-    const svgTypeMap = {
+     const svgTypeMap = {
       BAR: 'bar-chart',
       BUBBLE: 'bubble-chart',
       SCATTER: 'scatter-plot',
@@ -157,7 +78,93 @@ export default class BasicClass {
       GAUGE: 'gauge-chart',
       BOX: 'box-plot',
     };
-    const svgSelector = svgTypeMap[type];
+    this.options.chartClass = svgTypeMap[graphArray[0]];
+
+    const generalElements = createAxes(input.data, graphArray[0], this.options);
+    generalElements.svg = createSVG(this.selector, graphArray[0], this.options);
+
+    this.iterateGraphs = () => {
+      for (let i = 0; i < this.graphArray.length; i++) {
+        this.createGraph[this.graphArray[i]](this.data, this.selector, this.options, generalElements);
+      }
+    };
+    this.iterateGraphs();
+  }
+
+  // You can probably put all of this in the create graph object
+  createAreaChart(data, selector, options, generalElements) {
+    createAreaChart(data, selector, options, generalElements);
+  }
+
+  createBarChart(data, selector, options, generalElements) {
+    createBarChart(data, selector, options, generalElements);
+  }
+
+  createBoxPlot(data, selector, options, generalElements) {
+    createBoxPlot(data, selector, options, generalElements);
+  }
+
+  createBubbleChart(data, selector, options, generalElements) {
+    createBubbleChart(data, selector, options, generalElements);
+  }
+
+  createDonutChart(data, selector, options, generalElements) {
+    createDonutChart(data, selector, options, generalElements);
+  }
+
+  createFunnelChart(data, selector, options, generalElements) {
+    createFunnelChart(data, selector, options, generalElements);
+  }
+
+  createGaugeChart(data, selector, options, generalElements) {
+    createGaugeChart(data, selector, options, generalElements);
+  }
+
+  createHeatMap(data, selector, options, generalElements) {
+    createHeatMap(data, selector, options, generalElements);
+  }
+
+  createLineGraph(data, selector, options, generalElements) {
+    createLineGraph(data, selector, options, generalElements);
+  }
+
+  createPieChart(data, selector, options, generalElements) {
+    createPieChart(data, selector, options, generalElements);
+  }
+
+  createPolarChart(data, selector, options, generalElements) {
+    createPolarChart(data, selector, options, generalElements);
+  }
+
+  createRadarChart(data, selector, options, generalElements) {
+    createRadarChart(data, selector, options, generalElements);
+  }
+
+  createScatterPlot(data, selector, options, generalElements) {
+    createScatterPlot(data, selector, options, generalElements);
+  }
+
+  createStackedBarChart(data, selector, options, generalElements) {
+    createStackedBarChart(data, selector, options, generalElements);
+  }
+
+  createWaterfallChart(data, selector, options, generalElements) {
+    createWaterfallChart(data, selector, options, generalElements);
+  }
+
+  addGraphs(type) {
+    this.graphArray.push(...type);
+    if (!Array.isArray(type)) {
+      this.createGraph[type](this.data, this.selector, this.options);
+    } else {
+      for (let i = 0; i < type.length; i++) {
+        this.createGraph[type[i]](this.data, this.selector, this.options);
+      }
+    }
+  }
+
+  removeChart(type) {
+    const svgSelector = this.options.chartClass;
     if (svgSelector) {
       // Remove the x and y axes
       d3.select(this.input.selector)
@@ -171,37 +178,36 @@ export default class BasicClass {
   updateInput(input) {
     this.input = input;
     if (!input.options) {
-      this.input.options = {};
-      this.input.options.margin = {
+      this.options = {};
+      this.options.margin = {
         top: 20, right: 20, bottom: 30, left: 40,
       };
-      this.input.options.width = 600;
-      this.input.options.height = 400;
-      this.input.options.radius = 5;
-      this.input.options.color = 'red';
-      this.input.options.showLabels = true;
+      this.options.width = 600;
+      this.options.height = 400;
+      this.options.radius = 5;
+      this.options.color = 'red';
+      this.options.showLabels = true;
     } else {
-      this.input.options = input.options;
+      this.options = input.options;
     }
 
     this.iterateGraphs();
   }
 }
 
-
-//Experiment with stacking and saving certain chart function results to the class
-  // if (this.input.options.overlay) {
-      //   const chartFunctions = [];
-      //   for (let i = 0; i < this.graphArray.length; i++) {
-      //     // const chartDiv = document.createElement('div');
-      //     // chartDiv.id = `chart${this.input.options.chartNumber}`;
-      //     // document.body.appendChild(chartDiv);
-      //     // this.input.options.selector += this.input.options.chartNumber;
-      //     // this.input.options.chartNumber++;
-      //     // this.input.selector = chartDiv.id;
-      //     chartFunctions.push(this.createGraph[this.graphArray[i]]);
-      //     // this.createGraph[this.graphArray[i]](this.input.data, this.input.selector, this.input.options);
-      //     // chartArray.push(this.input.selector);
-      //   }
-      //   stack(chartFunctions, this.input.data, this.input.selector, this.input.options);
-      // } else {    //  }
+// Experiment with stacking and saving certain chart function results to the class
+// if (this.input.options.overlay) {
+//   const chartFunctions = [];
+//   for (let i = 0; i < this.graphArray.length; i++) {
+//     // const chartDiv = document.createElement('div');
+//     // chartDiv.id = `chart${this.input.options.chartNumber}`;
+//     // document.body.appendChild(chartDiv);
+//     // this.input.options.selector += this.input.options.chartNumber;
+//     // this.input.options.chartNumber++;
+//     // this.input.selector = chartDiv.id;
+//     chartFunctions.push(this.createGraph[this.graphArray[i]]);
+//     // this.createGraph[this.graphArray[i]](this.input.data, this.input.selector, this.input.options);
+//     // chartArray.push(this.input.selector);
+//   }
+//   stack(chartFunctions, this.input.data, this.input.selector, this.input.options);
+// } else {    //  }

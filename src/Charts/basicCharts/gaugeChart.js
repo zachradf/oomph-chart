@@ -74,7 +74,7 @@
 // }
 
 //CODE ABOVE HAS BETTER TRANSITION, try to merge
-export default function createD3GaugeChart(sampleValues, selector, options) {
+export default function createD3GaugeChart(sampleValues, selector, options, generalElements) {
   const width = options.width || 300;
   const height = options.height || 300;
   const radius = Math.min(width, height) / 2;
@@ -86,15 +86,9 @@ export default function createD3GaugeChart(sampleValues, selector, options) {
   const minorTickColor = options.minorTickColor || 'black';
   const pointerColor = options.pointerColor || 'red';
   const arcColors = options.arcColors || d3.schemeCategory10;
+  const { svg } = generalElements;
 
   let currentValue = 0;
-
-  const svg = d3.select(selector)
-    .append('svg')
-    .attr('width', width)
-    .attr('height', height)
-    .append('g')
-    .attr('transform', `translate(${width / 2}, ${height / 2})`);
 
   const arc = d3.arc()
     .innerRadius(0.7 * radius)

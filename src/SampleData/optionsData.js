@@ -24,6 +24,7 @@ export const options = {
   sortBy: 'value',
   hoverColor: 'blue',
   overlay: true,
+  padding: 0.1,
 };
 
 export const options2 = {
@@ -32,9 +33,9 @@ export const options2 = {
   },
   width: 600,
   height: 400,
-  radius: 200.5,
+  radius: 100.5,
   color: 'red',
-  showLabels: true,
+  showCategories: true,
   diameter: 400,
   fillColor: ['red', 'blue', 'green', 'yellow', 'orange', 'purple'],
   orientation: 'horizontal',
@@ -79,6 +80,7 @@ export const options5 = {
   },
   color: ['#98abc5', '#8a89a6', '#7b6888'],
   overlay: false,
+  diameter: 600,
 };
 
 export const waterfallOptions = {
@@ -131,6 +133,9 @@ export const radarChartOptions = {
 };
 
 export const gaugeOptions = {
+  margin: {
+    top: 20, right: 20, bottom: 30, left: 40,
+  },
   width: 300,
   height: 300,
   majorTicks: 5,

@@ -1,34 +1,13 @@
-export default function createD3LineGraph(data, selector, options) {
-  const { width } = options;
-  const { height } = options;
-  const { margin } = options;
-
-  const x = d3.scaleLinear()
-    .domain(d3.extent(data, (d) => d.x)).nice()
-    .range([margin.left, width - margin.right]);
-
-  const y = d3.scaleLinear()
-    .domain(d3.extent(data, (d) => d.y)).nice()
-    .range([height - margin.bottom, margin.top]);
-
-  const xAxis = (g) => g
-    .attr('transform', `translate(0,${height - margin.bottom})`)
-    .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0));
-
-  const yAxis = (g) => g
-    .attr('transform', `translate(${margin.left},0)`)
-    .call(d3.axisLeft(y).ticks(height / 80))
-    .call((g) => g.select('.domain').remove());
+export default function createD3LineGraph(data, selector, options, generalElements) {
+  const { x } = generalElements;
+  const { y } = generalElements;
+  const { xAxis } = generalElements;
+  const { yAxis } = generalElements;
+  const { svg } = generalElements;
 
   const line = d3.line()// Unique to line graph?
     .x((d) => x(d.x))
     .y((d) => y(d.y));
-
-  const svg = d3.select(selector)
-    .append('svg')
-    .classed('line-graph', true)
-    .attr('width', width)
-    .attr('height', height);
 
   svg.append('path')
     .datum(data) // TO DO LOOK INTO DATA VS DATUM

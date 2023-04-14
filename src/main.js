@@ -106,24 +106,24 @@ const input15 = {
 };
 
 // Adds Charts
-// const lineObject = new BasicClass(['LINE'], input3);
-// const scatterObject = new BasicClass(['SCATTER'], input3);
-// const areaObject = new BasicClass(['AREA'], input3);
-// const barObject = new BasicClass(['BAR'], input2);
-// const stackedBarObject = new BasicClass(['STACKEDBAR'], input);
+const lineObject = new BasicClass(['LINE'], input3);
+const scatterObject = new BasicClass(['SCATTER'], input3);
+const areaObject = new BasicClass(['AREA'], input3);
+const barObject = new BasicClass(['BAR'], input2);
+const stackedBarObject = new BasicClass(['STACKEDBAR'], input);
 // const bubbleObject = new BasicClass(['BUBBLE'], input5);
 const heatMapObject = new BasicClass(['HEATMAP'], input4);
-// const pieChartObject = new BasicClass(['PIE'], input6);
-// const waterfallObject = new BasicClass(['WATERFALL'], input10);
-// const funnelObject = new BasicClass(['FUNNEL'], input11);
-// const polarObject = new BasicClass(['POLAR'], input12);
-// const radarObject = new BasicClass(['RADAR'], input13);
-// const donutChartObject = new BasicClass(['DONUT'], input6);
-// const boxPlotObject = new BasicClass(['BOX'], input15);
-// const gaugeObject = new BasicClass(['GAUGE'], input14);// STILL NEEDS WORK
-// const treeDiagramObject = new HierarchyClass(['TREEDIAGRAM'], input7);
-// const treeMapObject = new HierarchyClass(['TREEMAP'], input8);
-// const sunburstObject = new HierarchyClass(['SUNBURST'], input9);// fix labels
+const pieChartObject = new BasicClass(['PIE'], input6);
+const waterfallObject = new BasicClass(['WATERFALL'], input10);
+const funnelObject = new BasicClass(['FUNNEL'], input11);
+const polarObject = new BasicClass(['POLAR'], input12);
+const radarObject = new BasicClass(['RADAR'], input13);
+const donutChartObject = new BasicClass(['DONUT'], input6);
+const boxPlotObject = new BasicClass(['BOX'], input15);
+const gaugeObject = new BasicClass(['GAUGE'], input14);// STILL NEEDS WORK
+const treeDiagramObject = new HierarchyClass(['TREEDIAGRAM'], input7);
+const treeMapObject = new HierarchyClass(['TREEMAP'], input8);
+const sunburstObject = new HierarchyClass(['SUNBURST'], input9);// fix labels
 // gradient('#chart', 'blue', 'red', 'SCATTER', 'y', testDataScatterPlot);// fix for waterfall and stackedbar chart x axis, funnel y axis
 // addAnimation('#chart', testDataScatterPlot, options);
 // onHover('#chart', options);// add default darker shade for gradient within an element

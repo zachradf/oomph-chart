@@ -1,31 +1,18 @@
-export default function createD3BoxPlot(data, selector, options) {
-  //TODO try to accept multiple data set shapes, and calculate the mean, median, etc. from the data
-  const margin = options.margin || {
-    top: 10, right: 50, bottom: 20, left: 50,
-  };
-  const width = options.width || 600;
-  const height = options.height || 400;
+export default function createD3BoxPlot(data, selector, options, generalElements) {
+  // TODO try to accept multiple data set shapes, and calculate the mean, median, etc. from the data
   const fillColor = options.fillColor || 'steelblue';
-
-  const svg = d3.select(selector)
-    .append('svg')
-    .attr('width', width)
-    .attr('height', height)
-    .attr('class', 'box-plot');
-
-  const x = d3.scaleBand()
-    .range([margin.left, width - margin.right])
-    .padding(0.5);
-
-  const y = d3.scaleLinear()
-    .range([height - margin.bottom, margin.top]);
+  const { x } = generalElements;
+  const { y } = generalElements;
+  const { xAxis } = generalElements;
+  const { yAxis } = generalElements;
+  const { svg } = generalElements;
 
   svg.append('g')
-    .attr('transform', `translate(0,${height - margin.bottom})`)
+    .call(xAxis)
     .attr('class', 'x-axis');
 
   svg.append('g')
-    .attr('transform', `translate(${margin.left},0)`)
+    .call(yAxis)
     .attr('class', 'y-axis');
 
   function update(data) {
@@ -33,10 +20,10 @@ export default function createD3BoxPlot(data, selector, options) {
     y.domain([d3.min(data, (d) => d.min), d3.max(data, (d) => d.max)]).nice();
 
     svg.selectAll('.x-axis')
-      .call(d3.axisBottom(x));
+      .call(xAxis);
 
     svg.selectAll('.y-axis')
-      .call(d3.axisLeft(y));
+      .call(yAxis);
 
     const boxWidth = Math.min(x.bandwidth(), 50);
 

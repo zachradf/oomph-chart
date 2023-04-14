@@ -302,11 +302,11 @@ export const waterfallData = [
 ];
 // TODO funnelChart 'x' values would actually be on the y axis, do you still convert?
 export const funnelChartData = [
-  { name: 'Stage 1', value: 1000 },
-  { name: 'Stage 2', value: 800 },
-  { name: 'Stage 3', value: 600 },
-  { name: 'Stage 4', value: 400 },
-  { name: 'Stage 5', value: 200 }
+  { x: 'Stage 1', y: 1000 },
+  { x: 'Stage 2', y: 800 },
+  { x: 'Stage 3', y: 600 },
+  { x: 'Stage 4', y: 400 },
+  { x: 'Stage 5', y: 200 }
 ];
 
 export const polarChartData = [
