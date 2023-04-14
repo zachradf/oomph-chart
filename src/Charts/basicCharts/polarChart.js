@@ -3,17 +3,17 @@ export default function createD3PolarChart(data, selector, options) {
     width, height, margin, colors, innerRadius, outerRadius,
   } = options;
 
-  const radius = Math.min(width, height) / 2;
+  // const radius = Math.min(width, height) / 2;
 
   const x = d3
     .scaleBand()
-    .domain(data.map((d) => d.name))
+    .domain(data.map((d) => d.x))
     .range([0, 2 * Math.PI])
     .padding(0.1);
 
   const y = d3
     .scaleLinear()
-    .domain([0, d3.max(data, (d) => d.value)])
+    .domain([0, d3.max(data, (d) => d.y)])
     .range([innerRadius, outerRadius]);
 
   const svg = d3
@@ -30,9 +30,9 @@ export default function createD3PolarChart(data, selector, options) {
   const arc = d3
     .arc()
     .innerRadius(0)
-    .outerRadius((d) => y(d.value))
-    .startAngle((d) => x(d.name))
-    .endAngle((d) => x(d.name) + x.bandwidth())
+    .outerRadius((d) => y(d.y))
+    .startAngle((d) => x(d.x))
+    .endAngle((d) => x(d.x) + x.bandwidth())
     .padAngle(0.01)
     .padRadius(innerRadius);
 
@@ -41,16 +41,16 @@ export default function createD3PolarChart(data, selector, options) {
     .data(data)
     .join('path')
     .attr('d', arc)
-    .attr('fill', (d) => colorScale(d.name));
+    .attr('fill', (d) => colorScale(d.x));
 
   // Add names
   svg
     .selectAll('text')
     .data(data)
     .join('text')
-    .attr('x', (d) => (y(d.value) + 10) * Math.cos((x(d.name) + x.bandwidth() / 2) - Math.PI / 2))
-    .attr('y', (d) => (y(d.value) + 10) * Math.sin((x(d.name) + x.bandwidth() / 2) - Math.PI / 2))
-    .text((d) => d.name)
+    .attr('x', (d) => (y(d.y) + 10) * Math.cos((x(d.x) + x.bandwidth() / 2) - Math.PI / 2))
+    .attr('y', (d) => (y(d.y) + 10) * Math.sin((x(d.x) + x.bandwidth() / 2) - Math.PI / 2))
+    .text((d) => d.x)
     .attr('text-anchor', 'middle')
     .attr('font-size', '12px');
 }

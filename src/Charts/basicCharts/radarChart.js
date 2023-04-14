@@ -26,7 +26,7 @@ export default function createD3RadarChart(data, selector, options) {
     .data([data])
     .join('path')
     .attr('class', 'radar-chart-path')
-    .attr('d', lineGenerator.radius((d) => rScale(d.value)).angle((d, i) => i * angleSlice))
+    .attr('d', lineGenerator.radius((d) => rScale(d.y)).angle((d, i) => i * angleSlice))
     .attr('fill', colors[0])
     .attr('fill-opacity', 0.6)
     .attr('stroke', colors[1])
@@ -57,7 +57,7 @@ export default function createD3RadarChart(data, selector, options) {
     .attr('class', 'label')
     .attr('x', (d, i) => rScale(maxValue) * Math.cos(angleSlice * i - Math.PI / 2))
     .attr('y', (d, i) => rScale(maxValue) * Math.sin(angleSlice * i - Math.PI / 2))
-    .text((d) => d.category)
+    .text((d) => d.x)
     .attr('text-anchor', 'middle')
     .attr('font-size', '12px');
 

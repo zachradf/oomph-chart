@@ -81,7 +81,7 @@ export default function createD3Heatmap(data, selector, options) {
 
   // Create the color scale
   const color = d3.scaleSequential(colorScale)
-    .domain(d3.extent(data, (d) => d.value));
+    .domain(d3.extent(data, (d) => d.y));
 
   // Select the element with the given selector and create an SVG container
   const svg = d3.select(selector)
@@ -99,7 +99,7 @@ export default function createD3Heatmap(data, selector, options) {
     .attr('y', (d) => yScale(d[y]))
     .attr('width', xScale.bandwidth())
     .attr('height', yScale.bandwidth())
-    .attr('fill', (d) => color(d.value));
+    .attr('fill', (d) => color(d.y));
 
   // Append a group element for the x-axis and call the xAxis function
   svg.append('g')

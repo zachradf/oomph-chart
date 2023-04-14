@@ -6,7 +6,7 @@ import GraphSuperClass from './Classes/data/graphSuperClass.js';
 import {
   bubbleChartData, testDataScatterPlot, treeDiagramData, treeMapData,
   dataSet1, testDataBarChart, extremeScatterPlot1, extremeScatterPlot2,
-  stackedBarChartData2, heatMapData2, testDataDonutChart, sunburstData,
+  stackedBarChartData2, heatMapData, heatMapData2, testDataDonutChart, sunburstData,
   waterfallData, funnelChartData, polarChartData, radarChartData, boxPlotData
 } from './SampleData/chartData.js';
 import {
@@ -43,7 +43,7 @@ const input3 = {
 };
 
 const input4 = {
-  data: heatMapData2,
+  data: heatMapData,
   selector: '#chart',
   options: options3,
 };
@@ -109,7 +109,7 @@ const input15 = {
 // const lineObject = new BasicClass(['LINE'], input3);
 // const scatterObject = new BasicClass(['SCATTER'], input3);
 // const areaObject = new BasicClass(['AREA'], input3);
-const barObject = new BasicClass(['BAR'], input2);
+// const barObject = new BasicClass(['BAR'], input2);
 // const stackedBarObject = new BasicClass(['STACKEDBAR'], input);
 // const bubbleObject = new BasicClass(['BUBBLE'], input5);
 const heatMapObject = new BasicClass(['HEATMAP'], input4);

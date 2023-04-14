@@ -10,7 +10,7 @@ export default function createD3DonutChart(data, selector, options) {
 
   const pie = d3.pie()
     .sort(null)
-    .value((d) => d.value);
+    .value((d) => d.y);
 
   //   const svg = d3.select(selector)
   //     .append('svg')
@@ -47,7 +47,7 @@ export default function createD3DonutChart(data, selector, options) {
   arcs.append('text')
     .attr('transform', (d) => `translate(${arc.centroid(d)})`)
     .attr('text-anchor', 'middle')
-    .text((d) => d.data.category)
+    .text((d) => d.data.x)
     .style('fill', 'red')
     .style('font-size', '12px')
     .style('font-weight', 'bold');

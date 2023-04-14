@@ -76,11 +76,11 @@ export const testDataBarChart = [
   { x: 'E', y: 50 }
 ];
 export const testDataDonutChart = [
-  { category: 'Apple', value: 30 },
-  { category: 'Orange', value: 20 },
-  { category: 'Banana', value: 25 },
-  { category: 'Mango', value: 15 },
-  { category: 'Pineapple', value: 10 }
+  { x: 'Apple', y: 30 },
+  { x: 'Orange', y: 20 },
+  { x: 'Banana', y: 25 },
+  { x: 'Mango', y: 15 },
+  { x: 'Pineapple', y: 10 }
 ];
 
 // any chart with numerical x and y values
@@ -176,20 +176,20 @@ export const bubbleChartData = [
 
 // Heat map data
 export const heatMapData = [
-  { category: 'Monday', value: 10, group: 'A' },
-  { category: 'Tuesday', value: 20, group: 'A' },
-  { category: 'Wednesday', value: 30, group: 'A' },
-  { category: 'Thursday', value: 40, group: 'A' },
-  { category: 'Friday', value: 50, group: 'A' },
-  { category: 'Saturday', value: 60, group: 'A' },
-  { category: 'Sunday', value: 70, group: 'A' },
-  { category: 'Monday', value: 80, group: 'B' },
-  { category: 'Tuesday', value: 90, group: 'B' },
-  { category: 'Wednesday', value: 100, group: 'B' },
-  { category: 'Thursday', value: 110, group: 'B' },
-  { category: 'Friday', value: 120, group: 'B' },
-  { category: 'Saturday', value: 130, group: 'B' },
-  { category: 'Sunday', value: 140, group: 'B' }
+  { x: 'Monday', y: 10, group: 'A' },
+  { x: 'Tuesday', y: 20, group: 'A' },
+  { x: 'Wednesday', y: 30, group: 'A' },
+  { x: 'Thursday', y: 40, group: 'A' },
+  { x: 'Friday', y: 50, group: 'A' },
+  { x: 'Saturday', y: 60, group: 'A' },
+  { x: 'Sunday', y: 70, group: 'A' },
+  { x: 'Monday', y: 80, group: 'B' },
+  { x: 'Tuesday', y: 90, group: 'B' },
+  { x: 'Wednesday', y: 100, group: 'B' },
+  { x: 'Thursday', y: 110, group: 'B' },
+  { x: 'Friday', y: 120, group: 'B' },
+  { x: 'Saturday', y: 130, group: 'B' },
+  { x: 'Sunday', y: 140, group: 'B' }
 ];
 
 // stacked bar chart data
@@ -309,19 +309,19 @@ export const funnelChartData = [
 ];
 
 export const polarChartData = [
-  { name: 'A', value: 100 },
-  { name: 'B', value: 200 },
-  { name: 'C', value: 150 },
-  { name: 'D', value: 75 },
-  { name: 'E', value: 125 }
+  { x: 'A', y: 100 },
+  { x: 'B', y: 200 },
+  { x: 'C', y: 150 },
+  { x: 'D', y: 75 },
+  { x: 'E', y: 125 }
 ];
 
 export const radarChartData = [
-  { name: 'A', value: 100 },
-  { name: 'B', value: 100 },
-  { name: 'C', value: 10 },
-  { name: 'D', value: 75 },
-  { name: 'E', value: 25 }
+  { x: 'A', y: 100 },
+  { x: 'B', y: 100 },
+  { x: 'C', y: 10 },
+  { x: 'D', y: 75 },
+  { x: 'E', y: 25 }
 ];
 
 export const boxPlotData = [
