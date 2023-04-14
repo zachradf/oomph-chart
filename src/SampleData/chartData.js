@@ -1,3 +1,4 @@
+// similar to treemap data and stacked bar chart
 export const treeDiagramData = {
   name: 'A',
   children: [
@@ -16,7 +17,7 @@ export const treeDiagramData = {
     }
   ],
 };
-
+// similar to tree diagram and stacked barchart data
 export const treeMapData = {
   name: 'root',
   children: [
@@ -96,7 +97,7 @@ export const testDataScatterPlot = [
   { x: 166, y: 98 },
   { x: 189, y: 70 }
 ];
-
+// cadidate for y2 axis
 export const heatMapData2 = [
   { x: 'A', y: '1', value: 50 },
   { x: 'A', y: '2', value: 100 },
@@ -108,7 +109,7 @@ export const heatMapData2 = [
   { x: 'C', y: '2', value: 400 },
   { x: 'C', y: '3', value: 450 }
 ];
-
+// TODO change category to name or vice versa
 export const stackedBarChartData2 = [
   {
     category: 'Jan',
@@ -174,7 +175,7 @@ export const bubbleChartData = [
   }
 ];
 
-// Heat map data
+// Heat map data candidate for y2 axis
 export const heatMapData = [
   { x: 'Monday', y: 10, group: 'A' },
   { x: 'Tuesday', y: 20, group: 'A' },
@@ -192,7 +193,7 @@ export const heatMapData = [
   { x: 'Sunday', y: 140, group: 'B' }
 ];
 
-// stacked bar chart data
+// see if this can be broken up into seperate objects that are compativle with barchart
 export const stackedBarChartData = [
   {
     category: 'Category A',
@@ -275,7 +276,7 @@ export const sunburstData = {
     }
   ],
 };
-
+// TODO value can be calculated from start and end, candidate for y2 axis
 export const waterfallData = [
   {
     category: 'A', value: 20, start: 0, end: 20,
@@ -299,7 +300,7 @@ export const waterfallData = [
     category: 'G', value: 15, start: 35, end: 50,
   }
 ];
-
+// TODO funnelChart 'x' values would actually be on the y axis, do you still convert?
 export const funnelChartData = [
   { name: 'Stage 1', value: 1000 },
   { name: 'Stage 2', value: 800 },
@@ -330,27 +331,27 @@ export const boxPlotData = [
     min: 10,
     q1: 20,
     q3: 40,
-    max: 60
+    max: 60,
   },
   {
     category: 'B',
     min: 5,
     q1: 25,
     q3: 45,
-    max: 75
+    max: 75,
   },
   {
     category: 'C',
     min: 15,
     q1: 30,
     q3: 50,
-    max: 80
+    max: 80,
   },
   {
     category: 'D',
     min: 8,
     q1: 28,
     q3: 48,
-    max: 68
+    max: 68,
   }
 ];
