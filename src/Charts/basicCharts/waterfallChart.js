@@ -1,9 +1,7 @@
 // TODO add negative and positive color change
-export default function createD3WaterfallChart(data, selector, options, generalElements) {
+export default function createD3WaterfallChart(data, options, generalElements) {
   const { x } = generalElements;
   const { y } = generalElements;
-  const { xAxis } = generalElements;
-  const { yAxis } = generalElements;
   const { svg } = generalElements;
 
   svg.append('g')
@@ -15,12 +13,4 @@ export default function createD3WaterfallChart(data, selector, options, generalE
     .attr('height', (d) => Math.abs(y(d.end) - y(d.start)))
     .attr('width', x.bandwidth())
     .attr('fill', options.color);
-
-  svg.append('g')
-    .classed('x-axis', true)
-    .call(xAxis);
-
-  svg.append('g')
-    .classed('y-axis', true)
-    .call(yAxis);
 }

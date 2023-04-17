@@ -1,4 +1,4 @@
-export default function createD3Heatmap(data, selector, options, generalElements) {
+export default function createD3Heatmap(data, options, generalElements) {
   const {
     width, height, margin, colorScale, x = 'x', y = 'y',
   } = options;

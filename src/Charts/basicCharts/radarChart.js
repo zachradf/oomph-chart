@@ -1,4 +1,4 @@
-export default function createD3RadarChart(data, selector, options, generalElements) {
+export default function createD3RadarChart(data, options, generalElements) {
   const {
     width, height, colors, maxValue, levels,
   } = options;

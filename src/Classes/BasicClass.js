@@ -18,6 +18,7 @@ import createBoxPlot from '../Charts/basicCharts/boxPlot.js';
 import stack from '../AddFunctionality/stack.js';
 import createAxes from './classFunctions/XY.js';
 import createSVG from './classFunctions/SVG.js';
+import appendAxes from './classFunctions/AXES.js';
 
 export default class BasicClass {
   constructor(graphArray, input) {
@@ -42,7 +43,6 @@ export default class BasicClass {
       this.options = input.options;
       this.options.chartNumber = 1;
     }
-    // this.options.chartClass = this.svgTypeMap[graphArray[0]];
 
     this.createGraph = {
       BAR: createBarChart,
@@ -61,7 +61,7 @@ export default class BasicClass {
       GAUGE: createGaugeChart,
       BOX: createBoxPlot,
     };
-     const svgTypeMap = {
+    const svgTypeMap = {
       BAR: 'bar-chart',
       BUBBLE: 'bubble-chart',
       SCATTER: 'scatter-plot',
@@ -78,98 +78,37 @@ export default class BasicClass {
       GAUGE: 'gauge-chart',
       BOX: 'box-plot',
     };
-    this.options.chartClass = svgTypeMap[graphArray[0]];
+    this.options.chartClass = svgTypeMap[this.graphArray[0]];
 
-    const generalElements = createAxes(input.data, graphArray[0], this.options);
+    // move this into the iterate graphs function to handle multiple graph types
+    const generalElements = createAxes(this.input.data, graphArray[0], this.options);
     generalElements.svg = createSVG(this.selector, graphArray[0], this.options);
+    this.generalElements = generalElements;
 
     this.iterateGraphs = () => {
       for (let i = 0; i < this.graphArray.length; i++) {
-        this.createGraph[this.graphArray[i]](this.data, this.selector, this.options, generalElements);
+        this.createGraph[this.graphArray[i]](this.data, this.options, this.generalElements);
       }
     };
     this.iterateGraphs();
-  }
-
-  // You can probably put all of this in the create graph object
-  createAreaChart(data, selector, options, generalElements) {
-    createAreaChart(data, selector, options, generalElements);
-  }
-
-  createBarChart(data, selector, options, generalElements) {
-    createBarChart(data, selector, options, generalElements);
-  }
-
-  createBoxPlot(data, selector, options, generalElements) {
-    createBoxPlot(data, selector, options, generalElements);
-  }
-
-  createBubbleChart(data, selector, options, generalElements) {
-    createBubbleChart(data, selector, options, generalElements);
-  }
-
-  createDonutChart(data, selector, options, generalElements) {
-    createDonutChart(data, selector, options, generalElements);
-  }
-
-  createFunnelChart(data, selector, options, generalElements) {
-    createFunnelChart(data, selector, options, generalElements);
-  }
-
-  createGaugeChart(data, selector, options, generalElements) {
-    createGaugeChart(data, selector, options, generalElements);
-  }
-
-  createHeatMap(data, selector, options, generalElements) {
-    createHeatMap(data, selector, options, generalElements);
-  }
-
-  createLineGraph(data, selector, options, generalElements) {
-    createLineGraph(data, selector, options, generalElements);
-  }
-
-  createPieChart(data, selector, options, generalElements) {
-    createPieChart(data, selector, options, generalElements);
-  }
-
-  createPolarChart(data, selector, options, generalElements) {
-    createPolarChart(data, selector, options, generalElements);
-  }
-
-  createRadarChart(data, selector, options, generalElements) {
-    createRadarChart(data, selector, options, generalElements);
-  }
-
-  createScatterPlot(data, selector, options, generalElements) {
-    createScatterPlot(data, selector, options, generalElements);
-  }
-
-  createStackedBarChart(data, selector, options, generalElements) {
-    createStackedBarChart(data, selector, options, generalElements);
-  }
-
-  createWaterfallChart(data, selector, options, generalElements) {
-    createWaterfallChart(data, selector, options, generalElements);
+    // this will also need to be in the iterate graphs function
+    appendAxes(this.graphArray[0], this.options, this.generalElements);
   }
 
   addGraphs(type) {
     this.graphArray.push(...type);
-    if (!Array.isArray(type)) {
-      this.createGraph[type](this.data, this.selector, this.options);
-    } else {
-      for (let i = 0; i < type.length; i++) {
-        this.createGraph[type[i]](this.data, this.selector, this.options);
-      }
+    for (let i = 0; i < type.length; i++) {
+      this.createGraph[type[i]](this.data, this.options, this.generalElements);
     }
   }
 
   removeChart(type) {
     const svgSelector = this.options.chartClass;
     if (svgSelector) {
-      // Remove the x and y axes
       d3.select(this.input.selector)
-        .selectAll(`.x-axis, .y-axis, .${svgSelector}`)
+        .selectAll(`svg.${svgSelector}`)
         .remove();
+        console.log('removed', svgSelector);
     } else {
       console.error(`Invalid chart type: ${type}`);
     }

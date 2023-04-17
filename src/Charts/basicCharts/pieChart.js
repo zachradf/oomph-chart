@@ -1,5 +1,4 @@
-export default function createD3PieChart(data, selector, options, generalElements) {
-  // console.log('createD3PieChart', data, selector);
+export default function createD3PieChart(data, options, generalElements) {
   const { width } = options;
   const { height } = options;
   const { svg } = generalElements;

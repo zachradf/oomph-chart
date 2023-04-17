@@ -1,4 +1,4 @@
-export default function createD3PolarChart(data, selector, options, generalElements) {
+export default function createD3PolarChart(data, options, generalElements) {
   const {
     colors, innerRadius, outerRadius,
   } = options;

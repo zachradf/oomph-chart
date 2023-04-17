@@ -1,7 +1,6 @@
-export default function createD3StackedBarChart(data, selector, options, generalElements) {
-  const { height, margin } = options;
+export default function createD3StackedBarChart(data, options, generalElements) {
   const {
-    x, y, xAxis, yAxis, svg,
+    x, y, svg,
   } = generalElements;
 
   // Create a color scale using the color scheme provided
@@ -29,16 +28,4 @@ export default function createD3StackedBarChart(data, selector, options, general
     .attr('y', (d) => y(d[1]))
     .attr('height', (d) => y(d[0]) - y(d[1]))
     .attr('width', x.bandwidth());
-
-  // Append a group element for the x-axis and call the xAxis function
-  svg.append('g')
-    .classed('x-axis', true)
-    .attr('transform', `translate(0,${height - margin.bottom})`)
-    .call(xAxis);
-
-  // Append the y-axis to the SVG
-  svg.append('g')
-    .classed('y-axis', true)
-    .attr('transform', `translate(${margin.left},0)`)
-    .call(yAxis);
 }

@@ -1,9 +1,6 @@
-export default function createD3DonutChart(data, selector, options, generalElements) {
+export default function createD3DonutChart(data, options, generalElements) {
   const { radius } = options;
   const { svg } = generalElements;
-
-  const color = d3.scaleOrdinal()
-    .range(options.color);
 
   const arc = d3.arc()
     .innerRadius(radius * 0.5)
@@ -17,7 +14,7 @@ export default function createD3DonutChart(data, selector, options, generalEleme
     .data(pie(data))
     .enter()
     .append('g')
-    .attr('class', 'arc')
+    .attr('class', 'arc');
 
   arcs.append('path')
     .attr('d', arc)
