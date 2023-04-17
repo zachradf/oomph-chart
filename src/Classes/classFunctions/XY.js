@@ -34,7 +34,7 @@ export default function generalElementsFunction(data, graph, options) {
         .range([options.margin.left, options.width - options.margin.right]);
   }
 
-  // Create a y-scale using the data's y values and the specified height and margin
+// Convert this to a switch case
   const scaleFunctions = {
     BAR: () => d3.scaleLinear()
       .domain([0, d3.max(data, (d) => d.y)]).nice()

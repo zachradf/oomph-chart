@@ -10,10 +10,13 @@ export const options = {
   margin: {
     top: 20, right: 20, bottom: 30, left: 40,
   },
-  width: 500,
-  height: 400,
-  radius: 14,
-  color: 'blue',
+  width: 900,
+  height: 800,
+  radius: 4,
+  color: d3.scaleOrdinal(d3.schemeCategory10),
+  innerRadius: 180,
+  outerRadius: 200,
+  nodeRadius: 5,
   showLabels: true,
   diameter: 600,
   fillColor: 'blue',
@@ -40,6 +43,7 @@ export const options2 = {
   fillColor: ['red', 'blue', 'green', 'yellow', 'orange', 'purple'],
   orientation: 'horizontal',
   overlay: true,
+  opacity: 0.75,
 };
 export const options3 = {
   width: 800, // adjust as necessary
