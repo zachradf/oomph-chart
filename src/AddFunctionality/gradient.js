@@ -1,49 +1,3 @@
-// for bar chart
-// export default function applyColorGradient(selector, color1, color2) {
-//   const svg = d3.select(selector).select('svg');
-//   const maxValue = d3.max(svg.selectAll('rect').data(), (d) => d.value);
-//   const minValue = d3.min(svg.selectAll('rect').data(), (d) => d.value);
-
-//   const colorScale = d3.scaleLinear()
-//     .domain([minValue, maxValue])
-//     .range([color1, color2]);
-
-//   svg.selectAll('rect').style('fill', (d) => colorScale(d.value));
-// }
-// for scatter plot
-// export default function applyColorGradient(selector, color1, color2, type, axis) {
-//   const svg = d3.select(selector).select('svg');
-
-//   if (type === 'BAR') {
-//     const maxValue = d3.max(svg.selectAll('rect').data(), (d) => d.value);
-//     const minValue = d3.min(svg.selectAll('rect').data(), (d) => d.value);
-
-//     const colorScale = d3.scaleLinear()
-//       .domain([minValue, maxValue])
-//       .range([color1, color2]);
-
-//     svg.selectAll('rect').style('fill', (d) => colorScale(d.value));
-//   } else if (type === 'SCATTER') {
-//     let maxValue; let minValue; let
-//       valueAccessor;
-//     if (axis === 'x') {
-//       maxValue = d3.max(svg.selectAll('circle').data(), (d) => d.x);
-//       minValue = d3.min(svg.selectAll('circle').data(), (d) => d.x);
-//       valueAccessor = (d) => d.x;
-//     } else if (axis === 'y') {
-//       maxValue = d3.max(svg.selectAll('circle').data(), (d) => d.y);
-//       minValue = d3.min(svg.selectAll('circle').data(), (d) => d.y);
-//       valueAccessor = (d) => d.y;
-//     }
-
-//     const colorScale = d3.scaleLinear()
-//       .domain([minValue, maxValue])
-//       .range([color1, color2]);
-
-//     svg.selectAll('circle').style('fill', (d) => colorScale(valueAccessor(d)));
-//   }
-// }
-
 export default function applyColorGradient(selector, color1, color2, type, axis, data) {
   const svg = d3.select(selector).select('svg');
 
@@ -71,14 +25,14 @@ export default function applyColorGradient(selector, color1, color2, type, axis,
 
       svg.selectAll('rect').style('fill', 'url(#gradient)');
     } else if (axis === 'x') {
-      const maxValue = d3.max(svg.selectAll('rect').data(), (d) => d.value);
-      const minValue = d3.min(svg.selectAll('rect').data(), (d) => d.value);
+      const maxValue = d3.max(svg.selectAll('rect').data(), (d) => d.y);
+      const minValue = d3.min(svg.selectAll('rect').data(), (d) => d.y);
 
       const colorScale = d3.scaleLinear()
         .domain([minValue, maxValue])
         .range([color1, color2]);
 
-      svg.selectAll('rect').style('fill', (d) => colorScale(d.value));
+      svg.selectAll('rect').style('fill', (d) => colorScale(d.y));
     }
   } else if (type === 'SCATTER') {
     let maxValue; let minValue; let
@@ -98,25 +52,25 @@ export default function applyColorGradient(selector, color1, color2, type, axis,
 
     svg.selectAll('circle').style('fill', (d) => colorScale(valueAccessor(d)));
   } else if (type === 'PIE') {
-    const minValue = d3.min(data, (d) => d.value);
-    const maxValue = d3.max(data, (d) => d.value);
+    const minValue = d3.min(data, (d) => d.y);
+    const maxValue = d3.max(data, (d) => d.y);
 
     const colorScale = d3.scaleLinear()
       .domain([minValue, maxValue])
       .range([color1, color2]);
 
     svg.selectAll('path')
-      .attr('fill', (d) => colorScale(d.value));
+      .attr('fill', (d) => colorScale(d.y));
   } else if (type === 'DONUT') {
-    const minValue = d3.min(data, (d) => d.value);
-    const maxValue = d3.max(data, (d) => d.value);
+    const minValue = d3.min(data, (d) => d.y);
+    const maxValue = d3.max(data, (d) => d.y);
 
     const colorScale = d3.scaleLinear()
       .domain([minValue, maxValue])
       .range([color1, color2]);
 
     svg.selectAll('path')
-      .attr('fill', (d) => colorScale(d.data.value));
+      .attr('fill', (d) => colorScale(d.data.y));
   } else if (type === 'AREA' || type === 'LINE') {
     const elements = svg.selectAll('path');
 
@@ -219,82 +173,3 @@ export default function applyColorGradient(selector, color1, color2, type, axis,
     throw new Error('Unsupported chart type');
   }
 }
-// export default function applyColorGradient(selector, color1, color2, type, axis, data) {
-//   const svg = d3.select(selector).select('svg');
-
-//   // Determine the appropriate elements for each chart type
-//   let elements;
-//   if (type === 'BAR') {
-//     elements = svg.selectAll('rect');
-//   } else if (type === 'SCATTER') {
-//     elements = svg.selectAll('circle');
-//   } else if (type === 'PIE' || type === 'DONUT') {
-//     elements = svg.selectAll('path');
-//   } else {
-//     throw new Error('Unsupported chart type');
-//   }
-
-//   // Create a function that takes a data value and returns the desired color
-//   const minValue = d3.min(data, (d) => d.value);
-//   const maxValue = d3.max(data, (d) => d.value);
-//   const colorScale = d3.scaleLinear()
-//     .domain([minValue, maxValue])
-//     .range([color1, color2]);
-
-//   const valueAccessor = (d) => {
-//     if (type === 'BAR') {
-//       return axis === 'x' ? d.value : d.index;
-//     } if (type === 'SCATTER') {
-//       return axis === 'x' ? d.x : d.y;
-//     } if (type === 'PIE' || type === 'DONUT') {
-//       return d.value;
-//     }
-//     return null;
-//   };
-
-//   // Apply the color function to the elements using the `.style` attribute
-//   elements.style('fill', (d) => colorScale(valueAccessor(d)));
-// }
-
-// if (type === 'AREA' || type === 'LINE') {
-//   const elements = svg.selectAll('path');
-
-//   const minValue = d3.min(data, (d) => d.x);
-//   const maxValue = d3.max(data, (d) => d.x);
-
-//   const colorScale = d3.scaleLinear()
-//     .domain([minValue, maxValue])
-//     .range([color1, color2]);
-
-//   gradient.attr('x1', svg.select('.x-axis').node().getBBox().x)
-//     .attr('x2', svg.select('.x-axis').node().getBBox().width);
-
-//   if (type === 'AREA') {
-//     elements.style('fill', 'url(#gradient)');
-//   } else { // LINE
-//     const lineGradient = svg.append('linearGradient')
-//       .attr('id', 'line-gradient')
-//       .attr('gradientUnits', 'userSpaceOnUse')
-//       .attr('x1', 0)
-//       .attr('x2', svg.select('.x-axis').node().getBBox().width)
-//       .attr('y1', 0)
-//       .attr('y2', 0);
-
-//     data.forEach((d, i, arr) => {
-//       if (i === arr.length - 1) {
-//         return;
-//       }
-
-//       const color = colorScale(d.x);
-//       lineGradient.append('stop')
-//         .attr('offset', `${(i / (arr.length - 1)) * 100}%`)
-//         .attr('stop-color', color);
-
-//       lineGradient.append('stop')
-//         .attr('offset', `${((i + 1) / (arr.length - 1)) * 100}%`)
-//         .attr('stop-color', color);
-//     });
-
-//     elements.style('stroke', 'url(#line-gradient)');
-//   }
-// }

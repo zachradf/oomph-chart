@@ -130,7 +130,7 @@ const treeDiagramObject = new HierarchyClass(['TREEDIAGRAM'], input7);
 const treeMapObject = new HierarchyClass(['TREEMAP'], input8);
 const waterfallObject = new BasicClass(['WATERFALL'], input10);
 
-// gradient('#chart', 'blue', 'red', 'SCATTER', 'y', testDataScatterPlot);// fix for waterfall and stackedbar chart x axis, funnel y axis
+gradient('#chart', 'blue', 'red', 'BAR', 'x', testDataBarChart);// fix for waterfall and stackedbar chart x axis, funnel y axis
 
 createChordDiagram([
   [0, 10, 5, 7, 3],

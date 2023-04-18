@@ -50,6 +50,6 @@ export default function createD3SunburstChart(data, selector, options) {
     .append('title')
     .attr('font-size', '10px')
     .attr('font-family', 'sans-serif')
-    .attr('color', 'white')
+    .attr('color', 'black')
     .text((d) => `${d.ancestors().map((d) => d.data.name).reverse().join('/')}\n${d.value}`);
 }
