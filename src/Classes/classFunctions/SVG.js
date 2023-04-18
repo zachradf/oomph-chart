@@ -1,4 +1,4 @@
-//   THIS DEFINES ALL SVG ELEMENTS, SHOULD BE PASSED TO EACH CHART OR SET IN OPTIONS
+//   Make this dry-er
 export default function createSVG(selector, graph, options) {
   let svg;
   if (graph === 'PIE' || graph === 'DONUT' || graph === 'GAUGE' || graph === 'POLAR' || graph === 'RADAR') {

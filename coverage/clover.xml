@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1681686168976" clover="3.2.0">
-  <project timestamp="1681686168976" name="All files">
-    <metrics statements="203" coveredstatements="101" conditionals="34" coveredconditionals="24" methods="103" coveredmethods="33" elements="340" coveredelements="158" complexity="0" loc="203" ncloc="203" packages="5" files="19" classes="19"/>
+<coverage generated="1681814025726" clover="3.2.0">
+  <project timestamp="1681814025726" name="All files">
+    <metrics statements="194" coveredstatements="95" conditionals="34" coveredconditionals="24" methods="100" coveredmethods="32" elements="328" coveredelements="151" complexity="0" loc="194" ncloc="194" packages="5" files="18" classes="18"/>
     <package name="Charts.basicCharts">
-      <metrics statements="170" coveredstatements="72" conditionals="10" coveredconditionals="4" methods="91" coveredmethods="21"/>
-      <file name="areaChart.js" path="/Users/zacharyradford/Desktop/Oomph/src/Charts/basicCharts/areaChart.js">
-        <metrics statements="9" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
-        <line num="2" count="5" type="stmt"/>
-        <line num="3" count="5" type="stmt"/>
-        <line num="4" count="5" type="stmt"/>
-        <line num="5" count="5" type="stmt"/>
-        <line num="6" count="5" type="stmt"/>
-        <line num="8" count="5" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-      </file>
+      <metrics statements="161" coveredstatements="66" conditionals="10" coveredconditionals="4" methods="88" coveredmethods="20"/>
       <file name="barChart.js" path="/Users/zacharyradford/Desktop/Oomph/src/Charts/basicCharts/barChart.js">
         <metrics statements="7" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1"/>
         <line num="2" count="5" type="stmt"/>

@@ -79,7 +79,6 @@ export default class BasicClass {
       BOX: 'box-plot',
     };
     this.options.chartClass = svgTypeMap[this.graphArray[0]];
-    console.log(this.graphArray[0])
 
     // move this into the iterate graphs function to handle multiple graph types
     const generalElements = createAxes(this.input.data, graphArray[0], this.options);
@@ -89,17 +88,18 @@ export default class BasicClass {
     this.iterateGraphs = () => {
       for (let i = 0; i < this.graphArray.length; i++) {
         this.createGraph[this.graphArray[i]](this.data, this.options, this.generalElements);
+
+        appendAxes(this.graphArray[i], this.options, this.generalElements);
       }
     };
     this.iterateGraphs();
-    // this will also need to be in the iterate graphs function
-    appendAxes(this.graphArray[0], this.options, this.generalElements);
   }
 
   addGraphs(type) {
     this.graphArray.push(...type);
     for (let i = 0; i < type.length; i++) {
       this.createGraph[type[i]](this.data, this.options, this.generalElements);
+      appendAxes(this.graphArray[i], this.options, this.generalElements);
     }
   }
 
@@ -109,7 +109,7 @@ export default class BasicClass {
       d3.select(this.input.selector)
         .selectAll(`svg.${this.options.chartClass}`)
         .remove();
-        console.log('removed', this.options.chartClass);
+      console.log('removed', this.options.chartClass);
     } else {
       console.error(`Invalid chart type: ${type}`);
     }

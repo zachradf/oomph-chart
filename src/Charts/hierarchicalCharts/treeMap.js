@@ -2,26 +2,13 @@ export default function createD3TreeMap(data, selector, options = {}) {
   // Set default options
   const width = options.width || 600;
   const height = options.height || 400;
-  // TO DO! COLOR HERE IS DIFFERENT FROM OTHER COLORS (ALTER OPTIONS.COLOR)
-  const color = d3.scaleOrdinal(d3.schemeCategory10);
+  const color = options.color || d3.scaleOrdinal(d3.schemeCategory10);
 
   // Create the treemap layout
   const treemap = d3.treemap()
     .size([width, height])
     .padding(1)
     .round(true);
-
-  // TODO replace treemap with a partition function you can generalize for sunburst and tree diagram
-  // const partition = data => {
-  //   const root = d3.hierarchy(data)
-  //     .sum(d => d.value)
-  //     .sort((a, b) => b.value - a.value);
-  //   return d3.treemap()
-  //     .size([width, height])
-  //     .padding(1)
-  //     .round(true)
-  //     (root);
-  // };
 
   // Process the data
   const root = d3.hierarchy(data)

@@ -1,34 +1,41 @@
-export const optionsForceDirected = {
-  width: 600,
-  height: 600,
-  //   color: d3.scaleOrdinal(d3.schemeCategory10),
-  linkDistance: 50, // TODO look into linkdistance
-  chargeStrength: -200, // TODO look into chargeStrength
-};
 
-export const options = {
-  margin: {
-    top: 20, right: 20, bottom: 30, left: 40,
-  },
-  width: 900,
-  height: 800,
-  radius: 4,
+ export const options = {
   color: d3.scaleOrdinal(d3.schemeCategory10),
-  innerRadius: 180,
-  outerRadius: 200,
-  nodeRadius: 5,
-  showLabels: true,
-  diameter: 600,
-  fillColor: 'blue',
-  strokeColor: 'blue',
-  xLabel: 'xLabel',
-  yLabel: 'yLabel',
   colorScale: 'red',
-  sortBy: 'value',
+  diameter: 600,
+  endAngle: Math.PI / 1.25,
+  fillColor: 'blue',
+  height: 800,
   hoverColor: 'blue',
+  innerRadius: 180,
+  interval: 2000,
+  levels: 5, // maybe should be calculated from data
+  majorTickColor: 'black',
+  majorTicks: 5,
+  margin: {
+    bottom: 30, left: 40, right: 20, top: 20,
+  },
+  maxValue: 100, // maybe should be calculated from data
+  minorTickColor: 'black',
+  minorTicks: 4,
+  nodeRadius: 5,
+  opacity: 0.75,
+  outerRadius: 200,
   overlay: true,
   padding: 0.1,
+  pointerColor: 'red',
+  pointerWidth: 10,
+  radius: 4,
+  showCategories: true,
+  showLabels: true,
+  sortBy: 'value',
+  startAngle: -Math.PI / 1.25,
+  strokeColor: 'blue',
+  width: 900,
+  xLabel: 'xLabel',
+  yLabel: 'yLabel',
 };
+
 
 export const options2 = {
   margin: {
@@ -41,7 +48,6 @@ export const options2 = {
   showCategories: true,
   diameter: 400,
   fillColor: ['red', 'blue', 'green', 'yellow', 'orange', 'purple'],
-  orientation: 'horizontal',
   overlay: true,
   opacity: 0.75,
 };
@@ -55,6 +61,7 @@ export const options3 = {
   xLabel: 'X Axis Label',
   yLabel: 'Y Axis Label',
   overlay: false,
+
 };
 
 export const options4 = {
@@ -152,4 +159,11 @@ export const gaugeOptions = {
   interval: 2000,
   pointerWidth: 10,
   overlay: false,
+};
+export const optionsForceDirected = {
+  width: 600,
+  height: 600,
+  //   color: d3.scaleOrdinal(d3.schemeCategory10),
+  linkDistance: 50, // TODO look into linkdistance
+  chargeStrength: -200, // TODO look into chargeStrength
 };

@@ -2,6 +2,8 @@
 import * as d3 from 'd3';
 import { JSDOM } from 'jsdom';
 import createD3AreaChart from '../../Charts/basicCharts/areaChart';
+import { XY, SVG, AXES } from '../../Classes/classFunctions';
+import BasicClass from '../../Classes/BasicClass';
 
 global.d3 = d3;
 
@@ -18,6 +20,11 @@ describe('createD3AreaChart', () => {
       top: 20, right: 20, bottom: 30, left: 40,
     },
     fillColor: 'steelblue',
+  };
+  const input = {
+    data,
+    selector: '#chart',
+    options,
   };
   let jsdom;
   beforeEach(() => {
@@ -37,7 +44,9 @@ describe('createD3AreaChart', () => {
 
   test('creates an SVG element', () => {
     const { document } = jsdom.window;
-    createD3AreaChart(data, document.querySelector('#chart'), options);
+    const generalElements = AXES('AREA', document.querySelector('#chart'), options);
+    generalElements.svg = SVG('AREA', document.querySelector('#chart'), options);
+    createD3AreaChart(data, document.querySelector('#chart'), options, generalElements);
     const svgElement = document.querySelector('#chart svg.area-chart');
     expect(svgElement).not.toBeNull();
   });

@@ -7,6 +7,7 @@ export default function createIcicleChart(data, selector, options) {
   const svg = d3
     .select(selector)
     .append('svg')
+    .classed('icicle-plot', true)
     .attr('width', width)
     .attr('height', height);
 
