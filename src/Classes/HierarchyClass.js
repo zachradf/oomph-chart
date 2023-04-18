@@ -2,6 +2,11 @@
 import createSunburstChart from '../Charts/hierarchicalCharts/sunBurst.js';
 import createTreeMap from '../Charts/hierarchicalCharts/treeMap.js';
 import createTreeDiagram from '../Charts/hierarchicalCharts/treeDiagram.js';
+import createChordDiagram from '../Charts/hierarchicalCharts/chordChart.js';
+import createSankeyDiagram from '../Charts/hierarchicalCharts/sankeyDiagram.js';
+import createClusterDiagram from '../Charts/hierarchicalCharts/clusterDiagram.js';
+import createVoronoiTreemap from '../Charts/hierarchicalCharts/voronoiTree.js';
+import createIcicleChart from '../Charts/hierarchicalCharts/iciclePlot.js';
 
 export default class HierarchyClass {
   constructor(graphArray, input) {
@@ -27,6 +32,11 @@ export default class HierarchyClass {
       SUNBURST: createSunburstChart,
       TREEMAP: createTreeMap,
       TREEDIAGRAM: createTreeDiagram,
+      CHORD: createChordDiagram,
+      SANKEY: createSankeyDiagram,
+      CLUSTER: createClusterDiagram,
+      VORONOI: createVoronoiTreemap,
+      ICICLE: createIcicleChart,
     };
 
     this.iterateGraphs = () => {
@@ -36,18 +46,6 @@ export default class HierarchyClass {
     };
 
     this.iterateGraphs();
-  }
-
-  createSunburstChart(data, selector, options) {
-    createSunburstChart(data, selector, options);
-  }
-
-  createTreeMap(data, selector, options) {
-    createTreeMap(data, selector, options);
-  }
-
-  createTreeDiagram(data, selector, options) {
-    createTreeDiagram(data, selector, options);
   }
 
   addGraphs(type) {
