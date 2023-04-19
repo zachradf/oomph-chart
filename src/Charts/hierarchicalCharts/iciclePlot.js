@@ -39,5 +39,6 @@ export default function createIcicleChart(data, selector, options) {
     .attr('class', 'label')
     .attr('dy', '.35em')
     .attr('transform', (d) => `translate(${(d.x0 + d.x1) / 2},${(d.y0 + d.y1) / 2})rotate(90)`)
-    .text((d) => d.data.name);
+    .text((d) => d.data.name)
+    .style('font-size', `${options.childTextSize}`);
 }

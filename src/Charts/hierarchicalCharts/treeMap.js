@@ -39,5 +39,6 @@ export default function createD3TreeMap(data, selector, options = {}) {
   leaf.append('text')
     .attr('x', 3)
     .attr('y', 12)
-    .text((d) => d.data.name);
+    .text((d) => d.data.name)
+    .style('font-size', `${options.childTextSize}`);
 }

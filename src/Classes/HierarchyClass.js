@@ -12,6 +12,7 @@ export default class HierarchyClass {
   constructor(graphArray, input) {
     this.graphArray = graphArray;
     this.input = input;
+    this.input.data = input.data;
     this.input.selector = input.selector ? input.selector : '#chart';
 
     if (!input.options) {

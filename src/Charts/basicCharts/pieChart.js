@@ -41,7 +41,7 @@ export default function createD3PieChart(data, options, generalElements) {
       .data(pie(data))
       .join('text')
       .attr('transform', (d) => `translate(${categoryArc.centroid(d)})`)
-      .attr('text-anchor', 'middle')
+      .attr('text-anchor', `${options.textAnchor}`)
       .attr('alignment-baseline', 'central')
       .text((d) => d.data.x);
   }

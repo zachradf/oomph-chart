@@ -45,9 +45,9 @@ export default function createVoronoiTreemap(data, selector, options) {
     .append('text')
     .attr('x', (d) => d3.polygonCentroid(d.polygon)[0])
     .attr('y', (d) => d3.polygonCentroid(d.polygon)[1])
-    .attr('text-anchor', 'middle')
+    .attr('text-anchor', `${options.textAnchor}}`)
     .attr('dy', '.35em')
     .text((d) => d.data.name)
-    .style('font-size', '12px')
+    .style('font-size', `${options.childTextSize}`)
     .style('fill', 'white');
 }

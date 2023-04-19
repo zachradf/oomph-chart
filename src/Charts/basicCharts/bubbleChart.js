@@ -37,8 +37,8 @@ export default function createBubbleChart(data, options, generalElements) {
   nodes
     .append('text')
     .attr('dy', '.3em')
-    .style('text-anchor',  'middle')
-    .style('font-size', (d) => (d.depth === 1 ? '1.25em' : '.6em'))
+    .style('text-anchor', `${options.textAnchor}`)
+    .style('font-size', (d) => (d.depth === 1 ? `${options.parentTextSize}` : `${options.childTextSize}`))
     .style('fill', 'black') // Set the text color explicitly
     .text((d) => {
       if (d.depth === 1) {

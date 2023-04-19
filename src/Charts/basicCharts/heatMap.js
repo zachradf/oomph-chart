@@ -40,7 +40,7 @@ export default function createD3Heatmap(data, options, generalElements) {
     .classed('x-axis-label', true)
     .attr('x', width - margin.right)
     .attr('y', margin.bottom - 10)
-    .attr('text-anchor', 'end')
+    .attr('text-anchor', `${options.textAnchor}`)
     .text(x);
 
   // Append a group element for the y-axis and call the yAxis function
@@ -52,7 +52,7 @@ export default function createD3Heatmap(data, options, generalElements) {
     .classed('y-axis-label', true)
     .attr('x', -margin.top)
     .attr('y', margin.left - 10)
-    .attr('text-anchor', 'end')
+    .attr('text-anchor', `${options.textAnchor}`)
     .attr('transform', 'rotate(-90)')
     .text(y);
 }

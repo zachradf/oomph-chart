@@ -121,8 +121,8 @@ export default function createD3GaugeChart(sampleValues, options, generalElement
     .enter().append('text')
     .attr('class', 'minorTickValues')
     .attr('fill', minorTickColor)
-    .attr('text-anchor', 'middle')
-    .attr('font-size', '10px')
+    .attr('text-anchor', `${options.textAnchor}`)
+    .attr('font-size', `${options.childTextSize}`)
     .attr('x', (d, i) => {
       const tickValueAngle = startAngle + i * minorTickAngle;
       return 0.68 * radius * Math.cos(tickValueAngle - Math.PI / 2);

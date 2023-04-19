@@ -41,6 +41,6 @@ export default function createD3PolarChart(data, options, generalElements) {
     .attr('x', (d) => (y(d.y) + 10) * Math.cos((x(d.x) + x.bandwidth() / 2) - Math.PI / 2))
     .attr('y', (d) => (y(d.y) + 10) * Math.sin((x(d.x) + x.bandwidth() / 2) - Math.PI / 2))
     .text((d) => d.x)
-    .attr('text-anchor', 'middle')
-    .attr('font-size', '12px');
+    .attr('text-anchor', `${options.textAnchor}`)
+    .attr('font-size', `${options.childTextSize}`);
 }

@@ -43,6 +43,11 @@ export default class BasicClass {
       this.options = input.options;
       this.options.chartNumber = 1;
     }
+    this.options.textAnchor = this.options.textAnchor ? this.options.textAnchor : 'middle';
+    this.options.childTextSize = this.options.childTextSize ? this.options.childTextSize : '12px';
+    this.options.fontFamily = this.options.fontFamily ? this.options.fontFamily : 'sans-serif';
+    this.options.fontWeight = this.options.fontWeight ? this.options.fontWeight : 'normal';
+    this.options.parentTextSize = this.options.parentTextSize ? this.options.parentTextSize : '16px';
 
     this.createGraph = {
       BAR: createBarChart,
@@ -81,14 +86,14 @@ export default class BasicClass {
     this.options.chartClass = svgTypeMap[this.graphArray[0]];
 
     // move this into the iterate graphs function to handle multiple graph types
-    const generalElements = createAxes(this.input.data, graphArray[0], this.options);
-    generalElements.svg = createSVG(this.selector, graphArray[0], this.options);
-    this.generalElements = generalElements;
+
 
     this.iterateGraphs = () => {
       for (let i = 0; i < this.graphArray.length; i++) {
+        const generalElements = createAxes(this.input.data, graphArray[0], this.options);
+        generalElements.svg = createSVG(this.selector, graphArray[0], this.options);
+        this.generalElements = generalElements;
         this.createGraph[this.graphArray[i]](this.data, this.options, this.generalElements);
-
         appendAxes(this.graphArray[i], this.options, this.generalElements);
       }
     };

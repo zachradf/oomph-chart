@@ -51,7 +51,7 @@ export default function createClusterDiagram(data, selector, options) {
     .attr('dy', '0.31em')
     .attr('x', (d) => (d.children ? -nodeRadius : nodeRadius))
     .style('text-anchor', (d) => (d.children ? 'end' : 'start'))
-    .style('font-size', '12px')
+    .style('font-size', `${options.childTextSize}`)
     .style('fill', '#000')
     .text((d) => d.data.name);
 }

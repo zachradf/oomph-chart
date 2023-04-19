@@ -54,8 +54,8 @@ export default function createForceDirectedGraph(data, selector, options = {}) {
     .append('text')
     .attr('class', 'label')
     .text((d) => d.id)
-    .attr('text-anchor', 'middle')
-    .attr('font-size', '12px');
+    .attr('text-anchor', `${options.textAnchor}`)
+    .attr('font-size', `${options.childTextSize}`);
 
   // Define what happens when dragging starts, continues, and ends
   function dragstarted(d) {

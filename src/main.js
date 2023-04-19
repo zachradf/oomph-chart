@@ -24,7 +24,9 @@ import createChordDiagram from './Charts/hierarchicalCharts/chordChart.js';
 import createSankeyDiagram from './Charts/hierarchicalCharts/sankeyDiagram.js';
 import createClusterDiagram from './Charts/hierarchicalCharts/clusterDiagram.js';
 import createVoronoiTreemap from './Charts/hierarchicalCharts/voronoiTree.js';
-
+import createDendrogram from './Charts/hierarchicalCharts/dendogram.js';
+import createRadialTree from './Charts/hierarchicalCharts/radialTreeMap.js';
+import relativeNodeSize from './AddFunctionality/relativeNode.js';
 const data = new GraphSuperClass();
 console.log(data);
 console.log(data.charts.types);
@@ -112,25 +114,34 @@ const input15 = {
 
 // Adds Charts
 // Basic Charts
-const areaObject = new BasicClass(['AREA'], input3);
-const barObject = new BasicClass(['BAR'], input2);
-const boxPlotObject = new BasicClass(['BOX'], input15);
-const bubbleObject = new BasicClass(['BUBBLE'], input5);//fix category labels
-const donutChartObject = new BasicClass(['DONUT'], input6);
-const funnelObject = new BasicClass(['FUNNEL'], input11);
-const gaugeObject = new BasicClass(['GAUGE'], input14); // STILL NEEDS WORK
-const heatMapObject = new BasicClass(['HEATMAP'], input4);
-const lineObject = new BasicClass(['LINE'], input3);
-const pieChartObject = new BasicClass(['PIE'], input6);
-const polarObject = new BasicClass(['POLAR'], input12);
-const radarObject = new BasicClass(['RADAR'], input13);
-const scatterObject = new BasicClass(['SCATTER'], input3);
-const stackedBarObject = new BasicClass(['STACKEDBAR'], input);
-const sunburstObject = new HierarchyClass(['SUNBURST'], input9); // fix labels
-const treeDiagramObject = new HierarchyClass(['TREEDIAGRAM'], input7);
-const treeMapObject = new HierarchyClass(['TREEMAP'], input8);
-const waterfallObject = new BasicClass(['WATERFALL'], input10);
+// const areaObject = new BasicClass(['AREA', 'SCATTER'], input3);
+// const barObject = new BasicClass(['BAR'], input2);
+// const boxPlotObject = new BasicClass(['BOX'], input15);
+// const bubbleObject = new BasicClass(['BUBBLE'], input5);//fix category labels
+// const donutChartObject = new BasicClass(['DONUT'], input6);
+// const funnelObject = new BasicClass(['FUNNEL'], input11);
+// const gaugeObject = new BasicClass(['GAUGE'], input14); // STILL NEEDS WORK
+// const heatMapObject = new BasicClass(['HEATMAP'], input4);
+// const lineObject = new BasicClass(['LINE'], input3);
+// const pieChartObject = new BasicClass(['PIE'], input6);
+// const polarObject = new BasicClass(['POLAR'], input12);
+// const radarObject = new BasicClass(['RADAR'], input13);
+// const scatterObject = new BasicClass(['SCATTER'], input3);
+// const stackedBarObject = new BasicClass(['STACKEDBAR'], input);
+// const sunburstObject = new HierarchyClass(['SUNBURST'], input9); // fix labels
+// const treeDiagramObject = new HierarchyClass(['TREEDIAGRAM'], input7);
+// const treeMapObject = new HierarchyClass(['TREEMAP'], input8);
+// const waterfallObject = new BasicClass(['WATERFALL'], input10);
+relativeNodeSize('#chart', testDataScatterPlot, options);
+// const iciclePlotObject = new HierarchyClass(['ICICLE'], input8);
+// const input16 = {
+//   data: [[2, 5, 3, 6], [5, 1, 0, 4], [11, 2, 3, 7], [0, 8, 3, 5], ['CAT1', 'CAT2', 'CAT3', 'CAT4']],
+//   selector: '#chart',
+//   options,
+// };
+// const chordDiagramObject = new HierarchyClass(['CHORD'], input16);
+// createDendrogram(treeDiagramData, '#chart', options);
+// createRadialTree(treeDiagramData, '#chart', options);
 
-
-gradient('#chart', 'blue', 'red', 'BAR', 'x', testDataBarChart);// fix for waterfall and stackedbar chart x axis, funnel y axis
-
+// gradient('#chart', 'blue', 'red', 'BAR', 'x', testDataBarChart);// fix for waterfall and stackedbar chart x axis, funnel y axis
+// onHover('#chart');

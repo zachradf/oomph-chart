@@ -57,8 +57,8 @@ export default function createChordDiagram(data, selector, options) {
         .attr('x', centroid[0])
         .attr('y', centroid[1])
         .attr('dy', '0.35em')
-        .attr('text-anchor', 'middle')
-        .style('font-size', '12px')
+        .attr('text-anchor', `${options.textAnchor}`)
+        .style('font-size', `${options.childTextSize}`)
         .text(labels[d.index]);
     });
 }

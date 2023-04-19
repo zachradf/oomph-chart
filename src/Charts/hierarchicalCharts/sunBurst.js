@@ -48,7 +48,7 @@ export default function createD3SunburstChart(data, selector, options) {
     .attr('fill-opacity', (d) => (d.children ? 0.6 : 0.4))
     .attr('d', arc)
     .append('title')
-    .attr('font-size', '10px')
+    .attr('font-size', `${options.childTextSize}`)
     .attr('font-family', 'sans-serif')
     .attr('color', 'black')
     .text((d) => `${d.ancestors().map((d) => d.data.name).reverse().join('/')}\n${d.value}`);

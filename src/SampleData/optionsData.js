@@ -1,6 +1,7 @@
 
  export const options = {
-  color: d3.scaleOrdinal(d3.schemeCategory10),
+  childTextSize: 10,
+  color: 'green',
   colorScale: 'red',
   diameter: 600,
   endAngle: Math.PI / 1.25,
@@ -10,6 +11,7 @@
   innerRadius: 180,
   interval: 2000,
   levels: 5, // maybe should be calculated from data
+  linkColor: 'black',
   majorTickColor: 'black',
   majorTicks: 5,
   margin: {
@@ -18,19 +20,22 @@
   maxValue: 100, // maybe should be calculated from data
   minorTickColor: 'black',
   minorTicks: 4,
-  nodeRadius: 5,
+  nodeRadius: 15,
   opacity: 0.75,
   outerRadius: 200,
   overlay: true,
   padding: 0.1,
+  parentTextSize: 12,
   pointerColor: 'red',
   pointerWidth: 10,
-  radius: 4,
+  radius: 10,
   showCategories: true,
   showLabels: true,
   sortBy: 'value',
   startAngle: -Math.PI / 1.25,
   strokeColor: 'blue',
+  textAnchor: 'middle',
+  textColor: 'white',
   width: 900,
   xLabel: 'xLabel',
   yLabel: 'yLabel',
