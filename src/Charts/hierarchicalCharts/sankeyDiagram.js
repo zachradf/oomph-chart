@@ -41,7 +41,7 @@ export default function createSankeyDiagram(data, selector, options) {
     .attr('x', (d) => d.x0 - 6)
     .attr('y', (d) => (d.y1 + d.y0) / 2)
     .attr('dy', '0.35em')
-    .attr('text-anchor', 'end')
+    .attr('text-anchor', `${options.text}`)
     .text((d) => d.name)
     .style('font-size', '12px')
     .style('fill', '#000')

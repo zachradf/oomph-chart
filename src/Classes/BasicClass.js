@@ -15,40 +15,14 @@ import createFunnelChart from '../Charts/basicCharts/funnelChart.js';
 import createGaugeChart from '../Charts/basicCharts/gaugeChart.js';
 import createBoxPlot from '../Charts/basicCharts/boxPlot.js';
 
-import stack from '../AddFunctionality/stack.js';
 import createAxes from './classFunctions/XY.js';
 import createSVG from './classFunctions/SVG.js';
 import appendAxes from './classFunctions/AXES.js';
 
+import onHover from '../AddFunctionality/onHover.js';
+
 export default class BasicClass {
   constructor(graphArray, input) {
-    this.graphArray = graphArray;
-    this.input = input;
-    this.selector = input.selector ? input.selector : '#chart';
-    this.data = input.data;
-
-    if (!input.options) {
-      this.options = {};
-      this.options.margin = {
-        top: 20, right: 20, bottom: 30, left: 40,
-      };
-      this.options.width = 600;
-      this.options.height = 400;
-      this.options.radius = 5;
-      this.options.color = 'red';
-      this.options.showCategories = true;
-      this.options.chartNumber = 1;
-      this.options.padding = 0.1;
-    } else {
-      this.options = input.options;
-      this.options.chartNumber = 1;
-    }
-    this.options.textAnchor = this.options.textAnchor ? this.options.textAnchor : 'middle';
-    this.options.childTextSize = this.options.childTextSize ? this.options.childTextSize : '12px';
-    this.options.fontFamily = this.options.fontFamily ? this.options.fontFamily : 'sans-serif';
-    this.options.fontWeight = this.options.fontWeight ? this.options.fontWeight : 'normal';
-    this.options.parentTextSize = this.options.parentTextSize ? this.options.parentTextSize : '16px';
-
     this.createGraph = {
       BAR: createBarChart,
       BUBBLE: createBubbleChart,
@@ -83,18 +57,64 @@ export default class BasicClass {
       GAUGE: 'gauge-chart',
       BOX: 'box-plot',
     };
-    this.options.chartClass = svgTypeMap[this.graphArray[0]];
 
-    // move this into the iterate graphs function to handle multiple graph types
-
+    this.graphArray = graphArray;
+    this.options = input.options;
+    this.data = input.data;
+    this.input = input;
 
     this.iterateGraphs = () => {
       for (let i = 0; i < this.graphArray.length; i++) {
-        const generalElements = createAxes(this.input.data, graphArray[0], this.options);
-        generalElements.svg = createSVG(this.selector, graphArray[0], this.options);
-        this.generalElements = generalElements;
-        this.createGraph[this.graphArray[i]](this.data, this.options, this.generalElements);
-        appendAxes(this.graphArray[i], this.options, this.generalElements);
+        this.options[i].chartClass = svgTypeMap[this.graphArray[i]];
+
+        this.selector = input.selector ? input.selector : '#chart';
+
+        if (!input.options) {
+          this.options[i] = {};
+          this.options[i].margin = {
+            top: 20, right: 20, bottom: 30, left: 40,
+          };
+          this.options[i].width = 600;
+          this.options[i].height = 400;
+          this.options[i].radius = 5;
+          this.options[i].color = 'red';
+          this.options[i].showCategories = true;
+          this.options[i].chartNumber = 1;
+          this.options[i].padding = 0.1;
+        } else {
+          this.options = input.options;
+          this.options[i].chartNumber = i;
+        }
+        let generalElements;
+        if (this.options[i].stack && i === 0) {
+          generalElements = createAxes(this.input.data[i], graphArray[i], this.options[i]);
+          generalElements.svg = createSVG(this.selector, graphArray[i], this.options[i]);
+          this.generalElements = generalElements;
+        } else if (!this.options[i].stack) {
+          generalElements = createAxes(this.input.data[i], graphArray[i], this.options[i]);
+          generalElements.svg = createSVG(this.selector, graphArray[i], this.options[i]);
+          this.generalElements = generalElements;
+        }
+        this.createGraph[this.graphArray[i]](this.data[i], this.options[i], this.generalElements);
+        const options = this.options[i];
+        const elements = d3.selectAll(`svg.${svgTypeMap[this.graphArray[i]]} circle, rect, path, line, polygon, node`);
+        elements.each(function () {
+          const element = d3.select(this);
+          const { classList } = this; // Access the classList property of the DOM element
+
+          if (classList.length === 0) {
+            // The element has no classes, you can assign a class here
+            element.classed(`${options.chartClass}${i}`, true);
+          }
+          if(options.opacity){
+            element.style('opacity', options.opacity);
+          }
+        });
+        if (this.options[i].onHover) {
+          onHover(this.selector, this.options);
+        }
+
+        appendAxes(this.graphArray[i], this.options[i], this.generalElements);
       }
     };
     this.iterateGraphs();
@@ -139,20 +159,3 @@ export default class BasicClass {
     this.iterateGraphs();
   }
 }
-
-// Experiment with stacking and saving certain chart function results to the class
-// if (this.input.options.overlay) {
-//   const chartFunctions = [];
-//   for (let i = 0; i < this.graphArray.length; i++) {
-//     // const chartDiv = document.createElement('div');
-//     // chartDiv.id = `chart${this.input.options.chartNumber}`;
-//     // document.body.appendChild(chartDiv);
-//     // this.input.options.selector += this.input.options.chartNumber;
-//     // this.input.options.chartNumber++;
-//     // this.input.selector = chartDiv.id;
-//     chartFunctions.push(this.createGraph[this.graphArray[i]]);
-//     // this.createGraph[this.graphArray[i]](this.input.data, this.input.selector, this.input.options);
-//     // chartArray.push(this.input.selector);
-//   }
-//   stack(chartFunctions, this.input.data, this.input.selector, this.input.options);
-// } else {    //  }

@@ -97,6 +97,42 @@ export const testDataScatterPlot = [
   { x: 166, y: 98 },
   { x: 189, y: 70 }
 ];
+export const testDataScatterPlot2 = [
+  { x: 10, y: 20 },
+  { x: 30, y: 54 },
+  { x: 45, y: 11 },
+  { x: 60, y: 98 },
+  { x: 87, y: 63 },
+  { x: 5, y: 33 },
+  { x: 128, y: 10 },
+  { x: 162, y: 103 },
+  { x: 16, y: 98 },
+  { x: 109, y: 70 }
+];
+
+export const testDataScatterPlot3 = [
+  { x: 15, y: 30 },
+  { x: 34, y: 52 },
+  { x: 49, y: 16 },
+  { x: 10, y: 92 },
+  { x: 34, y: 35 },
+  { x: 26, y: 75 },
+  { x: 18, y: 13 },
+  { x: 172, y: 13 },
+  { x: 146, y: 108 },
+  { x: 129, y: 75 }
+];
+// // Randomize testDataScatterPlot2
+//   testDataScatterPlot2.forEach((item) => {
+//   item.x = Math.floor(Math.random() * (190 - 10) + 10);
+//   item.y = Math.floor(Math.random() * (100 - 10) + 10);
+// });
+
+// // Randomize testDataScatterPlot3
+//  testDataScatterPlot3.forEach((item) => {
+//   item.x = Math.floor(Math.random() * (190 - 10) + 10);
+//   item.y = Math.floor(Math.random() * (100 - 10) + 10);
+// });
 // cadidate for y2 axis
 export const heatMapData2 = [
   { x: 'A', y: '1', value: 50 },
