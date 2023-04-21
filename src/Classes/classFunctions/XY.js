@@ -97,3 +97,6 @@ export default function generalElementsFunction(data, graph, options) {
     x, y, xAxis, yAxis,
   };
 }
+
+// TODO replace domains with the ability to have negative values:
+// .domain(d3.extent(data, (d) => d.x)).nice()

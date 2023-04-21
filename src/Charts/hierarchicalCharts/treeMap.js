@@ -2,7 +2,7 @@ export default function createD3TreeMap(data, selector, options = {}) {
   // Set default options
   const width = options.width || 600;
   const height = options.height || 400;
-  const color = options.color || d3.scaleOrdinal(d3.schemeCategory10);
+  const color =  d3.scaleOrdinal(d3.schemeCategory10);
 
   // Create the treemap layout
   const treemap = d3.treemap()

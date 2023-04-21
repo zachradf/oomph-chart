@@ -7,6 +7,11 @@ import createSankeyDiagram from '../Charts/hierarchicalCharts/sankeyDiagram.js';
 import createClusterDiagram from '../Charts/hierarchicalCharts/clusterDiagram.js';
 import createVoronoiTreemap from '../Charts/hierarchicalCharts/voronoiTree.js';
 import createIcicleChart from '../Charts/hierarchicalCharts/iciclePlot.js';
+import createMarimekkoChart from '../Charts/hierarchicalCharts/marimekkoChart.js';
+import createAdjacencyMatrix from '../Charts/hierarchicalCharts/adjacencyMatrix.js';
+import createDendrogram from '../Charts/hierarchicalCharts/dendogram.js';
+import createRadialTree from '../Charts/hierarchicalCharts/radialTreeMap.js';
+
 
 export default class HierarchyClass {
   constructor(graphArray, input) {
@@ -38,11 +43,17 @@ export default class HierarchyClass {
       CLUSTER: createClusterDiagram,
       VORONOI: createVoronoiTreemap,
       ICICLE: createIcicleChart,
+      MARIMEKKO: createMarimekkoChart,
+      ADJACENCY: createAdjacencyMatrix,
+      DENDROGRAM: createDendrogram,
+      RADIALTREE: createRadialTree,
+      
     };
 
     this.iterateGraphs = () => {
       for (let i = 0; i < this.graphArray.length; i++) {
-        this.createGraph[this.graphArray[i]](this.input.data, this.input.selector, this.input.options);
+        console.log(this.input.data[i], this.input.selector, this.input.options[i]);
+        this.createGraph[this.graphArray[i]](this.input.data[i], this.input.selector, this.input.options[i]);
       }
     };
 

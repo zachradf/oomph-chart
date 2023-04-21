@@ -1,12 +1,15 @@
 import { sankey as d3Sankey, sankeyLinkHorizontal } from 'd3-sankey';
+import * as d3 from 'd3';
+
 export default function createSankeyDiagram(data, selector, options) {
   const {
     width,
     height,
-    color = d3.scaleOrdinal(d3.schemeCategory10),
     nodeWidth,
     nodePadding,
   } = options;
+  const color = d3.scaleOrdinal(d3.schemeCategory10)
+  console.log('data', data, 'selector', selector, 'options', options);
 
   const svg = d3
     .select(selector)
@@ -16,12 +19,13 @@ export default function createSankeyDiagram(data, selector, options) {
     .attr('height', height)
     .append('g');
 
-    const sankey = d3Sankey()
+  const sankey = d3Sankey()
     .nodeWidth(nodeWidth)
     .nodePadding(nodePadding)
     .extent([[1, 1], [width - 1, height - 5]]);
-
+  
   const { nodes, links } = sankey(data);
+  console.log('nodes', nodes, 'links', links)
 
   svg.append('g')
     .selectAll('rect')
@@ -41,7 +45,7 @@ export default function createSankeyDiagram(data, selector, options) {
     .attr('x', (d) => d.x0 - 6)
     .attr('y', (d) => (d.y1 + d.y0) / 2)
     .attr('dy', '0.35em')
-    .attr('text-anchor', `${options.text}`)
+    .attr('text-anchor', `${options.textAnchor}`)
     .text((d) => d.name)
     .style('font-size', '12px')
     .style('fill', '#000')

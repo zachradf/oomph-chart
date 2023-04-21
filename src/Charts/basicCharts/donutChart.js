@@ -1,6 +1,7 @@
 export default function createD3DonutChart(data, options, generalElements) {
   const { radius } = options;
   const { svg } = generalElements;
+  console.log('THIS IS SVG', svg)
 
   const arc = d3.arc()
     .innerRadius(radius * 0.5)

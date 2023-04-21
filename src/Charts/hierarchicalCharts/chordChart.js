@@ -8,6 +8,7 @@ export default function createChordDiagram(data, selector, options) {
     innerRadius,
   } = options;
   const labels = data.pop();
+  console.log('THIS IS LABELS', labels)
   const svg = d3
     .select(selector)
     .append('svg')

@@ -98,16 +98,16 @@ export const testDataScatterPlot = [
   { x: 189, y: 70 }
 ];
 export const testDataScatterPlot2 = [
-  { x: 10, y: 20 },
+  { x: 10, y: -20 },
   { x: 30, y: 54 },
-  { x: 45, y: 11 },
+  { x: 45, y: -11 },
   { x: 60, y: 98 },
-  { x: 87, y: 63 },
+  { x: 87, y: -63 },
   { x: 5, y: 33 },
-  { x: 128, y: 10 },
+  { x: 128, y: -10 },
   { x: 162, y: 103 },
   { x: 16, y: 98 },
-  { x: 109, y: 70 }
+  { x: 109, y: -70 }
 ];
 
 export const testDataScatterPlot3 = [
@@ -391,3 +391,74 @@ export const boxPlotData = [
     max: 68,
   }
 ];
+export const chordData = [
+  [4, 5, 1, 0],
+  [2, 3, 2, 1],
+  [0, 6, 9, 10],
+  [1, 2, 3, 4],
+  ['A', 'B', 'C', 'D']
+];
+
+export const sankeyDiagramData = {
+  nodes: [
+    { id: 'A', name: 'Node A' },
+    { id: 'B', name: 'Node B' },
+    { id: 'C', name: 'Node C' },
+    { id: 'D', name: 'Node D' },
+    { id: 'E', name: 'Node E' },
+  ],
+  links: [
+    { source: 'A', target: 'B', value: 10 },
+    { source: 'A', target: 'C', value: 15 },
+    { source: 'B', target: 'D', value: 5 },
+    { source: 'C', target: 'D', value: 10 },
+    { source: 'D', target: 'E', value: 15 },
+    { source: 'B', target: 'E', value: 5 },
+  ],
+};
+
+
+export const marimekkoData = [
+  {
+    category: 'Fruits',
+    children: [
+      { subCategory: 'Apples', percentage: 0.2 },
+      { subCategory: 'Oranges', percentage: 0.3 },
+      { subCategory: 'Bananas', percentage: 0.5 },
+    ],
+  },
+  {
+    category: 'Vegetables',
+    children: [
+      { subCategory: 'Carrots', percentage: 0.6 },
+      { subCategory: 'Potatoes', percentage: 0.3 },
+      { subCategory: 'Tomatoes', percentage: 0.1 },
+    ],
+  },
+  {
+    category: 'Grains',
+    children: [
+      { subCategory: 'Wheat', percentage: 0.4 },
+      { subCategory: 'Rice', percentage: 0.4 },
+      { subCategory: 'Oats', percentage: 0.2 },
+    ],
+  },
+];
+
+ export const adjacencyData = {
+  nodes: [
+    { id: 'A' },
+    { id: 'B' },
+    { id: 'C' },
+    { id: 'D' },
+    { id: 'E' },
+  ],
+  links: [
+    { source: 'A', target: 'B', value: 5 },
+    { source: 'A', target: 'C', value: 3 },
+    { source: 'B', target: 'D', value: 2 },
+    { source: 'B', target: 'E', value: 1 },
+    { source: 'C', target: 'D', value: 4 },
+    { source: 'D', target: 'E', value: 6 },
+  ],
+};

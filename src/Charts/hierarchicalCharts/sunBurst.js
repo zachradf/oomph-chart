@@ -5,7 +5,7 @@ export default function createD3SunburstChart(data, selector, options) {
   const {
     width, height, margin, radius,
   } = options;
-
+console.log("THIS IS MARGIN________________-", options)
   // Create a color scale
   const color = d3.scaleOrdinal(colorScheme);
 

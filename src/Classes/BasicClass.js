@@ -20,6 +20,7 @@ import createSVG from './classFunctions/SVG.js';
 import appendAxes from './classFunctions/AXES.js';
 
 import onHover from '../AddFunctionality/onHover.js';
+import relativeNode from '../AddFunctionality/relativeNode.js';
 
 export default class BasicClass {
   constructor(graphArray, input) {
@@ -95,23 +96,30 @@ export default class BasicClass {
           generalElements.svg = createSVG(this.selector, graphArray[i], this.options[i]);
           this.generalElements = generalElements;
         }
+        console.log(this.options[i], 'options', this.graphArray[i], 'graph', this.data[i], 'data', this.selector, 'selector')
         this.createGraph[this.graphArray[i]](this.data[i], this.options[i], this.generalElements);
         const options = this.options[i];
-        const elements = d3.selectAll(`svg.${svgTypeMap[this.graphArray[i]]} circle, rect, path, line, polygon, node`);
+        const elements = d3.selectAll(`svg.${svgTypeMap[this.graphArray[i]]} circle, arc, rect, path, line, polygon, node`);
+        // eslint-disable-next-line no-loop-func
+        console.log('-------------------------------', elements, 'elements')
         elements.each(function () {
           const element = d3.select(this);
           const { classList } = this; // Access the classList property of the DOM element
 
           if (classList.length === 0) {
-            // The element has no classes, you can assign a class here
+           // The element has no classes, you can assign a class here
             element.classed(`${options.chartClass}${i}`, true);
           }
-          if(options.opacity){
+          if (options.opacity) {
             element.style('opacity', options.opacity);
           }
         });
         if (this.options[i].onHover) {
+          console.log('onHover', this.options[i].onHover);
           onHover(this.selector, this.options);
+        }
+        if (this.options[i].relativeNodeSize) {
+          relativeNode(this.selector, this.data[i], this.options[i]);
         }
 
         appendAxes(this.graphArray[i], this.options[i], this.generalElements);
