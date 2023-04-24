@@ -1,4 +1,4 @@
-import InputTypes from '../Classes/data/graphTypes/inputTypes.js';
+import InputTypes from '../Classes/graphTypes/inputTypes.js';
 
 export function isValidInput(inputType, userInput) {
   const inputTypes = new InputTypes();

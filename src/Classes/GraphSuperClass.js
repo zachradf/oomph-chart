@@ -3,7 +3,7 @@ import ChartTypes from './graphTypes/chartTypes.js';
 import InputTypes from './graphTypes/inputTypes.js';
 import TagTypes from './graphTypes/tagTypes.js';
 
-import { isValidInput } from '../../ValidatorFunctions/inputValidator.js';
+import { isValidInput } from '../ValidatorFunctions/inputValidator.js';
 
 /**
  * Defines the relationship between objects at the data layer.

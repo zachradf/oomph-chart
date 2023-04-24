@@ -2,7 +2,7 @@
 // import * as d3 from 'd3';
 import BasicClass from './Classes/BasicClass.js';
 import HierarchyClass from './Classes/HierarchyClass.js';
-import GraphSuperClass from './Classes/data/graphSuperClass.js';
+import GraphSuperClass from './Classes/GraphSuperClass.js';
 import {
   bubbleChartData, testDataScatterPlot, treeDiagramData, treeMapData,
   dataSet1, testDataBarChart, extremeScatterPlot1, extremeScatterPlot2,
