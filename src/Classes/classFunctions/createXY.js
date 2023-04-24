@@ -1,3 +1,5 @@
+import { createXAxisLine, createYAxisLine } from './axisLines';
+
 export default function generalElementsFunction(data, graph, options) {
   let x;
 
@@ -34,7 +36,7 @@ export default function generalElementsFunction(data, graph, options) {
         .range([options.margin.left, options.width - options.margin.right]);
   }
 
-// Convert this to a switch case
+  // Convert this to a switch case
   const scaleFunctions = {
     BAR: () => d3.scaleLinear()
       .domain([0, d3.max(data, (d) => d.y)]).nice()
@@ -52,44 +54,40 @@ export default function generalElementsFunction(data, graph, options) {
       .nice()
       .range([options.height - options.margin.bottom, options.margin.top]),
     default: () => d3.scaleLinear()
-      .domain([0, d3.max(data, (d) => d.y)]).nice()
+      .domain(d3.extent(data, (d) => d.y)).nice()
       .range([options.height - options.margin.bottom, options.margin.top]),
   };
 
   const y = (scaleFunctions[graph] || scaleFunctions.default)();
+  const xAxisPosition = options.xAxisPosition || (options.height - options.margin.bottom);
+  const yAxisPosition = options.yAxisPosition || options.margin.left;
 
-  // Define the x-axis function with a bottom orientation and custom ticks
-  const xAxis = (g) => g
-    .attr('transform', `translate(0,${options.height - options.margin.bottom})`)
-    .call(d3.axisBottom(x).ticks(options.width / 80).tickSizeOuter(0));
+  const xAxis = (g) => {
+    g.attr('transform', `translate(0,${xAxisPosition})`)
+      .call(d3.axisBottom(x).ticks(options.width / 80).tickSizeOuter(0));
+    createXAxisLine(g, options, yAxisPosition);
+  };
 
   let yAxis;
   switch (graph) {
     case 'WATERFALL':
       yAxis = (g) => g
-        .attr('transform', `translate(${options.margin.left},0)`)
+        .attr('transform', `translate(${yAxisPosition},0)`)
         .call(d3.axisLeft(y))
-        .call((g) => g.selectAll('.tick line').clone()
-          .attr('x2', options.width - options.margin.left - options.margin.right)
-          .attr('stroke-opacity', 0.1));
+        .call((g) => {
+          g.selectAll('.tick line').clone()
+            .attr('x2', options.width - options.margin.left - options.margin.right)
+            .attr('stroke-opacity', 0.1);
+          createYAxisLine(g, options, xAxisPosition);
+        });
       break;
     case 'STACKEDBAR':
-      yAxis = (g) => g
-        .attr('transform', `translate(${options.margin.left},0)`)
-        .call(d3.axisLeft(y).ticks(null, 's'))
-        .call((g) => g.select('.domain').remove());
-      break;
     case 'BAR':
-      yAxis = (g) => g
-        .attr('transform', `translate(${options.margin.left},0)`)
-        .call(d3.axisLeft(y))
-        .call((g) => g.select('.domain').remove());
-      break;
     default:
       yAxis = (g) => g
-        .attr('transform', `translate(${options.margin.left},0)`)
-        .call(d3.axisLeft(y).ticks(options.height / 80))
-        .call((g) => g.select('.domain').remove());
+        .attr('transform', `translate(${yAxisPosition},0)`)
+        .call(d3.axisLeft(y).ticks(graph === 'STACKEDBAR' ? null : options.height / 80))
+        .call((g) => createYAxisLine(g, options, xAxisPosition));
       break;
   }
 
@@ -97,6 +95,3 @@ export default function generalElementsFunction(data, graph, options) {
     x, y, xAxis, yAxis,
   };
 }
-
-// TODO replace domains with the ability to have negative values:
-// .domain(d3.extent(data, (d) => d.x)).nice()

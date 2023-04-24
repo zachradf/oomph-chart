@@ -32,25 +32,25 @@ console.log(superObjects);
 
 // Adds Charts
 // Basic Charts
-const areaObject = new BasicClass(['AREA', 'SCATTER'], input3);
+// const areaObject = new BasicClass(['AREA', 'SCATTER'], input3);
 // const barObject = new BasicClass(['SCATTER', 'SCATTER', 'SCATTER', 'AREA'], input2);
 
 
 // const bubbleObject = new BasicClass(['BUBBLE'], input5);//fix category labels
-// const areaObject = new BasicClass(['DONUT'], input23);
-// const donutChartObject2 = new BasicClass(['AREA'], input4);
-// const funnelObject = new BasicClass(['FUNNEL'], input11);
+const areaObject = new BasicClass(['DONUT'], input23);
+const donutChartObject2 = new BasicClass(['AREA'], input4);
+const funnelObject = new BasicClass(['FUNNEL'], input11);
 // // const gaugeObject = new BasicClass(['GAUGE'], input14); // STILL NEEDS WORK
-// const heatMapObject = new BasicClass(['HEATMAP'], input4);
+const heatMapObject = new BasicClass(['HEATMAP'], input4);
 // // const lineObject = new BasicClass(['LINE', 'SCATTER'], input3);
-// const pieChartObject = new BasicClass(['PIE'], input6);
+const pieChartObject = new BasicClass(['PIE'], input6);
 // const polarObject = new BasicClass(['POLAR'], input12);
 // const radarObject = new BasicClass(['RADAR'], input13);
-// const stackedBarObject = new BasicClass(['STACKEDBAR'], input);
+const stackedBarObject = new BasicClass(['STACKEDBAR'], input);
 // const sunburstObject = new HierarchyClass(['SUNBURST'], input9); // fix labels
 // const treeDiagramObject = new HierarchyClass(['TREEDIAGRAM'], input7);
 // const treeMapObject = new HierarchyClass(['TREEMAP'], input8);
-// const waterfallObject = new BasicClass(['WATERFALL'], input10);
+const waterfallObject = new BasicClass(['WATERFALL'], input10);
 // // // relativeNodeSize('#chart', testDataScatterPlot, options);
 // const iciclePlotObject = new HierarchyClass(['ICICLE'], input8);
 // const chordDiagramObject = new HierarchyClass(['CHORD'], input16);
@@ -62,9 +62,9 @@ const areaObject = new BasicClass(['AREA', 'SCATTER'], input3);
 // const scatterObject = new BasicClass(['SCATTER'], input3);
 // const marimekkoChartObject = new HierarchyClass(['MARIMEKKO'], input19);
 // const adjacencyMatrixObject = new HierarchyClass(['ADJACENCY'], input20);
-// const lineAndScatterObject = new BasicClass(['LINE', 'SCATTER'], input21);
-// const barObject2 = new BasicClass(['BAR'], input1);
-// const boxPlotObject = new BasicClass(['BOX'], input15);
+const lineAndScatterObject = new BasicClass(['LINE', 'SCATTER'], input21);
+const barObject2 = new BasicClass(['BAR'], input1);
+const boxPlotObject = new BasicClass(['BOX'], input15);
 
 
 

@@ -98,10 +98,10 @@ export const testDataScatterPlot = [
   { x: 189, y: 70 }
 ];
 export const testDataScatterPlot2 = [
-  { x: 10, y: -20 },
+  { x: -10, y: -20 },
   { x: 30, y: 54 },
   { x: 45, y: -11 },
-  { x: 60, y: 98 },
+  { x: -60, y: 98 },
   { x: 87, y: -63 },
   { x: 5, y: 33 },
   { x: 128, y: -10 },

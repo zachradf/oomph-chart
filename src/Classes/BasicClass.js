@@ -15,9 +15,9 @@ import createFunnelChart from '../Charts/basicCharts/funnelChart.js';
 import createGaugeChart from '../Charts/basicCharts/gaugeChart.js';
 import createBoxPlot from '../Charts/basicCharts/boxPlot.js';
 
-import createAxes from './classFunctions/XY.js';
-import createSVG from './classFunctions/SVG.js';
-import appendAxes from './classFunctions/AXES.js';
+import createAxes from './classFunctions/createXY.js';
+import createSVG from './classFunctions/createSVG.js';
+import appendAxes from './classFunctions/appendAxes.js';
 
 import onHover from '../AddFunctionality/onHover.js';
 import relativeNode from '../AddFunctionality/relativeNode.js';
