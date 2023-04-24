@@ -8,8 +8,8 @@
  */
 export default class TagTypes {
   constructor() {
-    // TODO input types are a work-in-progress
-    this.types = {
+    // TODO tag types are a work-in-progress
+    const types = {
       dateRange: {
         name: 'Date',
         nameLong: 'Date Range',
@@ -23,5 +23,7 @@ export default class TagTypes {
         nameLong: 'Single Axis',
       },
     };
+
+    Object.assign(this, types);
   }
 }

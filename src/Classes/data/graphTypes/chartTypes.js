@@ -8,7 +8,7 @@
  */
 export default class ChartTypes {
   constructor() {
-    this.types = {
+    const types = {
       area: {
         name: 'Area',
         nameLong: 'Area Chart',
@@ -70,5 +70,7 @@ export default class ChartTypes {
         nameLong: 'Waterfall Chart',
       },
     };
+
+    Object.assign(this, types);
   }
 }

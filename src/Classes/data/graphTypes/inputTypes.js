@@ -9,7 +9,7 @@
 export default class InputTypes {
   constructor() {
     // TODO input types are a work-in-progress
-    this.types = {
+    const types = {
       dates: {
         name: 'Dates',
         nameLong: 'Dates',
@@ -21,5 +21,7 @@ export default class InputTypes {
         dataTypes: [String, Number],
       },
     };
+
+    Object.assign(this, types);
   }
 }
