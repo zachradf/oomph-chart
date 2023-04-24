@@ -20,6 +20,8 @@
         "exports": "never",
         "functions": "never"
       }
-    ]
+    ],
+    "import/extensions": "off",
+    "import/prefer-default-export": "off"
   }
 }

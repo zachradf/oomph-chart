@@ -1,5 +1,4 @@
-/* eslint-disable import/prefer-default-export */
-import InputTypes from '../Classes/data/graphTypes/inputTypes';
+import InputTypes from '../Classes/data/graphTypes/inputTypes.js';
 
 export function isValidInput(inputType, userInput) {
   const inputTypes = new InputTypes();

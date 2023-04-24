@@ -1,9 +1,9 @@
 /* eslint-disable no-use-before-define */
-import ChartTypes from './graphTypes/chartTypes';
-import InputTypes from './graphTypes/inputTypes';
-import TagTypes from './graphTypes/tagTypes';
+import ChartTypes from './graphTypes/chartTypes.js';
+import InputTypes from './graphTypes/inputTypes.js';
+import TagTypes from './graphTypes/tagTypes.js';
 
-import { isValidInput } from '../../ValidatorFunctions/inputValidator';
+import { isValidInput } from '../../ValidatorFunctions/inputValidator.js';
 
 /**
  * Defines the relationship between objects at the data layer.
