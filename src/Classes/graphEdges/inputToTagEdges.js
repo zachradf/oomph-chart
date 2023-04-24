@@ -7,10 +7,10 @@ const tagTypes = new TagTypes();
 // TODO make inputTypes type-safe (object based) rather than hard-coded
 export const inputToTagEdges = {
   dates: [
-    tagTypes.dateRange
+    tagTypes.dateRange,
   ],
   xy: [
     tagTypes.multiAxis,
-    tagTypes.singleAxis
+    tagTypes.singleAxis,
   ],
 };
