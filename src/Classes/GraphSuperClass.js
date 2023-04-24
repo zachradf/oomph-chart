@@ -1,9 +1,10 @@
 /* eslint-disable no-use-before-define */
 import ChartTypes from './graphTypes/chartTypes.js';
 import InputTypes from './graphTypes/inputTypes.js';
-import TagTypes from './graphTypes/tagTypes.js';
+// import TagTypes from './graphTypes/tagTypes.js';
 
 import { isValidInput } from '../ValidatorFunctions/inputValidator.js';
+import { getInputAdjacencies } from './graphAdjacencies/inputAdjacencies.js';
 
 /**
  * Defines the relationship between objects at the data layer.
@@ -56,11 +57,7 @@ function getCompatibleTagTypes(validInputs) {
   // Edge case: no input is provided
   if (!validInputs) return null;
 
-  const compatibleTagTypes = [];
-  const tagTypes = new TagTypes();
-
-  // TODO
-
+  const compatibleTagTypes = getInputAdjacencies(validInputs);
   return compatibleTagTypes;
 }
 
