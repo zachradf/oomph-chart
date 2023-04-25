@@ -30,7 +30,8 @@
     "d3-selection": "^3.0.0",
     "d3-voronoi-treemap": "^1.1.2",
     "jest-environment-jsdom": "^29.5.0",
-    "polygon-clipping": "^0.15.3"
+    "polygon-clipping": "^0.15.3",
+    "topojson-client": "^3.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",
