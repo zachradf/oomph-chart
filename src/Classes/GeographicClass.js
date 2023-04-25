@@ -1,7 +1,7 @@
 import onHover from '../AddFunctionality/onHover.js';
 import relativeNode from '../AddFunctionality/relativeNode.js';
 
-export default class BasicClass {
+export default class GeographicClass {
   constructor(graphArray, input) {
     this.createGraph = {
     

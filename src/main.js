@@ -2,7 +2,7 @@
 import * as d3 from 'd3';
 import BasicClass from './Classes/BasicClass.js';
 import HierarchyClass from './Classes/HierarchyClass.js';
-import GraphSuperClass from './Classes/data/graphSuperClass.js';
+import GraphSuperClass from './Classes/graphSuperClass.js';
 import {
   input, input2, input3, input4, input5, input6, input7, input8, input9, input10, input11, input12, input13, input14, input15, input16, input17, input18, input19, input20, input21, input1, input22, input23
 } from './SampleData/inputData.js';
@@ -15,6 +15,7 @@ import stack from './AddFunctionality/stack.js';
 import sort from './AddFunctionality/sort.js';
 import createChoroplethMap from './Charts/geoCharts/choroplethMap.js';
 import createPointMap from './Charts/geoCharts/pointMap.js';
+import animateByYValue from './AddFunctionality/animate.js';
 
 const superObjects = {};
 superObjects.string_number_test = new GraphSuperClass(testDataBarChart);
@@ -25,7 +26,7 @@ console.log(superObjects);
 
 // Adds Charts
 // Basic Charts
-// const areaObject = new BasicClass(['AREA', 'SCATTER'], input3);
+// const areaObject = new BasicClass(['SCATTER'], input3);
 // const barObject = new BasicClass(['SCATTER', 'SCATTER', 'SCATTER', 'AREA'], input2);
 
 // const bubbleObject = new BasicClass(['BUBBLE'], input5);//fix category labels
@@ -55,7 +56,7 @@ console.log(superObjects);
 // const marimekkoChartObject = new HierarchyClass(['MARIMEKKO'], input19);
 // const adjacencyMatrixObject = new HierarchyClass(['ADJACENCY'], input20);
 // const lineAndScatterObject = new BasicClass(['LINE', 'SCATTER'], input21);
-// const barObject2 = new BasicClass(['BAR'], input1);
+const barObject2 = new BasicClass(['BAR'], input3);
 // const boxPlotObject = new BasicClass(['BOX'], input15);
 
 // gradient('#chart', 'blue', 'red', 'BAR', 'x', testDataBarChart);// fix for waterfall and stackedbar chart x axis, funnel y axis
@@ -100,5 +101,5 @@ const dataset = [
 //   backgroundColor: '#ccc',
 // };
 
-
-createPointMap(dataset, options, '#chart');
+// setTimeout(animateByYValue('#chart', input3.data[0], input3.options), 1000);
+// createPointMap(dataset, options, '#chart');

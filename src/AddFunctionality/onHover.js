@@ -8,7 +8,7 @@ export default function onHover(selector, options) {
 
     // Select all the elements (rect, node, leaf, link, circle) with the specified chartType class
     const elements = d3.selectAll(`circle.${option.chartClass}${i}, rect.${option.chartClass}${i}, .node.${option.chartClass}${i}, .leaf.${option.chartClass}${i}, .link.${option.chartClass}${i}, .box-rect, .arc, path.${option.chartClass}${i}, svg.pie-chart path`);
-    // console.log('))))))))))))))))))))))))))', elements);
+
     const tooltip = d3.select('body')
       .append('div')
       .attr('class', 'tooltip')

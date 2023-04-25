@@ -27,9 +27,9 @@ export const input2 = {
 };
 
 export const input3 = {
-  data: [testDataScatterPlot, testDataScatterPlot2],
+  data: [testDataBarChart],
   selector: '#chart',
-  options: [options15, options15],
+  options: [options15],
 };
 
 export const input4 = {

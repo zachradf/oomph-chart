@@ -21,6 +21,7 @@ import appendAxes from './classFunctions/appendAxes.js';
 
 import onHover from '../AddFunctionality/onHover.js';
 import relativeNode from '../AddFunctionality/relativeNode.js';
+import addAnimation from '../AddFunctionality/animate.js';
 
 export default class BasicClass {
   constructor(graphArray, input) {
@@ -101,7 +102,6 @@ export default class BasicClass {
         const options = this.options[i];
         const elements = d3.selectAll(`svg.${svgTypeMap[this.graphArray[i]]} circle, arc, rect, path, line, polygon, node`);
         // eslint-disable-next-line no-loop-func
-        console.log('-------------------------------', elements, 'elements')
         elements.each(function () {
           const element = d3.select(this);
           const { classList } = this; // Access the classList property of the DOM element
@@ -115,7 +115,6 @@ export default class BasicClass {
           }
         });
         if (this.options[i].onHover) {
-          console.log('onHover', this.options[i].onHover);
           onHover(this.selector, this.options);
         }
         if (this.options[i].relativeNodeSize) {
@@ -123,6 +122,7 @@ export default class BasicClass {
         }
 
         appendAxes(this.graphArray[i], this.options[i], this.generalElements);
+        //setTimeout(addAnimation(this.selector, this.data[i], this.generalElements.x, this.generalElements.xAxis), 1000);
       }
     };
     this.iterateGraphs();

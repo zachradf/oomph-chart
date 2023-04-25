@@ -405,7 +405,7 @@ export const options15 = {
   fillColor: 'blue',
   fontFamily: 'sans-seriff',
   fontWeight: 'normal',
-  height: 1600,
+  height: 600,
   hoverColor: 'blue',
   innerRadius: 180,
   interval: 2000,
@@ -440,7 +440,7 @@ export const options15 = {
   strokeColor: 'blue',
   textAnchor: 'middle',
   textColor: 'white',
-  width: 1900,
+  width: 900,
   xLabel: 'xLabel',
   yLabel: 'yLabel',
 };
