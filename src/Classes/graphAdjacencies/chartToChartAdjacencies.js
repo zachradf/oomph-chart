@@ -5,6 +5,6 @@ import { chartToChartEdges } from '../graphEdges/chartToChartEdges.js';
  *
  * Indended for usage with layered charts.
  */
-export function getChartAdjacencies() {
+export function getChartToChartAdjacencies() {
   // TODO
 }
