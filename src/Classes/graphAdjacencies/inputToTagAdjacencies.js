@@ -1,3 +1,5 @@
+import InputTypes from '../graphTypes/inputTypes.js';
+
 import { inputToTagEdges } from '../graphEdges/inputToTagEdges.js';
 
 /**
@@ -6,16 +8,29 @@ import { inputToTagEdges } from '../graphEdges/inputToTagEdges.js';
  * @param {Array.<InputTypes>} validInputs - An array of valid input types.
  * @returns {Array.<TagTypes} An array of tag types.
  */
-export function getInputToTagAdjacencies(validInputs) {
-  // Edge case: no input is provided
-  if (!validInputs) return null;
+export function getInputToTagAdjacencies(inputs) {
+  if (!inputs || inputs.length === 0) {
+    console.error('Error caught: No inputs provided.');
+  }
 
-  const inputToTagAdjacencies = new Set();
+  try {
+    const inputToTagAdjacencies = new Set();
+    const inputTypes = new InputTypes();
+    const adjacencies = [];
 
-  validInputs?.forEach((inputType) => {
-    const adjacencies = inputToTagEdges[inputType];
-    adjacencies?.forEach((adjacency) => inputToTagAdjacencies.add(adjacency));
-  });
+    inputs.forEach((inputType) => {
+      if (!inputTypes[inputType]) throw new Error(`Invalid input type: ${inputType}`);
+      if (!inputTypes[inputType]) throw new Error(`No input-to-tag edges found for: ${inputType}`);
+      adjacencies.push(...inputToTagEdges[inputType]);
+    });
 
-  return [...inputToTagAdjacencies];
+    adjacencies.forEach((adjacency) => {
+      inputToTagAdjacencies.add(adjacency);
+    });
+
+    return [...inputToTagAdjacencies];
+  } catch (error) {
+    console.error(`Error caught: ${error.message}`);
+    return [];
+  }
 }

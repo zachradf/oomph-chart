@@ -1,3 +1,5 @@
+import TagTypes from '../graphTypes/tagTypes.js';
+
 import { tagToChartEdges } from '../graphEdges/tagToChartEdges.js';
 
 /**
@@ -6,16 +8,33 @@ import { tagToChartEdges } from '../graphEdges/tagToChartEdges.js';
  * @param {Array.<InputTypes>} validInputs - An array of valid input types.
  * @returns {Array.<TagTypes} An array of tag types.
 */
-export function getTagToChartAdjacencies(validTags) {
-  // Edge case: no input is provided
-  if (!validTags) return null;
 
-  const tagToChartAdjacencies = new Set();
+export function getTagToChartAdjacencies(tags) {
+  if (!tags || tags.length === 0) {
+    console.error('Error caught: No tags provided.');
+    return [];
+  }
 
-  validTags?.forEach((tagType) => {
-    const adjacencies = tagToChartEdges[tagType];
-    adjacencies?.forEach((adjacency) => tagToChartAdjacencies.add(adjacency));
-  });
+  try {
+    const tagToChartAdjacencies = new Set();
+    const tagTypes = new TagTypes();
+    const adjacencies = [];
 
-  return [...tagToChartAdjacencies];
+    tags.forEach((tagType) => {
+      if (!tagTypes[tagType]) throw new Error(`Invalid tag type: ${tagType}`);
+      if (!tagToChartEdges[tagType]) throw new Error(`No tag-to-chart edges found for: ${tagType}`);
+
+      // TODO verify if '...' is needed below. Seems to work either way, but needed for input-to-tag
+      adjacencies.push(...tagToChartEdges[tagType]);
+    });
+
+    adjacencies.forEach((adjacency) => {
+      tagToChartAdjacencies.add(adjacency);
+    });
+
+    return [...tagToChartAdjacencies];
+  } catch (error) {
+    console.error(`Error caught: ${error.message}`);
+    return [];
+  }
 }

@@ -15,12 +15,23 @@ const tagTypes = new TagTypes();
  * @type {Object.<string, string[]>}
  */
 // TODO this section is heavily dependant on graph types being defined, so is very much a WIP.
-export const inputToTagEdges = {
-  [inputTypes.dates._selfKey]: [
-    tagTypes.dateRange._selfKey,
-  ],
-  [inputTypes.xy._selfKey]: [
-    tagTypes.multiAxis._selfKey,
-    tagTypes.singleAxis._selfKey,
-  ],
-};
+function createInputToTagEdges() {
+  try {
+    const edges = {
+      [inputTypes.dates._selfKey]: [
+        tagTypes.dateRange._selfKey,
+      ],
+      [inputTypes.xy._selfKey]: [
+        tagTypes.multiAxis._selfKey,
+        tagTypes.singleAxis._selfKey,
+      ],
+    };
+
+    return edges;
+  } catch (error) {
+    console.error(`Error caught, possible reference to non-existent input or tag type: ${error.message}`);
+    return {};
+  }
+}
+
+export const inputToTagEdges = createInputToTagEdges();

@@ -15,16 +15,27 @@ const tagTypes = new TagTypes();
  * @type {Object.<string, string[]>}
  */
 // TODO this section is heavily dependant on graph types being defined, so is very much a WIP.
-export const tagToChartEdges = {
-  [tagTypes.dateRange._selfKey]: [
-    chartTypes.guage._selfKey,
-  ],
-  [tagTypes.multiAxis._selfKey]: [
-    chartTypes.bar._selfKey,
-    chartTypes.line._selfKey,
-  ],
-  [tagTypes.singleAxis._selfKey]: [
-    chartTypes.bar._selfKey,
-    chartTypes.polar._selfKey,
-  ],
-};
+function createTagToChartEdges() {
+  try {
+    const edges = {
+      [tagTypes.dateRange._selfKey]: [
+        chartTypes.guage._selfKey,
+      ],
+      [tagTypes.multiAxis._selfKey]: [
+        chartTypes.bar._selfKey,
+        chartTypes.line._selfKey,
+      ],
+      [tagTypes.singleAxis._selfKey]: [
+        chartTypes.bar._selfKey,
+        chartTypes.polar._selfKey,
+      ],
+    };
+
+    return edges;
+  } catch (error) {
+    console.error(`Error caught, possible reference to non-existent tag or chart type: ${error.message}`);
+    return {};
+  }
+}
+
+export const tagToChartEdges = createTagToChartEdges();
