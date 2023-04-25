@@ -18,9 +18,15 @@ const tagTypes = new TagTypes();
 function createTagToChartEdges() {
   try {
     const edges = {
-      [tagTypes.xy._selfKey]: [
+      [tagTypes.categorical._selfKey]: [
         chartTypes.bar._selfKey,
-        chartTypes.line._selfKey,
+        chartTypes.donut._selfKey,
+        chartTypes.funnel._selfKey,
+        chartTypes.polar._selfKey,
+        chartTypes.radar._selfKey,
+      ],
+      [tagTypes.xy._selfKey]: [
+        chartTypes.scatter._selfKey,
       ],
     };
 

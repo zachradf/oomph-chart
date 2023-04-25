@@ -10,6 +10,11 @@
 export default class TagTypes {
   constructor() {
     const types = {
+      categorical: {
+        _selfKey: 'categorical',
+        name: 'Categorical',
+        nameLong: 'Categorical Tag',
+      },
       xy: {
         _selfKey: 'xy',
         name: 'XY',

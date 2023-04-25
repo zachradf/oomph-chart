@@ -22,7 +22,7 @@ function createInputToTagEdges() {
         tagTypes.xy._selfKey,
       ],
       [inputTypes.string_number._selfKey]: [
-        tagTypes.xy._selfKey,
+        tagTypes.categorical._selfKey,
       ],
     };
 
