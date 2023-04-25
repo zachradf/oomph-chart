@@ -1,4 +1,4 @@
-import { getCompatibleInputTypes } from '../ValidatorFunctions/inputValidator.js';
+import { getCompatibleInputTypes } from './graphValidators/inputValidator.js';
 import { getTagToChartAdjacencies } from './graphAdjacencies/tagToChartAdjacencies.js';
 import { getInputToTagAdjacencies } from './graphAdjacencies/inputToTagAdjacencies.js';
 

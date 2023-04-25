@@ -31,7 +31,7 @@ import createMarimekkoChart from './Charts/hierarchicalCharts/merimekkoChart.js'
 import createAdjacencyMatrix from './Charts/hierarchicalCharts/adjacencyMatrix.js';
 import sort from './AddFunctionality/sort.js';
 
-const superObject1 = new GraphSuperClass([testDataBarChart]);
+const superObject1 = new GraphSuperClass(testDataBarChart);
 console.log(superObject1);
 
 const input = {

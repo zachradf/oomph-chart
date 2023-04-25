@@ -9,22 +9,11 @@
  */
 export default class TagTypes {
   constructor() {
-    // TODO tag types are a work-in-progress
     const types = {
-      dateRange: {
-        _selfKey: 'dateRange',
-        name: 'Date',
-        nameLong: 'Date Range',
-      },
-      multiAxis: {
-        _selfKey: 'multiAxis',
-        name: 'Multi',
-        nameLong: 'Multi Axis',
-      },
-      singleAxis: {
-        _selfKey: 'singleAxis',
-        name: 'Single',
-        nameLong: 'Single Axis',
+      xy: {
+        _selfKey: 'xy',
+        name: 'XY',
+        nameLong: 'XY Tag',
       },
     };
 

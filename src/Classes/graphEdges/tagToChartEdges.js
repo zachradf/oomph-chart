@@ -18,16 +18,9 @@ const tagTypes = new TagTypes();
 function createTagToChartEdges() {
   try {
     const edges = {
-      [tagTypes.dateRange._selfKey]: [
-        chartTypes.guage._selfKey,
-      ],
-      [tagTypes.multiAxis._selfKey]: [
+      [tagTypes.xy._selfKey]: [
         chartTypes.bar._selfKey,
         chartTypes.line._selfKey,
-      ],
-      [tagTypes.singleAxis._selfKey]: [
-        chartTypes.bar._selfKey,
-        chartTypes.polar._selfKey,
       ],
     };
 

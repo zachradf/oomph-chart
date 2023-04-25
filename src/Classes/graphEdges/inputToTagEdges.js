@@ -18,12 +18,11 @@ const tagTypes = new TagTypes();
 function createInputToTagEdges() {
   try {
     const edges = {
-      [inputTypes.dates._selfKey]: [
-        tagTypes.dateRange._selfKey,
+      [inputTypes.number_number._selfKey]: [
+        tagTypes.xy._selfKey,
       ],
-      [inputTypes.xy._selfKey]: [
-        tagTypes.multiAxis._selfKey,
-        tagTypes.singleAxis._selfKey,
+      [inputTypes.string_number._selfKey]: [
+        tagTypes.xy._selfKey,
       ],
     };
 
