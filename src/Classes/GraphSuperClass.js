@@ -7,14 +7,16 @@ import { getInputToTagAdjacencies } from './graphAdjacencies/inputToTagAdjacenci
  * Example:
  *    inputs --> tags --> charts
  * @constructor
+ * @property {*} data - The raw data that's being imported.
  * @property {Array.<ChartTypes>} charts - Compatible chart types.
  * @property {Array.<InputTypes>} inputs - Compatible input types.
  * @property {Array.<TagTypes>} tags - Compatible tag types.
- * @param {*} data - The input data. Can be of any type.
+ * @param {*} userInput - User input data. Can be of any type.
  */
 export default class GraphSuperClass {
-  constructor(data) {
-    this.inputs = getCompatibleInputTypes(data);
+  constructor(userInput) {
+    this.data = userInput;
+    this.inputs = getCompatibleInputTypes(this.data);
     this.tags = getInputToTagAdjacencies(this.inputs);
     this.charts = getTagToChartAdjacencies(this.tags);
   }

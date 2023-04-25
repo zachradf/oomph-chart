@@ -17,10 +17,10 @@ import createChoroplethMap from './Charts/geoCharts/choroplethMap.js';
 import createPointMap from './Charts/geoCharts/pointMap.js';
 import animateByYValue from './AddFunctionality/animate.js';
 
-const superObjects = {};
-superObjects.string_number_test = new GraphSuperClass(testDataBarChart);
-superObjects.number_number_test = new GraphSuperClass(testDataScatterPlot);
-console.log(superObjects);
+// const superObjects = {};
+// superObjects.string_number_test = new GraphSuperClass(testDataBarChart);
+// superObjects.number_number_test = new GraphSuperClass(testDataScatterPlot);
+// console.log(superObjects);
 
 // onHover('#scatter', options);
 
