@@ -59,47 +59,7 @@ console.log(superObjects);
 const barObject2 = new BasicClass(['BAR'], input3);
 // const boxPlotObject = new BasicClass(['BOX'], input15);
 
-// gradient('#chart', 'blue', 'red', 'BAR', 'x', testDataBarChart);// fix for waterfall and stackedbar chart x axis, funnel y axis
-// onHover('#chart', [options, options1, options13]);
-// const dataset = [
-//   { id: '01', value: 10 },
-//   { id: '02', value: 20 },
-//   { id: '03', value: 30 },
-//   { id: '09', value: 90 },
-//   { id: '22', value: 100 },
-//   { id: '43', value: 60 }
-// ];
 
-const options = {
-  apiUrl: 'https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json',
-  width: 800,
-  height: 600,
-  colorScale: d3.interpolateBlues,
-  title: 'Point Map',
-  showLabels: true,
-  fontSize : 8,
-};
-
-
-// createChoroplethMap(dataset, options, '#chart');
-// Example dataset
-const dataset = [
-  { coordinates: [40.7128, -74.0060] }, // New York City
-  { coordinates: [34.0522, -118.2437] }, // Los Angeles
-  { coordinates: [41.8781, -87.6298] }, // Chicago
-  { coordinates: [29.7604, -95.3698] }, // Houston
-  { coordinates: [37.7749, -122.4194] }, // San Francisco
-];
-
-// Example options object
-// const options = {
-//   apiUrl: 'https://d3js.org/us-10m.v1.json',
-//   width: 800,
-//   height: 600,
-//   pointRadius: 5,
-//   pointColor: 'blue',
-//   backgroundColor: '#ccc',
-// };
 
 // setTimeout(animateByYValue('#chart', input3.data[0], input3.options), 1000);
 // createPointMap(dataset, options, '#chart');

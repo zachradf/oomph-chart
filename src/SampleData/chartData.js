@@ -462,3 +462,10 @@ export const marimekkoData = [
     { source: 'D', target: 'E', value: 6 },
   ],
 };
+export const choroplethDataset = [
+  { coordinates: [40.7128, -74.0060] }, // New York City
+  { coordinates: [34.0522, -118.2437] }, // Los Angeles
+  { coordinates: [41.8781, -87.6298] }, // Chicago
+  { coordinates: [29.7604, -95.3698] }, // Houston
+  { coordinates: [37.7749, -122.4194] }, // San Francisco
+];
