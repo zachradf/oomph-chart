@@ -1,16 +1,26 @@
-// import InputTypes from '../graphTypes/inputTypes.js';
-// import TagTypes from '../graphTypes/tagTypes.js';
+/* eslint-disable no-underscore-dangle */
 
-// const tagTypes = new TagTypes();
+import InputTypes from '../graphTypes/inputTypes.js';
+import TagTypes from '../graphTypes/tagTypes.js';
 
+const inputTypes = new InputTypes();
+const tagTypes = new TagTypes();
+
+/**
+ * Defines the relationships between input types and tag types, mapping
+ * each input type to an array of associated tag types. This is necessary
+ * for determining the edge connections in a graph based on the input types
+ * provided.
+ *
+ * @type {Object.<string, string[]>}
+ */
 // TODO this section is heavily dependant on graph types being defined, so is very much a WIP.
-// TODO make below types type-safe/object-based rather than hard-coded
 export const inputToTagEdges = {
-  dates: [
-    'dateRange',
+  [inputTypes.dates._selfKey]: [
+    tagTypes.dateRange._selfKey,
   ],
-  xy: [
-    'multiAxis',
-    'singleAxis',
+  [inputTypes.xy._selfKey]: [
+    tagTypes.multiAxis._selfKey,
+    tagTypes.singleAxis._selfKey,
   ],
 };

@@ -1,21 +1,30 @@
-// import ChartTypes from '../graphTypes/chartTypes.js';
-// import TagTypes from '../graphTypes/tagTypes.js';
+/* eslint-disable no-underscore-dangle */
 
-// const chartTypes = new ChartTypes();
-// const tagTypes = new TagTypes();
+import ChartTypes from '../graphTypes/chartTypes.js';
+import TagTypes from '../graphTypes/tagTypes.js';
 
+const chartTypes = new ChartTypes();
+const tagTypes = new TagTypes();
+
+/**
+ * Defines the relationships between tag types and chart types, mapping
+ * each tag type to an array of associated chart types. This is necessary
+ * for determining the edge connections in a graph based on the tag types
+ * provided.
+ *
+ * @type {Object.<string, string[]>}
+ */
 // TODO this section is heavily dependant on graph types being defined, so is very much a WIP.
-// TODO make below types type-safe/object-based rather than hard-coded
 export const tagToChartEdges = {
-  dateRange: [
-    'guage',
+  [tagTypes.dateRange._selfKey]: [
+    chartTypes.guage._selfKey,
   ],
-  multiAxis: [
-    'bar',
-    'line',
+  [tagTypes.multiAxis._selfKey]: [
+    chartTypes.bar._selfKey,
+    chartTypes.line._selfKey,
   ],
-  singleAxis: [
-    'bar',
-    'polar',
+  [tagTypes.singleAxis._selfKey]: [
+    chartTypes.bar._selfKey,
+    chartTypes.polar._selfKey,
   ],
 };
