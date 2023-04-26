@@ -67,6 +67,7 @@ export default class BasicClass {
 
     this.iterateGraphs = () => {
       for (let i = 0; i < this.graphArray.length; i++) {
+        console.log('THIS IS OPTIONS AT THE BEGINNING OF ITERATE', this.options);
         this.options[i].chartClass = svgTypeMap[this.graphArray[i]];
 
         this.selector = input.selector ? input.selector : '#chart';
@@ -83,7 +84,7 @@ export default class BasicClass {
           this.options[i].showCategories = true;
           this.options[i].chartNumber = 1;
           this.options[i].padding = 0.1;
-        } else if (!this.input.updating){
+        } else if (!this.options.updating) {
           this.options = input.options;
           this.options[i].chartNumber = i;
         }
@@ -96,12 +97,12 @@ export default class BasicClass {
           generalElements = createAxes(this.input.data[i], graphArray[i], this.options[i]);
           generalElements.svg = createSVG(this.selector, graphArray[i], this.options[i]);
           this.generalElements = generalElements;
-        } else if (this.input.updating) {
+        } else if (this.options.updating) {
           generalElements = createAxes(this.input.data[i], graphArray[i], this.options[i]);
           this.generalElements = generalElements;
         }
         console.log(this.options[i], 'options', this.graphArray[i], 'graph', this.data[i], 'data', this.selector, 'selector');
-        if (!this.input.updating) {
+        if (!this.options.updating) {
           this.createGraph[this.graphArray[i]](this.data[i], this.options[i], this.generalElements);
         }
         const options = this.options[i];
@@ -126,11 +127,11 @@ export default class BasicClass {
           relativeNode(this.selector, this.data[i], this.options[i]);
         }
 
-        if (this.options[i].animate || this.input.updating) {
+        if (this.options[i].animate || this.options.updating) {
           setTimeout(addAnimation(this.selector, this.createGraph[this.graphArray[i]], this.data[i], this.options[i], this.generalElements), 1000);
           // appendAxes(this.graphArray[i], this.options[i], this.generalElements);
         } else {
-        appendAxes(this.graphArray[i], this.options[i], this.generalElements);
+          appendAxes(this.graphArray[i], this.options[i], this.generalElements);
         }
       }
     };
@@ -159,9 +160,10 @@ export default class BasicClass {
 
   updateInput(input) {
     this.input = input;
-    this.input.updating = true;
+    this.input.options[0].updating = true;
     this.data = input.data;
     this.options = input.options;
+    // this.options.updating = true;
     if (!input.options) {
       this.options = {};
       this.options.margin = {

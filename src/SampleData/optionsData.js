@@ -52,7 +52,7 @@ optionData.options0 = {
 optionData.options19 = {
   childTextSize: 10,
   color: 'green',
-  colorScale: 'red',
+  colorScale: 'blue',
   diameter: 400,
   endAngle: Math.PI / 1.25,
   fillColor: 'blue',
@@ -106,8 +106,8 @@ optionData.options2 = {
   margin: {
     top: 20, right: 20, bottom: 30, left: 40,
   },
-  width: 600,
-  height: 400,
+  width: 800,
+  height: 600,
   radius: 100.5,
   color: 'red',
   showCategories: true,
@@ -117,6 +117,8 @@ optionData.options2 = {
   opacity: 1,
   onHover: false,
   stack: false,
+  // xLine: true,
+  // yLine: true,
 };
 
 optionData.options3 = {
@@ -155,9 +157,10 @@ optionData.options3 = {
   color: 'red',
   nodeWidth: 10,
   nodePadding: 1,
-  strokeColor: '#ffffff',
-  yLine: false,
-  xLine: false,
+  strokeColor: '#000000',
+  radius: 10,
+  yLine: true,
+  xLine: true,
 
 >>>>>>> 67fe112 (animate only working for some barcharts)
 };

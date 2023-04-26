@@ -122,6 +122,7 @@
 import * as d3 from 'd3';
 
 export default function addAnimation(selector, chart2Function, data, options, generalElements, duration = 1000) {
+  // does not work if xLine or yLine are true after initial chart
   // Wait for the specified duration before transitioning to the second chart
   setTimeout(() => {
     // Get the new data and updated scales from the second chart function
@@ -139,19 +140,95 @@ export default function addAnimation(selector, chart2Function, data, options, ge
       .call(generalElements.yAxis);
 
     // Update the chart elements with new data and animate the transition
-    const chartElements = chart.selectAll('g rect, g circle');
+    const chartElements = chart.selectAll('g rect, g circle, .line-graph0');
     chartElements.data(data);
 
     console.log('chartElements here---------', chartElements);
+    const line = d3.line()
+      .x((d) => generalElements.x(d.x))
+      .y((d) => generalElements.y(d.y));
+
+    const sortedData = data.slice().sort((a, b) => d3.ascending(a.x, b.x));
+
+    // chartElements
+    //   .data(data)
+    //   .join(
+    //     (enter) => enter.append('circle'),
+    //     (update) => update,
+    //     (exit) => exit.remove()
+    //   )
+    //   .transition()
+    //   .duration(duration)
+    //   .attr('x', (d, i, nodes) => {
+    //     if (nodes[i].nodeName === 'rect') {
+    //       return generalElements.x(d.x);
+    //     }
+    //   })
+    //   .attr('y', (d, i, nodes) => {
+    //     if (nodes[i].nodeName === 'rect') {
+    //       return generalElements.y(d.y);
+    //     }
+    //   })
+    //   .attr('height', (d, i, nodes) => {
+    //     if (nodes[i].nodeName === 'rect') {
+    //       return generalElements.y(0) - generalElements.y(d.y);
+    //     }
+    //   })
+    //   .attr('cx', (d, i, nodes) => {
+    //     if (nodes[i].nodeName === 'circle') {
+    //       return generalElements.x(d.x);
+    //     }
+    //   })
+    //   .attr('cy', (d, i, nodes) => {
+    //     if (nodes[i].nodeName === 'circle') {
+    //       return generalElements.y(d.y);
+    //     }
+    //   })
+    //   .attr('d', (d, i, nodes) => {
+    //     if (nodes[i].nodeName === 'path') {
+    //       return line(sortedData);
+    //     }
+    //   });
+
     chartElements
       .data(data)
-      //.join('rect')
-      .join('circle')
+      // .join(
+      //   (enter) => enter.append('circle'),
+      //   (update) => update,
+      //   (exit) => exit.remove()
+      // )
       .transition()
       .duration(duration)
-      .attr('x', (d) => generalElements.x(d.x))
-      .attr('y', (d) => generalElements.y(d.y))
-      .attr('height', (d) => generalElements.y(0) - generalElements.y(d.y));
+      .attr('x', (d, i, nodes) => {
+        if (nodes[i].nodeName === 'rect') {
+          return generalElements.x(d.x);
+        }
+      })
+      .attr('y', (d, i, nodes) => {
+        if (nodes[i].nodeName === 'rect') {
+          return generalElements.y(d.y);
+        }
+      })
+      .attr('height', (d, i, nodes) => {
+        if (nodes[i].nodeName === 'rect') {
+          return generalElements.y(0) - generalElements.y(d.y);
+        }
+      })
+      .attr('cx', (d, i, nodes) => {
+        if (nodes[i].nodeName === 'circle') {
+          return generalElements.x(d.x);
+        }
+      })
+      .attr('cy', (d, i, nodes) => {
+        if (nodes[i].nodeName === 'circle') {
+          return generalElements.y(d.y);
+        }
+      })
+      .attr('d', (d, i, nodes) => {
+        if (nodes[i].nodeName === 'path') {
+          return line(sortedData);
+        }
+      });
 
     // // Optionally, you can also update the attributes (e.g., width, height, radius, etc.) of the elements
     // based on the element type (rect, circle, etc.) and the chart type (bar chart, line chart, etc.)

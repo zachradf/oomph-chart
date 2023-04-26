@@ -1,4 +1,5 @@
 export default function appendAxes(graph, options, generalElements) {
+console.log('THIS IS OPTIONS>UPDATINg', options);
   const { width } = options;
   const { height } = options;
   const { margin } = options;
@@ -41,5 +42,11 @@ export default function appendAxes(graph, options, generalElements) {
   } else {
     svg.append('g').classed('y-axis', true).call(yAxis);
     svg.append('g').classed('x-axis', true).call(xAxis);
+  }
+  if (!options.yLine) {
+    svg.select('.y-axis path').remove();
+  }
+  if (!options.xLine) {
+    svg.select('.x-axis path').remove();
   }
 }

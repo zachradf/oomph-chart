@@ -17,9 +17,9 @@ inputData.input1 = {
 
 inputData.input2 = {
   data: [
+    chartData.scatterPlot3,
     chartData.scatterPlot2,
     chartData.scatterPlot,
-    chartData.scatterPlot3,
     chartData.scatterPlot,
   ],
   selector: '#chart',
