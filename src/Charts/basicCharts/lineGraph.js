@@ -7,8 +7,10 @@ export default function createD3LineGraph(data, options, generalElements) {
     .x((d) => x(d.x))
     .y((d) => y(d.y));
 
+  const sortedData = data.sort((a, b) => a.x - b.x);
+
   svg.append('path')
-    .datum(data) // TO DO LOOK INTO DATA VS DATUM
+    .datum(sortedData) // TO DO LOOK INTO DATA VS DATUM
     .attr('fill', 'none')
     .attr('stroke', options.strokeColor || 'steelblue')
     .attr('stroke-width', options.strokeWidth || 1.5)

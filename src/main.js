@@ -25,8 +25,8 @@ import animateByYValue from './AddFunctionality/animate.js';
 
 // Adds Charts
 // Basic Charts
-// const areaObject = new BasicClass(['SCATTER'], inputData.input3);
-// const barObject = new BasicClass(['SCATTER', 'SCATTER', 'SCATTER', 'AREA'], inputData.input2);
+// const areaObject = new BasicClass(['SCATTER'], inputData.input4);
+const barObject = new BasicClass(['LINE', 'LINE', 'LINE', 'LINE'], inputData.input2);
 
 // const bubbleObject = new BasicClass(['BUBBLE'], inputData.input5);// fix category labels
 // const areaObject = new BasicClass(['DONUT'], inputData.input23);
@@ -55,7 +55,7 @@ import animateByYValue from './AddFunctionality/animate.js';
 // const marimekkoChartObject = new HierarchyClass(['MARIMEKKO'], input19);
 // const adjacencyMatrixObject = new HierarchyClass(['ADJACENCY'], input20);
 // const lineAndScatterObject = new BasicClass(['LINE', 'SCATTER'], input21);
-const barObject2 = new BasicClass(['BAR'], input3);
+// const barObject2 = new BasicClass(['BAR'], inputData.input3);
 // const boxPlotObject = new BasicClass(['BOX'], input15);
 
 // setTimeout(animateByYValue('#chart', inputData.input3.data[0], inputData.input3.options), 1000);
