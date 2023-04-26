@@ -180,7 +180,7 @@ optionData.options5 = {
   stack: true,
 };
 
-optionData.waterfallOptions = {
+optionData.waterfall = {
   width: 600,
   height: 400,
   margin: {
@@ -195,7 +195,7 @@ optionData.waterfallOptions = {
   overlay: false,
 };
 
-optionData.funnelChartOptions = {
+optionData.funnelChart = {
   width: 800,
   height: 400,
   margin: {
@@ -206,7 +206,7 @@ optionData.funnelChartOptions = {
   onHover: false,
 };
 
-optionData.polarChartOptions = {
+optionData.polarChart = {
   width: 600,
   height: 600,
   margin: {
@@ -218,7 +218,7 @@ optionData.polarChartOptions = {
   overlay: false,
 };
 
-optionData.radarChartOptions = {
+optionData.radarChart = {
   width: 500,
   height: 500,
   margin: {

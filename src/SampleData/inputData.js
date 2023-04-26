@@ -71,25 +71,25 @@ inputData.input9 = {
 inputData.input10 = {
   data: [chartData.waterfall],
   selector: '#chart',
-  options: [options.waterfallOptions],
+  options: [options.waterfall],
 };
 
 inputData.input11 = {
   data: [chartData.funnelChart],
   selector: '#chart',
-  options: [options.funnelChartOptions],
+  options: [options.funnelChart],
 };
 
 inputData.input12 = {
   data: [chartData.polarChart],
   selector: '#chart',
-  options: [options.polarChartOptions],
+  options: [options.polarChart],
 };
 
 inputData.input13 = {
   data: [chartData.radarChart],
   selector: '#chart',
-  options: [options.radarChartOptions],
+  options: [options.radarChart],
 };
 
 inputData.input14 = {
