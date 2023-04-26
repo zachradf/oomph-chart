@@ -97,7 +97,7 @@ export default class BasicClass {
           generalElements.svg = createSVG(this.selector, graphArray[i], this.options[i]);
           this.generalElements = generalElements;
         }
-        console.log(this.options[i], 'options', this.graphArray[i], 'graph', this.data[i], 'data', this.selector, 'selector')
+        console.log(this.options[i], 'options', this.graphArray[i], 'graph', this.data[i], 'data', this.selector, 'selector');
         this.createGraph[this.graphArray[i]](this.data[i], this.options[i], this.generalElements);
         const options = this.options[i];
         const elements = d3.selectAll(`svg.${svgTypeMap[this.graphArray[i]]} circle, arc, rect, path, line, polygon, node`);
@@ -107,7 +107,7 @@ export default class BasicClass {
           const { classList } = this; // Access the classList property of the DOM element
 
           if (classList.length === 0) {
-           // The element has no classes, you can assign a class here
+            // The element has no classes, you can assign a class here
             element.classed(`${options.chartClass}${i}`, true);
           }
           if (options.opacity) {
@@ -121,8 +121,13 @@ export default class BasicClass {
           relativeNode(this.selector, this.data[i], this.options[i]);
         }
 
+        if (this.options[i].animate || this.input.updating) {
+          setTimeout(addAnimation(this.selector, this.createGraph[this.graphArray[i]], this.data[i], this.options[i], this.generalElements), 1000);
+          appendAxes(this.graphArray[i], this.options[i], this.generalElements);
+        }
         appendAxes(this.graphArray[i], this.options[i], this.generalElements);
-        //setTimeout(addAnimation(this.selector, this.data[i], this.generalElements.x, this.generalElements.xAxis), 1000);
+
+
       }
     };
     this.iterateGraphs();
@@ -150,6 +155,7 @@ export default class BasicClass {
 
   updateInput(input) {
     this.input = input;
+    this.input.updating = true;
     if (!input.options) {
       this.options = {};
       this.options.margin = {
