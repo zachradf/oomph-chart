@@ -97,7 +97,9 @@ optionData.options19 = {
   xLine: true,
   yLine: true,
   xLabel: 'xLabel',
+  // xLine: true,
   yLabel: 'yLabel',
+  // yLine: true,
 };
 
 optionData.options2 = {
@@ -134,6 +136,7 @@ optionData.options3 = {
   innerRadius: 150,
   overlay: false,
   onHover: false,
+<<<<<<< HEAD
   color: 'red',
   nodeRadius: 15,
   nodeWidth: 10,
@@ -147,6 +150,16 @@ optionData.options3 = {
   showLabels: true,
   opacity: 0.75,
   stack: false,  
+=======
+  // color: d3.scaleOrdinal(d3.schemeCategory10),
+  color: 'red',
+  nodeWidth: 10,
+  nodePadding: 1,
+  strokeColor: '#ffffff',
+  yLine: false,
+  xLine: false,
+
+>>>>>>> 67fe112 (animate only working for some barcharts)
 };
 
 optionData.options4 = {
@@ -460,8 +473,13 @@ optionData.options15 = {
   textColor: 'white',
   width: 900,
   xLabel: 'xLabel',
+<<<<<<< HEAD
   xLine: true,
   xAxisPosition: 5,
+=======
+  xLine: false,
+  yLine: false,
+>>>>>>> 67fe112 (animate only working for some barcharts)
   yLabel: 'yLabel',
   yLine: true,
 };

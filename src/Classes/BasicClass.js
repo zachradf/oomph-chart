@@ -83,22 +83,27 @@ export default class BasicClass {
           this.options[i].showCategories = true;
           this.options[i].chartNumber = 1;
           this.options[i].padding = 0.1;
-        } else {
+        } else if (!this.input.updating){
           this.options = input.options;
           this.options[i].chartNumber = i;
         }
         let generalElements;
-        if (this.options[i].stack && i === 0) {
+        if (this.options[i].stack && i === 0 && !this.options.updating) {
           generalElements = createAxes(this.input.data[i], graphArray[i], this.options[i]);
           generalElements.svg = createSVG(this.selector, graphArray[i], this.options[i]);
           this.generalElements = generalElements;
-        } else if (!this.options[i].stack) {
+        } else if (!this.options[i].stack && !this.options.updating) {
           generalElements = createAxes(this.input.data[i], graphArray[i], this.options[i]);
           generalElements.svg = createSVG(this.selector, graphArray[i], this.options[i]);
+          this.generalElements = generalElements;
+        } else if (this.input.updating) {
+          generalElements = createAxes(this.input.data[i], graphArray[i], this.options[i]);
           this.generalElements = generalElements;
         }
         console.log(this.options[i], 'options', this.graphArray[i], 'graph', this.data[i], 'data', this.selector, 'selector');
-        this.createGraph[this.graphArray[i]](this.data[i], this.options[i], this.generalElements);
+        if (!this.input.updating) {
+          this.createGraph[this.graphArray[i]](this.data[i], this.options[i], this.generalElements);
+        }
         const options = this.options[i];
         const elements = d3.selectAll(`svg.${svgTypeMap[this.graphArray[i]]} circle, arc, rect, path, line, polygon, node`);
         // eslint-disable-next-line no-loop-func
@@ -123,11 +128,10 @@ export default class BasicClass {
 
         if (this.options[i].animate || this.input.updating) {
           setTimeout(addAnimation(this.selector, this.createGraph[this.graphArray[i]], this.data[i], this.options[i], this.generalElements), 1000);
-          appendAxes(this.graphArray[i], this.options[i], this.generalElements);
-        }
+          // appendAxes(this.graphArray[i], this.options[i], this.generalElements);
+        } else {
         appendAxes(this.graphArray[i], this.options[i], this.generalElements);
-
-
+        }
       }
     };
     this.iterateGraphs();
@@ -156,6 +160,8 @@ export default class BasicClass {
   updateInput(input) {
     this.input = input;
     this.input.updating = true;
+    this.data = input.data;
+    this.options = input.options;
     if (!input.options) {
       this.options = {};
       this.options.margin = {

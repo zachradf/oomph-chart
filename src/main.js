@@ -25,16 +25,21 @@ import animateByYValue from './AddFunctionality/animate.js';
 
 // Adds Charts
 // Basic Charts
+<<<<<<< HEAD
 // const areaObject = new BasicClass(['SCATTER'], inputData.input4);
 const barObject = new BasicClass(['LINE', 'LINE', 'LINE', 'LINE'], inputData.input2);
+=======
+const areaObject = new BasicClass(['SCATTER'], inputData.input2);
+// const barObject = new BasicClass(['SCATTER', 'SCATTER', 'SCATTER', 'AREA'], inputData.input2);
+>>>>>>> 67fe112 (animate only working for some barcharts)
 
 // const bubbleObject = new BasicClass(['BUBBLE'], inputData.input5);// fix category labels
 // const areaObject = new BasicClass(['DONUT'], inputData.input23);
 // const donutChartObject2 = new BasicClass(['AREA'], inputData.input4);
 // const funnelObject = new BasicClass(['FUNNEL'], inputData.input11);
-// // const gaugeObject = new BasicClass(['GAUGE'], inputData.input14); // STILL NEEDS WORK
+// const gaugeObject = new BasicClass(['GAUGE'], inputData.input14); // STILL NEEDS WORK
 // const heatMapObject = new BasicClass(['HEATMAP'], inputData.input4);
-// // const lineObject = new BasicClass(['LINE', 'SCATTER'], inputData.input3);
+// const lineObject = new BasicClass(['LINE', 'SCATTER'], inputData.input3);
 // const pieChartObject = new BasicClass(['PIE'], inputData.input6);
 // const polarObject = new BasicClass(['POLAR'], inputData.input12);
 // const radarObject = new BasicClass(['RADAR'], inputDatainput13);
@@ -43,10 +48,10 @@ const barObject = new BasicClass(['LINE', 'LINE', 'LINE', 'LINE'], inputData.inp
 // const treeDiagramObject = new HierarchyClass(['TREEDIAGRAM'], inputData.input7);
 // const treeMapObject = new HierarchyClass(['TREEMAP'], inputData.input8);
 // const waterfallObject = new BasicClass(['WATERFALL'], inputData.input10);
-// // // relativeNodeSize('#chart', testDataScatterPlot, options);
+// // relativeNodeSize('#chart', testDataScatterPlot, options);
 // const iciclePlotObject = new HierarchyClass(['ICICLE'], input8);
 // const chordDiagramObject = new HierarchyClass(['CHORD'], input16);
-// // // const sankeyDiagramObject = new HierarchyClass(['SANKEY'], input17);
+// // const sankeyDiagramObject = new HierarchyClass(['SANKEY'], input17);
 // const clusterDiagramObject = new HierarchyClass(['CLUSTER'], input18);
 // const voronoiTreemapObject = new HierarchyClass(['VORONOI'], input8);
 // const dendrogramObject = new HierarchyClass(['DENDROGRAM'], input8);
@@ -57,6 +62,10 @@ const barObject = new BasicClass(['LINE', 'LINE', 'LINE', 'LINE'], inputData.inp
 // const lineAndScatterObject = new BasicClass(['LINE', 'SCATTER'], input21);
 // const barObject2 = new BasicClass(['BAR'], inputData.input3);
 // const boxPlotObject = new BasicClass(['BOX'], input15);
+// barObject2.updateInput(inputData.input4);
+// setTimeout(() => barObject2.updateInput(inputData.input5), 5000);
+// barObject2.updateInput(inputData.input3);
+areaObject.updateInput(inputData.input3);
 
-// setTimeout(animateByYValue('#chart', inputData.input3.data[0], inputData.input3.options), 1000);
 // createPointMap(dataset, options, '#chart');
+// const barObject3 = new BasicClass(['BAR'], inputData.input4);

@@ -47,14 +47,12 @@
 //     // const data = elements.data();
 //     console.log('UNsorted data here---------', data);
 
-
 //     // Sort the data by y-value
 //     data.sort((a, b) => d3.ascending(a.y, b.y));
 //     console.log('sorted data here---------', data);
 
 //     // Bind the sorted data to the elements
 //     const updatedElements = elements.data(data);
-
 
 //     // Animate the elements by updating their position based on the sorted data
 //     updatedElements
@@ -121,43 +119,41 @@
 //   //   .duration(duration)
 //   //   .attr("x", (d, i) => xScale(d.key) + xScale.bandwidth() / 2);
 // }
-import * as d3 from "d3";
-
+import * as d3 from 'd3';
 
 export default function addAnimation(selector, chart2Function, data, options, generalElements, duration = 1000) {
-  // Render the first chart
-  // const chart1 = chart1Function(chartSelector);
-  
   // Wait for the specified duration before transitioning to the second chart
   setTimeout(() => {
     // Get the new data and updated scales from the second chart function
     const chart = d3.select(selector);
 
     // Update the x-axis and y-axis with new scales and animate the transition
-    chart.select(".x-axis")
+    chart.select('.x-axis')
       .transition()
       .duration(duration)
       .call(generalElements.xAxis);
 
-    chart.select(".y-axis")
+    chart.select('.y-axis')
       .transition()
       .duration(duration)
       .call(generalElements.yAxis);
 
     // Update the chart elements with new data and animate the transition
-    const chartElements = chart.selectAll("g rect");
-    // chartElements.remove();
+    const chartElements = chart.selectAll('g rect, g circle');
+    chartElements.data(data);
 
     console.log('chartElements here---------', chartElements);
-    const chart2 = chart2Function(data, options, generalElements);
-
     chartElements
+      .data(data)
+      //.join('rect')
+      .join('circle')
       .transition()
       .duration(duration)
-      .attr("transform", d => `translate(${chart2.xScale(d.key)}, ${chart2.yScale(d.value)})`);
+      .attr('x', (d) => generalElements.x(d.x))
+      .attr('y', (d) => generalElements.y(d.y))
+      .attr('height', (d) => generalElements.y(0) - generalElements.y(d.y));
 
     // // Optionally, you can also update the attributes (e.g., width, height, radius, etc.) of the elements
     // based on the element type (rect, circle, etc.) and the chart type (bar chart, line chart, etc.)
-
   }, duration);
 }

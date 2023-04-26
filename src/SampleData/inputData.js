@@ -39,7 +39,7 @@ inputData.input4 = {
 };
 
 inputData.input5 = {
-  data: [chartData.bubbleChart],
+  data: [chartData.scatterPlot2],
   selector: '#chart',
   options: [options.options2],
 };
