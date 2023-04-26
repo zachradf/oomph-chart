@@ -1,5 +1,8 @@
 import * as d3 from 'd3';
-export const options0 = {
+
+export const optionData = {};
+
+optionData.options0 = {
   childTextSize: 10,
   color: d3.scaleOrdinal(d3.schemeCategory10),
   diameter: 600,
@@ -45,7 +48,8 @@ export const options0 = {
   xLabel: 'xLabel',
   yLabel: 'yLabel',
 };
-export const options = {
+
+optionData.options19 = {
   childTextSize: 10,
   color: 'green',
   colorScale: 'red',
@@ -94,7 +98,7 @@ export const options = {
   yLabel: 'yLabel',
 };
 
-export const options2 = {
+optionData.options2 = {
   margin: {
     top: 20, right: 20, bottom: 30, left: 40,
   },
@@ -110,7 +114,8 @@ export const options2 = {
   onHover: false,
   stack: false,
 };
-export const options3 = {
+
+optionData.options3 = {
   width: 800,
   height: 600,
   childTextSize: 10,
@@ -134,7 +139,7 @@ export const options3 = {
 
 };
 
-export const options4 = {
+optionData.options4 = {
   margin: {
     top: 20, right: 20, bottom: 30, left: 40,
   },
@@ -160,7 +165,7 @@ export const options4 = {
   // colorScheme: d3.schemeCategory10,
 };
 
-export const options5 = {
+optionData.options5 = {
   width: 800,
   height: 900,
   margin: {
@@ -175,7 +180,7 @@ export const options5 = {
   stack: true,
 };
 
-export const waterfallOptions = {
+optionData.waterfall = {
   width: 600,
   height: 400,
   margin: {
@@ -190,7 +195,7 @@ export const waterfallOptions = {
   overlay: false,
 };
 
-export const funnelChartOptions = {
+optionData.funnelChart = {
   width: 800,
   height: 400,
   margin: {
@@ -201,7 +206,7 @@ export const funnelChartOptions = {
   onHover: false,
 };
 
-export const polarChartOptions = {
+optionData.polarChart = {
   width: 600,
   height: 600,
   margin: {
@@ -213,7 +218,7 @@ export const polarChartOptions = {
   overlay: false,
 };
 
-export const radarChartOptions = {
+optionData.radarChart = {
   width: 500,
   height: 500,
   margin: {
@@ -225,7 +230,7 @@ export const radarChartOptions = {
   overlay: false,
 };
 
-export const gaugeOptions = {
+optionData.gaugeOptions = {
   margin: {
     top: 20, right: 20, bottom: 30, left: 40,
   },
@@ -242,7 +247,8 @@ export const gaugeOptions = {
   pointerWidth: 10,
   overlay: false,
 };
-export const optionsForceDirected = {
+
+optionData.optionsForceDirected = {
   width: 600,
   height: 600,
   //   color: d3.scaleOrdinal(d3.schemeCategory10),
@@ -250,7 +256,7 @@ export const optionsForceDirected = {
   chargeStrength: -200, // TODO look into chargeStrength
 };
 
-export const options1 = {
+optionData.options1 = {
   childTextSize: 10,
   color: 'red',
   colorScale: 'red',
@@ -297,7 +303,8 @@ export const options1 = {
   xLabel: 'xLabel',
   yLabel: 'yLabel',
 };
-export const options13 = {
+
+optionData.options13 = {
   childTextSize: 10,
   color: 'blue',
   colorScale: 'red',
@@ -349,7 +356,7 @@ export const options13 = {
   yLine: true,
 };
 
-export const options14 = {
+optionData.options14 = {
   childTextSize: 10,
   color: 'green',
   colorScale: 'red',
@@ -396,7 +403,8 @@ export const options14 = {
   xLabel: 'xLabel',
   yLabel: 'yLabel',
 };
-export const options15 = {
+
+optionData.options15 = {
   childTextSize: 10,
   color: 'green',
   colorScale: 'red',
@@ -445,7 +453,7 @@ export const options15 = {
   yLabel: 'yLabel',
 };
 
-export const options16 = {
+optionData.options16 = {
   childTextSize: 10,
   color: 'green',
   colorScale: 'red',
@@ -493,7 +501,8 @@ export const options16 = {
   xLabel: 'xLabel',
   yLabel: 'yLabel',
 };
-export const options17 = {
+
+optionData.options17 = {
   margin: {
     top: 20, right: 20, bottom: 30, left: 40,
   },
@@ -515,7 +524,8 @@ export const options17 = {
   overlay: false,
   // colorScheme: d3.schemeCategory10,
 };
-export const options18 = {
+
+optionData.options18 = {
   margin: {
     top: 20, right: 20, bottom: 30, left: 40,
   },
