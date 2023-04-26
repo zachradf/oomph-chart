@@ -1,24 +1,26 @@
+export const chartData = {};
+
 // similar to treemap data and stacked bar chart
-export const treeDiagramData = {
+chartData.treeDiagram = {
   name: 'A',
   children: [
     {
       name: 'B',
       children: [
         { name: 'C' },
-        { name: 'D' }
+        { name: 'D' },
       ],
     },
     {
       name: 'E',
       children: [
-        { name: 'F' }
+        { name: 'F' },
       ],
-    }
+    },
   ],
 };
 // similar to tree diagram and stacked barchart data
-export const treeMapData = {
+chartData.treeMap = {
   name: 'root',
   children: [
     {
@@ -26,7 +28,7 @@ export const treeMapData = {
       children: [
         { name: 'Item A1', value: 50 },
         { name: 'Item A2', value: 30 },
-        { name: 'Item A3', value: 40 }
+        { name: 'Item A3', value: 40 },
       ],
     },
     {
@@ -34,7 +36,7 @@ export const treeMapData = {
       children: [
         { name: 'Item B1', value: 20 },
         { name: 'Item B2', value: 60 },
-        { name: 'Item B3', value: 35 }
+        { name: 'Item B3', value: 35 },
       ],
     },
     {
@@ -42,20 +44,20 @@ export const treeMapData = {
       children: [
         { name: 'Item C1', value: 25 },
         { name: 'Item C2', value: 45 },
-        { name: 'Item C3', value: 15 }
+        { name: 'Item C3', value: 15 },
       ],
-    }
+    },
   ],
 };
 
-export const forceDirectedData = {
+chartData.forceDirected = {
   nodes: [
     { id: 'A', group: 1 },
     { id: 'B', group: 1 },
     { id: 'C', group: 1 },
     { id: 'D', group: 2 },
     { id: 'E', group: 2 },
-    { id: 'F', group: 2 }
+    { id: 'F', group: 2 },
   ],
   links: [
     { source: 'A', target: 'B', value: 1 },
@@ -64,28 +66,29 @@ export const forceDirectedData = {
     { source: 'D', target: 'E', value: 2 },
     { source: 'E', target: 'F', value: 2 },
     { source: 'F', target: 'D', value: 2 },
-    { source: 'C', target: 'D', value: 3 }
+    { source: 'C', target: 'D', value: 3 },
   ],
 };
 
 // any chart with one categorical and one numerical value: donut chart, pie chart, bar chart etc.
-export const testDataBarChart = [
+chartData.barChart = [
   { x: 'A', y: 10 },
   { x: 'B', y: 20 },
   { x: 'C', y: 30 },
   { x: 'D', y: 40 },
-  { x: 'E', y: 50 }
+  { x: 'E', y: 50 },
 ];
-export const testDataDonutChart = [
+
+chartData.donutChart = [
   { x: 'Apple', y: 30 },
   { x: 'Orange', y: 20 },
   { x: 'Banana', y: 25 },
   { x: 'Mango', y: 15 },
-  { x: 'Pineapple', y: 10 }
+  { x: 'Pineapple', y: 10 },
 ];
 
 // any chart with numerical x and y values
-export const testDataScatterPlot = [
+chartData.scatterPlot = [
   { x: 10, y: 20 },
   { x: 30, y: 50 },
   { x: 45, y: 10 },
@@ -95,9 +98,10 @@ export const testDataScatterPlot = [
   { x: 108, y: 10 },
   { x: 142, y: 103 },
   { x: 166, y: 98 },
-  { x: 189, y: 70 }
+  { x: 189, y: 70 },
 ];
-export const testDataScatterPlot2 = [
+
+chartData.scatterPlot2 = [
   { x: -10, y: -20 },
   { x: 30, y: 54 },
   { x: 45, y: -11 },
@@ -107,10 +111,10 @@ export const testDataScatterPlot2 = [
   { x: 128, y: -10 },
   { x: 162, y: 103 },
   { x: 16, y: 98 },
-  { x: 109, y: -70 }
+  { x: 109, y: -70 },
 ];
 
-export const testDataScatterPlot3 = [
+chartData.scatterPlot3 = [
   { x: 15, y: 30 },
   { x: 34, y: 52 },
   { x: 49, y: 16 },
@@ -120,8 +124,9 @@ export const testDataScatterPlot3 = [
   { x: 18, y: 13 },
   { x: 172, y: 13 },
   { x: 146, y: 108 },
-  { x: 129, y: 75 }
+  { x: 129, y: 75 },
 ];
+
 // // Randomize testDataScatterPlot2
 //   testDataScatterPlot2.forEach((item) => {
 //   item.x = Math.floor(Math.random() * (190 - 10) + 10);
@@ -134,7 +139,8 @@ export const testDataScatterPlot3 = [
 //   item.y = Math.floor(Math.random() * (100 - 10) + 10);
 // });
 // cadidate for y2 axis
-export const heatMapData2 = [
+
+chartData.heatMap2 = [
   { x: 'A', y: '1', value: 50 },
   { x: 'A', y: '2', value: 100 },
   { x: 'A', y: '3', value: 150 },
@@ -143,16 +149,17 @@ export const heatMapData2 = [
   { x: 'B', y: '3', value: 300 },
   { x: 'C', y: '1', value: 350 },
   { x: 'C', y: '2', value: 400 },
-  { x: 'C', y: '3', value: 450 }
+  { x: 'C', y: '3', value: 450 },
 ];
+
 // TODO change category to name or vice versa
-export const stackedBarChartData2 = [
+chartData.stackedBarChart2 = [
   {
     category: 'Jan',
     values: [
       { group: 'Group A', value: 10 },
       { group: 'Group B', value: 20 },
-      { group: 'Group C', value: 30 }
+      { group: 'Group C', value: 30 },
     ],
   },
   {
@@ -160,7 +167,7 @@ export const stackedBarChartData2 = [
     values: [
       { group: 'Group A', value: 15 },
       { group: 'Group B', value: 25 },
-      { group: 'Group C', value: 35 }
+      { group: 'Group C', value: 35 },
     ],
   },
   {
@@ -168,37 +175,39 @@ export const stackedBarChartData2 = [
     values: [
       { group: 'Group A', value: 20 },
       { group: 'Group B', value: 30 },
-      { group: 'Group C', value: 40 }
+      { group: 'Group C', value: 40 },
     ],
-  }
+  },
 ];
 
 // extreme scatter plot data
 // Generate a high volume data set with 1 million data points
-export const extremeScatterPlot1 = Array.from({ length: 10000 }, () => ({
+chartData.extremeScatterPlot1 = Array.from({ length: 10000 }, () => ({
   x: Math.random(),
   y: Math.random(),
 }));
+
 // Generate a high variation data set with values between -1000 and 1000
-export const extremeScatterPlot2 = Array.from({ length: 25000 }, () => ({
+chartData.extremeScatterPlot2 = Array.from({ length: 25000 }, () => ({
   x: Math.random() * 2000 - 1000,
   y: Math.random() * 2000 - 1000,
 }));
 
 // extreme barchart data
-export const dataSet1 = Array.from({ length: 1000 }, (_, i) => ({
+chartData.dataSet1 = Array.from({ length: 1000 }, (_, i) => ({
   category: i,
   value: Math.floor(Math.random() * 1000),
 }));
+
 // bubble chart data
-export const bubbleChartData = [
+chartData.bubbleChart = [
   {
     name: 'Category 1',
     value: 20,
     children: [
       { name: 'Subcategory 1A', value: 10 },
       { name: 'Subcategory 1B', value: 5 },
-      { name: 'Subcategory 1C', value: 5 }
+      { name: 'Subcategory 1C', value: 5 },
     ],
   },
   {
@@ -206,13 +215,13 @@ export const bubbleChartData = [
     value: 10,
     children: [
       { name: 'Subcategory 2A', value: 7.5 },
-      { name: 'Subcategory 2B', value: 2 }
+      { name: 'Subcategory 2B', value: 2 },
     ],
-  }
+  },
 ];
 
 // Heat map data candidate for y2 axis
-export const heatMapData = [
+chartData.heatMap = [
   { x: 'Monday', y: 10, group: 'A' },
   { x: 'Tuesday', y: 20, group: 'A' },
   { x: 'Wednesday', y: 30, group: 'A' },
@@ -226,17 +235,17 @@ export const heatMapData = [
   { x: 'Thursday', y: 110, group: 'B' },
   { x: 'Friday', y: 120, group: 'B' },
   { x: 'Saturday', y: 130, group: 'B' },
-  { x: 'Sunday', y: 140, group: 'B' }
+  { x: 'Sunday', y: 140, group: 'B' },
 ];
 
 // see if this can be broken up into seperate objects that are compativle with barchart
-export const stackedBarChartData = [
+chartData.stackedBarChart = [
   {
     category: 'Category A',
     values: [
       { name: 'Value 1', value: 10 },
       { name: 'Value 2', value: 20 },
-      { name: 'Value 3', value: 15 }
+      { name: 'Value 3', value: 15 },
     ],
   },
   {
@@ -244,7 +253,7 @@ export const stackedBarChartData = [
     values: [
       { name: 'Value 1', value: 25 },
       { name: 'Value 2', value: 5 },
-      { name: 'Value 3', value: 18 }
+      { name: 'Value 3', value: 18 },
     ],
   },
   {
@@ -252,12 +261,12 @@ export const stackedBarChartData = [
     values: [
       { name: 'Value 1', value: 12 },
       { name: 'Value 2', value: 30 },
-      { name: 'Value 3', value: 8 }
+      { name: 'Value 3', value: 8 },
     ],
-  }
+  },
 ];
 
-export const sunburstData = {
+chartData.sunburst = {
   name: 'A',
   children: [
     {
@@ -267,7 +276,7 @@ export const sunburstData = {
         { name: 'B2', value: 4 },
         { name: 'B3', value: 4 },
         { name: 'B4', value: 4 },
-        { name: 'B5', value: 4 }
+        { name: 'B5', value: 4 },
       ],
     },
     {
@@ -277,7 +286,7 @@ export const sunburstData = {
         { name: 'C2', value: 3 },
         { name: 'C3', value: 3 },
         { name: 'C4', value: 3 },
-        { name: 'C5', value: 3 }
+        { name: 'C5', value: 3 },
       ],
     },
     {
@@ -287,7 +296,7 @@ export const sunburstData = {
         { name: 'D2', value: 2 },
         { name: 'D3', value: 2 },
         { name: 'D4', value: 2 },
-        { name: 'D5', value: 2 }
+        { name: 'D5', value: 2 },
       ],
     },
     {
@@ -297,7 +306,7 @@ export const sunburstData = {
         { name: 'E2', value: 1 },
         { name: 'E3', value: 1 },
         { name: 'E4', value: 1 },
-        { name: 'E5', value: 1 }
+        { name: 'E5', value: 1 },
       ],
     },
     {
@@ -307,13 +316,14 @@ export const sunburstData = {
         { name: 'F2', value: 1 },
         { name: 'F3', value: 1 },
         { name: 'F4', value: 1 },
-        { name: 'F5', value: 1 }
+        { name: 'F5', value: 1 },
       ],
-    }
+    },
   ],
 };
+
 // TODO value can be calculated from start and end, candidate for y2 axis
-export const waterfallData = [
+chartData.waterfall = [
   {
     category: 'A', value: 20, start: 0, end: 20,
   },
@@ -334,34 +344,35 @@ export const waterfallData = [
   },
   {
     category: 'G', value: 15, start: 35, end: 50,
-  }
+  },
 ];
+
 // TODO funnelChart 'x' values would actually be on the y axis, do you still convert?
-export const funnelChartData = [
+chartData.funnelChart = [
   { x: 'Stage 1', y: 1000 },
   { x: 'Stage 2', y: 800 },
   { x: 'Stage 3', y: 600 },
   { x: 'Stage 4', y: 400 },
-  { x: 'Stage 5', y: 200 }
+  { x: 'Stage 5', y: 200 },
 ];
 
-export const polarChartData = [
+chartData.polarChart = [
   { x: 'A', y: 100 },
   { x: 'B', y: 200 },
   { x: 'C', y: 150 },
   { x: 'D', y: 75 },
-  { x: 'E', y: 125 }
+  { x: 'E', y: 125 },
 ];
 
-export const radarChartData = [
+chartData.radarChart = [
   { x: 'A', y: 100 },
   { x: 'B', y: 100 },
   { x: 'C', y: 10 },
   { x: 'D', y: 75 },
-  { x: 'E', y: 25 }
+  { x: 'E', y: 25 },
 ];
 
-export const boxPlotData = [
+chartData.boxPlot = [
   {
     category: 'A',
     min: 10,
@@ -389,17 +400,18 @@ export const boxPlotData = [
     q1: 28,
     q3: 48,
     max: 68,
-  }
+  },
 ];
-export const chordData = [
+
+chartData.chord = [
   [4, 5, 1, 0],
   [2, 3, 2, 1],
   [0, 6, 9, 10],
   [1, 2, 3, 4],
-  ['A', 'B', 'C', 'D']
+  ['A', 'B', 'C', 'D'],
 ];
 
-export const sankeyDiagramData = {
+chartData.sankeyDiagram = {
   nodes: [
     { id: 'A', name: 'Node A' },
     { id: 'B', name: 'Node B' },
@@ -417,8 +429,7 @@ export const sankeyDiagramData = {
   ],
 };
 
-
-export const marimekkoData = [
+chartData.marimekko = [
   {
     category: 'Fruits',
     children: [
@@ -445,7 +456,7 @@ export const marimekkoData = [
   },
 ];
 
- export const adjacencyData = {
+chartData.adjacency = {
   nodes: [
     { id: 'A' },
     { id: 'B' },
@@ -462,7 +473,8 @@ export const marimekkoData = [
     { source: 'D', target: 'E', value: 6 },
   ],
 };
-export const choroplethDataset = [
+
+chartData.choropleth = [
   { coordinates: [40.7128, -74.0060] }, // New York City
   { coordinates: [34.0522, -118.2437] }, // Los Angeles
   { coordinates: [41.8781, -87.6298] }, // Chicago

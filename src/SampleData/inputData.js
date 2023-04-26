@@ -1,137 +1,153 @@
-import {
-  bubbleChartData, testDataScatterPlot, treeDiagramData, treeMapData,
-  dataSet1, testDataBarChart, extremeScatterPlot1, extremeScatterPlot2,
-  stackedBarChartData2, heatMapData, heatMapData2, testDataDonutChart, sunburstData,
-  waterfallData, funnelChartData, polarChartData, radarChartData, boxPlotData, testDataScatterPlot2, testDataScatterPlot3, chordData, sankeyDiagramData, marimekkoData, adjacencyData
-} from '../SampleData/chartData.js';
-import {
-  options, options1, options2, options3, options4,
-  options5, options13, waterfallOptions, funnelChartOptions,
-  polarChartOptions, radarChartOptions, gaugeOptions, options0, options15, options16, options17, options18
-} from '../SampleData/optionsData.js';
-export const input = {
-  data: [stackedBarChartData2],
+import { chartData } from './chartData.js';
+import { optionData as options } from './optionsData.js';
+
+export const inputData = {};
+
+inputData.input = {
+  data: [chartData.stackedBarChart2],
   selector: '#chart',
-  options: [options17],
-};
-export const input1 = {
-  data: [testDataBarChart],
-  selector: '#chart',
-  options: [options4],
+  options: [options.options17],
 };
 
-export const input2 = {
-  data: [testDataScatterPlot2, testDataScatterPlot, testDataScatterPlot3, testDataScatterPlot],
+inputData.input1 = {
+  data: [chartData.barChart],
   selector: '#chart',
-  options: [options, options1, options13, options5],
+  options: [options.options4],
 };
 
-export const input3 = {
-  data: [testDataBarChart],
+inputData.input2 = {
+  data: [
+    chartData.scatterPlot2,
+    chartData.scatterPlot,
+    chartData.scatterPlot3,
+    chartData.scatterPlot,
+  ],
   selector: '#chart',
-  options: [options15],
+  options: [options.options19, options.options1, options.options13, options.options5],
 };
 
-export const input4 = {
-  data: [testDataScatterPlot],
+inputData.input3 = {
+  data: [chartData.barChart],
   selector: '#chart',
-  options: [options3],
+  options: [options.options15],
 };
 
-export const input5 = {
-  data: [bubbleChartData],
+inputData.input4 = {
+  data: [chartData.scatterPlot],
   selector: '#chart',
-  options: [options2],
+  options: [options.options3],
 };
-export const input6 = {
-  data: [testDataBarChart],
+
+inputData.input5 = {
+  data: [chartData.bubbleChart],
   selector: '#chart',
-  options: [options18],
+  options: [options.options2],
 };
-export const input7 = {
-  data: [treeDiagramData],
+
+inputData.input6 = {
+  data: [chartData.barChart],
   selector: '#chart',
-  options: [options],
+  options: [options.options18],
 };
-export const input8 = {
-  data: [treeMapData],
+
+inputData.input7 = {
+  data: [chartData.treeDiagram],
   selector: '#chart',
-  options: [options],
+  options: [options.options19],
 };
-export const input9 = {
-  data: [sunburstData],
+
+inputData.input8 = {
+  data: [chartData.treeMap],
   selector: '#chart',
-  options: [options4],
+  options: [options.options19],
 };
-export const input10 = {
-  data: [waterfallData],
+
+inputData.input9 = {
+  data: [chartData.sunburst],
   selector: '#chart',
-  options: [waterfallOptions],
+  options: [options.options4],
 };
-export const input11 = {
-  data: [funnelChartData],
+
+inputData.input10 = {
+  data: [chartData.waterfall],
   selector: '#chart',
-  options: [funnelChartOptions],
+  options: [options.waterfallOptions],
 };
-export const input12 = {
-  data: [polarChartData],
+
+inputData.input11 = {
+  data: [chartData.funnelChart],
   selector: '#chart',
-  options: [polarChartOptions],
+  options: [options.funnelChartOptions],
 };
-export const input13 = {
-  data: [radarChartData],
+
+inputData.input12 = {
+  data: [chartData.polarChart],
   selector: '#chart',
-  options: [radarChartOptions],
+  options: [options.polarChartOptions],
 };
-export const input14 = {
+
+inputData.input13 = {
+  data: [chartData.radarChart],
+  selector: '#chart',
+  options: [options.radarChartOptions],
+};
+
+inputData.input14 = {
   data: [20, 60, 80],
   selector: '#chart',
-  options: [gaugeOptions],
+  options: [options.gaugeOptions],
 };
 
-export const input15 = {
-  data: [boxPlotData],
+inputData.input15 = {
+  data: [chartData.boxPlot],
   selector: '#chart',
-  options: [options3],
+  options: [options.options3],
 };
 
-export const input16 = {
-  data: [chordData],
+inputData.input16 = {
+  data: [chartData.chord],
   selector: '#chart',
-  options: [options3],
+  options: [options.options3],
 };
-export const input17 = {
-  data: [sankeyDiagramData],
+
+inputData.input17 = {
+  data: [chartData.sankeyDiagram],
   selector: '#chart',
-  options: [options3],
+  options: [options.options3],
 };
-export const input18 = {
-  data: [treeMapData],
+
+inputData.input18 = {
+  data: [chartData.treeMap],
   selector: '#chart',
-  options: [options0],
+  options: [options.options0],
 };
-export const input19 = {
-  data: [marimekkoData],
+
+inputData.input19 = {
+  data: [chartData.marimekko],
   selector: '#chart',
-  options: [options3],
+  options: [options.options3],
 };
-export const input20 = {
-  data: [adjacencyData],
+
+inputData.input20 = {
+  data: [chartData.adjacency],
   selector: '#chart',
-  options: [options0],
+  options: [options.options0],
 };
-export const input21 = {
-  data: [testDataScatterPlot, testDataScatterPlot2],
+
+inputData.input21 = {
+  data: [chartData.scatterPlot, chartData.scatterPlot2],
   selector: '#chart',
-  options: [options13, options13],
+  options: [options.options13, options.options13],
 };
-export const input22 = {
-  data: [treeMapData],
+
+inputData.input22 = {
+  data: [chartData.treeMap],
   selector: '#chart',
-  options: [options16],
+  options: [options.options16],
 };
-export const input23 = {
-  data: [testDataBarChart],
+
+inputData.input23 = {
+  data: [chartData.barChart],
   selector: '#chart',
-  options: [options18],
+  options: [options.options18],
 };
