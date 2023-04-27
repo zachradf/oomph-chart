@@ -95,7 +95,7 @@ inputData.input13 = {
 inputData.input14 = {
   data: [20, 60, 80],
   selector: '#chart',
-  options: [options.gaugeOptions],
+  options: [options.gauge],
 };
 
 inputData.input15 = {

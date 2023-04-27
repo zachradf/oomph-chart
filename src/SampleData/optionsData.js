@@ -241,7 +241,7 @@ optionData.radarChart = {
   overlay: false,
 };
 
-optionData.gaugeOptions = {
+optionData.gauge = {
   margin: {
     top: 20, right: 20, bottom: 30, left: 40,
   },
