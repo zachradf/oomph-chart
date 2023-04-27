@@ -73,6 +73,6 @@ const areaObject2 = new BasicClass(['SCATTER'], inputData.input24);
 //    areaObject2 = new BasicClass(['LINE'], inputData.input26);
 // }, 10000);
 setTimeout(() => areaObject2.updateInput(inputData.input5), 1000);
-// setTimeout(() => areaObject2.updateInput(inputData.input25), 2000);
+// setTimeout(() => areaObject2.removeChart('SCATTER'), 3000);
 // setTimeout(() => areaObject2.updateInput(inputData.input26), 3000);
 // setTimeout(() => areaObject2.updateInput(inputData.input24), 5000);

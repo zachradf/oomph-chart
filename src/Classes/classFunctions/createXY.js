@@ -7,15 +7,15 @@ export default function generalElementsFunction(data, graph, options) {
     case 'BAR':
     case 'BOX':
       data.sort((a, b) => d3.ascending(a.x, b.x));
-      if( typeof data[0].x=== 'string') {
-      x = d3.scaleBand()
-        .domain(data.map((d) => d.x))
-        .range([options.margin.left, options.width - options.margin.right])
-        .padding(0.1);
+      if (typeof data[0].x === 'string') {
+        x = d3.scaleBand()
+          .domain(data.map((d) => d.x))
+          .range([options.margin.left, options.width - options.margin.right])
+          .padding(0.1);
       } else {
         x = d3.scaleLinear()
-        .domain(d3.extent(data, (d) => d.x)).nice()
-        .range([options.margin.left, options.width - options.margin.right]);
+          .domain(d3.extent(data, (d) => d.x)).nice()
+          .range([options.margin.left, options.width - options.margin.right]);
       }
       break;
     case 'FUNNEL':
@@ -68,7 +68,6 @@ export default function generalElementsFunction(data, graph, options) {
   const y = (scaleFunctions[graph] || scaleFunctions.default)();
   const xAxisPosition = options.xAxisPosition || (options.height - options.margin.bottom);
   const yAxisPosition = options.yAxisPosition || options.margin.left;
-console.log('this is option sin the axis function', options)
   const xAxis = (g) => {
     g.attr('transform', `translate(0,${xAxisPosition})`)
       .call(d3.axisBottom(x).ticks(options.width / 80).tickSizeOuter(0));
@@ -85,7 +84,7 @@ console.log('this is option sin the axis function', options)
           g.selectAll('.tick line').clone()
             .attr('x2', options.width - options.margin.left - options.margin.right)
             .attr('stroke-opacity', 0.1);
-          if (options.yLine) {
+          if (options.yLine) { // may be able to get rid of this
             createYAxisLine(g, options, xAxisPosition);
           }
         });
@@ -97,7 +96,7 @@ console.log('this is option sin the axis function', options)
         .attr('transform', `translate(${yAxisPosition},0)`)
         .call(d3.axisLeft(y).ticks(graph === 'STACKEDBAR' ? null : options.height / 80))
         .call((g) => {
-          if (options.yLine) {
+          if (options.yLine) { // may be able to get rid of this
             createYAxisLine(g, options, xAxisPosition);
           }
         });

@@ -59,15 +59,14 @@ export default class BasicClass {
       GAUGE: 'gauge-chart',
       BOX: 'box-plot',
     };
-
+    this.svgTypeMap = svgTypeMap;
     this.graphArray = graphArray;
     this.options = input.options;
     this.data = input.data;
-    this.input = input;
+    this.input = input; // probably don't need this
 
     this.iterateGraphs = () => {
       for (let i = 0; i < this.graphArray.length; i++) {
-        console.log('THIS IS OPTIONS AT THE BEGINNING OF ITERATE', this.options);
         this.options[i].chartClass = svgTypeMap[this.graphArray[i]];
 
         this.selector = input.selector ? input.selector : '#chart';
@@ -88,6 +87,8 @@ export default class BasicClass {
           this.options = input.options;
           this.options[i].chartNumber = i;
         }
+
+        // general elements is an object that contains the svg, x and y, and the xAxis and yAxis
         let generalElements;
         if (this.options[i].stack && i === 0 && !this.options[0].updating) {
           generalElements = createAxes(this.input.data[i], graphArray[i], this.options[i]);
@@ -101,11 +102,13 @@ export default class BasicClass {
           generalElements = createAxes(this.input.data[i], graphArray[i], this.options[i]);
           this.generalElements = generalElements;
         }
-        console.log(this.options[i], 'options', this.graphArray[i], 'graph', this.data[i], 'data', this.selector, 'selector');
         if (!this.options[0].updating) {
           this.createGraph[this.graphArray[i]](this.data[i], this.options[i], this.generalElements);
         }
+        // get rid of this
         const options = this.options[i];
+
+        // This is where we add the class and opacity option to the data elements
         const elements = d3.selectAll(`svg.${svgTypeMap[this.graphArray[i]]} circle, arc, rect, path, line, polygon, node`);
         // eslint-disable-next-line no-loop-func
         elements.each(function () {
@@ -113,13 +116,15 @@ export default class BasicClass {
           const { classList } = this; // Access the classList property of the DOM element
 
           if (classList.length === 0) {
-            // The element has no classes, you can assign a class here
+            // The element has no classes, assign a class here
             element.classed(`${options.chartClass}${i}`, true);
           }
           if (options.opacity) {
             element.style('opacity', options.opacity);
           }
         });
+
+        // Checking for onHover, relativeNodeSize, and animation/updating
         if (this.options[i].onHover) {
           onHover(this.selector, this.options);
         }
@@ -128,7 +133,7 @@ export default class BasicClass {
         }
 
         if (this.options[i].animate || this.options[0].updating) {
-          setTimeout(addAnimation(this.selector, this.createGraph[this.graphArray[i]], this.data[i], this.options[i], this.generalElements), 1000);
+          addAnimation(this.selector, this.createGraph[this.graphArray[i]], this.data[i], this.options[i], this.generalElements);
         } else {
           appendAxes(this.graphArray[i], this.options[i], this.generalElements);
         }
@@ -137,7 +142,7 @@ export default class BasicClass {
     this.iterateGraphs();
   }
 
-  addGraphs(type) {
+  addGraphs(type) { // This method probably needs to be refactored
     this.graphArray.push(...type);
     for (let i = 0; i < type.length; i++) {
       this.createGraph[type[i]](this.data, this.options, this.generalElements);
@@ -146,9 +151,7 @@ export default class BasicClass {
   }
 
   removeChart(type) {
-    // const this.svgSelector = this.options.chartClass;
-
-    if (this.options[0].chartClass) {
+    if (this.svgTypeMap[type]) {
       d3.select(this.input.selector)
         .selectAll(`svg.${this.options[0].chartClass}`)
         .remove();
@@ -158,12 +161,11 @@ export default class BasicClass {
     }
   }
 
-  updateInput(input) {
+  updateInput(input) { // TODO clean up the this assignments
     this.input = input;
     this.input.options[0].updating = true;
     this.data = input.data;
     this.options[0] = input.options;
-    console.log('this.options[0]', this.options[0])
     // this.options.updating = true;
     if (!input.options) {
       this.options = {};
