@@ -5,6 +5,7 @@ import HierarchyClass from './Classes/HierarchyClass.js';
 import GraphSuperClass from './Classes/graphSuperClass.js';
 
 import { inputData } from './SampleData/inputData.js';
+import { superData } from './SampleData/superData.js';
 
 import onHover from './AddFunctionality/onHover.js';
 import zoom from './AddFunctionality/zoom.js';
@@ -16,10 +17,10 @@ import createChoroplethMap from './Charts/geoCharts/choroplethMap.js';
 import createPointMap from './Charts/geoCharts/pointMap.js';
 import animateByYValue from './AddFunctionality/animate.js';
 
-// const superObjects = {};
-// superObjects.string_number_test = new GraphSuperClass(testDataBarChart);
-// superObjects.number_number_test = new GraphSuperClass(testDataScatterPlot);
-// console.log(superObjects);
+const superObjects = {};
+superObjects.testFor_string_number = new GraphSuperClass(superData.categorical);
+superObjects.testFor_number_number = new GraphSuperClass(superData.xy);
+console.log(superObjects);
 
 // onHover('#scatter', options);
 
