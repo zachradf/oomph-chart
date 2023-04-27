@@ -148,7 +148,6 @@ optionData.options3 = {
   yLine: true,
   xLine: true,
 
->>>>>>> 67fe112 (animate only working for some barcharts)
 };
 
 optionData.options4 = {
@@ -462,15 +461,9 @@ optionData.options15 = {
   textColor: 'white',
   width: 900,
   xLabel: 'xLabel',
-<<<<<<< HEAD
-  xLine: true,
-  xAxisPosition: 5,
-=======
   xLine: false,
   yLine: false,
->>>>>>> 67fe112 (animate only working for some barcharts)
   yLabel: 'yLabel',
-  yLine: true,
 };
 
 optionData.options16 = {
