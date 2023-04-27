@@ -120,6 +120,12 @@ optionData.options2 = {
   stack: false,
   xLine: true,
   yLine: true,
+  xTickFrequency: 30,
+  yTickFrequency: 30,
+  xTickLength: 600,
+  yTickLength: 800,
+  xTickOpacity: 1,
+  yTickOpacity: 1,
 };
 
 optionData.options3 = {
@@ -147,6 +153,12 @@ optionData.options3 = {
   radius: 10,
   yLine: true,
   xLine: true,
+  xTickFrequency: 10,
+  yTickFrequency: 10,
+  xTickLength: 600,
+  yTickLength: 800,
+  xTickOpacity: 1,
+  yTickOpacity: 1,
 
 };
 

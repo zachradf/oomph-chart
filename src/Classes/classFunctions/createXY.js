@@ -66,20 +66,27 @@ export default function generalElementsFunction(data, graph, options) {
   };
 
   const y = (scaleFunctions[graph] || scaleFunctions.default)();
+  const yTickLength = options.yTickLength || options.height - options.margin.top - options.margin.bottom;
+  const xTickLength = options.xTickLength || options.width - options.margin.left - options.margin.right;
+  const xTickFrequency = options.xTickFrequency || options.width / 80;
+  const yTickFrequency = options.yTickFrequency || options.width / 80;
   const xAxisPosition = options.xAxisPosition || (options.height - options.margin.bottom);
   const yAxisPosition = options.yAxisPosition || options.margin.left;
+
   const xAxis = (g) => {
     g.attr('transform', `translate(0,${xAxisPosition})`)
-      .call(d3.axisBottom(x).ticks(options.width / 80).tickSizeOuter(0));
+      .call(d3.axisBottom(x).ticks(xTickFrequency).tickSizeOuter(0).tickSize(-xTickLength))
+      .call((g) => {
+        g.selectAll('.tick line').attr('opacity', options.xTickOpacity || 1);
+      });
     if (options.xLine) createXAxisLine(g, options, yAxisPosition);
   };
-
   let yAxis;
   switch (graph) {
     case 'WATERFALL':
       yAxis = (g) => g
         .attr('transform', `translate(${yAxisPosition},0)`)
-        .call(d3.axisLeft(y))
+        .call(d3.axisLeft(y).tickSize(-yTickLength)).ticks(yTickFrequency)
         .call((g) => {
           g.selectAll('.tick line').clone()
             .attr('x2', options.width - options.margin.left - options.margin.right)
@@ -94,9 +101,10 @@ export default function generalElementsFunction(data, graph, options) {
     default:
       yAxis = (g) => g
         .attr('transform', `translate(${yAxisPosition},0)`)
-        .call(d3.axisLeft(y).ticks(graph === 'STACKEDBAR' ? null : options.height / 80))
+        .call(d3.axisLeft(y).ticks(graph === 'STACKEDBAR' ? null : yTickFrequency).tickSize(-yTickLength))
         .call((g) => {
-          if (options.yLine) { // may be able to get rid of this
+          g.selectAll('.tick line').attr('opacity', options.yTickOpacity || 1);
+          if (options.yLine) {
             createYAxisLine(g, options, xAxisPosition);
           }
         });
