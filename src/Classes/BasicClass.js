@@ -24,8 +24,8 @@ import relativeNode from '../AddFunctionality/relativeNode.js';
 import addAnimation from '../AddFunctionality/animate.js';
 
 export default class BasicClass {
-  constructor(graphArray, input) {
-    this.createGraph = {
+  constructor(chartArray, input) {
+    this.createChart = {
       BAR: createBarChart,
       BUBBLE: createBubbleChart,
       SCATTER: createScatterPlot,
@@ -60,14 +60,14 @@ export default class BasicClass {
       BOX: 'box-plot',
     };
     this.svgTypeMap = svgTypeMap;
-    this.graphArray = graphArray;
+    this.chartArray = chartArray;
     this.options = input.options;
     this.data = input.data;
     this.input = input; // probably don't need this
 
-    this.iterateGraphs = () => {
-      for (let i = 0; i < this.graphArray.length; i++) {
-        this.options[i].chartClass = svgTypeMap[this.graphArray[i]];
+    this.iterateCharts = () => {
+      for (let i = 0; i < this.chartArray.length; i++) {
+        this.options[i].chartClass = svgTypeMap[this.chartArray[i]];
 
         this.selector = input.selector ? input.selector : '#chart';
 
@@ -91,25 +91,25 @@ export default class BasicClass {
         // general elements is an object that contains the svg, x and y, and the xAxis and yAxis
         let generalElements;
         if (this.options[i].stack && i === 0 && !this.options[0].updating) {
-          generalElements = createAxes(this.input.data[i], graphArray[i], this.options[i]);
-          generalElements.svg = createSVG(this.selector, graphArray[i], this.options[i]);
+          generalElements = createAxes(this.input.data[i], chartArray[i], this.options[i]);
+          generalElements.svg = createSVG(this.selector, chartArray[i], this.options[i]);
           this.generalElements = generalElements;
         } else if (!this.options[i].stack && !this.options[0].updating) {
-          generalElements = createAxes(this.input.data[i], graphArray[i], this.options[i]);
-          generalElements.svg = createSVG(this.selector, graphArray[i], this.options[i]);
+          generalElements = createAxes(this.input.data[i], chartArray[i], this.options[i]);
+          generalElements.svg = createSVG(this.selector, chartArray[i], this.options[i]);
           this.generalElements = generalElements;
         } else if (this.options[0].updating) {
-          generalElements = createAxes(this.input.data[i], graphArray[i], this.options[i]);
+          generalElements = createAxes(this.input.data[i], chartArray[i], this.options[i]);
           this.generalElements = generalElements;
         }
         if (!this.options[0].updating) {
-          this.createGraph[this.graphArray[i]](this.data[i], this.options[i], this.generalElements);
+          this.createChart[this.chartArray[i]](this.data[i], this.options[i], this.generalElements);
         }
         // get rid of this
         const options = this.options[i];
 
         // This is where we add the class and opacity option to the data elements
-        const elements = d3.selectAll(`svg.${svgTypeMap[this.graphArray[i]]} circle, arc, rect, path, line, polygon, node`);
+        const elements = d3.selectAll(`svg.${svgTypeMap[this.chartArray[i]]} circle, arc, rect, path, line, polygon, node`);
         // eslint-disable-next-line no-loop-func
         elements.each(function () {
           const element = d3.select(this);
@@ -133,20 +133,20 @@ export default class BasicClass {
         }
 
         if (this.options[i].animate || this.options[0].updating) {
-          addAnimation(this.selector, this.createGraph[this.graphArray[i]], this.data[i], this.options[i], this.generalElements);
+          addAnimation(this.selector, this.createChart[this.chartArray[i]], this.data[i], this.options[i], this.generalElements);
         } else {
-          appendAxes(this.graphArray[i], this.options[i], this.generalElements);
+          appendAxes(this.chartArray[i], this.options[i], this.generalElements);
         }
       }
     };
-    this.iterateGraphs();
+    this.iterateCharts();
   }
 
-  addGraphs(type) { // This method probably needs to be refactored
-    this.graphArray.push(...type);
+  addCharts(type) { // This method probably needs to be refactored
+    this.chartArray.push(...type);
     for (let i = 0; i < type.length; i++) {
-      this.createGraph[type[i]](this.data, this.options, this.generalElements);
-      appendAxes(this.graphArray[i], this.options, this.generalElements);
+      this.createChart[type[i]](this.data, this.options, this.generalElements);
+      appendAxes(this.chartArray[i], this.options, this.generalElements);
     }
   }
 
@@ -181,6 +181,6 @@ export default class BasicClass {
       this.options = input.options;
     }
 
-    this.iterateGraphs();
+    this.iterateCharts();
   }
 }

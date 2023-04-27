@@ -1,9 +1,9 @@
 import { createXAxisLine, createYAxisLine } from './axisLines';
 
-export default function generalElementsFunction(data, graph, options) {
+export default function generalElementsFunction(data, chart, options) {
   let x;
 
-  switch (graph) {
+  switch (chart) {
     case 'BAR':
     case 'BOX':
       data.sort((a, b) => d3.ascending(a.x, b.x));
@@ -65,7 +65,7 @@ export default function generalElementsFunction(data, graph, options) {
       .range([options.height - options.margin.bottom, options.margin.top]),
   };
 
-  const y = (scaleFunctions[graph] || scaleFunctions.default)();
+  const y = (scaleFunctions[chart] || scaleFunctions.default)();
   const xAxisPosition = options.xAxisPosition || (options.height - options.margin.bottom);
   const yAxisPosition = options.yAxisPosition || options.margin.left;
   const xAxis = (g) => {
@@ -75,7 +75,7 @@ export default function generalElementsFunction(data, graph, options) {
   };
 
   let yAxis;
-  switch (graph) {
+  switch (chart) {
     case 'WATERFALL':
       yAxis = (g) => g
         .attr('transform', `translate(${yAxisPosition},0)`)
@@ -94,7 +94,7 @@ export default function generalElementsFunction(data, graph, options) {
     default:
       yAxis = (g) => g
         .attr('transform', `translate(${yAxisPosition},0)`)
-        .call(d3.axisLeft(y).ticks(graph === 'STACKEDBAR' ? null : options.height / 80))
+        .call(d3.axisLeft(y).ticks(chart === 'STACKEDBAR' ? null : options.height / 80))
         .call((g) => {
           if (options.yLine) { // may be able to get rid of this
             createYAxisLine(g, options, xAxisPosition);
