@@ -1,8 +1,6 @@
 import * as d3 from 'd3';
 
 export default function onHover(selector, options) {
-  console.log(selector);
-  console.log(options);
   options.forEach((option, i) => {
 
     // Select all the elements (rect, node, leaf, link, circle) with the specified chartType class

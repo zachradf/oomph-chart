@@ -118,8 +118,20 @@ optionData.options2 = {
   overlay: true,
   opacity: 1,
   stack: false,
-  xLine: true,
-  yLine: true,
+  xLine: false,
+  yLine: false,
+  xAxisPosition: 500,
+  yAxisPosition: 500,
+  xTickFrequency: 30,
+  yTickFrequency: 30,
+  xTickLength: 600,
+  yTickLength: 800,
+  xTickExtension: 1000,
+  yTickExtension: 1000,
+  xTickOpacity: 1,
+  yTickOpacity: 0.1,
+  xAxisColor: 'red',
+  yAxisColor: 'blue',
 };
 
 optionData.options3 = {
@@ -147,6 +159,18 @@ optionData.options3 = {
   radius: 10,
   yLine: true,
   xLine: true,
+  xTickFrequency: 10,
+  yTickFrequency: 10,
+  xTickLength: 10,
+  yTickLength: 1000,
+  xTickExtension: 1,
+  yTickExtension: 1,
+  xTickOpacity: 0.21,
+  yTickOpacity: 0.1,
+  xAxisColor: 'red',
+  yAxisColor: 'blue',
+  xAxisOpacity: 1,
+  yAxisOpacity: 1,
 
 };
 

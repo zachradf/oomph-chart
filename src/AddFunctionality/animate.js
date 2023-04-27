@@ -84,7 +84,7 @@ export default function addAnimation(selector, chart2Function, data, options, ge
       .attr('r', 5); // Set radius for new circle elements
 
     // Calculate dynamic bar width based on the number of data points
-     const dynamicBarWidth = (options.width - options.margin.left - options.margin.right) / data.length - (options.width/data.length * 0.2);
+    const dynamicBarWidth = (options.width - options.margin.left - options.margin.right) / data.length - (options.width/data.length * 0.2);
 
     updateSelection
       .merge(enterSelection)
@@ -98,7 +98,7 @@ export default function addAnimation(selector, chart2Function, data, options, ge
       .attr('y', (d, i, nodes) => {
         if (nodes[i].nodeName === 'rect') {
           if (generalElements.y(0) - generalElements.y(d.y) < 0) {
-            return 575;
+            return options.height - 25; // attaches approximately to the bottom of the chart
           }
           return generalElements.y(d.y);
         }
