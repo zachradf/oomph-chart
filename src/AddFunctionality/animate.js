@@ -1,134 +1,97 @@
-// export default function addAnimation(selector, data, options) {
-//   function customSort(criteria) {
-//     return (a, b) => {
-//       switch (criteria) {
-//         case 'x':
-//           return (a.x !== undefined && b.x !== undefined) ? a.x - b.x : a.label.localeCompare(b.label);
-//         case 'y':
-//           return (a.y !== undefined && b.y !== undefined) ? a.y - b.y : a.value - b.value;
-//         case 'value':
-//           return a.value - b.value;
-//         default:
-//           throw new Error('Invalid sorting criteria');
-//       }
-//     };
-//   }
+// import * as d3 from 'd3';
 
-//   // Sort the data based on the custom sort function
-//   const sortedData = data.slice().sort(customSort(options.sortBy || 'value'));
+// export default function addAnimation(selector, chart2Function, data, options, generalElements, duration = 1000) {
+//   // does not work if xLine or yLine are true after initial chart
+//   // Wait for the specified duration before transitioning to the second chart
+//   setTimeout(() => {
+//     // Get the new data and updated scales from the second chart function
+//     const chart = d3.select(selector);
 
-//   // Hide the data points by setting their opacity to 0
-//   d3.select(selector)
-//     .select('.data-points') // Select the container with the class 'data-points'
-//     .selectAll('path') // Select only the path elements within the container
-//     .style('opacity', 0);
-
-// // Animate the data points to appear one by one
-// d3.select(selector)
-//     // .select('.data-points') // Select the container with the class 'data-points'
-//     .selectAll('path') // Select only the path elements within the container
-//     .data(sortedData)
-//     .transition()
-//     .duration(options.animationDuration || 200)
-//     .delay((_, i) => (options.animationDelay || 100) * i)
-//     .style('opacity', 1);
-
-// }
-// import * as d3 from "d3";
-
-// export default function animateByYValue(selector, data, options, duration = 1000) {
-//   options.forEach((option, i) => {
-//     const elements = d3.selectAll(
-//       `circle.${option.chartClass}${i}, rect.${option.chartClass}${i}, .node.${option.chartClass}${i}, .leaf.${option.chartClass}${i}, .link.${option.chartClass}${i}, .box-rect, .arc, path.${option.chartClass}${i}, svg.pie-chart path`
-//     );
-//     console.log('elements here---------', elements, options.chartClass);
-
-//     // Get an array of the elements' data
-//     // const data = elements.data();
-//     console.log('UNsorted data here---------', data);
-
-//     // Sort the data by y-value
-//     data.sort((a, b) => d3.ascending(a.y, b.y));
-//     console.log('sorted data here---------', data);
-
-//     // Bind the sorted data to the elements
-//     const updatedElements = elements.data(data);
-
-//     // Animate the elements by updating their position based on the sorted data
-//     updatedElements
+//     // Update the x-axis and y-axis with new scales and animate the transition
+//     chart.select('.x-axis')
 //       .transition()
 //       .duration(duration)
-//       .attr("transform", (d, i) => {
-//         return `translate(${d.x},${d.y})`;
+//       .call(generalElements.xAxis);
+
+//     chart.select('.y-axis')
+//       .transition()
+//       .duration(duration)
+//       .call(generalElements.yAxis);
+
+//     // Update the chart elements with new data and animate the transition
+//     const chartElements = chart.selectAll('g rect, g circle, .line-graph0');
+//     // chartElements.data(data);
+//     const boundElements = chartElements.data(data);
+
+//     console.log('chartElements here---------', chartElements.attr('class'));
+//     const line = d3.line()
+//       .x((d) => generalElements.x(d.x))
+//       .y((d) => generalElements.y(d.y));
+
+//     const sortedData = data.slice().sort((a, b) => d3.ascending(a.x, b.x));
+//     const type = chartElements.attr('class');
+//     console.log('type', type);
+
+//     chartElements
+//       .data(data)
+//       .join(
+//         (enter) => enter.append((d, i, nodes) => {
+//           console.log('nodes[i].nodeName', nodes);
+//           switch (type) {
+//             case 'bar-chart0':
+//               return document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+//             case 'scatter-plot0':
+//               return document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+//             case 'line-graph0':
+//               return document.createElementNS('http://www.w3.org/2000/svg', 'path');
+//             default:
+//               return null;
+//           }
+//         })
+//       )
+//       .transition()
+//       .duration(duration)
+//       .attr('x', (d, i, nodes) => {
+//         if (nodes[i].nodeName === 'rect') {
+//           console.log(nodes[i].nodeName)
+//           return generalElements.x(d.x);
+//         }
+//       })
+//       .attr('y', (d, i, nodes) => {
+//         if (nodes[i].nodeName === 'rect') {
+//           return generalElements.y(d.y);
+//         }
+//       })
+//       .attr('height', (d, i, nodes) => {
+//         if (nodes[i].nodeName === 'rect') {
+//           return generalElements.y(0) - generalElements.y(d.y);
+//         }
+//       })
+//       .attr('cx', (d, i, nodes) => {
+//         if (nodes[i].nodeName === 'circle') {
+//           return generalElements.x(d.x);
+//         }
+//       })
+//       .attr('cy', (d, i, nodes) => {
+//         if (nodes[i].nodeName === 'circle') {
+//           return generalElements.y(d.y);
+//         }
+//       })
+//       .attr('d', (d, i, nodes) => {
+//         if (nodes[i].nodeName === 'path') {
+//           return line(sortedData);
+//         }
 //       });
-//   });
+
+//     // // Optionally, you can also update the attributes (e.g., width, height, radius, etc.) of the elements
+//     // based on the element type (rect, circle, etc.) and the chart type (bar chart, line chart, etc.)
+//   }, duration);
 // }
-// import * as d3 from "d3";
-
-// export default function animateBarChartSort(selector, data, xScale, xAxis, duration = 1000) {
-//   // Sort the data by value in ascending order
-//   const sortedData = data.slice().sort((a, b) => d3.ascending(a.y, b.y));
-
-//   // Update the xScale's domain with the sorted data's keys
-//   xScale.domain(sortedData.map((d) => d.key));
-
-//   // Select the chart and bars
-//   const chart = d3.select(selector);
-//   const bars = chart.selectAll("rect");
-
-//   // Animate the bars' x position based on the sorted xScale
-//   bars.data(sortedData)
-//     .transition()
-//     .duration(duration)
-//     .attr("x", (d) => xScale(d.key));
-
-//   // Animate the x-axis to reflect the new domain
-//   chart.select(".x-axis")
-//     .transition()
-//     .duration(duration)
-//     .call(xAxis);
-// }
-// import * as d3 from "d3";
-
-// export default function animateBarChartSort(selector, data, xScale, xAxis, duration = 1000) {
-//   const chart = d3.select(selector);
-
-//   // Sort the data by value in ascending order
-//   const sortedData = data.slice().sort((a, b) => d3.ascending(a.value, b.value));
-
-//   // Update the xScale's domain with the sorted data's keys
-//   xScale.domain(sortedData.map((d) => d.key));
-
-//   // Animate the x-axis to reflect the new domain
-//   chart.select(".x-axis")
-//     .transition()
-//     .duration(duration)
-//     .call(xAxis);
-
-//   // Update the bars and bar labels with the sorted data
-//   const bars = chart.selectAll(".bar").data(sortedData);
-//   // const barLabels = chart.selectAll(".bar-label").data(sortedData);
-
-//   // Animate the bars' x position based on the sorted xScale and index
-//   bars.transition()
-//     .duration(duration)
-//     .attr("x", (d, i) => xScale(d.key));
-
-//   // Animate the bar labels' x position based on the sorted xScale and index
-//   // barLabels.transition()
-//   //   .duration(duration)
-//   //   .attr("x", (d, i) => xScale(d.key) + xScale.bandwidth() / 2);
-// }
-import * as d3 from 'd3';
-
 export default function addAnimation(selector, chart2Function, data, options, generalElements, duration = 1000) {
-  // does not work if xLine or yLine are true after initial chart
-  // Wait for the specified duration before transitioning to the second chart
   setTimeout(() => {
-    // Get the new data and updated scales from the second chart function
     const chart = d3.select(selector);
+    console.log('chart', chart);
 
-    // Update the x-axis and y-axis with new scales and animate the transition
     chart.select('.x-axis')
       .transition()
       .duration(duration)
@@ -139,79 +102,106 @@ export default function addAnimation(selector, chart2Function, data, options, ge
       .duration(duration)
       .call(generalElements.yAxis);
 
-    // Update the chart elements with new data and animate the transition
-    const chartElements = chart.selectAll('g rect, g circle, .line-graph0');
-    chartElements.data(data);
+    let chartElements = chart.selectAll('g rect, g circle, .line-graph0');
+    if (chartElements.nodes()[0].nodeName === 'rect') {
+      data = data.sort((a, b) => d3.ascending(a.x, b.x));
+    }
+    // Calculate the difference between the length of the new dataset and the number of elements in the initial chart
+    let numPlaceholders = data.length - chartElements.size();
+    console.log('numPlaceholders', generalElements.xAxis);
+    if (numPlaceholders > 0) {
+      while (numPlaceholders > 0) {
+        const selectedElement = chartElements.nodes()[0];
+        // Clone the element
+        const clonedElement = selectedElement.cloneNode(true);
 
-    console.log('chartElements here---------', chartElements);
+        // Append the cloned element to the chart
+        const g = chart.select('g');
+
+        // Append the cloned element to the g group
+        g.node().appendChild(clonedElement);
+        numPlaceholders -= 1;
+      }
+    } else if (numPlaceholders < 0) {
+      const nodes = chartElements.nodes();
+      while (numPlaceholders < 0) {
+        const selectedElement = nodes.pop();
+        // Remove the selected element from the chart
+        selectedElement.remove();
+        numPlaceholders += 1;
+      }
+    }
+    chartElements = chart.selectAll('g rect, g circle, .line-graph0').data(data);
+
+    // Create an array of placeholder elements
+    const placeholders = new Array(numPlaceholders).fill(null).map(() => document.createElementNS('http://www.w3.org/2000/svg', `${chartElements.nodes()[0].nodeName}`));
+
+    // Merge the chartElements and placeholders arrays
+    const mergedSelection = d3.selectAll([...chartElements.nodes(), ...placeholders]);
+
+    // Bind the new data array to the merged selection
+    const updateSelection = mergedSelection.data(data);
     const line = d3.line()
       .x((d) => generalElements.x(d.x))
       .y((d) => generalElements.y(d.y));
 
     const sortedData = data.slice().sort((a, b) => d3.ascending(a.x, b.x));
+    console.log('sortedData', sortedData);
+    const type = chartElements.attr('class');
 
-    // chartElements
-    //   .data(data)
-    //   .join(
-    //     (enter) => enter.append('circle'),
-    //     (update) => update,
-    //     (exit) => exit.remove()
-    //   )
-    //   .transition()
-    //   .duration(duration)
-    //   .attr('x', (d, i, nodes) => {
-    //     if (nodes[i].nodeName === 'rect') {
-    //       return generalElements.x(d.x);
-    //     }
-    //   })
-    //   .attr('y', (d, i, nodes) => {
-    //     if (nodes[i].nodeName === 'rect') {
-    //       return generalElements.y(d.y);
-    //     }
-    //   })
-    //   .attr('height', (d, i, nodes) => {
-    //     if (nodes[i].nodeName === 'rect') {
-    //       return generalElements.y(0) - generalElements.y(d.y);
-    //     }
-    //   })
-    //   .attr('cx', (d, i, nodes) => {
-    //     if (nodes[i].nodeName === 'circle') {
-    //       return generalElements.x(d.x);
-    //     }
-    //   })
-    //   .attr('cy', (d, i, nodes) => {
-    //     if (nodes[i].nodeName === 'circle') {
-    //       return generalElements.y(d.y);
-    //     }
-    //   })
-    //   .attr('d', (d, i, nodes) => {
-    //     if (nodes[i].nodeName === 'path') {
-    //       return line(sortedData);
-    //     }
-    //   });
+    const enterSelection = updateSelection.enter();
+    const exitSelection = updateSelection.exit();
 
-    chartElements
-      .data(data)
-      // .join(
-      //   (enter) => enter.append('circle'),
-      //   (update) => update,
-      //   (exit) => exit.remove()
-      // )
+    // Enter selection
+    enterSelection
+      .append((d, i, nodes) => {
+        switch (type) {
+          case 'bar-chart0':
+            return document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+          case 'scatter-plot0':
+            return document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          case 'line-graph0':
+            return document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          default:
+            return null;
+        }
+      })
+      .attr('class', type)
+      .attr('r', 5); // Set radius for new circle elements
+
+    // Calculate dynamic bar width based on the number of data points
+    // const dynamicBarWidth = 100
+
+     const dynamicBarWidth = (options.width - options.margin.left - options.margin.right) / data.length - (options.width/data.length * 0.2);
+
+    updateSelection
+      .merge(enterSelection)
       .transition()
       .duration(duration)
       .attr('x', (d, i, nodes) => {
         if (nodes[i].nodeName === 'rect') {
-          return generalElements.x(d.x);
+          return generalElements.x(d.x) - dynamicBarWidth / 2;
         }
       })
       .attr('y', (d, i, nodes) => {
         if (nodes[i].nodeName === 'rect') {
+          if (generalElements.y(0) - generalElements.y(d.y) < 0) {
+            return 575;
+          }
           return generalElements.y(d.y);
         }
       })
       .attr('height', (d, i, nodes) => {
         if (nodes[i].nodeName === 'rect') {
+          if (generalElements.y(0) - generalElements.y(d.y) < 0) {
+            return 5;
+          }
           return generalElements.y(0) - generalElements.y(d.y);
+        }
+      })
+      .attr('width', (d, i, nodes) => {
+        if (nodes[i].nodeName === 'rect') {
+          return dynamicBarWidth;
         }
       })
       .attr('cx', (d, i, nodes) => {
@@ -230,7 +220,14 @@ export default function addAnimation(selector, chart2Function, data, options, ge
         }
       });
 
-    // // Optionally, you can also update the attributes (e.g., width, height, radius, etc.) of the elements
-    // based on the element type (rect, circle, etc.) and the chart type (bar chart, line chart, etc.)
+    if (!options.yLine) {
+      chart.select('.y-axis path').remove();
+    }
+    if (!options.xLine) {
+      chart.select('.x-axis path').remove();
+    }
+
+    // Exit selection
+    exitSelection.remove();
   }, duration);
 }

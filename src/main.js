@@ -25,17 +25,8 @@ import animateByYValue from './AddFunctionality/animate.js';
 
 // Adds Charts
 // Basic Charts
-<<<<<<< HEAD
-<<<<<<< HEAD
-// const areaObject = new BasicClass(['SCATTER'], inputData.input4);
-const barObject = new BasicClass(['LINE', 'LINE', 'LINE', 'LINE'], inputData.input2);
-=======
-const areaObject = new BasicClass(['SCATTER'], inputData.input2);
-=======
 const areaObject = new BasicClass(['SCATTER'], inputData.input4);
->>>>>>> 814cd63 (going to experiment  major changes to basic class)
 // const barObject = new BasicClass(['SCATTER', 'SCATTER', 'SCATTER', 'AREA'], inputData.input2);
->>>>>>> 67fe112 (animate only working for some barcharts)
 
 // const bubbleObject = new BasicClass(['BUBBLE'], inputData.input5);// fix category labels
 // const areaObject = new BasicClass(['DONUT'], inputData.input23);
@@ -68,10 +59,11 @@ const areaObject = new BasicClass(['SCATTER'], inputData.input4);
 // const boxPlotObject = new BasicClass(['BOX'], input15);
 // setTimeout(() => barObject2.updateInput(inputData.input3), 5000);
 // barObject2.updateInput(inputData.input3);
-areaObject.updateInput(inputData.input5);
+// areaObject.updateInput(inputData.input5);
 setTimeout(() => areaObject.updateInput(inputData.input2), 2000);
 setTimeout(() => areaObject.updateInput(inputData.input4), 4000);
 setTimeout(() => areaObject.updateInput(inputData.input5), 6000);
+setTimeout(() => areaObject.updateInput(inputData.input4), 8000);
 // createPointMap(dataset, options, '#chart');
 // const barObject3 = new BasicClass(['BAR'], inputData.input4);
 // areaObject.updateInput(inputData.input5);

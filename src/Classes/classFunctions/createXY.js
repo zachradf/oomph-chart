@@ -6,10 +6,17 @@ export default function generalElementsFunction(data, graph, options) {
   switch (graph) {
     case 'BAR':
     case 'BOX':
+      data.sort((a, b) => d3.ascending(a.x, b.x));
+      if( typeof data[0].x=== 'string') {
       x = d3.scaleBand()
         .domain(data.map((d) => d.x))
         .range([options.margin.left, options.width - options.margin.right])
         .padding(0.1);
+      } else {
+        x = d3.scaleLinear()
+        .domain(d3.extent(data, (d) => d.x)).nice()
+        .range([options.margin.left, options.width - options.margin.right]);
+      }
       break;
     case 'FUNNEL':
       const totalValue = data.reduce((acc, curr) => acc + curr.y, 0);

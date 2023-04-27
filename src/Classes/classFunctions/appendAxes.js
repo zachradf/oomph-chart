@@ -1,5 +1,4 @@
 export default function appendAxes(graph, options, generalElements) {
-console.log('THIS IS OPTIONS>UPDATINg', options);
   const { width } = options;
   const { height } = options;
   const { margin } = options;
@@ -39,7 +38,7 @@ console.log('THIS IS OPTIONS>UPDATINg', options);
       .classed('y-axis', true)
       .attr('transform', `translate(${margin.left},0)`)
       .call(yAxis);
-  } else {
+  } else if (!options.updating) {
     svg.append('g').classed('y-axis', true).call(yAxis);
     svg.append('g').classed('x-axis', true).call(xAxis);
   }

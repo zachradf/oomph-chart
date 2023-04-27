@@ -84,25 +84,25 @@ export default class BasicClass {
           this.options[i].showCategories = true;
           this.options[i].chartNumber = 1;
           this.options[i].padding = 0.1;
-        } else if (!this.options.updating) {
+        } else if (!this.options[0].updating) {
           this.options = input.options;
           this.options[i].chartNumber = i;
         }
         let generalElements;
-        if (this.options[i].stack && i === 0 && !this.options.updating) {
+        if (this.options[i].stack && i === 0 && !this.options[0].updating) {
           generalElements = createAxes(this.input.data[i], graphArray[i], this.options[i]);
           generalElements.svg = createSVG(this.selector, graphArray[i], this.options[i]);
           this.generalElements = generalElements;
-        } else if (!this.options[i].stack && !this.options.updating) {
+        } else if (!this.options[i].stack && !this.options[0].updating) {
           generalElements = createAxes(this.input.data[i], graphArray[i], this.options[i]);
           generalElements.svg = createSVG(this.selector, graphArray[i], this.options[i]);
           this.generalElements = generalElements;
-        } else if (this.options.updating) {
+        } else if (this.options[0].updating) {
           generalElements = createAxes(this.input.data[i], graphArray[i], this.options[i]);
           this.generalElements = generalElements;
         }
         console.log(this.options[i], 'options', this.graphArray[i], 'graph', this.data[i], 'data', this.selector, 'selector');
-        if (!this.options.updating) {
+        if (!this.options[0].updating) {
           this.createGraph[this.graphArray[i]](this.data[i], this.options[i], this.generalElements);
         }
         const options = this.options[i];
@@ -127,7 +127,7 @@ export default class BasicClass {
           relativeNode(this.selector, this.data[i], this.options[i]);
         }
 
-        if (this.options[i].animate || this.options.updating) {
+        if (this.options[i].animate || this.options[0].updating) {
           setTimeout(addAnimation(this.selector, this.createGraph[this.graphArray[i]], this.data[i], this.options[i], this.generalElements), 1000);
           // appendAxes(this.graphArray[i], this.options[i], this.generalElements);
         } else {

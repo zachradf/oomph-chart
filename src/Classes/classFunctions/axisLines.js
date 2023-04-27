@@ -1,6 +1,6 @@
 export function createYAxisLine(g, options, xAxisPosition) {
   console.log('createYAxisLine before CONDITIONAL');
-  if (!options.yLine) return;
+  if (!options.yLine || options.updating) return;
   console.log('createYAxisLine AFTER CONDITIONAL');
 
   g.append('line')
@@ -14,7 +14,7 @@ export function createYAxisLine(g, options, xAxisPosition) {
 }
 
 export function createXAxisLine(g, options) {
-  if (!options.xLine) return;
+  if (!options.xLine || options.updating) return;
   g.append('line')
     .attr('stroke', 'currentColor')
     .attr('x1', options.margin.left)
