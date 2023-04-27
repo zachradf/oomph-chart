@@ -98,9 +98,9 @@ optionData.options19 = {
   xLine: true,
   yLine: true,
   xLabel: 'xLabel',
-  // xLine: true,
+  xLine: true,
   yLabel: 'yLabel',
-  // yLine: true,
+  yLine: true,
 };
 
 optionData.options2 = {
@@ -114,12 +114,12 @@ optionData.options2 = {
   showCategories: true,
   diameter: 400,
   fillColor: ['red', 'blue', 'green', 'yellow', 'orange', 'purple'],
+  onHover: true,
   overlay: true,
   opacity: 1,
-  onHover: false,
   stack: false,
-  xLine: false,
-  yLine: false,
+  xLine: true,
+  yLine: true,
 };
 
 optionData.options3 = {
@@ -145,8 +145,8 @@ optionData.options3 = {
   nodePadding: 1,
   strokeColor: '#000000',
   radius: 10,
-  // yLine: true,
-  // xLine: true,
+  yLine: true,
+  xLine: true,
 
 >>>>>>> 67fe112 (animate only working for some barcharts)
 };
@@ -360,7 +360,7 @@ optionData.options13 = {
   textAnchor: 'middle',
   textColor: 'white',
   width: 900,
-  // xAxisPosition: 200,
+  xAxisPosition: 200,
   xLabel: 'xLabel',
   xLine: true,
   // yAxisPosition: 100,

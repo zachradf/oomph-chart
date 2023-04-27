@@ -151,3 +151,21 @@ inputData.input23 = {
   selector: '#chart',
   options: [options.options18],
 };
+
+inputData.input24 = {
+  data: [chartData.scatterPlot],
+  selector: '#chart',
+  options: [options.options3],
+};
+
+inputData.input25 = {
+  data: [chartData.scatterPlot2],
+  selector: '#chart',
+  options: [options.options2],
+};
+
+inputData.input26 = {
+  data: [chartData.scatterPlot, chartData.scatterPlot2],
+  selector: '#chart',
+  options: [options.options13, options.options13],
+};

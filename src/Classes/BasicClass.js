@@ -129,7 +129,6 @@ export default class BasicClass {
 
         if (this.options[i].animate || this.options[0].updating) {
           setTimeout(addAnimation(this.selector, this.createGraph[this.graphArray[i]], this.data[i], this.options[i], this.generalElements), 1000);
-          // appendAxes(this.graphArray[i], this.options[i], this.generalElements);
         } else {
           appendAxes(this.graphArray[i], this.options[i], this.generalElements);
         }
@@ -148,9 +147,10 @@ export default class BasicClass {
 
   removeChart(type) {
     // const this.svgSelector = this.options.chartClass;
-    if (this.options.chartClass) {
+
+    if (this.options[0].chartClass) {
       d3.select(this.input.selector)
-        .selectAll(`svg.${this.options.chartClass}`)
+        .selectAll(`svg.${this.options[0].chartClass}`)
         .remove();
       console.log('removed', this.options.chartClass);
     } else {
@@ -162,7 +162,8 @@ export default class BasicClass {
     this.input = input;
     this.input.options[0].updating = true;
     this.data = input.data;
-    this.options = input.options;
+    this.options[0] = input.options;
+    console.log('this.options[0]', this.options[0])
     // this.options.updating = true;
     if (!input.options) {
       this.options = {};

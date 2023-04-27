@@ -3,6 +3,9 @@ export default function createD3LineGraph(data, options, generalElements) {
   const { y } = generalElements;
   const { svg } = generalElements;
 
+  // Sort the data by the x value
+  data.sort((a, b) => d3.ascending(a.x, b.x));
+
   const line = d3.line()// Unique to line graph?
     .x((d) => x(d.x))
     .y((d) => y(d.y));

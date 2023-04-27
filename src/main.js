@@ -25,7 +25,7 @@ import animateByYValue from './AddFunctionality/animate.js';
 
 // Adds Charts
 // Basic Charts
-const areaObject = new BasicClass(['SCATTER'], inputData.input4);
+const areaObject2 = new BasicClass(['SCATTER'], inputData.input24);
 // const barObject = new BasicClass(['SCATTER', 'SCATTER', 'SCATTER', 'AREA'], inputData.input2);
 
 // const bubbleObject = new BasicClass(['BUBBLE'], inputData.input5);// fix category labels
@@ -60,10 +60,19 @@ const areaObject = new BasicClass(['SCATTER'], inputData.input4);
 // setTimeout(() => barObject2.updateInput(inputData.input3), 5000);
 // barObject2.updateInput(inputData.input3);
 // areaObject.updateInput(inputData.input5);
-setTimeout(() => areaObject.updateInput(inputData.input2), 2000);
-setTimeout(() => areaObject.updateInput(inputData.input4), 4000);
-setTimeout(() => areaObject.updateInput(inputData.input5), 6000);
-setTimeout(() => areaObject.updateInput(inputData.input4), 8000);
+// setTimeout(() => areaObject.updateInput(inputData.input2), 2000);
+// setTimeout(() => areaObject.updateInput(inputData.input4), 4000);
+// setTimeout(() => areaObject.updateInput(inputData.input5), 6000);
+// setTimeout(() => areaObject.updateInput(inputData.input4), 8000);
+// setTimeout(() => areaObject.removeChart('scatter-plot'), 8000);
 // createPointMap(dataset, options, '#chart');
 // const barObject3 = new BasicClass(['BAR'], inputData.input4);
 // areaObject.updateInput(inputData.input5);
+// let areaObject2;
+// setTimeout(() => {
+//    areaObject2 = new BasicClass(['LINE'], inputData.input26);
+// }, 10000);
+setTimeout(() => areaObject2.updateInput(inputData.input5), 1000);
+// setTimeout(() => areaObject2.updateInput(inputData.input25), 2000);
+// setTimeout(() => areaObject2.updateInput(inputData.input26), 3000);
+// setTimeout(() => areaObject2.updateInput(inputData.input24), 5000);

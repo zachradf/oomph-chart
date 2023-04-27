@@ -87,6 +87,8 @@
 //     // based on the element type (rect, circle, etc.) and the chart type (bar chart, line chart, etc.)
 //   }, duration);
 // }
+
+import onHover from "./onHover";
 export default function addAnimation(selector, chart2Function, data, options, generalElements, duration = 1000) {
   setTimeout(() => {
     const chart = d3.select(selector);
@@ -229,5 +231,9 @@ export default function addAnimation(selector, chart2Function, data, options, ge
 
     // Exit selection
     exitSelection.remove();
+
+    if (options.onHover) {
+      onHover(selector, [options]);
+    }
   }, duration);
 }
