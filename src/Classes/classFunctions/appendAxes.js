@@ -1,4 +1,4 @@
-export default function appendAxes(graph, options, generalElements) {
+export default function appendAxes(chart, options, generalElements) {
   const { width } = options;
   const { height } = options;
   const { margin } = options;
@@ -6,8 +6,8 @@ export default function appendAxes(graph, options, generalElements) {
   const { xAxis } = generalElements;
   const { yAxis } = generalElements;
   // this will be checked by grpah tags in the future
-  if (graph === 'POLAR' || graph === 'RADAR' || graph === 'PIE' || graph === 'DONUT' || graph === 'HEATMAP' || graph === 'BUBBLE') return;
-  if (graph === 'BAR') {
+  if (chart === 'POLAR' || chart === 'RADAR' || chart === 'PIE' || chart === 'DONUT' || chart === 'HEATMAP' || chart === 'BUBBLE') return;
+  if (chart === 'BAR') {
     svg.append('g')
       .classed('x-axis', true)
       .call(xAxis)
@@ -28,7 +28,7 @@ export default function appendAxes(graph, options, generalElements) {
       .attr('text-anchor', 'end')
       .attr('transform', 'rotate(-90)')
       .text(options.y);
-  } else if (graph === 'STACKEDBAR') {
+  } else if (chart === 'STACKEDBAR') {
     svg.append('g')
       .classed('x-axis', true)
       .attr('transform', `translate(0,${height - margin.bottom})`)

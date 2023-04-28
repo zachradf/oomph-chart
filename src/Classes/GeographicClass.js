@@ -2,22 +2,22 @@ import onHover from '../AddFunctionality/onHover.js';
 import relativeNode from '../AddFunctionality/relativeNode.js';
 
 export default class GeographicClass {
-  constructor(graphArray, input) {
-    this.createGraph = {
-    
+  constructor(chartArray, input) {
+    this.createChart = {
+
     };
     const svgTypeMap = {
-    
+
     };
 
-    this.graphArray = graphArray;
+    this.chartArray = chartArray;
     this.options = input.options;
     this.data = input.data;
     this.input = input;
 
-    this.iterateGraphs = () => {
-      for (let i = 0; i < this.graphArray.length; i++) {
-        this.options[i].chartClass = svgTypeMap[this.graphArray[i]];
+    this.iterateCharts = () => {
+      for (let i = 0; i < this.chartArray.length; i++) {
+        this.options[i].chartClass = svgTypeMap[this.chartArray[i]];
 
         this.selector = input.selector ? input.selector : '#chart';
 
@@ -39,25 +39,25 @@ export default class GeographicClass {
         }
         let generalElements;
         if (this.options[i].stack && i === 0) {
-          generalElements = createAxes(this.input.data[i], graphArray[i], this.options[i]);
-          generalElements.svg = createSVG(this.selector, graphArray[i], this.options[i]);
+          generalElements = createAxes(this.input.data[i], chartArray[i], this.options[i]);
+          generalElements.svg = createSVG(this.selector, chartArray[i], this.options[i]);
           this.generalElements = generalElements;
         } else if (!this.options[i].stack) {
-          generalElements = createAxes(this.input.data[i], graphArray[i], this.options[i]);
-          generalElements.svg = createSVG(this.selector, graphArray[i], this.options[i]);
+          generalElements = createAxes(this.input.data[i], chartArray[i], this.options[i]);
+          generalElements.svg = createSVG(this.selector, chartArray[i], this.options[i]);
           this.generalElements = generalElements;
         }
-        console.log(this.options[i], 'options', this.graphArray[i], 'graph', this.data[i], 'data', this.selector, 'selector')
-        this.createGraph[this.graphArray[i]](this.data[i], this.options[i], this.generalElements);
+        console.log(this.options[i], 'options', this.chartArray[i], 'graph', this.data[i], 'data', this.selector, 'selector');
+        this.createChart[this.chartArray[i]](this.data[i], this.options[i], this.generalElements);
         const options = this.options[i];
-        const elements = d3.selectAll(`svg.${svgTypeMap[this.graphArray[i]]} circle, arc, rect, path, line, polygon, node`);
+        const elements = d3.selectAll(`svg.${svgTypeMap[this.chartArray[i]]} circle, arc, rect, path, line, polygon, node`);
         // eslint-disable-next-line no-loop-func
         elements.each(function () {
           const element = d3.select(this);
           const { classList } = this; // Access the classList property of the DOM element
 
           if (classList.length === 0) {
-           // The element has no classes, you can assign a class here
+            // The element has no classes, you can assign a class here
             element.classed(`${options.chartClass}${i}`, true);
           }
           if (options.opacity) {
@@ -72,17 +72,17 @@ export default class GeographicClass {
           relativeNode(this.selector, this.data[i], this.options[i]);
         }
 
-        appendAxes(this.graphArray[i], this.options[i], this.generalElements);
+        appendAxes(this.chartArray[i], this.options[i], this.generalElements);
       }
     };
-    this.iterateGraphs();
+    this.iterateCharts();
   }
 
-  addGraphs(type) {
-    this.graphArray.push(...type);
+  addCharts(type) {
+    this.chartArray.push(...type);
     for (let i = 0; i < type.length; i++) {
-      this.createGraph[type[i]](this.data, this.options, this.generalElements);
-      appendAxes(this.graphArray[i], this.options, this.generalElements);
+      this.createChart[type[i]](this.data, this.options, this.generalElements);
+      appendAxes(this.chartArray[i], this.options, this.generalElements);
     }
   }
 
@@ -114,6 +114,6 @@ export default class GeographicClass {
       this.options = input.options;
     }
 
-    this.iterateGraphs();
+    this.iterateCharts();
   }
 }

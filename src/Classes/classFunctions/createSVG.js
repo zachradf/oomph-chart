@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
 
-export default function createSVG(selector, graph, options) {
+export default function createSVG(selector, chart, options) {
   let svg;
 
   if (options.stack) {
@@ -15,13 +15,13 @@ export default function createSVG(selector, graph, options) {
       .attr('width', options.width)
       .attr('height', options.height);
 
-    if (graph === 'PIE' || graph === 'DONUT' || graph === 'GAUGE' || graph === 'POLAR' || graph === 'RADAR') {
+    if (chart === 'PIE' || chart === 'DONUT' || chart === 'GAUGE' || chart === 'POLAR' || chart === 'RADAR') {
       svg.classed(`${options.chartClass}`, true);
-      console.log('SVG', svg)
+      console.log('SVG', svg);
       const g = svg.append('g')
         .attr('transform', `translate(${options.width / 2}, ${options.height / 2})`);
 
-      if (graph === 'DONUT') {
+      if (chart === 'DONUT') {
         svg.attr('viewBox', `0 0 ${options.width} ${options.height}`);
       }
 
@@ -43,7 +43,7 @@ export default function createSVG(selector, graph, options) {
     }
     return svg;
   }
-  if (graph === 'PIE' || graph === 'DONUT' || graph === 'GAUGE' || graph === 'POLAR' || graph === 'RADAR') {
+  if (chart === 'PIE' || chart === 'DONUT' || chart === 'GAUGE' || chart === 'POLAR' || chart === 'RADAR') {
     svg = d3.select(selector)
       .append('svg')
       .classed(`${options.chartClass}`, true)
@@ -52,9 +52,9 @@ export default function createSVG(selector, graph, options) {
       .append('g')
       .attr('transform', `translate(${options.width / 2}, ${options.height / 2})`);
 
-    if (graph === 'DONUT') {
+    if (chart === 'DONUT') {
       svg.attr('viewBox', `0 0 ${options.width} ${options.height}`);
-    } else if (graph === 'BUBBLE') {
+    } else if (chart === 'BUBBLE') {
       svg = d3.select(selector)
         .append('svg')
         .classed('bubble-chart', true)

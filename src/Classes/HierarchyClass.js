@@ -12,10 +12,9 @@ import createAdjacencyMatrix from '../Charts/hierarchicalCharts/adjacencyMatrix.
 import createDendrogram from '../Charts/hierarchicalCharts/dendogram.js';
 import createRadialTree from '../Charts/hierarchicalCharts/radialTreeMap.js';
 
-
 export default class HierarchyClass {
-  constructor(graphArray, input) {
-    this.graphArray = graphArray;
+  constructor(chartArray, input) {
+    this.chartArray = chartArray;
     this.input = input;
     this.input.data = input.data;
     this.input.selector = input.selector ? input.selector : '#chart';
@@ -34,7 +33,7 @@ export default class HierarchyClass {
       this.input.options = input.options;
     }
 
-    this.createGraph = {
+    this.createChart = {
       SUNBURST: createSunburstChart,
       TREEMAP: createTreeMap,
       TREEDIAGRAM: createTreeDiagram,
@@ -47,26 +46,26 @@ export default class HierarchyClass {
       ADJACENCY: createAdjacencyMatrix,
       DENDROGRAM: createDendrogram,
       RADIALTREE: createRadialTree,
-      
+
     };
 
-    this.iterateGraphs = () => {
-      for (let i = 0; i < this.graphArray.length; i++) {
+    this.iterateCharts = () => {
+      for (let i = 0; i < this.chartArray.length; i++) {
         console.log(this.input.data[i], this.input.selector, this.input.options[i]);
-        this.createGraph[this.graphArray[i]](this.input.data[i], this.input.selector, this.input.options[i]);
+        this.createChart[this.chartArray[i]](this.input.data[i], this.input.selector, this.input.options[i]);
       }
     };
 
-    this.iterateGraphs();
+    this.iterateCharts();
   }
 
-  addGraphs(type) {
-    this.graphArray.push(...type);
+  addCharts(type) {
+    this.chartArray.push(...type);
     if (!Array.isArray(type)) {
-      this.createGraph[type](this.input.data, this.input.selector, this.input.options);
+      this.createChart[type](this.input.data, this.input.selector, this.input.options);
     } else {
       for (let i = 0; i < type.length; i++) {
-        this.createGraph[type[i]](this.input.data, this.input.selector, this.input.options);
+        this.createChart[type[i]](this.input.data, this.input.selector, this.input.options);
       }
     }
   }
@@ -103,6 +102,6 @@ export default class HierarchyClass {
       this.input.options = input.options;
     }
 
-    this.iterateGraphs();
+    this.iterateCharts();
   }
 }

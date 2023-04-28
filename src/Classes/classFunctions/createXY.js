@@ -1,9 +1,9 @@
 import { createXAxisLine, createYAxisLine } from './axisLines';
 
-export default function generalElementsFunction(data, graph, options) {
+export default function generalElementsFunction(data, chart, options) {
   let x;
 
-  switch (graph) {
+  switch (chart) {
     case 'BAR':
     case 'BOX':
       data.sort((a, b) => d3.ascending(a.x, b.x));
@@ -65,7 +65,7 @@ export default function generalElementsFunction(data, graph, options) {
       .range([options.height - options.margin.bottom, options.margin.top]),
   };
 
-  const y = (scaleFunctions[graph] || scaleFunctions.default)();
+  const y = (scaleFunctions[chart] || scaleFunctions.default)();
   const yTickLength = options.yTickLength || options.height - options.margin.top - options.margin.bottom;
   const xTickLength = options.xTickLength || options.width - options.margin.left - options.margin.right;
   const xTickExtension = options.xTickExtension || 0;
@@ -90,7 +90,7 @@ export default function generalElementsFunction(data, graph, options) {
       .call(d3.axisBottom(x).ticks(xTickFrequency).tickSizeOuter(0).tickSize(0))
       .call((g) => {
         g.selectAll('.tick')
-          .each(function() {
+          .each(function () {
             d3.select(this)
               .append('line')
               .attr('stroke', `${xAxisColor}`)
@@ -160,7 +160,7 @@ export default function generalElementsFunction(data, graph, options) {
     default:
       yAxis = (g) => g
         .attr('transform', `translate(${yAxisPosition},0)`)
-        .call(d3.axisLeft(y).ticks(graph === 'STACKEDBAR' ? null : yTickFrequency).tickSize(0))
+        .call(d3.axisLeft(y).ticks(chart === 'STACKEDBAR' ? null : yTickFrequency).tickSize(0))
         .call((g) => {
           g.selectAll('.tick')
             .each(function () {
