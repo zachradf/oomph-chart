@@ -106,7 +106,7 @@ export default function generalElementsFunction(data, chart, options) {
     if (options.xLine) createXAxisLine(g, options, yAxisPosition);
   };
   let yAxis;
-  switch (graph) {
+  switch (chart) {
   //   case 'WATERFALL':
   //     yAxis = (g) => g
   //       .attr('transform', `translate(${yAxisPosition},0)`)
@@ -125,7 +125,7 @@ export default function generalElementsFunction(data, chart, options) {
   //   default:
   //     yAxis = (g) => g
   //       .attr('transform', `translate(${yAxisPosition},0)`)
-  //       .call(d3.axisLeft(y).ticks(graph === 'STACKEDBAR' ? null : yTickFrequency).tickSize(-yTickLength + yTickExtension))
+  //       .call(d3.axisLeft(y).ticks(chart === 'STACKEDBAR' ? null : yTickFrequency).tickSize(-yTickLength + yTickExtension))
   //       .call((g) => {
   //         g.selectAll('.tick line').attr('opacity', options.yTickOpacity || 1);
   //         if (options.yLine) {
