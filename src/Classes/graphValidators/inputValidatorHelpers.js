@@ -1,5 +1,3 @@
-/* eslint-disable no-use-before-define */
-
 /** Helper function. */
 export function validateArrayHelper(inputArray, expectedTypes) {
   if (!Array.isArray(inputArray) || inputArray.length !== expectedTypes.length) {

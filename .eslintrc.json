@@ -12,6 +12,7 @@
   "rules": {
     "no-console": "off",
     "no-underscore-dangle": "warn",
+    "no-use-before-define": "off",
     "comma-dangle": [
       "error",
       {

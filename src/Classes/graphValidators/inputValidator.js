@@ -1,4 +1,3 @@
-/* eslint-disable no-use-before-define */
 import InputTypes from '../graphTypes/inputTypes.js';
 
 import { validateArrayHelper, validateObjectHelper } from './inputValidatorHelpers.js';
