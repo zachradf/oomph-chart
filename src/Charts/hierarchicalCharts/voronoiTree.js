@@ -1,5 +1,4 @@
 import { voronoiTreemap } from 'd3-voronoi-treemap';
-import { scaleOrdinal, schemeCategory10, interpolateRgbBasis } from 'd3';
 
 export default function createVoronoiTreemap(data, selector, options) {
   const svg = d3
@@ -16,7 +15,7 @@ export default function createVoronoiTreemap(data, selector, options) {
 
   const cells = root.descendants().filter((d) => d.depth);
 
-  const categoryColor = scaleOrdinal(schemeCategory10);
+  const categoryColor = d3.scaleOrdinal(d3.schemeCategory10);
 
   const groups = svg
     .selectAll('g')
@@ -29,7 +28,7 @@ export default function createVoronoiTreemap(data, selector, options) {
       } if (d.depth === 2) {
         const parentCategory = d.parent.data.name;
         const parentColor = categoryColor(parentCategory);
-        const interpolator = interpolateRgbBasis([parentColor, 'white']);
+        const interpolator = d3.interpolateRgbBasis([parentColor, 'white']);
         return interpolator(d.data.value / d.parent.value);
       }
     })

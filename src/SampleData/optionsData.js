@@ -86,7 +86,7 @@ optionData.options19 = {
   relativeNodeSize: false,
   showCategories: true,
   showLabels: true,
-  sortBy: 'value',
+  sortBy: 'y asc',
   stack: true,
   startAngle: -Math.PI / 1.25,
   strokeColor: 'blue',

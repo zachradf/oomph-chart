@@ -1,39 +1,3 @@
-// import { scaleSqrt, svg, selectAll } from 'd3';
-
-// /**
-//  * adjustNodeSize - Adjusts the size of the nodes in a chart based on their values.
-//  *
-//  * @param {Object} chart The chart object containing nodes
-//  * @param {Array}  data The dataset containing node values
-//  * @param {Object} options Configuration options for the chart
-//  */
-// export default function adjustNodeSize(selector, data, options) {
-//   // Extract all node values
-//   const nodeValues = data.map((d) => d.y);
-
-//   // Define minimum and maximum node sizes
-//   const minNodeSize = options.minNodeSize || 3;
-//   const maxNodeSize = options.maxNodeSize || 20;
-
-//   // Create a scale for node sizes
-//   const nodeSizeScale = scaleSqrt()
-//     .domain([Math.min(...nodeValues), Math.max(...nodeValues)])
-//     .range([minNodeSize, maxNodeSize]);
-
-//   // Update node size
-//   const nodes = d3.select(selector).selectAll('circle');
-//   console.log(nodes);
-//   nodes.each(function () {
-//     const el = d3.select(this);
-//     console.log('relative node', el);
-//     el.attr('r', (d) => {
-//         console.log('relative node', nodeSizeScale(d.y));
-//       nodeSizeScale(d.y);
-//     });
-//   });
-// }
-import { scaleSqrt, select } from 'd3';
-
 /**
  * adjustNodeSize - Adjusts the size of the nodes in a chart based on their values.
  *
@@ -57,15 +21,15 @@ export default function adjustNodeSize(selector, data, options) {
   const maxNodeSize = options.maxNodeSize || 20;
 
   // Create a scale for node sizes
-  const nodeSizeScale = scaleSqrt()
+  const nodeSizeScale = d3.scaleSqrt()
     .domain([Math.min(...nodeValues), Math.max(...nodeValues)])
     .range([minNodeSize, maxNodeSize]);
 
   // Update node size
-  const nodes = select(selector).selectAll('circle');
+  const nodes = d3.select(selector).selectAll('circle');
   console.log(nodes);
   nodes.each(function () {
-    const el = select(this);
+    const el = d3.select(this);
     console.log('relative node', el);
     el.attr('r', (d) => {
       if (nodeSizeScale(d.y) <= 0) {

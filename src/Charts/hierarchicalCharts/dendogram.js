@@ -1,7 +1,5 @@
-import { cluster, hierarchy, select } from 'd3';
-
 export default function createDendrogram(data, selector, options) {
-  const svg = select(selector)
+  const svg = d3.select(selector)
     .append('svg')
     .classed('dendrogram', true)
     .attr('width', options.width)
@@ -11,10 +9,10 @@ export default function createDendrogram(data, selector, options) {
     .append('g')
     .attr('transform', `translate(${options.margin.left}, ${options.margin.top})`);
 
-  const layout = cluster()
+  const layout = d3.cluster()
     .size([options.height - options.margin.top - options.margin.bottom, options.width - options.margin.left - options.margin.right]);
 
-  const root = hierarchy(data);
+  const root = d3.hierarchy(data);
   layout(root);
 
   const link = g

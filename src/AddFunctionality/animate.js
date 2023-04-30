@@ -5,6 +5,21 @@ export default function addAnimation(selector, data, options, generalElements, d
   setTimeout(() => {
     const chart = d3.select(selector);
 
+// console.log('OPTIONS', options);
+//     if (options.sortBy) {
+//       if (options.sortBy === 'x asc') {
+//         data.sort((a, b) => a.x - b.x);
+//       } else if (options.sortBy === 'x desc') {
+//         data.sort((a, b) => b.x - a.x);
+//       } else if (options.sortBy === 'y asc') {
+//         data.sort((a, b) => a.y - b.y);
+//         console.log('SORTED DATA', data);
+//       } else if (options.sortBy === 'y desc') {
+//         data.sort((a, b) => b.y - a.y);
+//       }
+//       generalElements.x.domain(data.map((d) => d.x));
+//     }
+
     chart.select('.x-axis')
       .transition()
       .duration(duration)
@@ -14,19 +29,6 @@ export default function addAnimation(selector, data, options, generalElements, d
       .transition()
       .duration(duration)
       .call(generalElements.yAxis);
-
-    // if (options.sortBy) {
-    //   if (options.sortBy === 'x asc') {
-    //     data.sort((a, b) => a.x - b.x);
-    //   } else if (options.sortBy === 'x desc') {
-    //     data.sort((a, b) => b.x - a.x);
-    //   } else if (options.sortBy === 'y asc') {
-    //     data.sort((a, b) => a.y - b.y);
-    //     console.log('SORTED DATA', data);
-    //   } else if (options.sortBy === 'y desc') {
-    //     data.sort((a, b) => b.y - a.y);
-    //   }
-    // }
 
     let chartElements = chart.selectAll('g rect, g circle, .line-graph0, .area-chart0');
     // Calculate the difference between the length of the new dataset and the number of elements in the initial chart
