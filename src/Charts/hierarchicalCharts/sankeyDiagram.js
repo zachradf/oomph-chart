@@ -1,6 +1,4 @@
 import { sankey as d3Sankey, sankeyLinkHorizontal } from 'd3-sankey';
-import * as d3 from 'd3';
-
 export default function createSankeyDiagram(data, selector, options) {
   const {
     width,

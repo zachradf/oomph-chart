@@ -1,5 +1,3 @@
-import * as d3 from 'd3';
-
 export default function onHover(selector, options) {
   options.forEach((option, i) => {
 

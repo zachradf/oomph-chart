@@ -133,7 +133,7 @@ export default class BasicClass {
         }
 
         if (this.options[i].animate || this.options[0].updating) {
-          addAnimation(this.selector, this.createChart[this.chartArray[i]], this.data[i], this.options[i], this.generalElements);
+          addAnimation(this.selector, this.data[i], this.options[i], this.generalElements);
         } else {
           appendAxes(this.chartArray[i], this.options[i], this.generalElements);
         }

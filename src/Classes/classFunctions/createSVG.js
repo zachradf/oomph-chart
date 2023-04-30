@@ -1,6 +1,4 @@
-import * as d3 from 'd3';
-
-export default function createSVG(selector, chart, options) {
+export default function createSVG(selector, graph, options) {
   let svg;
 
   if (options.stack) {

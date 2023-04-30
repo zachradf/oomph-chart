@@ -1,10 +1,9 @@
-import onHover from "./onHover";
-import relativeNode from "./relativeNode"; // TODO: incorporate this
+import onHover from './onHover';
+import relativeNode from './relativeNode'; // TODO: incorporate this
 
-export default function addAnimation(selector, chart2Function, data, options, generalElements, duration = 1000) {
+export default function addAnimation(selector, data, options, generalElements, duration = 1000) {
   setTimeout(() => {
     const chart = d3.select(selector);
-    console.log('chart', chart);
 
     chart.select('.x-axis')
       .transition()
@@ -16,13 +15,23 @@ export default function addAnimation(selector, chart2Function, data, options, ge
       .duration(duration)
       .call(generalElements.yAxis);
 
-    let chartElements = chart.selectAll('g rect, g circle, .line-graph0');
-    if (chartElements.nodes()[0].nodeName === 'rect') {
-      data = data.sort((a, b) => d3.ascending(a.x, b.x));
-    }
+    // if (options.sortBy) {
+    //   if (options.sortBy === 'x asc') {
+    //     data.sort((a, b) => a.x - b.x);
+    //   } else if (options.sortBy === 'x desc') {
+    //     data.sort((a, b) => b.x - a.x);
+    //   } else if (options.sortBy === 'y asc') {
+    //     data.sort((a, b) => a.y - b.y);
+    //     console.log('SORTED DATA', data);
+    //   } else if (options.sortBy === 'y desc') {
+    //     data.sort((a, b) => b.y - a.y);
+    //   }
+    // }
+
+    let chartElements = chart.selectAll('g rect, g circle, .line-graph0, .area-chart0');
     // Calculate the difference between the length of the new dataset and the number of elements in the initial chart
     let numPlaceholders = data.length - chartElements.size();
-    console.log('numPlaceholders', generalElements.xAxis);
+    // console.log('SELECTED ELEMENTS', chartElements.nodes()[0].nodeName);
     if (numPlaceholders > 0) {
       while (numPlaceholders > 0) {
         const selectedElement = chartElements.nodes()[0];
@@ -45,9 +54,27 @@ export default function addAnimation(selector, chart2Function, data, options, ge
         numPlaceholders += 1;
       }
     }
-    chartElements = chart.selectAll('g rect, g circle, .line-graph0').data(data);
+    chartElements = chart.selectAll('g rect, g circle, .line-graph0, .area-chart0').data(data);
 
     // Create an array of placeholder elements
+    const line = d3.line()
+      .x((d) => generalElements.x(d.x))
+      .y((d) => generalElements.y(d.y));
+    const area = d3.area()
+      .x((d) => generalElements.x(d.x))
+      .y0(options.height - options.margin.bottom)
+      .y1((d) => generalElements.y(d.y));
+
+    const sortedData = data.slice().sort((a, b) => d3.ascending(a.x, b.x));
+    const type = chartElements.nodes()[0].className.baseVal;
+    // Update the area chart separately
+    if (chart.select('.area-chart0').size() > 0) {
+      chart.select('.area-chart0')
+        .datum(sortedData)
+        .transition()
+        .duration(duration)
+        .attr('d', area(sortedData));
+    }
     const placeholders = new Array(numPlaceholders).fill(null).map(() => document.createElementNS('http://www.w3.org/2000/svg', `${chartElements.nodes()[0].nodeName}`));
 
     // Merge the chartElements and placeholders arrays
@@ -55,14 +82,6 @@ export default function addAnimation(selector, chart2Function, data, options, ge
 
     // Bind the new data array to the merged selection
     const updateSelection = mergedSelection.data(data);
-    const line = d3.line()
-      .x((d) => generalElements.x(d.x))
-      .y((d) => generalElements.y(d.y));
-
-    const sortedData = data.slice().sort((a, b) => d3.ascending(a.x, b.x));
-    console.log('sortedData', sortedData);
-    const type = chartElements.attr('class');
-
     const enterSelection = updateSelection.enter();
     const exitSelection = updateSelection.exit();
 
@@ -84,7 +103,7 @@ export default function addAnimation(selector, chart2Function, data, options, ge
       .attr('r', 5); // Set radius for new circle elements
 
     // Calculate dynamic bar width based on the number of data points
-    const dynamicBarWidth = (options.width - options.margin.left - options.margin.right) / data.length - (options.width/data.length * 0.2);
+    const dynamicBarWidth = (options.width - options.margin.left - options.margin.right) / data.length - (options.width / data.length * 0.2);
 
     updateSelection
       .merge(enterSelection)
@@ -128,7 +147,11 @@ export default function addAnimation(selector, chart2Function, data, options, ge
       })
       .attr('d', (d, i, nodes) => {
         if (nodes[i].nodeName === 'path') {
-          return line(sortedData);
+          if (type === 'area-chart0') {
+            return area(sortedData);
+          } if (type === 'line-graph0') {
+            return line(sortedData);
+          }
         }
       });
 

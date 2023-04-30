@@ -65,7 +65,7 @@ superScatterObject.draw('scatter');
 // setTimeout(() => barObject2.updateInput(inputData.input3), 5000);
 // barObject2.updateInput(inputData.input3);
 // areaObject.updateInput(inputData.input5);
-// setTimeout(() => areaObject.updateInput(inputData.input2), 2000);
+setTimeout(() => areaObject2.updateInput(inputData.input2), 2000);
 // setTimeout(() => areaObject.updateInput(inputData.input4), 4000);
 // setTimeout(() => areaObject.updateInput(inputData.input5), 6000);
 // setTimeout(() => areaObject.updateInput(inputData.input4), 8000);
@@ -73,11 +73,10 @@ superScatterObject.draw('scatter');
 // createPointMap(dataset, options, '#chart');
 // const barObject3 = new BasicClass(['BAR'], inputData.input4);
 // areaObject.updateInput(inputData.input5);
-// let areaObject2;
-// setTimeout(() => {
-//    areaObject2 = new BasicClass(['LINE'], inputData.input26);
-// }, 10000);
-// setTimeout(() => areaObject2.updateInput(inputData.input24), 1000);
-// setTimeout(() => areaObject2.removeChart('SCATTER'), 3000);
-// setTimeout(() => areaObject2.updateInput(inputData.input26), 3000);
-// setTimeout(() => areaObject2.updateInput(inputData.input24), 5000);
+setTimeout(() => areaObject2.updateInput(inputData.input5), 4000);
+// setTimeout(() => areaObject2.removeChart('SCATTER'), 5000);
+//setTimeout(() => {
+//   areaObject = new BasicClass(['LINE'], inputData.input26);
+// }, 6000);
+setTimeout(() => areaObject2.updateInput(inputData.input26), 6000);
+//setTimeout(() => areaObject.updateInput(inputData.input24), 7500);
