@@ -10,9 +10,9 @@ import { verifyVisualizer } from './graphValidators/visualizorValidator.js';
  *    inputs --> tags --> charts
  * @constructor
  * @property {*} data - The raw data that's being imported.
- * @property {Array.string} charts - Compatible chart types, matched to <ChartTypes>.
- * @property {Array.string} inputs - Compatible input types, matched to <InputTypes>.
- * @property {Array.string} tags - Compatible tag types, matched to <TagTypes>.
+ * @property {Set.string} charts - Compatible chart types, matched to <ChartTypes>.
+ * @property {Set.string} inputs - Compatible input types, matched to <InputTypes>.
+ * @property {Set.string} tags - Compatible tag types, matched to <TagTypes>.
  * @param {*} userInput - User input data. Can be of any type.
  * @param {string} visualizer - Declared visualizer type, matched to <VisualizerTypes>.
  */

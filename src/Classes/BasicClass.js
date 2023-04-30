@@ -24,7 +24,7 @@ import relativeNode from '../AddFunctionality/relativeNode.js';
 import addAnimation from '../AddFunctionality/animate.js';
 
 export default class BasicClass {
-  constructor(chartArray, input) {
+  constructor(chartArray, input, tempOveride) {
     this.createChart = {
       BAR: createBarChart,
       BUBBLE: createBubbleChart,
@@ -42,7 +42,8 @@ export default class BasicClass {
       GAUGE: createGaugeChart,
       BOX: createBoxPlot,
     };
-    const svgTypeMap = {
+    // const svgTypeMap = {
+    let svgTypeMap = {
       BAR: 'bar-chart',
       BUBBLE: 'bubble-chart',
       SCATTER: 'scatter-plot',
@@ -59,6 +60,24 @@ export default class BasicClass {
       GAUGE: 'gauge-chart',
       BOX: 'box-plot',
     };
+
+    if (tempOveride) {
+      console.log('TEMPORARY OVERRIDE DETECTED');
+
+      // eslint-disable-next-line no-param-reassign
+      chartArray = tempOveride.chartArray;
+
+      // eslint-disable-next-line no-param-reassign
+      input = {
+        selector: '#chart',
+        options: tempOveride.options,
+        data: tempOveride.data,
+      };
+
+      // eslint-disable-next-line no-param-reassign
+      svgTypeMap = tempOveride.svgTypeMap;
+    }
+
     this.svgTypeMap = svgTypeMap;
     this.chartArray = chartArray;
     this.options = input.options;

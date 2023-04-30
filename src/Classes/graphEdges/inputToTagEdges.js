@@ -19,10 +19,10 @@ function createInputToTagEdges() {
   try {
     const edges = {
       [inputTypes.number_number._selfKey]: [
-        tagTypes.xy._selfKey,
+        tagTypes.hierarchic._selfKey,
       ],
       [inputTypes.string_number._selfKey]: [
-        tagTypes.categorical._selfKey,
+        tagTypes.basic._selfKey,
       ],
     };
 

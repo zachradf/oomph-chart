@@ -10,16 +10,22 @@
 export default class TagTypes {
   constructor() {
     const types = {
-      categorical: {
-        _selfKey: 'categorical',
-        name: 'Categorical',
-        nameLong: 'Categorical Tag',
+      basic: {
+        _selfKey: 'basic',
+        name: 'Basic',
+        nameLong: 'Basic Tag',
       },
-      xy: {
-        _selfKey: 'xy',
-        name: 'XY',
-        nameLong: 'XY Tag',
+      geographic: {
+        _selfKey: 'geographic',
+        name: 'Geographic',
+        nameLong: 'Geographic Tag',
       },
+      hierarchic: {
+        _selfKey: 'hierarchic',
+        name: 'Hierarchic',
+        nameLong: 'Hierarchic Tag',
+      },
+
     };
 
     Object.assign(this, types);

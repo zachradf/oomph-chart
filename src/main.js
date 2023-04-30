@@ -18,13 +18,13 @@ import createPointMap from './Charts/geoCharts/pointMap.js';
 import animateByYValue from './AddFunctionality/animate.js';
 
 const superObjects = {};
-superObjects.testFor_string_number = new GraphSuperClass(superData.categorical);
-superObjects.testFor_number_number = new GraphSuperClass(superData.xy);
+superObjects.testFor_string_number = new GraphSuperClass(superData.basic);
+superObjects.testFor_number_number = new GraphSuperClass(superData.hierarchic);
 console.log(superObjects);
-// superObjects.testFor_number_number.draw('scatter');
 
-const superScatterObject = new GraphSuperClass(superData.xy);
-superScatterObject.draw('scatter');
+const superBarObject = new GraphSuperClass(superData.basic);
+// superBarObject.draw('bar');
+// const barObjectTemp = new BasicClass(['BAR'], inputData.input1);
 
 // onHover('#scatter', options);
 
@@ -75,8 +75,8 @@ const radialTreeObject = new HierarchyClass(['RADIALTREE'], inputData.input22);
 // areaObject.updateInput(inputData.input5);
 // setTimeout(() => areaObject2.updateInput(inputData.input5), 4000);
 // setTimeout(() => areaObject2.removeChart('SCATTER'), 5000);
-//setTimeout(() => {
+// setTimeout(() => {
 //   areaObject = new BasicClass(['LINE'], inputData.input26);
 // }, 6000);
 // setTimeout(() => areaObject2.updateInput(inputData.input26), 6000);
-//setTimeout(() => areaObject.updateInput(inputData.input24), 7500);
+// setTimeout(() => areaObject.updateInput(inputData.input24), 7500);

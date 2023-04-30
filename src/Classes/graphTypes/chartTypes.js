@@ -17,6 +17,7 @@ export default class ChartTypes {
       },
       bar: {
         _selfKey: 'bar',
+        legacyName: 'BAR',
         name: 'Bar',
         nameLong: 'Bar Chart',
       },

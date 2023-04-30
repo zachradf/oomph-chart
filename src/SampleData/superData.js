@@ -1,6 +1,6 @@
 export const superData = {};
 
-superData.categorical = [
+superData.basic = [
   { x: 'A', y: 10 },
   { x: 'B', y: 20 },
   { x: 'C', y: 30 },
@@ -8,7 +8,7 @@ superData.categorical = [
   { x: 'E', y: 50 },
 ];
 
-superData.xy = [
+superData.hierarchic = [
   { x: 10, y: 20 },
   { x: 30, y: 50 },
   { x: 45, y: 10 },
