@@ -32,7 +32,7 @@ function createTagToChartEdges() {
 
     return edges;
   } catch (error) {
-    console.error(`Error caught, possible reference to non-existent tag or chart type: ${error.message}`);
+    console.error(`Possible reference to non-existent tag or chart type: ${error.message}`);
     return {};
   }
 }

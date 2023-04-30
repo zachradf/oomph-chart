@@ -6,7 +6,7 @@ export function verifyVisualizer(visualizer) {
   const visualizerTypes = new VisualizerTypes();
 
   if (!visualizer || visualizer.length === 0 || !visualizerTypes[visualizer]) {
-    console.error('Error caught, unsupported visualizer.');
+    console.error('Unsupported visualizer.');
     return '';
   }
 

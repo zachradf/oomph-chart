@@ -11,7 +11,7 @@ import { tagToChartEdges } from '../graphEdges/tagToChartEdges.js';
 
 export function getTagToChartAdjacencies(tags) {
   if (!tags || tags.length === 0) {
-    console.error('Error caught: No tags provided.');
+    console.error('No tags provided.');
     return [];
   }
 
@@ -34,7 +34,7 @@ export function getTagToChartAdjacencies(tags) {
 
     return [...tagToChartAdjacencies];
   } catch (error) {
-    console.error(`Error caught: ${error.message}`);
+    console.error(error.message);
     return [];
   }
 }

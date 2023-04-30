@@ -21,7 +21,7 @@ export function getCompatibleInputTypes(userInput) {
     }
   });
 
-  if (compatibleInputTypes.length === 0) console.error('Error caught: No valid input was found.');
+  if (compatibleInputTypes.length === 0) console.error('No valid input was found.');
 
   return compatibleInputTypes;
 }

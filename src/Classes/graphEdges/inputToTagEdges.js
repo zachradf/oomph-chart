@@ -28,7 +28,7 @@ function createInputToTagEdges() {
 
     return edges;
   } catch (error) {
-    console.error(`Error caught, possible reference to non-existent input or tag type: ${error.message}`);
+    console.error(`Possible reference to non-existent input or tag type: ${error.message}`);
     return {};
   }
 }

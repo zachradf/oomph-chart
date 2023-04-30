@@ -13,7 +13,7 @@ export function drawImplementation(data, visualizer, charts, chartType) {
 
   // TODO optimize O(N) lookup, perhaps convert class properties to a set instead of array
   if (!charts.includes(chartType)) {
-    console.error(`Instantiated object does not support ${chartType} chart type.`);
+    console.error(`Instantiated object does not support '${chartType}' chart type.`);
     return;
   }
 

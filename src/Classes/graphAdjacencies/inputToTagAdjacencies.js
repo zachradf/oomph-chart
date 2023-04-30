@@ -10,7 +10,7 @@ import { inputToTagEdges } from '../graphEdges/inputToTagEdges.js';
  */
 export function getInputToTagAdjacencies(inputs) {
   if (!inputs || inputs.length === 0) {
-    console.error('Error caught: No inputs provided.');
+    console.error('No inputs provided.');
   }
 
   try {
@@ -20,7 +20,7 @@ export function getInputToTagAdjacencies(inputs) {
 
     inputs.forEach((inputType) => {
       if (!inputTypes[inputType]) throw new Error(`Invalid input type: ${inputType}`);
-      if (!inputTypes[inputType]) throw new Error(`No input-to-tag edges found for: ${inputType}`);
+      if (!inputToTagEdges[inputType]) throw new Error(`No input-to-tag edges found for: ${inputType}`);
       adjacencies.push(...inputToTagEdges[inputType]);
     });
 
@@ -30,7 +30,7 @@ export function getInputToTagAdjacencies(inputs) {
 
     return [...inputToTagAdjacencies];
   } catch (error) {
-    console.error(`Error caught: ${error.message}`);
+    console.error(error.message);
     return [];
   }
 }
