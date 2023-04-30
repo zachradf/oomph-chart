@@ -1,3 +1,4 @@
+import { drawImplementation } from './graphMethods/drawImplementation.js';
 import { getCompatibleInputTypes } from './graphValidators/inputValidator.js';
 import { getInputToTagAdjacencies } from './graphAdjacencies/inputToTagAdjacencies.js';
 import { getTagToChartAdjacencies } from './graphAdjacencies/tagToChartAdjacencies.js';
@@ -9,11 +10,11 @@ import { verifyVisualizer } from './graphValidators/visualizorValidator.js';
  *    inputs --> tags --> charts
  * @constructor
  * @property {*} data - The raw data that's being imported.
- * @property {Array.<ChartTypes>} charts - Compatible chart types.
- * @property {Array.<InputTypes>} inputs - Compatible input types.
- * @property {Array.<TagTypes>} tags - Compatible tag types.
+ * @property {Array.string} charts - Compatible chart types, matched to <ChartTypes>.
+ * @property {Array.string} inputs - Compatible input types, matched to <InputTypes>.
+ * @property {Array.string} tags - Compatible tag types, matched to <TagTypes>.
  * @param {*} userInput - User input data. Can be of any type.
- * @param {<VisualizerTypes>} visualizer - Declared visualizer type.
+ * @param {string} visualizer - Declared visualizer type, matched to <VisualizerTypes>.
  */
 export default class GraphSuperClass {
   constructor(userInput, visualizer = 'd3') {
@@ -22,5 +23,9 @@ export default class GraphSuperClass {
     this.tags = getInputToTagAdjacencies(this.inputs);
     this.charts = getTagToChartAdjacencies(this.tags);
     this.visualizer = verifyVisualizer(visualizer);
+  }
+
+  draw(chartType) {
+    return drawImplementation(this.data, this.visualizer, this.charts, chartType);
   }
 }

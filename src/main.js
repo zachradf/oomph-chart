@@ -2,7 +2,7 @@
 import * as d3 from 'd3';
 import BasicClass from './Classes/BasicClass.js';
 import HierarchyClass from './Classes/HierarchyClass.js';
-import GraphSuperClass from './Classes/graphSuperClass.js';
+import GraphSuperClass from './Classes/GraphSuperClass.js';
 
 import { inputData } from './SampleData/inputData.js';
 import { superData } from './SampleData/superData.js';
@@ -21,12 +21,16 @@ const superObjects = {};
 superObjects.testFor_string_number = new GraphSuperClass(superData.categorical);
 superObjects.testFor_number_number = new GraphSuperClass(superData.xy);
 console.log(superObjects);
+// superObjects.testFor_number_number.draw('scatter');
+
+const superScatterObject = new GraphSuperClass(superData.xy);
+superScatterObject.draw('scatter');
 
 // onHover('#scatter', options);
 
 // Adds Charts
 // Basic Charts
-const areaObject2 = new BasicClass(['SCATTER'], inputData.input24);
+// const areaObject2 = new BasicClass(['SCATTER'], inputData.input24);
 // const barObject = new BasicClass(['SCATTER', 'SCATTER', 'SCATTER', 'AREA'], inputData.input2);
 
 // const bubbleObject = new BasicClass(['BUBBLE'], inputData.input5);// fix category labels
