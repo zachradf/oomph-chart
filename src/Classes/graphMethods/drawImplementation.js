@@ -17,6 +17,14 @@ export function drawImplementation(data, visualizer, charts, chartType) {
     return;
   }
 
+  if (!data) {
+    console.error('Invalid data detected.');
+  }
+
+  if (data.length === 0) {
+    console.warn('There are no data points to draw.');
+  }
+
   // TODO implementation
   console.log(`Drawing a ${chartTypes[chartType].nameLong} with ${data.length} data point(s) using ${visualizerTypes[visualizer].name}.`);
 }
