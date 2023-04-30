@@ -11,13 +11,13 @@ export function getCompatibleInputTypes(userInput) {
   // Edge case: no input is provided
   if (!userInput || !Array.isArray(userInput) || userInput.length === 0) return [];
 
-  const compatibleInputTypes = [];
+  const compatibleInputTypes = new Set();
   const inputTypes = new InputTypes();
 
   // Check each input type
   Object.keys(inputTypes).forEach((inputType) => {
     if (isValidInput(userInput, inputTypes[inputType].dataFormat)) {
-      compatibleInputTypes.push(inputType);
+      compatibleInputTypes.add(inputType);
     }
   });
 

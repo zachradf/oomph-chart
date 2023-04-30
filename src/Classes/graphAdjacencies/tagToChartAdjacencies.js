@@ -32,9 +32,9 @@ export function getTagToChartAdjacencies(tags) {
       tagToChartAdjacencies.add(adjacency);
     });
 
-    return [...tagToChartAdjacencies];
+    return tagToChartAdjacencies;
   } catch (error) {
     console.error(error.message);
-    return [];
+    return new Set();
   }
 }

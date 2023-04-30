@@ -1,4 +1,3 @@
-/** Helper function. */
 export function validateArrayHelper(inputArray, expectedTypes) {
   if (!Array.isArray(inputArray) || inputArray.length !== expectedTypes.length) {
     return false;
@@ -13,7 +12,6 @@ export function validateArrayHelper(inputArray, expectedTypes) {
   return true;
 }
 
-/** Helper function. */
 // TODO further testing/verification/integration of this function is needed
 export function validateObjectHelper(inputObject, expectedStructure) {
   if (typeof inputObject !== 'object' || inputObject === null || Array.isArray(inputObject)) {
@@ -39,7 +37,6 @@ export function validateObjectHelper(inputObject, expectedStructure) {
   return true;
 }
 
-/** Helper function. */
 export function validateTypeHelper(input, expectedType) {
   if (expectedType === 'date') {
     return input instanceof Date;

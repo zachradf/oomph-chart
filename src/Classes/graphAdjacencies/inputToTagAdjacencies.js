@@ -28,9 +28,9 @@ export function getInputToTagAdjacencies(inputs) {
       inputToTagAdjacencies.add(adjacency);
     });
 
-    return [...inputToTagAdjacencies];
+    return inputToTagAdjacencies;
   } catch (error) {
     console.error(error.message);
-    return [];
+    return new Set();
   }
 }

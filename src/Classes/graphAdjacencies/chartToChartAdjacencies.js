@@ -8,5 +8,5 @@ import { chartToChartEdges } from '../graphEdges/chartToChartEdges.js';
 export function getChartToChartAdjacencies() {
   // TODO
   console.log(chartToChartEdges);
-  return [];
+  return new Set();
 }
