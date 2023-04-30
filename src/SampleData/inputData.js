@@ -10,7 +10,7 @@ inputData.input = {
 };
 
 inputData.input1 = {
-  data: [chartData.barChart],
+  data: [chartData.donutChart],
   selector: '#chart',
   options: [options.options4],
 };
@@ -39,7 +39,7 @@ inputData.input4 = {
 };
 
 inputData.input5 = {
-  data: [chartData.scatterPlot2],
+  data: [chartData.bubbleChart],
   selector: '#chart',
   options: [options.options2],
 };
@@ -47,7 +47,7 @@ inputData.input5 = {
 inputData.input6 = {
   data: [chartData.barChart],
   selector: '#chart',
-  options: [options.options18],
+  options: [options.options16],
 };
 
 inputData.input7 = {
@@ -168,4 +168,23 @@ inputData.input26 = {
   data: [chartData.scatterPlot, chartData.scatterPlot2],
   selector: '#chart',
   options: [options.options13, options.options13],
+};
+
+inputData.input27 = {
+  data: [chartData.barChart2],
+  selector: '#chart',
+  options: [options.options16],
+};
+
+inputData.input28 = {
+  data: [chartData.funnelChart2],
+  selector: '#chart',
+  options: [options.funnelChart],
+};
+
+
+inputData.input29 = {
+  data: [chartData.stackedBarChart],
+  selector: '#chart',
+  options: [options.options17],
 };

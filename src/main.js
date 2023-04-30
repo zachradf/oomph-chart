@@ -33,14 +33,15 @@ const superBarObject = new GraphSuperClass(superData.basic);
 // const areaObject2 = new BasicClass(['SCATTER'], inputData.input24);
 // const barObject = new BasicClass(['SCATTER', 'SCATTER', 'SCATTER', 'AREA'], inputData.input2);
 
-// const bubbleObject = new BasicClass(['BUBBLE'], inputData.input5);// fix category labels
+const bubbleObject = new BasicClass(['BUBBLE'], inputData.input5);// fix category labels
 // const areaObject = new BasicClass(['DONUT'], inputData.input23);
 // const donutChartObject2 = new BasicClass(['AREA'], inputData.input4);
 // const funnelObject = new BasicClass(['FUNNEL'], inputData.input11);
 // const gaugeObject = new BasicClass(['GAUGE'], inputData.input14); // STILL NEEDS WORK
 // const heatMapObject = new BasicClass(['HEATMAP'], inputData.input4);
 // const lineObject = new BasicClass(['LINE', 'SCATTER'], inputData.input3);
-// const pieChartObject = new BasicClass(['PIE'], inputData.input6);
+// const pieChartObject = new BasicClass(['STACKEDBAR'], inputData.input);
+// pieChartObject.updateInput(inputData.input1);
 // const polarObject = new BasicClass(['POLAR'], inputData.input12);
 // const radarObject = new BasicClass(['RADAR'], inputDatainput13);
 // const stackedBarObject = new BasicClass(['STACKEDBAR'], inputData.input);
@@ -55,7 +56,7 @@ const superBarObject = new GraphSuperClass(superData.basic);
 // const clusterDiagramObject = new HierarchyClass(['CLUSTER'], inputData.input18);
 // const voronoiTreemapObject = new HierarchyClass(['VORONOI'], inputData.input8);
 // const dendrogramObject = new HierarchyClass(['DENDROGRAM'], inputData.input8);
-const radialTreeObject = new HierarchyClass(['RADIALTREE'], inputData.input22);
+// const radialTreeObject = new HierarchyClass(['RADIALTREE'], inputData.input22);
 // const scatterObject = new BasicClass(['SCATTER'], inputData.input3);
 // const marimekkoChartObject = new HierarchyClass(['MARIMEKKO'], inputData.input19);
 // const adjacencyMatrixObject = new HierarchyClass(['ADJACENCY'], inputData.input20);
@@ -73,7 +74,8 @@ const radialTreeObject = new HierarchyClass(['RADIALTREE'], inputData.input22);
 // createPointMap(dataset, options, '#chart');
 // const barObject3 = new BasicClass(['BAR'], inputData.input4);
 // areaObject.updateInput(inputData.input5);
-// setTimeout(() => areaObject2.updateInput(inputData.input5), 4000);
+// setTimeout(() => pieChartObject.updateInput(inputData.input29), 2000);
+// setTimeout(() => areaObject2.updateInput(inputData.input5), 2000);
 // setTimeout(() => areaObject2.removeChart('SCATTER'), 5000);
 // setTimeout(() => {
 //   areaObject = new BasicClass(['LINE'], inputData.input26);

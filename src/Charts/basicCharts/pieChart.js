@@ -4,6 +4,10 @@ export default function createD3PieChart(data, options, generalElements) {
   const { svg } = generalElements;
   const radius = Math.min(width, height) / 2;
 
+  // Centers the pie chart within the svg element
+  const chartGroup = svg.append('g')
+    .attr('transform', `translate(${width / 2}, ${height / 2})`);
+
   // Create a color scale using the provided data labels and a predefined color scheme
   const color = d3.scaleOrdinal()
     .domain(data.map((d) => d.x))
@@ -20,7 +24,7 @@ export default function createD3PieChart(data, options, generalElements) {
     .outerRadius(radius);
 
   // Create the pie chart sectors by binding the data to path elements
-  svg.selectAll('path')
+  chartGroup.selectAll('path')
     .data(pie(data))
     .enter()
     .append('path')
@@ -37,7 +41,7 @@ export default function createD3PieChart(data, options, generalElements) {
       .outerRadius(radius * 0.6);
 
     // Create text elements for the labels by binding the data
-    svg.selectAll('text')
+    chartGroup.selectAll('text')
       .data(pie(data))
       .join('text')
       .attr('transform', (d) => `translate(${categoryArc.centroid(d)})`)

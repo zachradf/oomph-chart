@@ -1,20 +1,3 @@
-// export default function createD3BarChart(data, options, generalElements) {
-//   const { x } = generalElements;
-//   const { y } = generalElements;
-//   const { svg } = generalElements;
-
-//   // Append a group element for the bars, set the fill color and bind the data
-//   data.sort((a, b) => d3.ascending(a.x, b.x));
-//   svg.append('g')
-//     .selectAll('rect')
-//     .data(data)
-//     .join('rect')
-//     .attr('x', (d) => x(d.x))
-//     .attr('y', (d) => d.y >= 0 ? y(d.y) : y(0))
-//     .attr('height', (d) => d.y >= 0 ? y(0) - y(d.y) : y(d.y) - y(0))
-//     .attr('fill', options.color)
-//     .attr('width', x.bandwidth());
-// }
 export default function createD3BarChart(data, options, generalElements) {
   const { x } = generalElements;
   const { y } = generalElements;

@@ -1,6 +1,5 @@
 export const chartData = {};
 
-// similar to treemap data and stacked bar chart
 chartData.treeDiagram = {
   name: 'A',
   children: [
@@ -19,7 +18,7 @@ chartData.treeDiagram = {
     },
   ],
 };
-// similar to tree diagram and stacked barchart data
+
 chartData.treeMap = {
   name: 'root',
   children: [
@@ -77,7 +76,21 @@ chartData.barChart = [
   { x: 'C', y: 30 },
   { x: 'D', y: 40 },
   { x: 'E', y: 50 },
+  { x: 'F', y: 40 },
+  { x: 'G', y: 50 },
 ];
+
+chartData.barChart2 = [
+  { x: 'A', y: 10 },
+  { x: 'B', y: 20 },
+  { x: 'C', y: 30 },
+  { x: 'D', y: 40 },
+  { x: 'E', y: 50 },
+  { x: 'F', y: 40 },
+  { x: 'G', y: 50 },
+  { x: 'H', y: 60 },
+];
+
 
 chartData.donutChart = [
   { x: 'Apple', y: 30 },
@@ -294,6 +307,14 @@ chartData.stackedBarChart = [
       { name: 'Value 3', value: 8 },
     ],
   },
+  {
+    category: 'Category D',
+    values: [
+      { name: 'Value 1', value: 12 },
+      { name: 'Value 2', value: 30 },
+      { name: 'Value 3', value: 8 },
+    ],
+  },
 ];
 
 chartData.sunburst = {
@@ -384,6 +405,16 @@ chartData.funnelChart = [
   { x: 'Stage 3', y: 600 },
   { x: 'Stage 4', y: 400 },
   { x: 'Stage 5', y: 200 },
+];
+
+chartData.funnelChart2 = [
+  { x: 'Stage 1', y: 100 },
+  { x: 'Stage 2', y: 800 },
+  { x: 'Stage 3', y: 900 },
+  { x: 'Stage 4', y: 200 },
+  { x: 'Stage 5', y: 1900 },
+  { x: 'Stage 6', y: 10 },
+  { x: 'Stage 7', y: 40 },
 ];
 
 chartData.polarChart = [
