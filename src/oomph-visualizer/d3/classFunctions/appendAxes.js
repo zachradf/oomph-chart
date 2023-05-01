@@ -16,7 +16,9 @@ export default function appendAxes(chart, options, generalElements) {
       .attr('x', width - margin.right)
       .attr('y', margin.bottom - 10)
       .attr('text-anchor', 'end')
-      .text(options.x);
+      .text(options.x)
+      .selectAll('text')
+      .style('font-size', `${options.xTickFontSize}px`);
 
     svg.append('g')
       .classed('y-axis', true)
@@ -27,20 +29,28 @@ export default function appendAxes(chart, options, generalElements) {
       .attr('y', margin.left - 10)
       .attr('text-anchor', 'end')
       .attr('transform', 'rotate(-90)')
-      .text(options.y);
+      .text(options.y)
+      .selectAll('text')
+      .style('font-size', `${options.yTickFontSize}px`);
   } else if (chart === 'STACKEDBAR') {
     svg.append('g')
       .classed('x-axis', true)
       .attr('transform', `translate(0,${height - margin.bottom})`)
-      .call(xAxis);
+      .call(xAxis)
+      .selectAll('text')
+      .style('font-size', `${options.xTickFontSize}px`);
 
     svg.append('g')
       .classed('y-axis', true)
       .attr('transform', `translate(${margin.left},0)`)
-      .call(yAxis);
+      .call(yAxis)
+      .selectAll('text')
+      .style('font-size', `${options.yTickFontSize}px`);
   } else if (!options.updating) {
-    svg.append('g').classed('y-axis', true).call(yAxis);
-    svg.append('g').classed('x-axis', true).call(xAxis);
+    svg.append('g').classed('x-axis', true).call(xAxis).selectAll('text')
+      .style('font-size', `${options.xTickFontSize}px`);
+    svg.append('g').classed('y-axis', true).call(yAxis).selectAll('text')
+      .style('font-size', `${options.yTickFontSize}px`);
   }
   if (!options.yLine) {
     svg.select('.y-axis path').remove();

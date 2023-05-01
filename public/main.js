@@ -26,11 +26,11 @@ const superBarObject = new OomphChart(superData.basic);
 // Basic Charts
 // const areaObject2 = new BasicClass(['SCATTER'], inputData.input24);
 // const barObject = new BasicClass(['SCATTER', 'SCATTER', 'SCATTER', 'AREA'], inputData.input2);
-const wordCloudObject = new HierarchyClass(['WORDCLOUD'], inputData.input30);
+// const wordCloudObject = new HierarchyClass(['WORDCLOUD'], inputData.input30);
 // onHover('#chart', [options]);
 // const bubbleObject = new BasicClass(['BUBBLE'], inputData.input5);// fix category labels
 // const areaObject = new BasicClass(['DONUT'], inputData.input23);
-// const donutChartObject2 = new BasicClass(['AREA'], inputData.input4);
+const donutChartObject2 = new BasicClass(['AREA'], inputData.input4);
 // const funnelObject = new BasicClass(['FUNNEL'], inputData.input11);
 // const gaugeObject = new BasicClass(['GAUGE'], inputData.input14); // STILL NEEDS WORK
 // const heatMapObject = new BasicClass(['HEATMAP'], inputData.input4);

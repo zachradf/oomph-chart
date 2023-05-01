@@ -97,7 +97,8 @@ optionData.options3 = {
   outerRadius: 200,
   innerRadius: 150,
   overlay: false,
-  onHover: false,
+  onHover: true,
+  opacity: 0.5,
   // color: d3.scaleOrdinal(d3.schemeCategory10),
   color: 'red',
   nodeWidth: 10,
@@ -112,13 +113,14 @@ optionData.options3 = {
   yTickLength: 10,
   xTickExtension: 1,
   yTickExtension: 1,
-  xTickOpacity: 0.21,
-  yTickOpacity: 0.1,
+  xTickOpacity: 1,
+  yTickOpacity: 1,
   xAxisColor: 'red',
-  yAxisColor: 'blue',
+  yAxisColor: 'purple',
   xAxisOpacity: 1,
   yAxisOpacity: 1,
-
+  xTickFontSize: 10,
+  yTickFontSize: 10,
 };
 
 optionData.options4 = {
