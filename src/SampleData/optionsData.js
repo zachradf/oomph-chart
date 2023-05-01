@@ -618,9 +618,9 @@ optionData.options20 = {
   width: 2800,
   height: 2600,
   maxRadius: 100,
-  chargeStrength: 0.12,
+  chargeStrength: 0.01,
   fontSize: (d) => Math.sqrt(d.value) * 2,
   bubble: true,
   bubbleOpacity: 0.7,
-  y2ForceStrength: 0.005,
+  y2ForceStrength: -0.01,
 };
