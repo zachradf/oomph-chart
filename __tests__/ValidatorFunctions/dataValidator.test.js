@@ -1,5 +1,5 @@
 import validateInputs from '../../ValidatorFunctions/optionsValidator';
-// import options from '../../SampleData/optionsData';
+// import options from '../../sample-data/optionsData';
 // console.log(options)
 
 describe('validateInputs', () => {

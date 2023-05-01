@@ -4,8 +4,8 @@ import BasicClass from '../src/Classes/BasicClass.js';
 import HierarchyClass from '../src/Classes/HierarchyClass.js';
 import GraphSuperClass from '../src/Classes/GraphSuperClass.js';
 
-import { inputData } from '../src/SampleData/inputData.js';
-import { superData } from '../src/SampleData/superData.js';
+import { inputData } from '../src/sample-data/inputData.js';
+import { superData } from '../src/sample-data/superData.js';
 
 import onHover from '../src/AddFunctionality/onHover.js';
 import zoom from '../src/AddFunctionality/zoom.js';
