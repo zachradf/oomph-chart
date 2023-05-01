@@ -12,7 +12,7 @@ export default function createBubbleChart(data, options, generalElements) {
   const bubbleLayout = d3
     .pack()
     .size([diameter, diameter])
-    .padding(10); // Increase padding to prevent overlap
+    .padding(options.padding); // Increase padding to prevent overlap
 
   // Apply the layout to the data
   bubbleLayout(root);
@@ -39,7 +39,7 @@ export default function createBubbleChart(data, options, generalElements) {
     .attr('dy', '.3em')
     .style('text-anchor', `${options.textAnchor}`)
     .style('font-size', (d) => (d.depth === 1 ? `${options.parentTextSize}` : `${options.childTextSize}`))
-    .style('fill', 'black') // Set the text color explicitly
+    .style('fill', `${options.fontColor}`) // Set the text color explicitly
     .text((d) => {
       if (d.depth === 1) {
         // Add category label for parent categories (category1 and category2)
