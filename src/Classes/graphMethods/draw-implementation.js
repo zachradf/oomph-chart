@@ -1,7 +1,7 @@
 import BasicClass from '../BasicClass.js';
-import ChartTypes from '../graphTypes/chartTypes.js';
+import ChartTypes from '../graphTypes/chart-types.js';
 import SVGTypes from '../visualizers/d3/svgTypes.js';
-import VisualizerTypes from '../graphTypes/visualizerTypes.js';
+import VisualizerTypes from '../graphTypes/visualizer-types.js';
 import OptionTypes from '../visualizers/d3/optionTypes.js';
 
 const chartTypes = new ChartTypes();

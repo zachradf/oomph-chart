@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 
-import InputTypes from '../graphTypes/inputTypes.js';
-import TagTypes from '../graphTypes/tagTypes.js';
+import InputTypes from '../graphTypes/input-types.js';
+import TagTypes from '../graphTypes/tag-types.js';
 
 const inputTypes = new InputTypes();
 const tagTypes = new TagTypes();

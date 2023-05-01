@@ -1,9 +1,9 @@
 import * as d3 from 'd3';
 // import { JSDOM } from 'jsdom';
 // import GraphSuperClass from '../../Classes/GraphSuperClass.js';
-import ChartTypes from '../../Classes/graphTypes/chartTypes.js';
-import InputTypes from '../../Classes/graphTypes/inputTypes.js';
-import TagTypes from '../../Classes/graphTypes/tagTypes.js';
+import ChartTypes from '../../Classes/graphTypes/chart-types.js';
+import InputTypes from '../../Classes/graphTypes/input-types.js';
+import TagTypes from '../../Classes/graphTypes/tag-types.js';
 
 global.d3 = d3;
 

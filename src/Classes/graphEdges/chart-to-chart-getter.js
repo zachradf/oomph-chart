@@ -1,4 +1,4 @@
-import { chartToChartEdges } from './chartToChartEdges.js';
+import { chartToChartEdges } from './chart-to-chart-edges.js';
 
 /**
  * Returns chart-to-chart adjacencies.

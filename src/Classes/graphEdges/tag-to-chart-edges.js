@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 
-import ChartTypes from '../graphTypes/chartTypes.js';
-import TagTypes from '../graphTypes/tagTypes.js';
+import ChartTypes from '../graphTypes/chart-types.js';
+import TagTypes from '../graphTypes/tag-types.js';
 
 const chartTypes = new ChartTypes();
 const tagTypes = new TagTypes();

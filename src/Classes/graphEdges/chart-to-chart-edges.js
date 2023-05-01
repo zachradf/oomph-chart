@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 
-import ChartTypes from '../graphTypes/chartTypes.js';
+import ChartTypes from '../graphTypes/chart-types.js';
 
 const chartTypes = new ChartTypes();
 

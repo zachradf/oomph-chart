@@ -1,8 +1,8 @@
-import { drawImplementation } from './graphMethods/drawImplementation.js';
-import { getCompatibleInputTypes } from './graphValidators/inputValidator.js';
-import { getInputToTagAdjacencies } from './graphEdges/inputToTagAdjacencies.js';
-import { getTagToChartAdjacencies } from './graphEdges/tagToChartAdjacencies.js';
-import { verifyVisualizer } from './graphValidators/visualizorValidator.js';
+import { drawImplementation } from './graphMethods/draw-implementation.js';
+import { getCompatibleInputTypes } from './graphValidators/input-validator.js';
+import { getInputToTagAdjacencies } from './graphEdges/input-to-tag-getter.js';
+import { getTagToChartAdjacencies } from './graphEdges/tag-to-chart-getter.js';
+import { verifyVisualizer } from './graphValidators/visualizer-validator.js';
 
 /**
  * Determines and defines the relationship between input data and resulting charts.

@@ -1,6 +1,6 @@
-import InputTypes from '../graphTypes/inputTypes.js';
+import InputTypes from '../graphTypes/input-types.js';
 
-import { validateArrayHelper, validateObjectHelper } from './inputValidatorHelpers.js';
+import { validateArrayHelper, validateObjectHelper } from './input-validator-helpers.js';
 
 /**
  * Determines supported input types.
