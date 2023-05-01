@@ -1,4 +1,4 @@
-import validateInputs from '../../src/oomph-chart/validators/optionsValidator';
+import validateInputs from '../../src/oomph-chart/validators/wip/options-validator';
 // import options from '../../sample-data/optionsData';
 // console.log(options)
 
@@ -21,7 +21,7 @@ describe('validateInputs', () => {
   };
   const data = [
     { category: 'A', value: 1 },
-    { category: 'B', value: 2 }
+    { category: 'B', value: 2 },
   ];
   const selector = '#chart';
 
@@ -33,7 +33,7 @@ describe('validateInputs', () => {
     const invalidSelector = 123;
 
     expect(() => validateInputs(data, invalidSelector, options)).toThrow(
-      'Invalid selector. Selector should be a non-empty string.'
+      'Invalid selector. Selector should be a non-empty string.',
     );
   });
 
@@ -41,7 +41,7 @@ describe('validateInputs', () => {
     const invalidOptions = null;
 
     expect(() => validateInputs(data, selector, invalidOptions)).toThrow(
-      'Invalid options. Options should be a non-null object.'
+      'Invalid options. Options should be a non-null object.',
     );
   });
 });
