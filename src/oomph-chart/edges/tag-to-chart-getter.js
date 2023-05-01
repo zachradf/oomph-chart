@@ -1,4 +1,4 @@
-import TagTypes from '../graphTypes/tag-types.js';
+import TagTypes from '../types/tag-types.js';
 
 import { tagToChartEdges } from './tag-to-chart-edges.js';
 

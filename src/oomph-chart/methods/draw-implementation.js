@@ -1,8 +1,8 @@
 import BasicClass from '../../oomph-visualizer/d3/classes/BasicClass.js';
-import ChartTypes from '../graphTypes/chart-types.js';
-import SVGTypes from '../visualizers/d3/svgTypes.js';
-import VisualizerTypes from '../graphTypes/visualizer-types.js';
-import OptionTypes from '../visualizers/d3/optionTypes.js';
+import ChartTypes from '../types/chart-types.js';
+import SVGTypes from '../../oomph-visualizer/d3/types/svgTypes.js';
+import VisualizerTypes from '../types/visualizer-types.js';
+import OptionTypes from '../../oomph-visualizer/d3/types/optionTypes.js';
 
 const chartTypes = new ChartTypes();
 const optionTypes = new OptionTypes();

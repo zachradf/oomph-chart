@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 
-import VisualizerTypes from '../graphTypes/visualizer-types.js';
+import VisualizerTypes from '../types/visualizer-types.js';
 
 export function verifyVisualizer(visualizer) {
   const visualizerTypes = new VisualizerTypes();

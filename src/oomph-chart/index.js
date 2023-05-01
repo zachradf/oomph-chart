@@ -1,8 +1,8 @@
-import { drawImplementation } from './graphMethods/draw-implementation.js';
-import { getCompatibleInputTypes } from './graphValidators/input-validator.js';
-import { getInputToTagAdjacencies } from './graphEdges/input-to-tag-getter.js';
-import { getTagToChartAdjacencies } from './graphEdges/tag-to-chart-getter.js';
-import { verifyVisualizer } from './graphValidators/visualizer-validator.js';
+import { drawImplementation } from './methods/draw-implementation.js';
+import { getCompatibleInputTypes } from './validators/input-validator.js';
+import { getInputToTagAdjacencies } from './edges/input-to-tag-getter.js';
+import { getTagToChartAdjacencies } from './edges/tag-to-chart-getter.js';
+import { verifyVisualizer } from './validators/visualizer-validator.js';
 
 /**
  * Determines and defines the relationship between input data and resulting charts.
@@ -16,7 +16,7 @@ import { verifyVisualizer } from './graphValidators/visualizer-validator.js';
  * @param {*} userInput - User input data. Can be of any type.
  * @param {string} visualizer - Declared visualizer type, matched to <VisualizerTypes>.
  */
-export default class GraphSuperClass {
+export default class OomphChart {
   constructor(userInput, visualizer = 'd3') {
     this.data = userInput;
     this.inputs = getCompatibleInputTypes(this.data);

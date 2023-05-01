@@ -1,4 +1,4 @@
-import InputTypes from '../graphTypes/input-types.js';
+import InputTypes from '../types/input-types.js';
 
 import { inputToTagEdges } from './input-to-tag-edges.js';
 
