@@ -21,7 +21,7 @@ import appendAxes from './classFunctions/appendAxes.js';
 
 import onHover from '../AddFunctionality/onHover.js';
 import relativeNode from '../AddFunctionality/relativeNode.js';
-import addAnimation from '../AddFunctionality/animate.js';
+import addAnimation from '../AddFunctionality/animate/animateBasic/animateBasic.js';
 
 export default class BasicClass {
   constructor(chartArray, input, tempOveride) {

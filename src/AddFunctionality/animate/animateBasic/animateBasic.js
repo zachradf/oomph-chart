@@ -1,5 +1,5 @@
-import onHover from './onHover';
-import relativeNode from './relativeNode'; // TODO: incorporate this
+import onHover from '../../onHover';
+import relativeNode from '../../relativeNode'; // TODO: incorporate this
 import animateScatter from './animateScatter';
 import animateLine from './animateLine';
 import animateArea from './animateArea';

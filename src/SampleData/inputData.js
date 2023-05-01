@@ -188,3 +188,8 @@ inputData.input29 = {
   selector: '#chart',
   options: [options.options17],
 };
+inputData.input30 = {
+  data: [chartData.bubbleChart2],
+  selector: '#chart',
+  options: [options.options20],
+};

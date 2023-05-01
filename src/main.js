@@ -10,12 +10,14 @@ import { superData } from './SampleData/superData.js';
 import onHover from './AddFunctionality/onHover.js';
 import zoom from './AddFunctionality/zoom.js';
 import gradient from './AddFunctionality/gradient.js';
-import addAnimation from './AddFunctionality/animate.js';
+import addAnimation from './AddFunctionality/animate/animateBasic/animateBasic.js';
 import stack from './AddFunctionality/stack.js';
 import sort from './AddFunctionality/sort.js';
 import createChoroplethMap from './Charts/geoCharts/choroplethMap.js';
 import createPointMap from './Charts/geoCharts/pointMap.js';
-import animateByYValue from './AddFunctionality/animate.js';
+import animateByYValue from './AddFunctionality/animate/animateBasic/animateBasic.js';
+import crreateWordCloud from './Charts/HierarchicalCharts/wordCloud.js';
+import createWordCloud from './Charts/HierarchicalCharts/wordCloud.js';
 
 const superObjects = {};
 superObjects.testFor_string_number = new GraphSuperClass(superData.basic);
@@ -32,8 +34,9 @@ const superBarObject = new GraphSuperClass(superData.basic);
 // Basic Charts
 // const areaObject2 = new BasicClass(['SCATTER'], inputData.input24);
 // const barObject = new BasicClass(['SCATTER', 'SCATTER', 'SCATTER', 'AREA'], inputData.input2);
-
-const bubbleObject = new BasicClass(['BUBBLE'], inputData.input5);// fix category labels
+// const wordCloudObject = new HierarchyClass(['WORDCLOUD'], inputData.input30);
+// onHover('#chart', [options]);
+// const bubbleObject = new BasicClass(['BUBBLE'], inputData.input5);// fix category labels
 // const areaObject = new BasicClass(['DONUT'], inputData.input23);
 // const donutChartObject2 = new BasicClass(['AREA'], inputData.input4);
 // const funnelObject = new BasicClass(['FUNNEL'], inputData.input11);
