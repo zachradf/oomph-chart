@@ -1,7 +1,7 @@
 import { drawImplementation } from './graphMethods/drawImplementation.js';
 import { getCompatibleInputTypes } from './graphValidators/inputValidator.js';
-import { getInputToTagAdjacencies } from './graphAdjacencies/inputToTagAdjacencies.js';
-import { getTagToChartAdjacencies } from './graphAdjacencies/tagToChartAdjacencies.js';
+import { getInputToTagAdjacencies } from './graphEdges/inputToTagAdjacencies.js';
+import { getTagToChartAdjacencies } from './graphEdges/tagToChartAdjacencies.js';
 import { verifyVisualizer } from './graphValidators/visualizorValidator.js';
 
 /**

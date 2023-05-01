@@ -1,6 +1,6 @@
 import InputTypes from '../graphTypes/inputTypes.js';
 
-import { inputToTagEdges } from '../graphEdges/inputToTagEdges.js';
+import { inputToTagEdges } from './inputToTagEdges.js';
 
 /**
  * Determines which tags are valid based off of provided input types.

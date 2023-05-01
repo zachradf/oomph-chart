@@ -1,6 +1,6 @@
 import TagTypes from '../graphTypes/tagTypes.js';
 
-import { tagToChartEdges } from '../graphEdges/tagToChartEdges.js';
+import { tagToChartEdges } from './tagToChartEdges.js';
 
 /**
  * Determines which charts are valid based off of provided tag types.
