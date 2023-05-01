@@ -24,7 +24,7 @@ const superBarObject = new OomphChart(superData.basic);
 
 // Adds Charts
 // Basic Charts
-const areaObject2 = new BasicClass(['SCATTER'], inputData.input24);
+// const areaObject2 = new BasicClass(['SCATTER'], inputData.input24);
 // const barObject = new BasicClass(['SCATTER', 'SCATTER', 'SCATTER', 'AREA'], inputData.input2);
 // const wordCloudObject = new HierarchyClass(['WORDCLOUD'], inputData.input30);
 // onHover('#chart', [options]);
@@ -35,7 +35,7 @@ const areaObject2 = new BasicClass(['SCATTER'], inputData.input24);
 // const gaugeObject = new BasicClass(['GAUGE'], inputData.input14); // STILL NEEDS WORK
 // const heatMapObject = new BasicClass(['HEATMAP'], inputData.input4);
 // const lineObject = new BasicClass(['LINE', 'SCATTER'], inputData.input3);
-// const pieChartObject = new BasicClass(['STACKEDBAR'], inputData.input);
+const pieChartObject = new BasicClass(['STACKEDBAR'], inputData.input);
 // pieChartObject.updateInput(inputData.input1);
 // const polarObject = new BasicClass(['POLAR'], inputData.input12);
 // const radarObject = new BasicClass(['RADAR'], inputDatainput13);
