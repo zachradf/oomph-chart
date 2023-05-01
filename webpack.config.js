@@ -2,10 +2,10 @@ const path = require('path');
 
 module.exports = {
   devtool: 'source-map',
-  entry: './src/main.js',
+  entry: './public/main.js',
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'src'),
+    path: path.resolve(__dirname, 'dist'),
   },
   module: {
     rules: [
@@ -22,7 +22,7 @@ module.exports = {
     ],
   },
   devServer: {
-    static: path.join(__dirname, 'src'),
+    static: path.join(__dirname, 'public'),
     compress: true,
     port: 9000,
     open: true,

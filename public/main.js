@@ -1,23 +1,23 @@
 /* eslint-disable import/extensions */
 import * as d3 from 'd3';
-import BasicClass from './Classes/BasicClass.js';
-import HierarchyClass from './Classes/HierarchyClass.js';
-import GraphSuperClass from './Classes/GraphSuperClass.js';
+import BasicClass from '../src/Classes/BasicClass.js';
+import HierarchyClass from '../src/Classes/HierarchyClass.js';
+import GraphSuperClass from '../src/Classes/GraphSuperClass.js';
 
-import { inputData } from './SampleData/inputData.js';
-import { superData } from './SampleData/superData.js';
+import { inputData } from '../src/SampleData/inputData.js';
+import { superData } from '../src/SampleData/superData.js';
 
-import onHover from './AddFunctionality/onHover.js';
-import zoom from './AddFunctionality/zoom.js';
-import gradient from './AddFunctionality/gradient.js';
-import addAnimation from './AddFunctionality/animate/animateBasic/animateBasic.js';
-import stack from './AddFunctionality/stack.js';
-import sort from './AddFunctionality/sort.js';
-import createChoroplethMap from './Charts/geoCharts/choroplethMap.js';
-import createPointMap from './Charts/geoCharts/pointMap.js';
-import animateByYValue from './AddFunctionality/animate/animateBasic/animateBasic.js';
-import crreateWordCloud from './Charts/HierarchicalCharts/wordCloud.js';
-import createWordCloud from './Charts/HierarchicalCharts/wordCloud.js';
+import onHover from '../src/AddFunctionality/onHover.js';
+import zoom from '../src/AddFunctionality/zoom.js';
+import gradient from '../src/AddFunctionality/gradient.js';
+import addAnimation from '../src/AddFunctionality/animate/animateBasic/animateBasic.js';
+import stack from '../src/AddFunctionality/stack.js';
+import sort from '../src/AddFunctionality/sort.js';
+import createChoroplethMap from '../src/Charts/geoCharts/choroplethMap.js';
+import createPointMap from '../src/Charts/geoCharts/pointMap.js';
+import animateByYValue from '../src/AddFunctionality/animate/animateBasic/animateBasic.js';
+import crreateWordCloud from '../src/Charts/HierarchicalCharts/wordCloud.js';
+import createWordCloud from '../src/Charts/HierarchicalCharts/wordCloud.js';
 
 const superObjects = {};
 superObjects.testFor_string_number = new GraphSuperClass(superData.basic);
