@@ -1,4 +1,4 @@
-import validateInputs from '../../ValidatorFunctions/optionsValidator';
+import validateInputs from '../../src/oomph-chart/validators/optionsValidator';
 // import options from '../../sample-data/optionsData';
 // console.log(options)
 
