@@ -1,23 +1,15 @@
 /* eslint-disable import/extensions */
 import * as d3 from 'd3';
-import BasicClass from '../src/Classes/BasicClass.js';
-import HierarchyClass from '../src/Classes/HierarchyClass.js';
+import BasicClass from '../src/oomph-visualizer/d3/classes/BasicClass.js';
+import HierarchyClass from '../src/oomph-visualizer/d3/classes/HierarchyClass.js';
 import GraphSuperClass from '../src/Classes/GraphSuperClass.js';
 
 import { inputData } from '../src/sample-data/inputData.js';
 import { superData } from '../src/sample-data/superData.js';
 
-import onHover from '../src/AddFunctionality/onHover.js';
-import zoom from '../src/AddFunctionality/zoom.js';
-import gradient from '../src/AddFunctionality/gradient.js';
-import addAnimation from '../src/AddFunctionality/animate/animateBasic/animateBasic.js';
-import stack from '../src/AddFunctionality/stack.js';
-import sort from '../src/AddFunctionality/sort.js';
-import createChoroplethMap from '../src/Charts/geoCharts/choroplethMap.js';
-import createPointMap from '../src/Charts/geoCharts/pointMap.js';
-import animateByYValue from '../src/AddFunctionality/animate/animateBasic/animateBasic.js';
-import crreateWordCloud from '../src/Charts/HierarchicalCharts/wordCloud.js';
-import createWordCloud from '../src/Charts/HierarchicalCharts/wordCloud.js';
+import onHover from '../src/oomph-visualizer/d3/AddFunctionality/onHover.js';
+import zoom from '../src/oomph-visualizer/d3/AddFunctionality/zoom.js';
+import gradient from '../src/oomph-visualizer/d3/AddFunctionality/gradient.js';
 
 const superObjects = {};
 superObjects.testFor_string_number = new GraphSuperClass(superData.basic);

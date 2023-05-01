@@ -11,7 +11,7 @@ import createMarimekkoChart from '../Charts/hierarchicalCharts/marimekkoChart.js
 import createAdjacencyMatrix from '../Charts/hierarchicalCharts/adjacencyMatrix.js';
 import createDendrogram from '../Charts/hierarchicalCharts/dendogram.js';
 import createRadialTree from '../Charts/hierarchicalCharts/radialTreeMap.js';
-import createWordCloud from '../Charts/HierarchicalCharts/wordCloud.js';
+import createWordCloud from '../Charts/hierarchicalCharts/wordCloud.js';
 
 export default class HierarchyClass {
   constructor(chartArray, input) {
