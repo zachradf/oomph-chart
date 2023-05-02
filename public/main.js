@@ -5,7 +5,7 @@ import HierarchyClass from '../src/oomph-visualizer/d3/classes/HierarchyClass.js
 import OomphChart from '../src/oomph-chart/index.js';
 
 import { inputData } from '../src/sample-data/inputData.js';
-import { superData } from '../src/sample-data/superData.js';
+import { superData } from '../src/sample-data/super-data.js';
 
 import onHover from '../src/oomph-visualizer/d3/AddFunctionality/onHover.js';
 import zoom from '../src/oomph-visualizer/d3/AddFunctionality/zoom.js';
