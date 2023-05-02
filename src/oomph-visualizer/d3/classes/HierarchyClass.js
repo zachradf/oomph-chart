@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import createSunburstChart from '../Charts/hierarchicalCharts/sunBurst.js';
 import createTreeMap from '../Charts/hierarchicalCharts/treeMap.js';
 import createTreeDiagram from '../Charts/hierarchicalCharts/treeDiagram.js';

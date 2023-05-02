@@ -13,16 +13,7 @@
     "no-console": "off",
     "no-underscore-dangle": "warn",
     "no-use-before-define": "off",
-    "comma-dangle": [
-      "error",
-      {
-        "arrays": "always-multiline",
-        "objects": "always-multiline",
-        "imports": "never",
-        "exports": "never",
-        "functions": "always-multiline"
-      }
-    ],
+    "comma-dangle": ["error", "always-multiline"],
     "import/extensions": "off",
     "import/prefer-default-export": "off"
   }

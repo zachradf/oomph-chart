@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import createBubbleChart from '../Charts/basicCharts/bubbleChart.js';
 import createBarChart from '../Charts/basicCharts/barChart.js';
 import createScatterPlot from '../Charts/basicCharts/scatterPlot.js';

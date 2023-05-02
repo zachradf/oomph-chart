@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import * as d3 from 'd3';
 import BasicClass from '../src/oomph-visualizer/d3/classes/BasicClass.js';
 import HierarchyClass from '../src/oomph-visualizer/d3/classes/HierarchyClass.js';
