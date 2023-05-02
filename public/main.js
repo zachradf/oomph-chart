@@ -16,7 +16,7 @@ superObjects.testFor_number_number = new OomphChart(superData.hierarchic);
 console.log(superObjects);
 
 const superBarObject = new OomphChart(superData.basic);
-// superBarObject.draw('bar');
+// superBarObject.render('bar');
 // const barObjectTemp = new BasicClass(['BAR'], inputData.input1);
 
 // onHover('#scatter', options);

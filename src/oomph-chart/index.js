@@ -1,4 +1,4 @@
-import { drawImplementation } from './methods/draw-implementation.js';
+import { renderImplementation } from './methods/render-implementation.js';
 import { getCompatibleInputTypes } from './validators/input-validator.js';
 import { getInputToTagAdjacencies } from './edges/input-to-tag-getter.js';
 import { getTagToChartAdjacencies } from './edges/tag-to-chart-getter.js';
@@ -25,7 +25,7 @@ export default class OomphChart {
     this.visualizer = verifyVisualizer(visualizer);
   }
 
-  draw(chartType) {
-    return drawImplementation(this.data, this.visualizer, this.charts, chartType);
+  render(chartType) {
+    return renderImplementation(this.data, this.visualizer, this.charts, chartType);
   }
 }

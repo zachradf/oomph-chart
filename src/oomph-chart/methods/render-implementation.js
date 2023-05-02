@@ -9,7 +9,7 @@ const optionTypes = new OptionTypes();
 const svgTypes = new SVGTypes();
 const visualizerTypes = new VisualizerTypes();
 
-export function drawImplementation(data, visualizer, charts, chartType) {
+export function renderImplementation(data, visualizer, charts, chartType) {
   if (!chartType || chartType.length === 0 || !chartTypes[chartType]) {
     console.error('Invalid chart type provided.');
     return;
