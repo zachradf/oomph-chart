@@ -16,8 +16,9 @@
     }
   },
   "scripts": {
+    "dev": "vite",
     "test": "jest --verbose --coverage",
-    "start": "webpack serve --mode development --open"
+    "start": "npm run dev"
   },
   "keywords": [],
   "author": "",
@@ -47,8 +48,6 @@
     "jsdom": "^21.1.1",
     "jsdom-global": "^3.0.2",
     "text-encoding": "^0.7.0",
-    "webpack": "^5.77.0",
-    "webpack-cli": "^5.0.1",
-    "webpack-dev-server": "^4.13.2"
+    "vite": "^4.3.4"
   }
 }

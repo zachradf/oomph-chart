@@ -1,5 +1,8 @@
-import * as d3 from 'd3';
 // import { JSDOM } from 'jsdom';
+
+// eslint-disable-next-line import/no-relative-packages
+import * as d3 from '../node_modules/d3/dist/d3.min.js';
+
 // import GraphSuperClass from '../../Classes/GraphSuperClass.js';
 import ChartTypes from '../../Classes/graphTypes/chart-types.js';
 import InputTypes from '../../Classes/graphTypes/input-types.js';
