@@ -1,4 +1,4 @@
-export default function createChordDiagram(data, selector, options) {
+export default function createChordDiagram(data, options, generalElements) {
   const {
     width,
     height,
@@ -8,15 +8,8 @@ export default function createChordDiagram(data, selector, options) {
     innerRadius,
   } = options;
   const labels = data.pop();
-  console.log('THIS IS LABELS', labels);
-  const svg = d3
-    .select(selector)
-    .append('svg')
-    .classed('chord-diagram', true)
-    .attr('width', width)
-    .attr('height', height)
-    .append('g')
-    .attr('transform', `translate(${width / 2}, ${height / 2})`);
+
+  const { svg } = generalElements;
 
   const chord = d3.chord().padAngle(0.05).sortSubgroups(d3.descending);
 

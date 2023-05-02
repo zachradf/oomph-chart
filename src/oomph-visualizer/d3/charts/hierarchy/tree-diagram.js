@@ -1,4 +1,4 @@
-export default function createTreeDiagram(data, selector, options) {
+export default function createTreeDiagram(data, options, generalElements) {
   const {
     width,
     height,
@@ -6,17 +6,9 @@ export default function createTreeDiagram(data, selector, options) {
     radius,
     strokeColor,
   } = options;
+  const { svg } = generalElements;
 
-  const svg = d3
-    .select(selector)
-    .append('svg')
-    .classed('tree-diagram', true)
-    .attr('width', width)
-    .attr('height', height)
-    .append('g')
-    .attr('transform', `translate(${radius}, ${radius})`); // Adjust translation here
-
-  const tree = d3.tree().size([height, width]); // Adjust size here
+  const tree = d3.tree().size([height - 10, width - 10]); // Adjust size here
 
   const root = d3.hierarchy(data);
 
@@ -30,6 +22,7 @@ export default function createTreeDiagram(data, selector, options) {
     .attr('fill', 'none')
     .attr('stroke', strokeColor)
     .attr('stroke-width', 1.5)
+    .attr('stroke-opacity', options.opacity)
     .attr('d', d3.linkHorizontal().x((d) => d.y).y((d) => d.x));
 
   const node = svg

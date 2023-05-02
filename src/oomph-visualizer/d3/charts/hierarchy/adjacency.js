@@ -1,10 +1,5 @@
-export default function createAdjacencyMatrix(data, selector, options) {
-  const svg = d3.select(selector)
-    .append('svg')
-    .classed('adjacency-matrix', true)
-    .attr('width', options.width)
-    .attr('height', options.height);
-
+export default function createAdjacencyMatrix(data, options, generalElements) {
+  const { svg } = generalElements;
   const g = svg
     .append('g')
     .attr('transform', `translate(${options.margin.left}, ${options.margin.top})`);

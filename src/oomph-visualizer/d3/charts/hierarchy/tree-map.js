@@ -1,8 +1,9 @@
-export default function createD3TreeMap(data, selector, options = {}) {
+export default function createD3TreeMap(data, options, generalElements) {
   // Set default options
   const width = options.width || 600;
   const height = options.height || 400;
   const color = d3.scaleOrdinal(d3.schemeCategory10);
+  const { svg } = generalElements;
 
   // Create the treemap layout
   const treemap = d3.treemap()
@@ -16,14 +17,6 @@ export default function createD3TreeMap(data, selector, options = {}) {
     .sort((a, b) => b.value - a.value);
 
   treemap(root);
-
-  // Create the SVG element
-  const svg = d3.select(selector)
-    .append('svg')
-    .classed('tree-map', true)
-    .attr('width', width)
-    .attr('height', height)
-    .style('font', '10px sans-serif');
 
   // Draw the treemap
   const leaf = svg.selectAll('g')

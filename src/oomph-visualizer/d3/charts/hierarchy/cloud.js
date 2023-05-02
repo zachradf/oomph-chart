@@ -1,8 +1,7 @@
-export default function createWordCloud(data, selector, options) {
+export default function createWordCloud(data, options, generalElements) {
   const { width, height, y2ForceStrength } = options;
-  const svg = d3.select(selector).append('svg').attr('width', width).attr('height', height);
   const fontSize = (d) => Math.sqrt(d.value) * 2;
-
+  const { svg } = generalElements;
   // Create a linear scale for the radius of the bubbles
   const radiusScale = d3.scaleSqrt()
     .domain([0, d3.max(data, (d) => d.value)])

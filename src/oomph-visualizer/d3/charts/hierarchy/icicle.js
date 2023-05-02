@@ -1,15 +1,9 @@
-export default function createIcicleChart(data, selector, options) {
+export default function createIcicleChart(data, options, generalElements) {
   const width = options.width || 960;
   const height = options.height || 500;
 
   const color = d3.scaleOrdinal(d3.schemeCategory10);
-
-  const svg = d3
-    .select(selector)
-    .append('svg')
-    .classed('icicle-plot', true)
-    .attr('width', width)
-    .attr('height', height);
+  const { svg } = generalElements;
 
   const partition = (data) => {
     const root = d3.hierarchy(data)

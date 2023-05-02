@@ -1,6 +1,6 @@
 import { sankey as d3Sankey, sankeyLinkHorizontal } from 'd3-sankey';
 
-export default function createSankeyDiagram(data, selector, options) {
+export default function createSankeyDiagram(data, options, generalElements) {
   const {
     width,
     height,
@@ -8,15 +8,9 @@ export default function createSankeyDiagram(data, selector, options) {
     nodePadding,
   } = options;
   const color = d3.scaleOrdinal(d3.schemeCategory10);
-  console.log('data', data, 'selector', selector, 'options', options);
+  const { svg } = generalElements;
 
-  const svg = d3
-    .select(selector)
-    .append('svg')
-    .classed('sankey-diagram', true)
-    .attr('width', width)
-    .attr('height', height)
-    .append('g');
+  svg.append('g');
 
   const sankey = d3Sankey()
     .nodeWidth(nodeWidth)
@@ -24,7 +18,6 @@ export default function createSankeyDiagram(data, selector, options) {
     .extent([[1, 1], [width - 1, height - 5]]);
 
   const { nodes, links } = sankey(data);
-  console.log('nodes', nodes, 'links', links);
 
   svg.append('g')
     .selectAll('rect')

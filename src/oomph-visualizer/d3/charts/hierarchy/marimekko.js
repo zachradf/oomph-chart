@@ -1,9 +1,5 @@
-export default function createMarimekkoChart(data, selector, options) {
-  const svg = d3.select(selector)
-    .append('svg')
-    .classed('marimekko-chart', true)
-    .attr('width', options.width)
-    .attr('height', options.height);
+export default function createMarimekkoChart(data, options, generalElements) {
+  const { svg } = generalElements;
 
   const g = svg
     .append('g')

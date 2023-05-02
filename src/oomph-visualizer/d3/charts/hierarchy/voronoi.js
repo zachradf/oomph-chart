@@ -1,12 +1,7 @@
 import { voronoiTreemap } from 'd3-voronoi-treemap';
 
-export default function createVoronoiTreemap(data, selector, options) {
-  const svg = d3
-    .select(selector)
-    .append('svg')
-    .classed('voronoi-treemap', true)
-    .attr('width', options.width)
-    .attr('height', options.height);
+export default function createVoronoiTreemap(data, options, generalElements) {
+  const { svg } = generalElements;
 
   const layout = voronoiTreemap().size([options.width, options.height]);
 
@@ -32,7 +27,8 @@ export default function createVoronoiTreemap(data, selector, options) {
         return interpolator(d.data.value / d.parent.value);
       }
     })
-    .attr('stroke', 'black');
+    .attr('stroke', 'black')
+    .attr('font-size', `${options.parentTextSize}`);
 
   groups
     .append('path')

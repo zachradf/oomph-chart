@@ -1,9 +1,5 @@
-export default function createDendrogram(data, selector, options) {
-  const svg = d3.select(selector)
-    .append('svg')
-    .classed('dendrogram', true)
-    .attr('width', options.width)
-    .attr('height', options.height);
+export default function createDendrogram(data, options, generalElements) {
+  const { svg } = generalElements;
 
   const g = svg
     .append('g')

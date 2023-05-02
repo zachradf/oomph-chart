@@ -91,7 +91,6 @@ chartData.barChart2 = [
   { x: 'H', y: 60 },
 ];
 
-
 chartData.donutChart = [
   { x: 'Apple', y: 30 },
   { x: 'Orange', y: 20 },
@@ -474,19 +473,27 @@ chartData.chord = [
 
 chartData.sankeyDiagram = {
   nodes: [
-    { id: 'A', name: 'Node A' },
-    { id: 'B', name: 'Node B' },
-    { id: 'C', name: 'Node C' },
-    { id: 'D', name: 'Node D' },
-    { id: 'E', name: 'Node E' },
+    { name: 'Agriculture' },
+    { name: 'Industry' },
+    { name: 'Residential' },
+    { name: 'Electricity' },
+    { name: 'Natural Gas' },
+    { name: 'Coal' },
+    { name: 'Petroleum' },
   ],
   links: [
-    { source: 'A', target: 'B', value: 10 },
-    { source: 'A', target: 'C', value: 15 },
-    { source: 'B', target: 'D', value: 5 },
-    { source: 'C', target: 'D', value: 10 },
-    { source: 'D', target: 'E', value: 15 },
-    { source: 'B', target: 'E', value: 5 },
+    { source: 0, target: 3, value: 20 },
+    { source: 0, target: 4, value: 15 },
+    { source: 0, target: 5, value: 5 },
+    { source: 0, target: 6, value: 30 },
+    { source: 1, target: 3, value: 50 },
+    { source: 1, target: 4, value: 40 },
+    { source: 1, target: 5, value: 20 },
+    { source: 1, target: 6, value: 35 },
+    { source: 2, target: 3, value: 100 },
+    { source: 2, target: 4, value: 60 },
+    { source: 2, target: 5, value: 5 },
+    { source: 2, target: 6, value: 10 },
   ],
 };
 

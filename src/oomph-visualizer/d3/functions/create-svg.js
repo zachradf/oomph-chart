@@ -41,7 +41,7 @@ export default function createSVG(selector, chart, options) {
     }
     return svg;
   }
-  if (chart === 'PIE' || chart === 'DONUT' || chart === 'GAUGE' || chart === 'POLAR' || chart === 'RADAR') {
+  if (chart === 'PIE' || chart === 'DONUT' || chart === 'GAUGE' || chart === 'POLAR' || chart === 'RADAR' || chart === 'CHORD' || chart === 'CLUSTER') {
     svg = d3.select(selector)
       .append('svg')
       .classed(`${options.chartClass}`, true)

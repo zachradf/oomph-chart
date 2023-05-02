@@ -61,7 +61,7 @@ optionData.options2 = {
   fillColor: ['red', 'blue', 'green', 'yellow', 'orange', 'purple'],
   // onHover: true,
   overlay: true,
-  opacity: .61,
+  opacity: 0.61,
   stack: false,
   sortBy: 'y asc',
   xLine: false,
@@ -101,8 +101,8 @@ optionData.options3 = {
   overlay: false,
   onHover: true,
   opacity: 0.5,
-  // color: d3.scaleOrdinal(d3.schemeCategory10),
-  color: 'red',
+  color: d3.scaleOrdinal(d3.schemeCategory10),
+  // color: 'red',
   nodeWidth: 10,
   nodePadding: 1,
   strokeColor: '#000000',
@@ -151,6 +151,7 @@ optionData.options4 = {
   onHover: false,
   radius: 200,
   color: 'blue',
+  colorScheme: d3.schemeCategory10,
   showLabels: true,
   diameter: 6,
   stack: false,
@@ -553,7 +554,7 @@ optionData.options17 = {
   strokeColor: 'blue',
   xLabel: 'xLabel',
   yLabel: 'yLabel',
-  
+
   colorScale: 'red',
   overlay: false,
   // colorScheme: d3.schemeCategory10,
@@ -653,7 +654,7 @@ optionData.options19 = {
   margin: {
     top: 20, right: 20, bottom: 30, left: 40,
   },
-  width: 800,
+  width: 900,
   height: 600,
   maxColor: 'red', // maybe should be d3 color scale
   maxValue: 100, // maybe should be calculated from data
@@ -661,7 +662,7 @@ optionData.options19 = {
   minorTickColor: 'black',
   minorTicks: 4,
   nodeRadius: 15,
-  //onHover: true,
+  // onHover: true,
   opacity: 1,
   outerRadius: 200,
   overlay: true,

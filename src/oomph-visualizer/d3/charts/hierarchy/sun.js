@@ -1,14 +1,10 @@
-// TODO fix labels/titles
-export default function createD3SunburstChart(data, selector, options) {
-  // Set default options if not provided
-  const colorScheme = options.colorScheme || d3.schemeCategory10;
+export default function createD3SunburstChart(data, options, generalElements) {
+  // Create a color scale
+  const color = d3.scaleOrdinal(options.colorScheme);
   const {
     width, height, margin, radius,
   } = options;
-  console.log('THIS IS MARGIN________________-', options);
-  // Create a color scale
-  const color = d3.scaleOrdinal(colorScheme);
-
+  const { svg } = generalElements;
   // Create a partition layout
   const partition = (data) => {
     const root = d3.hierarchy(data)
@@ -27,29 +23,40 @@ export default function createD3SunburstChart(data, selector, options) {
     .innerRadius((d) => d.y0 * radius)
     .outerRadius((d) => Math.max(d.y0 * radius, d.y1 * radius - 1));
 
-  // Create the SVG container
-  const svg = d3.select(selector)
-    .append('svg')
-    .classed('sun-burst', true)
-    .attr('width', width)
-    .attr('height', height)
-    .attr('viewBox', `${-radius - margin.top} ${-radius - margin.bottom} ${width + margin.left * 2} ${height + margin.right * 2}`)// make sure you are assigning the right margin directions
-    .style('font', '10px sans-serif');
-
   // Append a group element for the sunburst chart and center it within the SVG container
   const g = svg.append('g')
     .attr('transform', `translate(${width / 2},${height / 2})`);
 
   // Generate sunburst chart using the partition layout and arc generator
-  g.selectAll('path')
+  const nodes = g.selectAll('path')
     .data(partition(data).descendants())
     .enter().append('path')
     .attr('fill', (d) => { while (d.depth > 1) d = d.parent; return color(d.data.name); })
     .attr('fill-opacity', (d) => (d.children ? 0.6 : 0.4))
     .attr('d', arc)
-    .append('title')
-    .attr('font-size', `${options.childTextSize}`)
-    .attr('font-family', 'sans-serif')
-    .attr('color', 'black')
-    .text((d) => `${d.ancestors().map((d) => d.data.name).reverse().join('/')}\n${d.value}`);
+    .on('click', (event, d) => {
+      // Add click event for zooming in on a specific segment
+    });
+
+  // Add text labels to the sunburst chart
+  g.selectAll('text')
+    .data(partition(data).descendants())
+    .enter().append('text')
+    .attr('transform', (d) => {
+      const x = (d.x0 + d.x1) / 2 * 180 / Math.PI;
+      const y = (d.y0 + d.y1) / 2 * radius;
+      return `rotate(${x - 90}) translate(${y},0) rotate(${x < 180 ? 0 : 180})`;
+    })
+
+    .attr('text-anchor', (d) => (((d.x0 + d.x1) / 2) * 180 / Math.PI < 180 ? 'start' : 'end'))
+    .attr('dy', '0.35em')
+    .attr('font-size', options.childTextSize)
+    .text((d) => d.data.name)
+    .attr('fill-opacity', (d) => +labelVisible(d))
+    .attr('display', (d) => (labelVisible(d) ? null : 'none'));
+
+  // Define a function to determine label visibility based on the arc's angle
+  function labelVisible(d) {
+    return (d.y1 <= 3) && (d.y0 >= 1) && (d.x1 > d.x0 + 0.01);
+  }
 }

@@ -1,4 +1,4 @@
-export default function createClusterDiagram(data, selector, options) {
+export default function createClusterDiagram(data, options, generalElements) {
   const {
     width,
     height,
@@ -6,15 +6,7 @@ export default function createClusterDiagram(data, selector, options) {
     nodeRadius,
     strokeColor,
   } = options;
-
-  const svg = d3
-    .select(selector)
-    .append('svg')
-    .classed('cluster-diagram', true)
-    .attr('width', width)
-    .attr('height', height)
-    .append('g')
-    .attr('transform', `translate(${width / 2}, ${height / 2})`);
+  const { svg } = generalElements;
 
   const cluster = d3.cluster().size([360, height / 2 - 100]);
 
