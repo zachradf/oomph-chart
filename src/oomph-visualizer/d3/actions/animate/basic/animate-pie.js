@@ -28,15 +28,15 @@ export default function animatePie(generalElements, data, duration, options) {
     .data(pie(data));
 
   update.join(
-    enter => enter.append('path')
+    (enter) => enter.append('path')
       .attr('fill', (d) => color(d.data.y))
       .attr('stroke', 'white')
       .attr('stroke-width', '2px')
       .attr('d', arc),
-    update => update.transition()
+    (update) => update.transition()
       .duration(duration)
       .attr('d', arc),
-    exit => exit.remove()
+    (exit) => exit.remove(),
   );
 
   // Update labels

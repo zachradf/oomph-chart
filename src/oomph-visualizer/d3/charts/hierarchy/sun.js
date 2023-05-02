@@ -5,7 +5,7 @@ export default function createD3SunburstChart(data, selector, options) {
   const {
     width, height, margin, radius,
   } = options;
-console.log("THIS IS MARGIN________________-", options)
+  console.log('THIS IS MARGIN________________-', options);
   // Create a color scale
   const color = d3.scaleOrdinal(colorScheme);
 
@@ -33,7 +33,7 @@ console.log("THIS IS MARGIN________________-", options)
     .classed('sun-burst', true)
     .attr('width', width)
     .attr('height', height)
-    .attr('viewBox', `${-radius - margin.top} ${-radius - margin.bottom} ${width + margin.left * 2} ${height + margin.right * 2}`)//make sure you are assigning the right margin directions
+    .attr('viewBox', `${-radius - margin.top} ${-radius - margin.bottom} ${width + margin.left * 2} ${height + margin.right * 2}`)// make sure you are assigning the right margin directions
     .style('font', '10px sans-serif');
 
   // Append a group element for the sunburst chart and center it within the SVG container

@@ -17,9 +17,9 @@ export default function createD3BarChart(data, options, generalElements) {
     .selectAll('rect')
     .data(data)
     .join('rect')
-    .attr('x', (d) => isLinearScale ? x(d.x) - barWidth / 2 : x(d.x))
-    .attr('y', (d) => d.y >= 0 ? y(d.y) : y(0))
-    .attr('height', (d) => d.y >= 0 ? y(0) - y(d.y) : y(d.y) - y(0))
+    .attr('x', (d) => (isLinearScale ? x(d.x) - barWidth / 2 : x(d.x)))
+    .attr('y', (d) => (d.y >= 0 ? y(d.y) : y(0)))
+    .attr('height', (d) => (d.y >= 0 ? y(0) - y(d.y) : y(d.y) - y(0)))
     .attr('fill', options.color)
     .attr('width', barWidth);
 }

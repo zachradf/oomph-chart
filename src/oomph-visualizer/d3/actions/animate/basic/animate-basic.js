@@ -24,8 +24,9 @@ export default function addAnimation(selector, data, options, generalElements, d
       .call(generalElements.yAxis);
 
     let chartElements = chart.selectAll('g rect, g circle, .line-graph0, .area-chart0, path');
-    
-    // Calculate the difference between the length of the new dataset and the number of elements in the initial chart
+
+    // Calculate the difference between the length of the new dataset and the number of elements
+    // in the initial chart
     let numPlaceholders = data.length - chartElements.size();
     // console.log('SELECTED ELEMENTS', chartElements.nodes()[0].className.baseVal);
     if (numPlaceholders > 0) {

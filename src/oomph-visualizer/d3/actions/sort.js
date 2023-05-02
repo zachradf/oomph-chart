@@ -1,9 +1,10 @@
 import { select } from 'd3-selection';
 import { scaleBand } from 'd3-scale';
+
 export default function addSorting(chartSelector, data, options) {
   const chart = document.querySelector(chartSelector);
   const sortDropdown = document.createElement('div');
-    sortDropdown.id = 'sort-dropdown';
+  sortDropdown.id = 'sort-dropdown';
   chart.appendChild(sortDropdown);
   const dropdown = select('#sort-dropdown')
     .append('select')
@@ -14,7 +15,7 @@ export default function addSorting(chartSelector, data, options) {
 
   const sortingOptions = [
     { value: 'name', text: 'Name' },
-    { value: 'value', text: 'Value' }
+    { value: 'value', text: 'Value' },
   ];
 
   dropdown

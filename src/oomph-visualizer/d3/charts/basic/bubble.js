@@ -31,7 +31,7 @@ export default function createBubbleChart(data, options, generalElements) {
     .append('circle')
     .attr('r', (d) => d.r)
     .style('fill', (d) => d3.schemeCategory10[d.depth])
-    .style('opacity', (d) => (d.depth <= 1 ? 1 : options.opacity))
+    .style('opacity', (d) => (d.depth <= 1 ? 1 : options.opacity));
 
   // Add labels to the bubbles
   nodes

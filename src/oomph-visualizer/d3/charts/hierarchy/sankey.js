@@ -7,7 +7,7 @@ export default function createSankeyDiagram(data, selector, options) {
     nodeWidth,
     nodePadding,
   } = options;
-  const color = d3.scaleOrdinal(d3.schemeCategory10)
+  const color = d3.scaleOrdinal(d3.schemeCategory10);
   console.log('data', data, 'selector', selector, 'options', options);
 
   const svg = d3
@@ -22,9 +22,9 @@ export default function createSankeyDiagram(data, selector, options) {
     .nodeWidth(nodeWidth)
     .nodePadding(nodePadding)
     .extent([[1, 1], [width - 1, height - 5]]);
-  
+
   const { nodes, links } = sankey(data);
-  console.log('nodes', nodes, 'links', links)
+  console.log('nodes', nodes, 'links', links);
 
   svg.append('g')
     .selectAll('rect')

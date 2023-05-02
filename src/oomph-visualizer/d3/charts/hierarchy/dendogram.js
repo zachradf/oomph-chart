@@ -21,9 +21,7 @@ export default function createDendrogram(data, selector, options) {
     .enter()
     .append('path')
     .attr('class', 'link')
-    .attr('d', (d) => {
-      return `M${d.y},${d.x}V${(d.x + d.parent.x) / 2}H${d.parent.y}V${d.parent.x}`;
-    })
+    .attr('d', (d) => `M${d.y},${d.x}V${(d.x + d.parent.x) / 2}H${d.parent.y}V${d.parent.x}`)
     .style('stroke', options.linkColor)
     .style('fill', 'none');
 

@@ -73,7 +73,7 @@
 //   }
 // }
 
-//CODE ABOVE HAS BETTER TRANSITION, try to merge
+// CODE ABOVE HAS BETTER TRANSITION, try to merge
 export default function createD3GaugeChart(sampleValues, options, generalElements) {
   const width = options.width || 300;
   const height = options.height || 300;

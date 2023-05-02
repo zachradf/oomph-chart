@@ -1,6 +1,5 @@
 export default function onHover(selector, options) {
   options.forEach((option, i) => {
-
     // Select all the elements (rect, node, leaf, link, circle) with the specified chartType class
     const elements = d3.selectAll(`circle.${option.chartClass}${i}, rect.${option.chartClass}${i}, .node.${option.chartClass}${i}, .leaf.${option.chartClass}${i}, .link.${option.chartClass}${i}, .box-rect, .arc, path.${option.chartClass}${i}, svg.pie-chart path`);
     console.log('IN ON HOVER', options[0], elements);
@@ -18,7 +17,7 @@ export default function onHover(selector, options) {
 
     elements.each(function () {
       console.log(option.onHover);
-      console.log(this)
+      console.log(this);
       if (option.onHover) {
         console.log('each element', this);
         const el = d3.select(this);

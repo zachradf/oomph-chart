@@ -43,9 +43,10 @@ export default function createWordCloud(data, selector, options) {
       .style('fill', (d) => {
         // If y2 value exists, use the color scale for that group
         if (d.y2 !== undefined) {
-         console.log('COLOR SCALES', colorScales[d.y2], 'VALUE', d.v);
+          console.log('COLOR SCALES', colorScales[d.y2], 'VALUE', d.v);
           return colorScales[d.y2](d.value / 1000); // TODO make this dynamic
         }
+
         // If y2 value doesn't exist, use the default color scheme
         return d3.schemeCategory10[d.value % 10];
       })

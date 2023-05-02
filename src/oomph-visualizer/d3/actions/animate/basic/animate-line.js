@@ -13,7 +13,7 @@ export default function animateLine(chartElements, data, generalElements, durati
 
   // Update the 'd' attribute of the existing path element
   linePath
-    .data([sortedData])
+    .data([data])
     .transition()
     .duration(duration)
     .attr('d', line);

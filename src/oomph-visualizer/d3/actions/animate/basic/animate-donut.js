@@ -33,6 +33,7 @@ export default function animateDonutChart(generalElements, data, duration, optio
         .attr('d', arc);
       return arcs;
     },
+
     (update) => update.select('path').transition()
       .duration(duration)
       .attr('d', arc),
