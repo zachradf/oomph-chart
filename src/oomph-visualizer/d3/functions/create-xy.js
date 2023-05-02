@@ -1,4 +1,4 @@
-import { createXAxisLine, createYAxisLine } from './axisLines';
+import { createXAxisLine, createYAxisLine } from './axis-lines.js';
 
 export default function generalElementsFunction(data, chart, options) {
   let x;

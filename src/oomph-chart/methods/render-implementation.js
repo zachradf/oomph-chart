@@ -1,4 +1,4 @@
-import BasicClass from '../../oomph-visualizer/d3/classes/BasicClass.js';
+import BasicClass from '../../oomph-visualizer/d3/render-legacy/basic.js';
 import ChartTypes from '../types/chart-types.js';
 import SVGTypes from '../../oomph-visualizer/d3/types/svg-types.js';
 import VisualizerTypes from '../types/visualizer-types.js';

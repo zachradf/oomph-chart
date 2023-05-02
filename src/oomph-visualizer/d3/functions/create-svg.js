@@ -1,4 +1,4 @@
-export default function createSVG(selector, graph, options) {
+export default function createSVG(selector, chart, options) {
   let svg;
 
   if (options.stack) {

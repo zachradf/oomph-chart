@@ -1,5 +1,5 @@
-import { chartData } from './chartData.js';
-import { optionData as options } from './optionsData.js';
+import { chartData } from './chart.js';
+import { optionData as options } from './options.js';
 
 export const inputData = {};
 

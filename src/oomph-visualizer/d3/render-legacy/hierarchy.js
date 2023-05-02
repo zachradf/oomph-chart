@@ -1,16 +1,16 @@
-import createSunburstChart from '../Charts/hierarchicalCharts/sunBurst.js';
-import createTreeMap from '../Charts/hierarchicalCharts/treeMap.js';
-import createTreeDiagram from '../Charts/hierarchicalCharts/treeDiagram.js';
-import createChordDiagram from '../Charts/hierarchicalCharts/chordChart.js';
-import createSankeyDiagram from '../Charts/hierarchicalCharts/sankeyDiagram.js';
-import createClusterDiagram from '../Charts/hierarchicalCharts/clusterDiagram.js';
-import createVoronoiTreemap from '../Charts/hierarchicalCharts/voronoiTree.js';
-import createIcicleChart from '../Charts/hierarchicalCharts/iciclePlot.js';
-import createMarimekkoChart from '../Charts/hierarchicalCharts/marimekkoChart.js';
-import createAdjacencyMatrix from '../Charts/hierarchicalCharts/adjacencyMatrix.js';
-import createDendrogram from '../Charts/hierarchicalCharts/dendogram.js';
-import createRadialTree from '../Charts/hierarchicalCharts/radialTreeMap.js';
-import createWordCloud from '../Charts/hierarchicalCharts/wordCloud.js';
+import createSunburstChart from '../charts/hierarchy/sun.js';
+import createTreeMap from '../charts/hierarchy/tree-map.js';
+import createTreeDiagram from '../charts/hierarchy/tree-diagram.js';
+import createChordDiagram from '../charts/hierarchy/chord.js';
+import createSankeyDiagram from '../charts/hierarchy/sankey.js';
+import createClusterDiagram from '../charts/hierarchy/cluster.js';
+import createVoronoiTreemap from '../charts/hierarchy/voronoi.js';
+import createIcicleChart from '../charts/hierarchy/icicle.js';
+import createMarimekkoChart from '../charts/hierarchy/marimekko.js';
+import createAdjacencyMatrix from '../charts/hierarchy/adjacency.js';
+import createDendrogram from '../charts/hierarchy/dendogram.js';
+import createRadialTree from '../charts/hierarchy/radial-tree.js';
+import createWordCloud from '../charts/hierarchy/cloud.js';
 
 export default class HierarchyClass {
   constructor(chartArray, input) {

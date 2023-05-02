@@ -1,14 +1,14 @@
 import * as d3 from 'd3';
-import BasicClass from '../src/oomph-visualizer/d3/classes/BasicClass.js';
-import HierarchyClass from '../src/oomph-visualizer/d3/classes/HierarchyClass.js';
+import BasicClass from '../src/oomph-visualizer/d3/render-legacy/basic.js';
+import HierarchyClass from '../src/oomph-visualizer/d3/render-legacy/hierarchy.js';
 import OomphChart from '../src/oomph-chart/index.js';
 
-import { inputData } from '../src/sample-data/inputData.js';
-import { superData } from '../src/sample-data/super-data.js';
+import { inputData } from '../src/sample-data/input.js';
+import { superData } from '../src/sample-data/super.js';
 
-import onHover from '../src/oomph-visualizer/d3/AddFunctionality/onHover.js';
-import zoom from '../src/oomph-visualizer/d3/AddFunctionality/zoom.js';
-import gradient from '../src/oomph-visualizer/d3/AddFunctionality/gradient.js';
+import onHover from '../src/oomph-visualizer/d3/actions/on-hover.js';
+import zoom from '../src/oomph-visualizer/d3/actions/zoom.js';
+import gradient from '../src/oomph-visualizer/d3/actions/gradient.js';
 
 const superObjects = {};
 superObjects.testFor_string_number = new OomphChart(superData.basic);

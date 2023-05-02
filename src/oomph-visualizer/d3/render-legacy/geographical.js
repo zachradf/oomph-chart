@@ -1,5 +1,5 @@
-import onHover from '../AddFunctionality/onHover.js';
-import relativeNode from '../AddFunctionality/relativeNode.js';
+import onHover from '../actions/on-hover.js';
+import relativeNode from '../actions/relative-node.js';
 
 export default class GeographicClass {
   constructor(chartArray, input) {

@@ -1,26 +1,26 @@
-import createBubbleChart from '../Charts/basicCharts/bubbleChart.js';
-import createBarChart from '../Charts/basicCharts/barChart.js';
-import createScatterPlot from '../Charts/basicCharts/scatterPlot.js';
-import createLineGraph from '../Charts/basicCharts/lineChart.js';
-import createPieChart from '../Charts/basicCharts/pieChart.js';
-import createAreaChart from '../Charts/basicCharts/areaChart.js';
-import createDonutChart from '../Charts/basicCharts/donutChart.js';
-import createStackedBarChart from '../Charts/basicCharts/stackedBarChart.js';
-import createHeatMap from '../Charts/basicCharts/heatMap.js';
-import createRadarChart from '../Charts/basicCharts/radarChart.js';
-import createPolarChart from '../Charts/basicCharts/polarChart.js';
-import createWaterfallChart from '../Charts/basicCharts/waterfallChart.js';
-import createFunnelChart from '../Charts/basicCharts/funnelChart.js';
-import createGaugeChart from '../Charts/basicCharts/gaugeChart.js';
-import createBoxPlot from '../Charts/basicCharts/boxPlot.js';
+import createBubbleChart from '../charts/basic/bubble.js';
+import createBarChart from '../charts/basic/bar.js';
+import createScatterPlot from '../charts/basic/scatter.js';
+import createLineGraph from '../charts/basic/line.js';
+import createPieChart from '../charts/basic/pie.js';
+import createAreaChart from '../charts/basic/area.js';
+import createDonutChart from '../charts/basic/donut.js';
+import createStackedBarChart from '../charts/basic/stacked.js';
+import createHeatMap from '../charts/basic/heat.js';
+import createRadarChart from '../charts/basic/radar.js';
+import createPolarChart from '../charts/basic/polar.js';
+import createWaterfallChart from '../charts/basic/waterfall.js';
+import createFunnelChart from '../charts/basic/funnel.js';
+import createGaugeChart from '../charts/basic/gauge.js';
+import createBoxPlot from '../charts/basic/box.js';
 
-import createAxes from '../classFunctions/createXY.js';
-import createSVG from '../classFunctions/createSVG.js';
-import appendAxes from '../classFunctions/appendAxes.js';
+import createAxes from '../functions/create-xy.js';
+import createSVG from '../functions/create-svg.js';
+import appendAxes from '../functions/append-axes.js';
 
-import onHover from '../AddFunctionality/onHover.js';
-import relativeNode from '../AddFunctionality/relativeNode.js';
-import addAnimation from '../AddFunctionality/animate/animateBasic/animateBasic.js';
+import onHover from '../actions/on-hover.js';
+import relativeNode from '../actions/relative-node.js';
+import addAnimation from '../actions/animate/basic/animate-basic.js';
 
 export default class BasicClass {
   constructor(chartArray, input, tempOveride) {

@@ -1,4 +1,4 @@
-import { optionData as options } from '../../../sample-data/optionsData';
+import { optionData as options } from '../../../sample-data/options.js';
 
 export default class OptionTypes {
   constructor() {

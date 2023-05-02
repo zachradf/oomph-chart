@@ -1,13 +1,13 @@
-import onHover from '../../onHover';
-import relativeNode from '../../relativeNode'; // TODO: incorporate this
-import animateScatter from './animateScatter';
-import animateLine from './animateLine';
-import animateArea from './animateArea';
-import animateBar from './animateBar';
-import animatePie from './animatePie';
-import animateDonut from './animateDonut';
-import animateFunnel from './animateFunnel';
-import animateStacked from './animateStacked';
+import onHover from '../../on-hover';
+import relativeNode from '../../relative-node'; // TODO: incorporate this
+import animateScatter from './animate-scatter';
+import animateLine from './animate-line';
+import animateArea from './animate-area';
+import animateBar from './animate-bar';
+import animatePie from './animate-pie';
+import animateDonut from './animate-donut';
+import animateFunnel from './animate-funnel';
+import animateStacked from './animate-stacked';
 
 export default function addAnimation(selector, data, options, generalElements, duration = 1000) {
   setTimeout(() => {
