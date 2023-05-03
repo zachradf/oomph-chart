@@ -7,7 +7,7 @@ export default function createD3AreaChart(data, options, generalElements) {
   // Define the area generator function using the x and y scales
   const area = d3.area()
     .x((d) => x(d.x))
-    .y0(height - margin.bottom)
+    .y0((d) => (d.y >= 0 ? y(0) : y(-d.y))) // Updated line
     .y1((d) => y(d.y));
 
   const sortedData = data.sort((a, b) => a.x - b.x);

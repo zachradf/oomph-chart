@@ -77,14 +77,6 @@ export default function generalElementsFunction(data, chart, options) {
   const xAxisColor = options.xAxisColor || '#000';
   const yAxisColor = options.yAxisColor || '#000';
 
-  // const xAxis = (g) => {
-  //   g.attr('transform', `translate(0,${xAxisPosition})`)
-  //     .call(d3.axisBottom(x).ticks(xTickFrequency).tickSizeOuter(0).tickSize(-xTickLength + xTickExtension))
-  //     .call((g) => {
-  //       g.selectAll('.tick line').attr('opacity', options.xTickOpacity || 1);
-  //     });
-  //   if (options.xLine) createXAxisLine(g, options, yAxisPosition);
-  // };
   const xAxis = (g) => {
     g.attr('transform', `translate(0,${xAxisPosition})`)
       .call(d3.axisBottom(x).ticks(xTickFrequency).tickSizeOuter(0).tickSize(0))
@@ -107,33 +99,6 @@ export default function generalElementsFunction(data, chart, options) {
   };
   let yAxis;
   switch (chart) {
-  //   case 'WATERFALL':
-  //     yAxis = (g) => g
-  //       .attr('transform', `translate(${yAxisPosition},0)`)
-  //       .call(d3.axisLeft(y).tickSize(-yTickLength + yTickExtension)).ticks(yTickFrequency)
-  //       .call((g) => {
-  //         g.selectAll('.tick line').clone()
-  //           .attr('x2', options.width - options.margin.left - options.margin.right)
-  //           .attr('stroke-opacity', 0.1);
-  //         if (options.yLine) { // may be able to get rid of this
-  //           createYAxisLine(g, options, xAxisPosition);
-  //         }
-  //       });
-  //     break;
-  //   case 'STACKEDBAR':
-  //   case 'BAR':
-  //   default:
-  //     yAxis = (g) => g
-  //       .attr('transform', `translate(${yAxisPosition},0)`)
-  //       .call(d3.axisLeft(y).ticks(chart === 'STACKEDBAR' ? null : yTickFrequency).tickSize(-yTickLength + yTickExtension))
-  //       .call((g) => {
-  //         g.selectAll('.tick line').attr('opacity', options.yTickOpacity || 1);
-  //         if (options.yLine) {
-  //           createYAxisLine(g, options, xAxisPosition);
-  //         }
-  //       });
-  //     break;
-  // }
     case 'WATERFALL':
       yAxis = (g) => g
         .attr('transform', `translate(${yAxisPosition},0)`)
@@ -168,13 +133,15 @@ export default function generalElementsFunction(data, chart, options) {
                 .append('line')
                 .attr('stroke', `${yAxisColor}`)
                 .attr('x2', yTickLength)
-                .attr('opacity', options.yTickOpacity || 1);
+                .attr('class', 'tick-line'); // Add a class to the tick lines
               d3.select(this)
                 .append('line')
                 .attr('stroke', `${yAxisColor}`)
                 .attr('x2', -yTickExtension)
-                .attr('opacity', options.yTickOpacity || 1);
-            });
+                .attr('class', 'tick-line'); // Add a class to the tick lines
+            })
+            .attr('opacity', options.yTickOpacity || 1); // Updated line
+
           if (options.yLine) {
             createYAxisLine(g, options, xAxisPosition);
           }

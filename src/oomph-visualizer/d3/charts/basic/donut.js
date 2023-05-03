@@ -6,8 +6,8 @@ export default function createD3DonutChart(data, options, generalElements) {
     .attr('transform', `translate(${options.width / 2}, ${options.height / 2})`);
 
   const arc = d3.arc()
-    .innerRadius(radius * 0.5)
-    .outerRadius(radius * 0.8);
+    .innerRadius(options.innerRadius)
+    .outerRadius(options.outerRadius);
 
   const pie = d3.pie()
     .sort(null)
@@ -21,8 +21,8 @@ export default function createD3DonutChart(data, options, generalElements) {
 
   arcs.append('path')
     .attr('d', arc)
-    .attr('fill', (d, i) => options.fillColor[i])
-    .attr('stroke', 'blue')
+    .attr('fill', (d, i) => options.colorScheme[i])
+    .attr('stroke', `${options.strokeColor}`)
     .style('stroke-width', '2px');
 
   arcs.append('text')

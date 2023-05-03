@@ -127,7 +127,8 @@ export default class BasicClass {
         const options = this.options[i];
 
         // This is where we add the class and opacity option to the data elements
-        const elements = d3.selectAll(`svg.${svgTypeMap[this.chartArray[i]]} circle, arc, rect, path, line, polygon, node`);
+        const elements = d3.selectAll(`svg.${svgTypeMap[this.chartArray[0]]} circle, arc, rect, path, line, polygon, node`);
+
         // eslint-disable-next-line no-loop-func
         elements.each(function () {
           const element = d3.select(this);
@@ -137,7 +138,7 @@ export default class BasicClass {
             // The element has no classes, assign a class here
             element.classed(`${options.chartClass}${i}`, true);
           }
-          if (options.opacity) {
+          if (options.opacity && classList[0] === `${options.chartClass}${i}`) {
             element.style('opacity', options.opacity);
           }
         });

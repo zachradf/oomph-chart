@@ -47,8 +47,8 @@ export default function createSVG(selector, chart, options) {
       .classed(`${options.chartClass}`, true)
       .attr('width', options.width)
       .attr('height', options.height)
-      .append('g')
-      .attr('transform', `translate(${options.width / 2}, ${options.height / 2})`);
+      .append('g');
+    // .attr('transform', `translate(${options.width / 2}, ${options.height / 2})`);
 
     if (chart === 'DONUT') {
       svg.attr('viewBox', `0 0 ${options.width} ${options.height}`);

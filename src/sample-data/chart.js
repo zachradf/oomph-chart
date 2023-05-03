@@ -260,6 +260,16 @@ chartData.bubbleChart = [
       { name: 'Subcategory 2B', value: 2 },
     ],
   },
+  {
+    name: 'Category 3',
+    value: 21,
+    children: [
+      { name: 'Subcategory 3A: this is a brief description of what this category is incase anyone wants to do that idk.', value: 7.5 },
+      { name: 'Subcategory 3B', value: 2 },
+      { name: 'Subcategory 3A', value: 9.5 },
+      { name: 'Subcategory 3B', value: 12 },
+    ],
+  },
 ];
 
 // Heat map data candidate for y2 axis
