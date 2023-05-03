@@ -184,7 +184,7 @@ export default class BasicClass {
     this.input = input;
     this.input.options[0].updating = true;
     this.data = input.data;
-    this.options[0] = input.options;
+    this.options = input.options;
     // this.options.updating = true;
     if (!input.options) {
       this.options = {};

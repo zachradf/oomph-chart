@@ -20,10 +20,9 @@ inputData.input2 = {
     chartData.scatterPlot2,
     chartData.scatterPlot3,
     chartData.scatterPlot,
-    chartData.scatterPlot,
   ],
   selector: '#chart',
-  options: [options.options19, options.options1, options.options13, options.options5],
+  options: [options.options19, options.options1, options.options13],
 };
 
 inputData.input3 = {
@@ -135,9 +134,10 @@ inputData.input20 = {
 };
 
 inputData.input21 = {
-  data: [chartData.scatterPlot, chartData.scatterPlot2, chartData.scatterPlot3],
+  data: [chartData.scatterPlot],
+  // data: [chartData.scatterPlot, chartData.scatterPlot2, chartData.scatterPlot3],
   selector: '#chart',
-  options: [options.options13, options.options13, options.options13],
+  options: [options.options13],
 };
 
 inputData.input22 = {

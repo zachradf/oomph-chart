@@ -24,11 +24,13 @@ export default function addAnimation(selector, data, options, generalElements, d
       .call(generalElements.yAxis);
 
     let chartElements = chart.selectAll('g rect, g circle, .line-graph0, .area-chart0, path');
-
+    // if (options.updating) {
+    //   chartElements = d3.selectAll(`svg.${options.chartClass} circle, arc, rect, path, line, polygon, node`);
+    // }
     // Calculate the difference between the length of the new dataset and the number of elements
     // in the initial chart
     let numPlaceholders = data.length - chartElements.size();
-    // console.log('SELECTED ELEMENTS', chartElements.nodes()[0].className.baseVal);
+    console.log('SELECTED ELEMENTS', options, chartElements.nodes()[0], chartElements);
     if (numPlaceholders > 0) {
       while (numPlaceholders > 0) {
         const selectedElement = chartElements.nodes()[0];
@@ -58,18 +60,25 @@ export default function addAnimation(selector, data, options, generalElements, d
     const type = chartElements.nodes()[0].className.baseVal || (chartElements.nodes()[0].nodeName === 'path' && 'pie-chart0');
     console.log('TYPE', type);
     // Update the area chart separately
-    const typeObject = {
-      'bar-chart0': animateBar(chartElements, data, generalElements, options, duration),
-      'scatter-plot0': animateScatter(chartElements, data, generalElements, duration),
-      'line-graph0': animateLine(chartElements, sortedData, generalElements, duration),
-      'area-chart0': animateArea(chart, sortedData, generalElements, options, duration),
-      'pie-chart0': animatePie(generalElements, data, duration, options),
-      'donut-chart0': animateDonut(generalElements, data, duration, options),
-      'funnel-chart0': animateFunnel(generalElements, data, duration, options),
-      'stacked-bar-chart0': animateStacked(generalElements, data, duration, options),
-    };
-
-    typeObject[type]();
+    switch (type) {
+      case 'bar-chart0': animateBar(chartElements, data, generalElements, options, duration);
+        break;
+      case 'scatter-plot0': animateScatter(chartElements, data, generalElements, duration);
+        break;
+      case 'line-graph0': animateLine(chartElements, sortedData, generalElements, duration);
+        break;
+      case 'area-chart0': animateArea(chart, sortedData, generalElements, options, duration);
+        break;
+      case 'pie-chart0': animatePie(generalElements, data, duration, options);
+        break;
+      case 'donut-chart0': animateDonut(generalElements, data, duration, options);
+        break;
+      case 'funnel-chart0': animateFunnel(generalElements, data, duration, options);
+        break;
+      case 'stacked-bar-chart0': animateStacked(generalElements, data, duration, options);
+        break;
+      default: console.log('No animation for this chart type');
+    }
 
     if (!options.yLine) {
       chart.select('.y-axis path').remove();

@@ -1,5 +1,6 @@
 export default function animateBar(selection, data, generalElements, options, duration) {
-  const dynamicBarWidth = (options.width - options.margin.left - options.margin.right) / data.length - (options.width / data.length * 0.2);
+  const { width, margin, barWidth } = options;
+  const dynamicBarWidth = ((width - margin.left - margin.right) / data.length) + barWidth;
   selection.transition()
     .duration(duration)
     .attr('x', (d) => generalElements.x(d.x) - dynamicBarWidth / 2)
