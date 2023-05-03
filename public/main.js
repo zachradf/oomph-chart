@@ -1,6 +1,3 @@
-// eslint-disable-next-line import/no-relative-packages
-import * as d3 from '../node_modules/d3/dist/d3.min.js';
-
 import BasicClass from '../src/oomph-visualizer/d3/render-legacy/basic.js';
 import HierarchyClass from '../src/oomph-visualizer/d3/render-legacy/hierarchy.js';
 import OomphChart from '../src/oomph-chart/index.js';
