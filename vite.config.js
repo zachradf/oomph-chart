@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
+import path from 'path';
 
 import pkg from './package.json';
 
@@ -47,5 +48,11 @@ export default defineConfig({
   // Used as part of the development build
   server: {
     open: '/index.html',
+    watch: {
+      include: [
+        // path.resolve(__dirname, 'public/**/*'), // WIP
+        path.resolve(__dirname, 'src/**/*'),
+      ],
+    },
   },
 });
