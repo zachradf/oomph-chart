@@ -16,6 +16,7 @@
     }
   },
   "scripts": {
+    "build": "vite build",
     "dev": "vite",
     "test": "jest --verbose --coverage",
     "start": "npm run dev"
