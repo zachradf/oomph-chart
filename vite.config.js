@@ -1,5 +1,8 @@
 import { defineConfig } from 'vite';
 
+const isDevelopment = process.env.NODE_ENV === 'development';
+const publicDirValue = isDevelopment ? 'public' : false;
+
 /**
  * Provides development and production builds.
  *
@@ -8,10 +11,6 @@ import { defineConfig } from 'vite';
  * In production, builds two modules:
  *  1. oomph-chart
  *  2. oomph-visualizer
- *
- * This section is WIP
- * TODO do not export public folder as part of production build
- * TODO configure oomph-visualizer to be exportable as a module
  */
 export default defineConfig({
   // Used as part of the production build
@@ -41,7 +40,7 @@ export default defineConfig({
   },
 
   // Used as part of the development build
-  publicDir: 'public',
+  publicDir: publicDirValue,
 
   // Used as part of the development build
   server: {
