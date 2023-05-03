@@ -1,5 +1,7 @@
 import { defineConfig } from 'vite';
 
+import pkg from './package.json';
+
 const isDevelopment = process.env.NODE_ENV === 'development';
 const publicDirValue = isDevelopment ? 'public' : false;
 
@@ -25,14 +27,14 @@ export default defineConfig({
         {
           format: 'es',
           dir: 'dist',
-          entryFileNames: '[name]/[name].es.js',
-          chunkFileNames: '[name]/[name]-[hash].es.js',
+          entryFileNames: `[name]/[name].${pkg.version}.es.js`,
+          chunkFileNames: `[name]/[name]-${pkg.version}-[hash].es.js`,
         },
         {
           format: 'cjs',
           dir: 'dist',
-          entryFileNames: '[name]/[name].cjs.js',
-          chunkFileNames: '[name]/[name]-[hash].cjs.js',
+          entryFileNames: `[name]/[name].${pkg.version}.cjs.js`,
+          chunkFileNames: `[name]/[name]-${pkg.version}-[hash].cjs.js`,
         },
       ],
       external: [], // List any external dependencies here
