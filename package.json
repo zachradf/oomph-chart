@@ -18,6 +18,7 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
+    "lint:read-only": "eslint '**/*.js' --ext .js --no-fix",
     "test": "jest --verbose --coverage",
     "start": "npm run dev"
   },
