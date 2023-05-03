@@ -1,5 +1,4 @@
 // // __tests__/areaChart.test.js
-import * as d3 from 'd3';
 import { JSDOM } from 'jsdom';
 
 // eslint-disable-next-line import/no-relative-packages
