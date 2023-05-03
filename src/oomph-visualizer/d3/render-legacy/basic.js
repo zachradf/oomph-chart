@@ -81,49 +81,30 @@ export default class BasicClass {
     this.chartArray = chartArray;
     this.options = input.options;
     this.data = input.data;
-    this.input = input; // probably don't need this
+    this.selector = input.selector;
 
     this.iterateCharts = () => {
       for (let i = 0; i < this.chartArray.length; i++) {
         this.options[i].chartClass = svgTypeMap[this.chartArray[i]];
 
-        this.selector = input.selector ? input.selector : '#chart';
-
-        if (!input.options) {
-          this.options[i] = {};
-          this.options[i].margin = {
-            top: 20, right: 20, bottom: 30, left: 40,
-          };
-          this.options[i].width = 600;
-          this.options[i].height = 400;
-          this.options[i].radius = 5;
-          this.options[i].color = 'red';
-          this.options[i].showCategories = true;
-          this.options[i].chartNumber = 1;
-          this.options[i].padding = 0.1;
-        } else if (!this.options[0].updating) {
-          this.options = input.options;
-          this.options[i].chartNumber = i;
-        }
-
         // general elements is an object that contains the svg, x and y, and the xAxis and yAxis
         let generalElements;
         if (this.options[i].stack && i === 0 && !this.options[0].updating) {
-          generalElements = createAxes(this.input.data[i], chartArray[i], this.options[i]);
+          generalElements = createAxes(this.data[i], chartArray[i], this.options[i]);
           generalElements.svg = createSVG(this.selector, chartArray[i], this.options[i]);
           this.generalElements = generalElements;
         } else if (!this.options[i].stack && !this.options[0].updating) {
-          generalElements = createAxes(this.input.data[i], chartArray[i], this.options[i]);
+          generalElements = createAxes(this.data[i], chartArray[i], this.options[i]);
           generalElements.svg = createSVG(this.selector, chartArray[i], this.options[i]);
           this.generalElements = generalElements;
         } else if (this.options[0].updating) {
-          generalElements = createAxes(this.input.data[i], chartArray[i], this.options[i]);
+          generalElements = createAxes(this.data[i], chartArray[i], this.options[i]);
           this.generalElements = generalElements;
         }
         if (!this.options[0].updating) {
           this.createChart[this.chartArray[i]](this.data[i], this.options[i], this.generalElements);
         }
-        // get rid of this
+        // this was done for linting purposes
         const options = this.options[i];
 
         // This is where we add the class and opacity option to the data elements
@@ -152,7 +133,7 @@ export default class BasicClass {
         }
 
         if (this.options[i].animate || this.options[0].updating) {
-          addAnimation(this.selector, this.data[i], this.options[i], this.generalElements);
+          addAnimation(this.selector, this.data[i], this.options[i], this.generalElements, this.options[i].duration);
         } else {
           appendAxes(this.chartArray[i], this.options[i], this.generalElements);
         }
@@ -171,7 +152,7 @@ export default class BasicClass {
 
   removeChart(type) {
     if (this.svgTypeMap[type]) {
-      d3.select(this.input.selector)
+      d3.select(this.selector)
         .selectAll(`svg.${this.options[0].chartClass}`)
         .remove();
       console.log('removed', this.options.chartClass);
@@ -180,25 +161,11 @@ export default class BasicClass {
     }
   }
 
-  updateInput(input) { // TODO clean up the this assignments
-    this.input = input;
-    this.input.options[0].updating = true;
-    this.data = input.data;
+  updateInput(input) {
+    this.selector = input.selector;
     this.options = input.options;
-    // this.options.updating = true;
-    if (!input.options) {
-      this.options = {};
-      this.options.margin = {
-        top: 20, right: 20, bottom: 30, left: 40,
-      };
-      this.options.width = 600;
-      this.options.height = 400;
-      this.options.radius = 5;
-      this.options.color = 'red';
-      this.options.showLabels = true;
-    } else {
-      this.options = input.options;
-    }
+    this.options[0].updating = true;
+    this.data = input.data;
 
     this.iterateCharts();
   }
