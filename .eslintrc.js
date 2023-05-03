@@ -18,6 +18,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'max-len': 'warn',
     'no-console': 'off',
+    'no-plusplus': 'off',
     'no-underscore-dangle': 'warn',
     'no-use-before-define': 'off',
   },

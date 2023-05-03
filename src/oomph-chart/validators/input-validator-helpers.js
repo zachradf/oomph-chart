@@ -3,7 +3,7 @@ export function validateArrayHelper(inputArray, expectedTypes) {
     return false;
   }
 
-  for (let i = 0; i < inputArray.length; i += 1) {
+  for (let i = 0; i < inputArray.length; i++) {
     if (!validateTypeHelper(inputArray[i], expectedTypes[i])) {
       return false;
     }
@@ -25,7 +25,7 @@ export function validateObjectHelper(inputObject, expectedStructure) {
     return false;
   }
 
-  for (let i = 0; i < inputKeys.length; i += 1) {
+  for (let i = 0; i < inputKeys.length; i++) {
     const key = inputKeys[i];
     if (
       !expectedKeys.includes(key)

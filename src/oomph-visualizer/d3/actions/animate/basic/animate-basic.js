@@ -49,7 +49,7 @@ export default function addAnimation(selector, data, options, generalElements, d
         const selectedElement = nodes.pop();
         // Remove the selected element from the chart
         selectedElement.remove();
-        numPlaceholders += 1;
+        numPlaceholders++;
       }
     }
     chartElements = chart.selectAll('g rect, g circle, .line-graph0, .area-chart0, path').data(data);
