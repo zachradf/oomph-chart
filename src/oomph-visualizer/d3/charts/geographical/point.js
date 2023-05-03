@@ -1,7 +1,7 @@
-export default async function createPointMap(dataset, options, selector) {
-  // Fetch GeoJSON data from the API
-  const response = await fetch(options.apiUrl);
-  const geoJsonData = await response.json();
+// import geoJsonData from '../../../../sample-data/geo-json/geo';
+import geoJsonData from '../../../../sample-data/geo-json/geo-usa';
+
+export default function createPointMap(dataset, options, selector) {
   console.log('geoJsonData:', geoJsonData);
   const margin = {
     top: 30, right: 20, bottom: 20, left: 20,
@@ -17,27 +17,18 @@ export default async function createPointMap(dataset, options, selector) {
     .attr('transform', `translate(${margin.left},${margin.top})`);
 
   //   const projection = d3.geoAlbersUsa().fitSize([width, height], geoJsonData);
-
-  //   const circle = svg.selectAll('circle')
-  //   .data(dataset)
-  //   .enter()
-  //   .append('circle')
-  //   .attr('cx', (d) => {
-  //     console.log('d:', d);
-  //     const cx = projection(d.coordinates[0]);
-  //     console.log('cx:', cx);
-  //     return cx;
-  //   })
-  //   .attr('cy', (d) => {
-  //     console.log('d:', d.coordinates[1]);
-  //     const cy = projection(d.coordinates[1]);
-  //     console.log('cy:', cy);
-  //     return cy;
-  //   })
-  //   .attr('r', 5)
-  //   .attr('fill', options.colorScale);
   const projection = d3.geoMercator().fitSize([width, height], geoJsonData);
+  const pathGenerator = d3.geoPath().projection(projection);
+  const countries = svg.selectAll('path')
+    .data(geoJsonData.features)
+    .enter()
+    .append('path')
+    .attr('d', pathGenerator)
+    .attr('fill', 'lightgray') // You can set the fill color for the map
+    .attr('stroke', 'white') // You can set the stroke color for the map
+    .attr('stroke-width', 1); // You can set the stroke width for the map
 
+  console.log('NUMNUM', projection([dataset[0].coordinates[0], dataset[0].coordinates[1]]));
   const circle = svg.selectAll('circle')
     .data(dataset)
     .enter()

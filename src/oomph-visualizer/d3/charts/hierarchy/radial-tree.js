@@ -1,9 +1,4 @@
 export default function createRadialTree(data, options, generalElements) {
-  // const svg = d3.select(selector)
-  //   .append('svg')
-  //   .classed('radial-tree', true)
-  //   .attr('width', options.width)
-  //   .attr('height', options.height);
   const { svg } = generalElements;
   const g = svg
     .append('g')

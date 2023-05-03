@@ -108,7 +108,7 @@
 // }
 
 // export default createChoroplethMap;
-async function createChoroplethMap(dataset, options, selector) {
+ async function createChoroplethMap(dataset, options, selector) {
   // Fetch GeoJSON data from the API
   const response = await fetch(options.apiUrl);
   const geoJsonData = await response.json();

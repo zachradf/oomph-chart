@@ -1,3 +1,4 @@
+// import { create } from 'd3-selection';
 import BasicClass from '../src/oomph-visualizer/d3/render-legacy/basic.js';
 import HierarchyClass from '../src/oomph-visualizer/d3/render-legacy/hierarchy.js';
 import OomphChart from '../src/oomph-chart/index.js';
@@ -8,6 +9,9 @@ import { superData } from '../src/sample-data/super.js';
 import onHover from '../src/oomph-visualizer/d3/actions/on-hover.js';
 import zoom from '../src/oomph-visualizer/d3/actions/zoom.js';
 import gradient from '../src/oomph-visualizer/d3/actions/gradient.js';
+import createChoropleth from '../src/oomph-visualizer/d3/charts/geographical/choropleth.js';
+import createPointMap from '../src/oomph-visualizer/d3/charts/geographical/point.js';
+import { chartData } from '../src/sample-data/chart.js';
 
 const superObjects = {};
 superObjects.testFor_string_number = new OomphChart(superData.basic);
@@ -17,9 +21,17 @@ console.log(superObjects);
 const superBarObject = new OomphChart(superData.basic);
 // superBarObject.render('bar');
 // const barObjectTemp = new BasicClass(['BAR'], inputData.input1);
-
 // onHover('#scatter', options);
-
+createPointMap(chartData.choropleth, {
+  width: 1960,
+  height: 1600,
+  //   apiUrl: 'https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json',
+  apiUrl: 'https://unpkg.com/us-atlas@3/states-10m.json',
+  colorScale: d3.interpolateBlues, // Use the d3.interpolateBlues color scale
+  title: 'Sample Choropleth Map',
+  showLabels: true,
+  fontSize: 12, // The font size for region labels
+}, '#chart');
 // Adds Charts
 // Basic Charts
 // const areaObject2 = new BasicClass(['SCATTER'], inputData.input24);
@@ -47,7 +59,7 @@ const superBarObject = new OomphChart(superData.basic);
 // const chordDiagramObject = new HierarchyClass(['CHORD'], inputData.input16);
 // const sankeyDiagramObject = new HierarchyClass(['SANKEY'], inputData.input17);
 // const clusterDiagramObject = new HierarchyClass(['CLUSTER'], inputData.input18);
-const voronoiTreemapObject = new HierarchyClass(['VORONOI'], inputData.input8);
+// const voronoiTreemapObject = new HierarchyClass(['VORONOI'], inputData.input8);
 // const dendrogramObject = new HierarchyClass(['DENDROGRAM'], inputData.input8);
 // const radialTreeObject = new HierarchyClass(['RADIALTREE'], inputData.input22);
 // const scatterObject = new BasicClass(['SCATTER'], inputData.input3);

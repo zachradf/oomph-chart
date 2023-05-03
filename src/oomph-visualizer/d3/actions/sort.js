@@ -1,12 +1,9 @@
-import { select } from 'd3-selection';
-import { scaleBand } from 'd3-scale';
-
 export default function addSorting(chartSelector, data, options) {
   const chart = document.querySelector(chartSelector);
   const sortDropdown = document.createElement('div');
   sortDropdown.id = 'sort-dropdown';
   chart.appendChild(sortDropdown);
-  const dropdown = select('#sort-dropdown')
+  const dropdown = d3.select('#sort-dropdown')
     .append('select')
     .on('change', function () {
       const selectedOption = this.value;
@@ -28,7 +25,7 @@ export default function addSorting(chartSelector, data, options) {
 }
 
 function sortChart(chartSelector, data, sortBy, options) {
-  const svg = select(chartSelector).select('svg');
+  const svg = d3.select(chartSelector).select('svg');
   const g = svg.select('g');
 
   data.sort((a, b) => {
@@ -38,7 +35,7 @@ function sortChart(chartSelector, data, sortBy, options) {
     return d3.descending(a.value, b.value);
   });
 
-  const x = scaleBand()
+  const x = d3.scaleBand()
     .domain(data.map((d) => d.name))
     .range([0, options.width - options.margin.left - options.margin.right])
     .padding(0.1);

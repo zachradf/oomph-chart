@@ -18,7 +18,7 @@ export default function createForceDirectedGraph(data, selector, options = {}) {
   const simulation = d3.forceSimulation(data.nodes)
     .force(
       'link',
-      d3.forceLink(data.links).id((d) => d.id).distance(linkDistance),
+      d3.forceLink(data.links).id((d) => d.id).distance(linkDistance)
     )
     .force('charge', d3.forceManyBody().strength(chargeStrength))
     .force('center', d3.forceCenter(width / 2, height / 2));
