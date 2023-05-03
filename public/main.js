@@ -22,19 +22,19 @@ const superBarObject = new OomphChart(superData.basic);
 // superBarObject.render('bar');
 // const barObjectTemp = new BasicClass(['BAR'], inputData.input1);
 // onHover('#scatter', options);
-createPointMap(chartData.choropleth, {
-  width: 1960,
-  height: 1600,
-  //   apiUrl: 'https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json',
-  apiUrl: 'https://unpkg.com/us-atlas@3/states-10m.json',
-  colorScale: d3.interpolateBlues, // Use the d3.interpolateBlues color scale
-  title: 'Sample Choropleth Map',
-  showLabels: true,
-  fontSize: 12, // The font size for region labels
-}, '#chart');
+// createPointMap(chartData.choropleth, {
+//   width: 1960,
+//   height: 1600,
+//   //   apiUrl: 'https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json',
+//   apiUrl: 'https://unpkg.com/us-atlas@3/states-10m.json',
+//   colorScale: d3.interpolateBlues, // Use the d3.interpolateBlues color scale
+//   title: 'Sample Choropleth Map',
+//   showLabels: true,
+//   fontSize: 12, // The font size for region labels
+// }, '#chart');
 // Adds Charts
 // Basic Charts
-// const areaObject2 = new BasicClass(['SCATTER'], inputData.input24);
+const areaObject2 = new BasicClass(['BAR'], inputData.input24);
 // const barObject = new BasicClass(['SCATTER', 'SCATTER', 'SCATTER', 'AREA'], inputData.input2);
 // const wordCloudObject = new HierarchyClass(['WORDCLOUD'], inputData.input30);
 // onHover('#chart', [options]);

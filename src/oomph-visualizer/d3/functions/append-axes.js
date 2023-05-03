@@ -56,7 +56,7 @@ export default function appendAxes(chart, options, generalElements) {
       .attr('x', -margin.top + options.yLabelOffsetX) // Add x offset
       .attr('y', margin.left - 10 + options.yLabelOffsetY) // Add y offset
       .attr('text-anchor', 'end')
-      .attr('transform', `rotate(-90 + ${options.yLabelRotation}, ${-margin.top + options.yLabelOffsetX}, ${margin.left - 10 + options.yLabelOffsetY})`) // Add rotation
+      .attr('transform', `rotate(${options.yLabelRotation}, ${-margin.top + options.yLabelOffsetX}, ${margin.left - 10 + options.yLabelOffsetY})`) // Add rotation
       .text(options.yLabel)
       .style('font-size', `${options.yLabelFontSize}px`)
       .style('fill', `${options.yLabelFontColor}`)

@@ -85,6 +85,7 @@ optionData.options2 = {
 
 optionData.options3 = {
   childTextSize: 10,
+  barWidth: -20,
   parentTextSize: 12,
   textAnchor: 'middle',
   margin: {
@@ -136,9 +137,12 @@ optionData.options3 = {
   xFontStyle: 'italic',
   yFontStyle: 'italic',
   xTextAnchor: 'start',
-  xLabelOffsetx: 10,
-  xLabelOffsety: 10,
-
+  xLabelOffsetX: 10,
+  xLabelOffsetY: 10,
+  xLabelRotation: 45,
+  yLabelOffsetX: 10,
+  yLabelOffsetY: 10,
+  yLabelRotation: 90,
 };
 
 optionData.options4 = {

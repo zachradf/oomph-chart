@@ -8,9 +8,10 @@ export default function createD3BarChart(data, options, generalElements) {
 
   // Determine if the x scale is linear or band
   const isLinearScale = x.domain()[1] !== undefined && typeof x.domain()[1] === 'number';
-
+  console.log('isLinearScale:', x.domain()[1]);
   // Calculate the bar width depending on the x scale type
-  const barWidth = isLinearScale ? (options.width - options.margin.left - options.margin.right) / data.length : x.bandwidth();
+  // const barWidth = isLinearScale ? (options.width - options.margin.left - options.margin.right) / data.length : x.bandwidth();
+  const barWidth = isLinearScale ? (options.width / data.length) + options.barWidth : x.bandwidth();
 
   // Append a group element for the bars, set the fill color, and bind the data
   svg.append('g')

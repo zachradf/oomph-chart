@@ -182,7 +182,6 @@ inputData.input28 = {
   options: [options.funnelChart],
 };
 
-
 inputData.input29 = {
   data: [chartData.stackedBarChart],
   selector: '#chart',

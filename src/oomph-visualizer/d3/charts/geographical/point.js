@@ -3,8 +3,8 @@ import geoJsonData from '../../../../sample-data/geo-json/geo-usa';
 
 export default function createPointMap(dataset, options, selector) {
   console.log('geoJsonData:', geoJsonData);
-  const margin = {
-    top: 30, right: 20, bottom: 20, left: 20,
+  const margin = options.margin || {
+    top: 20, right: 20, bottom: 20, left: 20,
   };
   const width = options.width - margin.left - margin.right;
   const height = options.height - margin.top - margin.bottom;
