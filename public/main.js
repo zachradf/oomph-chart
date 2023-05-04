@@ -34,12 +34,12 @@ const superBarObject = new OomphChart(superData.basic);
 // }, '#chart');
 // Adds Charts
 // Basic Charts
-// const areaObject2 = new BasicClass(['line'], inputData.input2);
+const areaObject2 = new BasicClass(['line'], inputData.input2);
 // const barObject = new BasicClass(['pie'], inputData.input6);
 // const wordCloudObject = new HierarchyClass(['wordcloud'], inputData.input30);
 // onHover('#chart', [options]);
 // const bubbleObject = new BasicClass(['bubble'], inputData.input5);// fix category labels
-// const areaObject = new BasicClass(['bar'], inputData.input23);
+const areaObject = new BasicClass(['bar'], inputData.input23);
 // const donutChartObject2 = new BasicClass(['donut'], inputData.input4);
 // const funnelObject = new BasicClass(['funnel'], inputData.input11);
 // const gaugeObject = new BasicClass(['gauge'], inputData.input14); // STILL NEEDS WORK

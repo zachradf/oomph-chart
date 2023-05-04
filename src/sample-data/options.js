@@ -767,6 +767,9 @@ optionData.waterfall = {
   overlay: false,
   positiveColor: 'green',
   width: 600,
+  xAxisColor: 'red',
+  xAxisPosition: -1,
+  xDomain: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'],
   xLabelOffsetX: 0,
   xLabelOffsetY: -50,
   xLabelRotation: 90,
@@ -774,8 +777,9 @@ optionData.waterfall = {
   xTickFrequency: 10,
   xTickLength: 10,
   xTickOpacity: 1,
-  xAxisColor: 'red',
-  xAxisPosition: -1,
+  yAxisColor: 'purple',
+  yAxisPosition: 0,
+  yDomain: [0, 100],
   yLabelOffsetX: 0,
   yLabelOffsetY: 50,
   yLabelRotation: 0,
@@ -783,8 +787,6 @@ optionData.waterfall = {
   yTickFrequency: 10,
   yTickLength: 10,
   yTickOpacity: 0.55,
-  yAxisColor: 'blue',
-  yAxisPosition: 880,
 };
 
 optionData.funnelChart = {

@@ -1,79 +1,51 @@
 import { createXAxisLine, createYAxisLine } from './axis-lines.js';
 
 export default function createAxes(data, chart, options) {
-  let x;
+  const {
+    margin, width, height, yDomain,
+  } = options;
 
-  switch (chart) {
-    case 'bar':
-    case 'box':
-      data.sort((a, b) => d3.ascending(a.x, b.x));
-      if (typeof data[0].x === 'string') {
-        x = d3.scaleBand()
-          .domain(data.map((d) => d.x))
-          .range([options.margin.left, options.width - options.margin.right])
-          .padding(0.1);
-      } else {
-        x = d3.scaleLinear()
-          .domain(d3.extent(data, (d) => d.x)).nice()
-          .range([options.margin.left, options.width - options.margin.right]);
-      }
-      break;
-    case 'funnel':
-      const totalValue = data.reduce((acc, curr) => acc + curr.y, 0);
-      x = d3
-        .scaleLinear()
-        .domain([0, totalValue])
-        .range([options.margin.left, options.width - options.margin.right]);
-      break;
-    case 'waterfall':
-      x = d3.scaleBand()
-        .domain([data[0].category, ...data.map((d) => d.category), data[data.length - 1].category])
-        .range([options.margin.left, options.width - options.margin.right])
-        .padding(0.1);
-      break;
-    case 'stackedbar':
-      x = d3.scaleBand()
-        .domain(data.map((d) => d.category))
-        .range([options.margin.left, options.width - options.margin.right])
-        .padding(0.1);
-      break;
-    default:
-      x = d3.scaleLinear()
-        .domain(d3.extent(data, (d) => d.x)).nice()
-        .range([options.margin.left, options.width - options.margin.right]);
-  }
+  const chartFunctions = {
+    bar: (data) => createBarBox(data, options),
+    box: (data) => createBarBox(data, options),
+    funnel: (data) => createFunnel(data, options),
+    waterfall: (data) => createWaterfall(data, options),
+    stackedbar: (data) => createStackedBar(data, options),
+    default: (data) => createDefault(data, options),
+  };
 
-  // Convert this to a switch case
+  const x = (chartFunctions[chart] || chartFunctions.default)(data);
+
   const scaleFunctions = {
     bar: () => d3.scaleLinear()
-      .domain([0, d3.max(data, (d) => d.y)]).nice()
-      .range([options.height - options.margin.bottom, options.margin.top]),
+      .domain(yDomain || [0, d3.max(data, (d) => d.y)]).nice()
+      .range([height - margin.bottom, margin.top]),
     funnel: () => d3.scaleBand()
-      .domain(data.map((d) => d.x))
-      .range([options.margin.top, options.height - options.margin.bottom])
+      .domain(yDomain || data.map((d) => d.x))
+      .range([margin.top, height - margin.bottom])
       .padding(0.1),
     stackedbar: () => d3.scaleLinear()
-      .domain([0, d3.max(data, (d) => d3.sum(d.values.map((v) => v.value)))])
+      .domain(yDomain || [0, d3.max(data, (d) => d3.sum(d.values.map((v) => v.value)))])
       .nice()
-      .range([options.height - options.margin.bottom, options.margin.top]),
+      .range([height - margin.bottom, margin.top]),
     waterfall: () => d3.scaleLinear()
-      .domain([d3.min(data, (d) => d.start), d3.max(data, (d) => d.end)])
+      .domain(yDomain || [d3.min(data, (d) => d.start), d3.max(data, (d) => d.end)])
       .nice()
-      .range([options.height - options.margin.bottom, options.margin.top]),
+      .range([height - margin.bottom, margin.top]),
     default: () => d3.scaleLinear()
-      .domain(d3.extent(data, (d) => d.y)).nice()
-      .range([options.height - options.margin.bottom, options.margin.top]),
+      .domain(yDomain || d3.extent(data, (d) => d.y)).nice()
+      .range([height - margin.bottom, margin.top]),
   };
 
   const y = (scaleFunctions[chart] || scaleFunctions.default)();
-  const yTickLength = options.yTickLength || options.height - options.margin.top - options.margin.bottom;
-  const xTickLength = options.xTickLength || options.width - options.margin.left - options.margin.right;
+  const yTickLength = options.yTickLength || height - margin.top - margin.bottom;
+  const xTickLength = options.xTickLength || width - margin.left - margin.right;
   const xTickExtension = options.xTickExtension || 0;
   const yTickExtension = options.yTickExtension || 0;
-  const xTickFrequency = options.xTickFrequency || options.width / 80;
-  const yTickFrequency = options.yTickFrequency || options.width / 80;
-  const xAxisPosition = options.xAxisPosition || (options.height - options.margin.bottom);
-  const yAxisPosition = options.yAxisPosition || options.margin.left;
+  const xTickFrequency = options.xTickFrequency || width / 80;
+  const yTickFrequency = options.yTickFrequency || width / 80;
+  const xAxisPosition = options.xAxisPosition || (height - margin.bottom);
+  const yAxisPosition = options.yAxisPosition || margin.left;
   const xAxisColor = options.xAxisColor || '#000';
   const yAxisColor = options.yAxisColor || '#000';
 
@@ -97,58 +69,73 @@ export default function createAxes(data, chart, options) {
       });
     if (options.xLine) createXAxisLine(g, options, yAxisPosition);
   };
-  let yAxis;
-  switch (chart) {
-    case 'waterfall':
-      yAxis = (g) => g
-        .attr('transform', `translate(${yAxisPosition},0)`)
-        .call(d3.axisLeft(y).tickSize(0)).ticks(yTickFrequency)
-        .call((g) => {
-          g.selectAll('.tick')
-            .each(function () {
-              d3.select(this)
-                .append('line')
-                .attr('stroke', `${yAxisColor}`)
-                .attr('x2', yTickLength)
-                .attr('opacity', options.yTickOpacity || 1);
-              d3.select(this)
-                .append('line')
-                .attr('stroke', `${yAxisColor}`)
-                .attr('x2', -yTickExtension)
-                .attr('opacity', options.yTickOpacity || 1);
-            });
-          if (options.yLine) {
-            createYAxisLine(g, options, xAxisPosition);
-          }
-        });
-      break;
-    default:
-      yAxis = (g) => g
-        .attr('transform', `translate(${yAxisPosition},0)`)
-        .call(d3.axisLeft(y).ticks(chart === 'stackedbar' ? null : yTickFrequency).tickSize(0))
-        .call((g) => {
-          g.selectAll('.tick')
-            .each(function () {
-              d3.select(this)
-                .append('line')
-                .attr('stroke', `${yAxisColor}`)
-                .attr('x2', yTickLength)
-                .attr('class', 'tick-line'); // Add a class to the tick lines
-              d3.select(this)
-                .append('line')
-                .attr('stroke', `${yAxisColor}`)
-                .attr('x2', -yTickExtension)
-                .attr('class', 'tick-line');
-            })
-            .attr('opacity', options.yTickOpacity || 1);
 
-          if (options.yLine) {
-            createYAxisLine(g, options, xAxisPosition);
-          }
-        });
-      break;
-  }
+  const yAxis = (g) => {
+    g.attr('transform', `translate(${yAxisPosition},0)`)
+      .call(d3.axisLeft(y).tickSize(0).ticks(chart === 'stackedbar' ? null : yTickFrequency))
+      .call((g) => {
+        g.selectAll('.tick')
+          .each(function () {
+            d3.select(this)
+              .append('line')
+              .attr('stroke', `${yAxisColor}`)
+              .attr('x2', yTickLength)
+              .attr('class', 'tick-line') // Add a class to the tick lines for non-waterfall charts
+              .attr('opacity', options.yTickOpacity || 1);
+            d3.select(this)
+              .append('line')
+              .attr('stroke', `${yAxisColor}`)
+              .attr('x2', -yTickExtension)
+              .attr('class', 'tick-line')
+              .attr('opacity', options.yTickOpacity || 1);
+          });
+
+        if (options.yLine) {
+          createYAxisLine(g, options, xAxisPosition);
+        }
+      });
+  };
   return {
     x, y, xAxis, yAxis,
   };
+}
+
+function createBarBox(data, options) {
+  data.sort((a, b) => d3.ascending(a.x, b.x));
+  if (typeof data[0].x === 'string') {
+    return d3.scaleBand()
+      .domain(options.xDomain ? options.xDomain : data.map((d) => d.x))
+      .range([options.margin.left, options.width - options.margin.right])
+      .padding(0.1);
+  }
+  return d3.scaleLinear()
+    .domain(options.xDomain ? options.xDomain : d3.extent(data, (d) => d.x)).nice()
+    .range([options.margin.left, options.width - options.margin.right]);
+}
+
+function createFunnel(data, options) {
+  const totalValue = data.reduce((acc, curr) => acc + curr.y, 0);
+  return d3.scaleLinear()
+    .domain(options.xDomain ? options.xDomain : [0, totalValue])
+    .range([options.margin.left, options.width - options.margin.right]);
+}
+
+function createWaterfall(data, options) {
+  return d3.scaleBand()
+    .domain(options.xDomain ? options.xDomain : [data[0].category, ...data.map((d) => d.category), data[data.length - 1].category])
+    .range([options.margin.left, options.width - options.margin.right])
+    .padding(0.1);
+}
+
+function createStackedBar(data, options) {
+  return d3.scaleBand()
+    .domain(options.xDomain ? options.xDomain : data.map((d) => d.category))
+    .range([options.margin.left, options.width - options.margin.right])
+    .padding(0.1);
+}
+
+function createDefault(data, options) {
+  return d3.scaleLinear()
+    .domain(options.xDomain ? options.xDomain : d3.extent(data, (d) => d.x)).nice()
+    .range([options.margin.left, options.width - options.margin.right]);
 }
