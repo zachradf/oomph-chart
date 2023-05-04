@@ -6,7 +6,7 @@ export const inputData = {};
 inputData.input = {
   data: [chartData.stackedBarChart2],
   selector: '#chart',
-  options: [options.options17],
+  options: [options.options7],
 };
 
 inputData.input1 = {
@@ -22,13 +22,13 @@ inputData.input2 = {
     chartData.scatterPlot,
   ],
   selector: '#chart',
-  options: [options.options19, options.options1, options.options13],
+  options: [options.options9, options.options1, options.options3],
 };
 
 inputData.input3 = {
   data: [chartData.barChart],
   selector: '#chart',
-  options: [options.options15],
+  options: [options.options5],
 };
 
 inputData.input4 = {
@@ -46,19 +46,19 @@ inputData.input5 = {
 inputData.input6 = {
   data: [chartData.barChart],
   selector: '#chart',
-  options: [options.options16],
+  options: [options.options6],
 };
 
 inputData.input7 = {
   data: [chartData.treeDiagram],
   selector: '#chart',
-  options: [options.options19],
+  options: [options.options9],
 };
 
 inputData.input8 = {
   data: [chartData.treeMap],
   selector: '#chart',
-  options: [options.options19],
+  options: [options.options9],
 };
 
 inputData.input9 = {
@@ -143,13 +143,13 @@ inputData.input21 = {
 inputData.input22 = {
   data: [chartData.treeMap],
   selector: '#chart',
-  options: [options.options16],
+  options: [options.options6],
 };
 
 inputData.input23 = {
   data: [chartData.barChart],
   selector: '#chart',
-  options: [options.options18],
+  options: [options.options8],
 };
 
 inputData.input24 = {
@@ -167,13 +167,13 @@ inputData.input25 = {
 inputData.input26 = {
   data: [chartData.scatterPlot, chartData.scatterPlot2],
   selector: '#chart',
-  options: [options.options13, options.options13],
+  options: [options.options13, options.options3],
 };
 
 inputData.input27 = {
   data: [chartData.barChart2],
   selector: '#chart',
-  options: [options.options16],
+  options: [options.options6],
 };
 
 inputData.input28 = {
@@ -185,10 +185,10 @@ inputData.input28 = {
 inputData.input29 = {
   data: [chartData.stackedBarChart],
   selector: '#chart',
-  options: [options.options17],
+  options: [options.options7],
 };
 inputData.input30 = {
   data: [chartData.bubbleChart2],
   selector: '#chart',
-  options: [options.options20],
+  options: [options.options10],
 };
