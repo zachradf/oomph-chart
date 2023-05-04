@@ -1,8 +1,11 @@
 import { renderImplementation } from './methods/render-implementation.js';
+import {
+  getCompatibleChartTypes,
+  verifyVisualizer,
+} from './validators/visualizer-validator.js';
 import { getCompatibleInputTypes } from './validators/input-validator.js';
 import { getInputToTagAdjacencies } from './edges/input-to-tag-getter.js';
 import { getTagToChartAdjacencies } from './edges/tag-to-chart-getter.js';
-import { verifyVisualizer } from './validators/visualizer-validator.js';
 
 /**
  * Determines and defines the relationship between input data and resulting charts.
@@ -21,11 +24,14 @@ export default class OomphChart {
     this.data = userInput;
     this.inputs = getCompatibleInputTypes(this.data);
     this.tags = getInputToTagAdjacencies(this.inputs);
-    this.charts = getTagToChartAdjacencies(this.tags);
+    this.chartsEligible = getTagToChartAdjacencies(this.tags);
+
+    // Determine which of the eligible charts are supported by the visualizer.
     this.visualizer = verifyVisualizer(visualizer);
+    this.charts = getCompatibleChartTypes(this.chartsEligible, this.visualizer);
   }
 
   render(chartType) {
-    return renderImplementation(this.data, this.visualizer, this.charts, chartType);
+    return renderImplementation(this, chartType);
   }
 }

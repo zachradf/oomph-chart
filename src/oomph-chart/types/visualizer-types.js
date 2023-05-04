@@ -1,3 +1,7 @@
+import D3ChartTypes from '../../oomph-visualizer/d3/types/chart-types.js';
+
+const d3ChartTypes = new D3ChartTypes();
+
 /**
  * Defines available visualizer types
  *
@@ -14,6 +18,7 @@ export default class VisualizerTypes {
         _selfKey: 'd3',
         name: 'D3',
         nameLong: 'D3 Visualizer',
+        chartTypes: d3ChartTypes,
       },
     };
 

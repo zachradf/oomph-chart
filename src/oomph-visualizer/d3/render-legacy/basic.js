@@ -83,62 +83,6 @@ export default class BasicClass {
     this.data = input.data;
     this.selector = input.selector;
 
-    this.iterateCharts = () => {
-      for (let i = 0; i < this.chartArray.length; i++) {
-        this.options[i].chartClass = svgTypeMap[this.chartArray[i]];
-
-        // general elements is an object that contains the svg, x and y, and the xAxis and yAxis
-        let generalElements;
-        if (this.options[i].stack && i === 0 && !this.options[0].updating) {
-          generalElements = createAxes(this.data[i], chartArray[i], this.options[i]);
-          generalElements.svg = createSVG(this.selector, chartArray[i], this.options[i]);
-          this.generalElements = generalElements;
-        } else if (!this.options[i].stack && !this.options[0].updating) {
-          generalElements = createAxes(this.data[i], chartArray[i], this.options[i]);
-          generalElements.svg = createSVG(this.selector, chartArray[i], this.options[i]);
-          this.generalElements = generalElements;
-        } else if (this.options[0].updating) {
-          generalElements = createAxes(this.data[i], chartArray[i], this.options[i]);
-          this.generalElements = generalElements;
-        }
-        if (!this.options[0].updating) {
-          this.createChart[this.chartArray[i]](this.data[i], this.options[i], this.generalElements);
-        }
-        // this was done for linting purposes
-        const options = this.options[i];
-
-        // This is where we add the class and opacity option to the data elements
-        const elements = d3.selectAll(`svg.${svgTypeMap[this.chartArray[0]]} circle, arc, rect, path, line, polygon, node`);
-
-        // eslint-disable-next-line no-loop-func
-        elements.each(function () {
-          const element = d3.select(this);
-          const { classList } = this; // Access the classList property of the DOM element
-
-          if (classList.length === 0) {
-            // The element has no classes, assign a class here
-            element.classed(`${options.chartClass}${i}`, true);
-          }
-          if (options.opacity && classList[0] === `${options.chartClass}${i}`) {
-            element.style('opacity', options.opacity);
-          }
-        });
-
-        // Checking for onHover, relativeNodeSize, and animation/updating
-        if (this.options[i].onHover) {
-          onHover(this.selector, this.options);
-        }
-        if (this.options[i].relativeNodeSize) {
-          relativeNode(this.selector, this.data[i], this.options[i]);
-        }
-
-        if (this.options[i].animate || this.options[0].updating) {
-          addAnimation(this.selector, this.data[i], this.options[i], this.generalElements, this.options[i].duration);
-        } else {
-          appendAxes(this.chartArray[i], this.options[i], this.generalElements);
-        }
-      }
-    };
     this.iterateCharts();
   }
 
@@ -147,6 +91,72 @@ export default class BasicClass {
     for (let i = 0; i < type.length; i++) {
       this.createChart[type[i]](this.data, this.options, this.generalElements);
       appendAxes(this.chartArray[i], this.options, this.generalElements);
+    }
+  }
+
+  iterateCharts() {
+    for (let i = 0; i < this.chartArray.length; i++) {
+      this.options[i].chartClass = this.svgTypeMap[this.chartArray[i]];
+
+      // general elements is an object that contains the svg, x and y, and the xAxis and yAxis
+      let generalElements;
+
+      if (this.options[i].stack && i === 0 && !this.options[0].updating) {
+        generalElements = createAxes(this.data[i], this.chartArray[i], this.options[i]);
+        generalElements.svg = createSVG(this.selector, this.chartArray[i], this.options[i]);
+        this.generalElements = generalElements;
+      } else if (!this.options[i].stack && !this.options[0].updating) {
+        generalElements = createAxes(this.data[i], this.chartArray[i], this.options[i]);
+        generalElements.svg = createSVG(this.selector, this.chartArray[i], this.options[i]);
+        this.generalElements = generalElements;
+      } else if (this.options[0].updating) {
+        generalElements = createAxes(this.data[i], this.chartArray[i], this.options[i]);
+        this.generalElements = generalElements;
+      }
+
+      if (!this.options[0].updating) {
+        this.createChart[this.chartArray[i]](this.data[i], this.options[i], this.generalElements);
+      }
+
+      // this was done for linting purposes
+      const options = this.options[i];
+
+      // This is where we add the class and opacity option to the data elements
+      const elements = d3.selectAll(`svg.${this.svgTypeMap[this.chartArray[0]]} circle, arc, rect, path, line, polygon, node`);
+
+      // eslint-disable-next-line no-loop-func, func-names
+      elements.each(function () {
+        const element = d3.select(this);
+        const { classList } = this; // Access the classList property of the DOM element
+
+        if (classList.length === 0) {
+          // The element has no classes, assign a class here
+          element.classed(`${options.chartClass}${i}`, true);
+        }
+        if (options.opacity && classList[0] === `${options.chartClass}${i}`) {
+          element.style('opacity', options.opacity);
+        }
+      });
+
+      // Checking for onHover, relativeNodeSize, and animation/updating
+      if (this.options[i].onHover) {
+        onHover(this.selector, this.options);
+      }
+      if (this.options[i].relativeNodeSize) {
+        relativeNode(this.selector, this.data[i], this.options[i]);
+      }
+
+      if (this.options[i].animate || this.options[0].updating) {
+        addAnimation(
+          this.selector,
+          this.data[i],
+          this.options[i],
+          this.generalElements,
+          this.options[i].duration
+        );
+      } else {
+        appendAxes(this.chartArray[i], this.options[i], this.generalElements);
+      }
     }
   }
 

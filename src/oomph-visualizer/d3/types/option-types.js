@@ -7,6 +7,10 @@ export default class OptionTypes {
         _selfKey: 'bar',
         legacyOptions: options.options4,
       },
+      donut: {
+        _selfKey: 'donut',
+        legacyOptions: options.options3,
+      },
     };
 
     Object.assign(this, types);
