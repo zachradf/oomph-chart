@@ -1,7 +1,7 @@
-export default function createWordCloud(data, options, generalElements) {
+export default function createWordCloud(data, options, chartComponents) {
   const { width, height, y2ForceStrength } = options;
   const fontSize = (d) => Math.sqrt(d.value) * 2;
-  const { svg } = generalElements;
+  const { svg } = chartComponents;
   // Create a linear scale for the radius of the bubbles
   const radiusScale = d3.scaleSqrt()
     .domain([0, d3.max(data, (d) => d.value)])

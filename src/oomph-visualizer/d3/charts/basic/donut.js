@@ -1,6 +1,6 @@
-export default function createD3DonutChart(data, options, generalElements) {
+export default function createD3DonutChart(data, options, chartComponents) {
   const { radius } = options;
-  const { svg } = generalElements;
+  const { svg } = chartComponents;
 
   const chartGroup = svg.append('g')
     .attr('transform', `translate(${options.width / 2}, ${options.height / 2})`);

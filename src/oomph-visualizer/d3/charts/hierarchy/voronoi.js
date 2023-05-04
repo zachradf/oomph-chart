@@ -1,7 +1,7 @@
 import { voronoiTreemap } from 'd3-voronoi-treemap';
 
-export default function createVoronoiTreemap(data, options, generalElements) {
-  const { svg } = generalElements;
+export default function createVoronoiTreemap(data, options, chartComponents) {
+  const { svg } = chartComponents;
 
   const layout = voronoiTreemap().size([options.width, options.height]);
 

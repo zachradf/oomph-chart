@@ -1,10 +1,10 @@
-export default function createD3SunburstChart(data, options, generalElements) {
+export default function createD3SunburstChart(data, options, chartComponents) {
   // Create a color scale
   const color = d3.scaleOrdinal(options.colorScheme);
   const {
     width, height, margin, radius,
   } = options;
-  const { svg } = generalElements;
+  const { svg } = chartComponents;
   // Create a partition layout
   const partition = (data) => {
     const root = d3.hierarchy(data)

@@ -1,8 +1,8 @@
-export default function createD3RadarChart(data, options, generalElements) {
+export default function createD3RadarChart(data, options, chartComponents) {
   const {
     width, height, colors, maxValue, levels,
   } = options;
-  const { svg } = generalElements;
+  const { svg } = chartComponents;
   const radius = Math.min(width, height) / 2;
 
   const angleSlice = (2 * Math.PI) / data.length;

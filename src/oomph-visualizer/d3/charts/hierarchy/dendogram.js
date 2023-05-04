@@ -1,5 +1,5 @@
-export default function createDendrogram(data, options, generalElements) {
-  const { svg } = generalElements;
+export default function createDendrogram(data, options, chartComponents) {
+  const { svg } = chartComponents;
 
   const g = svg
     .append('g')

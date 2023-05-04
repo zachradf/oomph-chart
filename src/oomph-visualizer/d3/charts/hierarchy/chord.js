@@ -1,4 +1,4 @@
-export default function createChordDiagram(data, options, generalElements) {
+export default function createChordDiagram(data, options, chartComponents) {
   const {
     width,
     height,
@@ -9,7 +9,7 @@ export default function createChordDiagram(data, options, generalElements) {
   } = options;
   const labels = data.pop();
 
-  const { svg } = generalElements;
+  const { svg } = chartComponents;
 
   const chord = d3.chord().padAngle(0.05).sortSubgroups(d3.descending);
 

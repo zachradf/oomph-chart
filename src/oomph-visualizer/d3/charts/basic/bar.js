@@ -1,7 +1,7 @@
-export default function createD3BarChart(data, options, generalElements) {
-  const { x } = generalElements;
-  const { y } = generalElements;
-  const { svg } = generalElements;
+export default function createD3BarChart(data, options, chartComponents) {
+  const { x } = chartComponents;
+  const { y } = chartComponents;
+  const { svg } = chartComponents;
 
   // Sort the data by the x value
   data.sort((a, b) => d3.ascending(a.x, b.x));

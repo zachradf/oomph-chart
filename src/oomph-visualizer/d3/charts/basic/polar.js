@@ -1,8 +1,8 @@
-export default function createD3PolarChart(data, options, generalElements) {
+export default function createD3PolarChart(data, options, chartComponents) {
   const {
     colors, innerRadius, outerRadius,
   } = options;
-  const { svg } = generalElements;
+  const { svg } = chartComponents;
 
   const x = d3
     .scaleBand()

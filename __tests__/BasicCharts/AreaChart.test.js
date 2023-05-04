@@ -46,9 +46,9 @@ describe('createD3AreaChart', () => {
 
   test('creates an SVG element', () => {
     const { document } = jsdom.window;
-    const generalElements = AXES('AREA', document.querySelector('#chart'), options);
-    generalElements.svg = SVG('AREA', document.querySelector('#chart'), options);
-    createD3AreaChart(data, document.querySelector('#chart'), options, generalElements);
+    const chartComponents = AXES('AREA', document.querySelector('#chart'), options);
+    chartComponents.svg = SVG('AREA', document.querySelector('#chart'), options);
+    createD3AreaChart(data, document.querySelector('#chart'), options, chartComponents);
     const svgElement = document.querySelector('#chart svg.area-chart');
     expect(svgElement).not.toBeNull();
   });

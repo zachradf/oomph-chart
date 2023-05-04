@@ -1,7 +1,7 @@
-export default function createD3LineGraph(data, options, generalElements) {
-  const { x } = generalElements;
-  const { y } = generalElements;
-  const { svg } = generalElements;
+export default function createD3LineGraph(data, options, chartComponents) {
+  const { x } = chartComponents;
+  const { y } = chartComponents;
+  const { svg } = chartComponents;
 
   // Sort the data by the x value if its numerical
   if (typeof data[0].x === 'number') {

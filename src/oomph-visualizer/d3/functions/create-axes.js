@@ -1,6 +1,6 @@
 import { createXAxisLine, createYAxisLine } from './axis-lines.js';
 
-export default function generalElementsFunction(data, chart, options) {
+export default function createAxes(data, chart, options) {
   let x;
 
   switch (chart) {

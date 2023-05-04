@@ -1,4 +1,4 @@
-export default function animateScatter(chartElements, data, generalElements, duration) {
+export default function animateScatter(chartElements, data, chartComponents, duration) {
   const updateSelection = chartElements.data(data);
   const enterSelection = updateSelection.enter();
   const exitSelection = updateSelection.exit();
@@ -14,8 +14,8 @@ export default function animateScatter(chartElements, data, generalElements, dur
     .merge(enterSelection)
     .transition()
     .duration(duration)
-    .attr('cx', (d) => generalElements.x(d.x))
-    .attr('cy', (d) => generalElements.y(d.y));
+    .attr('cx', (d) => chartComponents.x(d.x))
+    .attr('cy', (d) => chartComponents.y(d.y));
 
   // Exit selection
   exitSelection.remove();

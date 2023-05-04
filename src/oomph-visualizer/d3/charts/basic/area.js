@@ -1,9 +1,9 @@
-export default function createD3AreaChart(data, options, generalElements) {
+export default function createD3AreaChart(data, options, chartComponents) {
   const { height } = options;
   const { margin } = options;
-  const { x } = generalElements;
-  const { y } = generalElements;
-  const { svg } = generalElements;
+  const { x } = chartComponents;
+  const { y } = chartComponents;
+  const { svg } = chartComponents;
   // Define the area generator function using the x and y scales
   const area = d3.area()
     .x((d) => x(d.x))

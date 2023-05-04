@@ -43,13 +43,13 @@
 //   });
 // }
 // // createCombinedChart();
-export default function stack(selector, chartConfigs, generalElements) {
+export default function stack(selector, chartConfigs, chartComponents) {
   // const container = createSvgContainer(selector, {
   //   width: 600,
   //   height: 400,
   // });
 
   chartConfigs.forEach((config) => {
-    config.chartFn(config.data, config.generalElements.svg, config.options, generalElements);
+    config.chartFn(config.data, config.chartComponents.svg, config.options, chartComponents);
   });
 }

@@ -1,10 +1,10 @@
-export default function appendAxes(chart, options, generalElements) {
+export default function appendAxes(chart, options, chartComponents) {
   const { width } = options;
   const { height } = options;
   const { margin } = options;
-  const { svg } = generalElements;
-  const { xAxis } = generalElements;
-  const { yAxis } = generalElements;
+  const { svg } = chartComponents;
+  const { xAxis } = chartComponents;
+  const { yAxis } = chartComponents;
   // this will be checked by graph tags in the future
   if (chart === 'POLAR' || chart === 'RADAR' || chart === 'PIE' || chart === 'DONUT' || chart === 'HEATMAP' || chart === 'BUBBLE') return;
   if (!options.updating) {
