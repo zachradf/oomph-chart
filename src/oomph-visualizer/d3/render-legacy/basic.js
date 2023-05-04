@@ -17,9 +17,6 @@ export default class BasicClass {
       console.log('TEMPORARY OVERRIDE DETECTED');
 
       // eslint-disable-next-line no-param-reassign
-      chartArray = tempOveride.chartArray;
-
-      // eslint-disable-next-line no-param-reassign
       input = {
         selector: '#chart',
         options: tempOveride.options,

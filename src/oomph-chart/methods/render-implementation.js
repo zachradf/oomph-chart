@@ -46,11 +46,13 @@ export function renderImplementation(
 
   // TODO for now, only support basic chart types
   const tempOveride = {
-    chartArray: [chartTypes[chartType]._selfKey],
     options: [optionTypes[chartType].legacyOptions],
     data: [data],
   };
 
+  // eslint-disable-next-line no-underscore-dangle
+  const tempChartArray = [chartTypes[chartType]._selfKey];
+
   // TODO note: for now, invoking the legacy class also draws it
-  const basicClass = new BasicClass(null, null, tempOveride);
+  const basicClass = new BasicClass(tempChartArray, null, tempOveride);
 }
