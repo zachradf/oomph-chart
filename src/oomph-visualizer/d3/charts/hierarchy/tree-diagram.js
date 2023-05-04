@@ -1,4 +1,4 @@
-export default function createTreeDiagram(data, options, generalElements) {
+export default function createTreeDiagram(data, options, chartComponents) {
   const {
     width,
     height,
@@ -6,7 +6,7 @@ export default function createTreeDiagram(data, options, generalElements) {
     radius,
     strokeColor,
   } = options;
-  const { svg } = generalElements;
+  const { svg } = chartComponents;
 
   const tree = d3.tree().size([height - 10, width - 10]); // Adjust size here
 

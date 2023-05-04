@@ -1,4 +1,4 @@
-export default function animatePie(generalElements, data, duration, options) {
+export default function animatePie(chartComponents, data, duration, options) {
   const svg = d3.select('svg');
   console.log(svg);
 

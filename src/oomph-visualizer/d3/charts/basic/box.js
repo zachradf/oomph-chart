@@ -1,11 +1,11 @@
-export default function createD3BoxPlot(data, options, generalElements) {
+export default function createD3BoxPlot(data, options, chartComponents) {
   // TODO try to accept multiple data set shapes, and calculate the mean, median, etc. from the data
   const fillColor = options.fillColor || 'steelblue';
-  const { x } = generalElements;
-  const { y } = generalElements;
-  const { xAxis } = generalElements;
-  const { yAxis } = generalElements;
-  const { svg } = generalElements;
+  const { x } = chartComponents;
+  const { y } = chartComponents;
+  const { xAxis } = chartComponents;
+  const { yAxis } = chartComponents;
+  const { svg } = chartComponents;
 
   function update(data) {
     x.domain(data.map((d) => d.category));

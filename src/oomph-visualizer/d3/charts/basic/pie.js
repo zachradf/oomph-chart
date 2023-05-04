@@ -1,7 +1,7 @@
-export default function createD3PieChart(data, options, generalElements) {
+export default function createD3PieChart(data, options, chartComponents) {
   const { width } = options;
   const { height } = options;
-  const { svg } = generalElements;
+  const { svg } = chartComponents;
   const radius = Math.min(width, height) / 2;
 
   // Centers the pie chart within the svg element

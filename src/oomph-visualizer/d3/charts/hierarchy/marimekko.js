@@ -1,5 +1,5 @@
-export default function createMarimekkoChart(data, options, generalElements) {
-  const { svg } = generalElements;
+export default function createMarimekkoChart(data, options, chartComponents) {
+  const { svg } = chartComponents;
 
   const g = svg
     .append('g')

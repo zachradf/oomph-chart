@@ -1,6 +1,6 @@
-export default function createBubbleChart(data, options, generalElements) {
+export default function createBubbleChart(data, options, chartComponents) {
   const { diameter } = options;
-  const { svg } = generalElements;
+  const { svg } = chartComponents;
   const colorScheme = options.colorScheme || d3.schemeCategory10;
 
   // Prepare the data for the chart

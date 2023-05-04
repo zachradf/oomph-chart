@@ -1,5 +1,5 @@
-export default function createAdjacencyMatrix(data, options, generalElements) {
-  const { svg } = generalElements;
+export default function createAdjacencyMatrix(data, options, chartComponents) {
+  const { svg } = chartComponents;
   const g = svg
     .append('g')
     .attr('transform', `translate(${options.margin.left}, ${options.margin.top})`);

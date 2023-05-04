@@ -1,6 +1,6 @@
 import { sankey as d3Sankey, sankeyLinkHorizontal } from 'd3-sankey';
 
-export default function createSankeyDiagram(data, options, generalElements) {
+export default function createSankeyDiagram(data, options, chartComponents) {
   const {
     width,
     height,
@@ -8,7 +8,7 @@ export default function createSankeyDiagram(data, options, generalElements) {
     nodePadding,
   } = options;
   const color = d3.scaleOrdinal(d3.schemeCategory10);
-  const { svg } = generalElements;
+  const { svg } = chartComponents;
 
   svg.append('g');
 

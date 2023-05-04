@@ -1,7 +1,7 @@
-export default function createD3StackedBarChart(data, options, generalElements) {
+export default function createD3StackedBarChart(data, options, chartComponents) {
   const {
     x, y, svg,
-  } = generalElements;
+  } = chartComponents;
 
   // Create a color scale using the color scheme provided
   const color = d3.scaleOrdinal()
@@ -29,9 +29,9 @@ export default function createD3StackedBarChart(data, options, generalElements) 
         .attr('y', y(0))
         .attr('height', 0)
         .attr('width', x.bandwidth())
-        .call((enterSelection) => animateBar(enterSelection, data, generalElements, options, options.duration)),
+        .call((enterSelection) => animateBar(enterSelection, data, chartComponents, options, options.duration)),
       (update) => update
-        .call((updateSelection) => animateBar(updateSelection, data, generalElements, options, options.duration)),
+        .call((updateSelection) => animateBar(updateSelection, data, chartComponents, options, options.duration)),
     )
     .transition()
     .duration(options.duration)

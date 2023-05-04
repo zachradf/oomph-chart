@@ -65,13 +65,13 @@ export default class HierarchyClass {
       VORONOI: createVoronoiTreemap,
       WORDCLOUD: createWordCloud,
     };
-    const generalElements = {};
+    const chartComponents = {};
     this.iterateCharts = () => {
       for (let i = 0; i < this.chartArray.length; i++) {
         this.options[i].chartClass = svgTypeMap[this.chartArray[i]];
-        generalElements.svg = createSVG(this.selector, chartArray[i], this.options[i]);
-        console.log(generalElements);
-        this.createChart[this.chartArray[i]](this.input.data[i], this.input.options[i], generalElements);
+        chartComponents.svg = createSVG(this.selector, chartArray[i], this.options[i]);
+        console.log(chartComponents);
+        this.createChart[this.chartArray[i]](this.input.data[i], this.input.options[i], chartComponents);
         const options = this.input.options[i];
         // This is where we add the class and opacity option to the data elements
         const elements = d3.selectAll(`svg.${svgTypeMap[this.chartArray[i]]} circle, arc, rect, path, line, polygon, node`);

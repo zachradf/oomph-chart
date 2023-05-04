@@ -1,8 +1,8 @@
-// export default function updateD3FunnelChart(generalElements, data, duration, options) {
+// export default function updateD3FunnelChart(chartComponents, data, duration, options) {
 //   const { width } = options;
 //   const { colors } = options;
-//   const { x } = generalElements;
-//   const { y } = generalElements;
+//   const { x } = chartComponents;
+//   const { y } = chartComponents;
 //   const colorScale = d3.scaleOrdinal().domain(data.map((d) => d.x)).range(colors);
 //   const svg = d3.select('svg');
 
@@ -41,11 +41,11 @@
 //     (exit) => exit.remove(),
 //   );
 // }
-// export default function updateD3FunnelChart(generalElements, data, duration, options) {
+// export default function updateD3FunnelChart(chartComponents, data, duration, options) {
 //     const { width } = options;
 //     const { colors } = options;
-//     const { x } = generalElements;
-//     const { y } = generalElements;
+//     const { x } = chartComponents;
+//     const { y } = chartComponents;
 //     const colorScale = d3.scaleOrdinal().domain(data.map((d) => d.x)).range(colors);
 //     const svg = d3.select('svg');
 
@@ -90,11 +90,11 @@
 //       rectsUpdate.exit().remove();
 //     });
 //   }
-export default function updateD3FunnelChart(generalElements, data, duration, options) {
+export default function updateD3FunnelChart(chartComponents, data, duration, options) {
   const { width } = options;
   const { colors } = options;
-  const { x } = generalElements;
-  const { y } = generalElements;
+  const { x } = chartComponents;
+  const { y } = chartComponents;
   const colorScale = d3.scaleOrdinal().domain(data.map((d) => d.x)).range(colors);
   const svg = d3.select('svg');
 

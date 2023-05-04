@@ -9,19 +9,19 @@ import animateDonut from './animate-donut';
 import animateFunnel from './animate-funnel';
 import animateStacked from './animate-stacked';
 
-export default function addAnimation(selector, data, options, generalElements, duration = 1000) {
+export default function addAnimation(selector, data, options, chartComponents, duration = 1000) {
   setTimeout(() => {
     const chart = d3.select(selector);
 
     chart.select('.x-axis')
       .transition()
       .duration(duration)
-      .call(generalElements.xAxis);
+      .call(chartComponents.xAxis);
 
     chart.select('.y-axis')
       .transition()
       .duration(duration)
-      .call(generalElements.yAxis);
+      .call(chartComponents.yAxis);
 
     let chartElements = chart.selectAll('g rect, g circle, .line-graph0, .area-chart0, path');
     // if (options.updating) {
@@ -61,21 +61,21 @@ export default function addAnimation(selector, data, options, generalElements, d
     console.log('TYPE', type);
     // Update the area chart separately
     switch (type) {
-      case 'bar-chart0': animateBar(chartElements, data, generalElements, options, duration);
+      case 'bar-chart0': animateBar(chartElements, data, chartComponents, options, duration);
         break;
-      case 'scatter-plot0': animateScatter(chartElements, data, generalElements, duration);
+      case 'scatter-plot0': animateScatter(chartElements, data, chartComponents, duration);
         break;
-      case 'line-graph0': animateLine(chartElements, sortedData, generalElements, duration);
+      case 'line-graph0': animateLine(chartElements, sortedData, chartComponents, duration);
         break;
-      case 'area-chart0': animateArea(chart, sortedData, generalElements, options, duration);
+      case 'area-chart0': animateArea(chart, sortedData, chartComponents, options, duration);
         break;
-      case 'pie-chart0': animatePie(generalElements, data, duration, options);
+      case 'pie-chart0': animatePie(chartComponents, data, duration, options);
         break;
-      case 'donut-chart0': animateDonut(generalElements, data, duration, options);
+      case 'donut-chart0': animateDonut(chartComponents, data, duration, options);
         break;
-      case 'funnel-chart0': animateFunnel(generalElements, data, duration, options);
+      case 'funnel-chart0': animateFunnel(chartComponents, data, duration, options);
         break;
-      case 'stacked-bar-chart0': animateStacked(generalElements, data, duration, options);
+      case 'stacked-bar-chart0': animateStacked(chartComponents, data, duration, options);
         break;
       default: console.log('No animation for this chart type');
     }

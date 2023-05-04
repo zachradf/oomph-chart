@@ -1,7 +1,7 @@
-export default function animateLine(chartElements, data, generalElements, duration) {
+export default function animateLine(chartElements, data, chartComponents, duration) {
   const line = d3.line()
-    .x((d) => generalElements.x(d.x))
-    .y((d) => generalElements.y(d.y));
+    .x((d) => chartComponents.x(d.x))
+    .y((d) => chartComponents.y(d.y));
 
   // const sortedData = data.slice().sort((a, b) => d3.ascending(a.x, b.x));
 

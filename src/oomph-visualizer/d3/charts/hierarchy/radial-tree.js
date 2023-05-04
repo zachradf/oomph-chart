@@ -1,5 +1,5 @@
-export default function createRadialTree(data, options, generalElements) {
-  const { svg } = generalElements;
+export default function createRadialTree(data, options, chartComponents) {
+  const { svg } = chartComponents;
   const g = svg
     .append('g')
     .attr('transform', `translate(${options.width / 2}, ${options.height / 2})`);

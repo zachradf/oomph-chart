@@ -1,8 +1,8 @@
-export default function createD3Heatmap(data, options, generalElements) {
+export default function createD3Heatmap(data, options, chartComponents) {
   const {
     width, height, margin, colorScale, x = 'x', y = 'y',
   } = options;
-  const { svg } = generalElements;
+  const { svg } = chartComponents;
 
   // Create the x scale, using scaleBand to handle categorical data
   const xScale = d3.scaleBand()

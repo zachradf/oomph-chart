@@ -1,7 +1,7 @@
-export default function createD3ScatterPlot(data, options, generalElements) {
-  const { x } = generalElements;
-  const { y } = generalElements;
-  const { svg } = generalElements;
+export default function createD3ScatterPlot(data, options, chartComponents) {
+  const { x } = chartComponents;
+  const { y } = chartComponents;
+  const { svg } = chartComponents;
 
   // Create circles for each data point
   svg.append('g')
