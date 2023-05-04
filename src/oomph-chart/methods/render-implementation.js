@@ -45,14 +45,15 @@ export function renderImplementation(
   console.log(`Drawing a ${chartTypes[chartType].nameLong} with ${data.length} data point(s) using ${visualizerTypes[visualizer].name}.`);
 
   // TODO for now, only support basic chart types
-  const tempOveride = {
-    options: [optionTypes[chartType].legacyOptions],
+  const tempInput = {
     data: [data],
+    options: [optionTypes[chartType].legacyOptions],
+    selector: '#chart',
   };
 
   // eslint-disable-next-line no-underscore-dangle
   const tempChartArray = [chartTypes[chartType]._selfKey];
 
   // TODO note: for now, invoking the legacy class also draws it
-  const basicClass = new BasicClass(tempChartArray, null, tempOveride);
+  const basicClass = new BasicClass(tempChartArray, tempInput);
 }

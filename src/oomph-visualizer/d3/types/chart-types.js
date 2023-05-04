@@ -162,7 +162,6 @@ export default class D3ChartTypes {
         nameLong: 'Waterfall Chart',
         render: renderWaterfallChart,
       },
-
     };
 
     Object.assign(this, types);

@@ -10,19 +10,8 @@ import D3ChartTypes from '../types/chart-types.js';
 const d3ChartTypes = new D3ChartTypes();
 
 export default class BasicClass {
-  constructor(chartArray, input, tempOveride) {
+  constructor(chartArray, input) {
     this.createChart = {};
-
-    if (tempOveride) {
-      console.log('TEMPORARY OVERRIDE DETECTED');
-
-      // eslint-disable-next-line no-param-reassign
-      input = {
-        selector: '#chart',
-        options: tempOveride.options,
-        data: tempOveride.data,
-      };
-    }
 
     chartArray.forEach((chart) => {
       const key = d3ChartTypes[chart].legacyName;
@@ -31,8 +20,8 @@ export default class BasicClass {
     });
 
     this.chartArray = chartArray;
-    this.options = input.options;
     this.data = input.data;
+    this.options = input.options;
     this.selector = input.selector;
 
     this.processCharts();
