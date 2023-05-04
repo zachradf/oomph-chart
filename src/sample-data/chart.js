@@ -144,16 +144,16 @@ chartData.scatterPlot2 = [
   { x: 62, y: 103 },
   { x: 106, y: 98 },
   { x: 149, y: -40 },
-  // { x: -120, y: 49 },
-  // { x: 3, y: 24 },
-  // { x: 5, y: 110 },
-  // { x: 200, y: 38 },
-  // { x: 17, y: 69 },
-  // { x: 50, y: 13 },
-  // { x: 28, y: 8 },
-  // { x: 169, y: 103 },
-  // { x: 50, y: 80 },
-  // { x: 30, y: -40 },
+  { x: -120, y: 49 },
+  { x: 3, y: 24 },
+  { x: 5, y: 110 },
+  { x: 200, y: 38 },
+  { x: 17, y: 69 },
+  { x: 50, y: 13 },
+  { x: 28, y: 8 },
+  { x: 169, y: 103 },
+  { x: 50, y: 80 },
+  { x: 30, y: -40 },
 ];
 
 chartData.scatterPlot3 = [
@@ -181,6 +181,22 @@ chartData.scatterPlot3 = [
 //   item.y = Math.floor(Math.random() * (100 - 10) + 10);
 // });
 // cadidate for y2 axis
+function generateRandomCoordinates(numPoints = 50, range = 5000) {
+  const coordinates = [];
+
+  for (let i = 0; i < numPoints; i++) {
+    const x = Math.floor(Math.random() * (range + 1));
+    const y = Math.floor(Math.random() * (range + 1));
+
+    coordinates.push({ x, y });
+  }
+
+  return coordinates;
+}
+
+chartData.scatterPlotRandom = generateRandomCoordinates();
+chartData.scatterPlotRandom2 = generateRandomCoordinates();
+// console.log(randomCoordinates);
 
 chartData.heatMap2 = [
   { x: 'A', y: '1', value: 50 },

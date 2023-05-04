@@ -1,5 +1,6 @@
 import onHover from '../../on-hover';
-import relativeNode from '../../relative-node'; // TODO: incorporate this
+import relativeNode from '../../relative-node';
+import gradient from '../../gradient';
 import animateScatter from './animate-scatter';
 import animateLine from './animate-line';
 import animateArea from './animate-area';
@@ -12,6 +13,7 @@ import animateStacked from './animate-stacked';
 export default function addAnimation(selector, data, options, chartComponents, duration = 1000) {
   setTimeout(() => {
     const chart = d3.select(selector);
+    console.log('chart', chart);
 
     chart.select('.x-axis')
       .transition()
@@ -30,7 +32,8 @@ export default function addAnimation(selector, data, options, chartComponents, d
     // Calculate the difference between the length of the new dataset and the number of elements
     // in the initial chart
     let numPlaceholders = data.length - chartElements.size();
-    console.log('SELECTED ELEMENTS', options, chartElements.nodes()[0], chartElements);
+    console.log('numPlaceholders', numPlaceholders);
+
     if (numPlaceholders > 0) {
       while (numPlaceholders > 0) {
         const selectedElement = chartElements.nodes()[0];
@@ -89,6 +92,12 @@ export default function addAnimation(selector, data, options, chartComponents, d
 
     if (options.onHover) {
       onHover(selector, [options]);
+    }
+    if (options.relativeNode) {
+      relativeNode(selector, data, options);
+    }
+    if (options.gradient) {
+      gradient(selector, options.gradientColor[0], options.gradientColor[1], type, options.gradientAxis, data);
     }
   }, duration);
 }

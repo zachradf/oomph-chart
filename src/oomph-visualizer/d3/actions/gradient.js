@@ -1,5 +1,8 @@
 export default function applyColorGradient(selector, color1, color2, type, axis, data) {
   const svg = d3.select(selector).select('svg');
+  // type = type.slice(0, -1);
+  console.log('TYPE', type);
+  console.log('X AXIS', svg.select('.x-axis'));
 
   // Create the gradient element
   const gradient = svg.append('linearGradient')
@@ -34,7 +37,7 @@ export default function applyColorGradient(selector, color1, color2, type, axis,
 
       svg.selectAll('rect').style('fill', (d) => colorScale(d.y));
     }
-  } else if (type === 'SCATTER') {
+  } else if (type === 'scatter-plot') {
     let maxValue; let minValue; let
       valueAccessor;
     if (axis === 'x') {
@@ -51,7 +54,7 @@ export default function applyColorGradient(selector, color1, color2, type, axis,
       .range([color1, color2]);
 
     svg.selectAll('circle').style('fill', (d) => colorScale(valueAccessor(d)));
-  } else if (type === 'PIE') {
+  } else if (type === 'pie-chart') {
     const minValue = d3.min(data, (d) => d.y);
     const maxValue = d3.max(data, (d) => d.y);
 
@@ -61,7 +64,7 @@ export default function applyColorGradient(selector, color1, color2, type, axis,
 
     svg.selectAll('path')
       .attr('fill', (d) => colorScale(d.y));
-  } else if (type === 'DONUT') {
+  } else if (type === 'donut-chart') {
     const minValue = d3.min(data, (d) => d.y);
     const maxValue = d3.max(data, (d) => d.y);
 
@@ -71,9 +74,9 @@ export default function applyColorGradient(selector, color1, color2, type, axis,
 
     svg.selectAll('path')
       .attr('fill', (d) => colorScale(d.data.y));
-  } else if (type === 'AREA' || type === 'LINE') {
+  } else if (type === 'area-chart' || type === 'line-chart') {
     const elements = svg.selectAll('path');
-
+    console.log('ELEMENTS', elements);
     const minValue = d3.min(data, (d) => d[axis]);
     const maxValue = d3.max(data, (d) => d[axis]);
 
@@ -82,6 +85,7 @@ export default function applyColorGradient(selector, color1, color2, type, axis,
       .range([color1, color2]);
 
     if (axis === 'x') {
+      console.log('X AXIS', svg.select('.x-axis'));
       gradient
         .attr('x1', svg.select('.x-axis').node().getBBox().x)
         .attr('x2', svg.select('.x-axis').node().getBBox().width)
@@ -94,7 +98,7 @@ export default function applyColorGradient(selector, color1, color2, type, axis,
         .attr('y1', svg.select('.y-axis').node().getBBox().height)
         .attr('y2', 0);
     }
-    if (type === 'AREA') {
+    if (type === 'area-chart') {
       elements.style('fill', 'url(#gradient)');
     } else { // LINE
       const lineGradient = svg.append('linearGradient')
@@ -122,7 +126,7 @@ export default function applyColorGradient(selector, color1, color2, type, axis,
 
       elements.style('stroke', 'url(#line-gradient)');
     }
-  } else if (type === 'RADAR') {
+  } else if (type === 'radar-chart') {
     // Get the width and height of the SVG element
     const svgBoundingBox = svg.node().getBBox();
     const { width } = svgBoundingBox;
@@ -170,6 +174,6 @@ export default function applyColorGradient(selector, color1, color2, type, axis,
         return `url(#${gradientId})`;
       });
   } else {
-    throw new Error('Unsupported chart type');
+    throw new Error(`Unsupported chart type ${type}`);
   }
 }

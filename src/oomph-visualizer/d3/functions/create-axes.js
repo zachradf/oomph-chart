@@ -138,9 +138,9 @@ export default function createAxes(data, chart, options) {
                 .append('line')
                 .attr('stroke', `${yAxisColor}`)
                 .attr('x2', -yTickExtension)
-                .attr('class', 'tick-line'); // Add a class to the tick lines
+                .attr('class', 'tick-line');
             })
-            .attr('opacity', options.yTickOpacity || 1); // Updated line
+            .attr('opacity', options.yTickOpacity || 1);
 
           if (options.yLine) {
             createYAxisLine(g, options, xAxisPosition);
