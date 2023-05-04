@@ -24,7 +24,7 @@ export default function addAnimation(selector, data, options, chartComponents, d
       .call(chartComponents.yAxis);
 
     let chartElements = chart.selectAll('g rect, g circle, .line-graph0, .area-chart0, path');
-    // if (options.updating) {
+    // if (options.isUpdating) {
     //   chartElements = d3.selectAll(`svg.${options.chartClass} circle, arc, rect, path, line, polygon, node`);
     // }
     // Calculate the difference between the length of the new dataset and the number of elements

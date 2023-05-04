@@ -99,16 +99,16 @@ export default class BasicClass {
       // Map chart type to chartClass
       this.options[i].chartClass = this.svgTypeMap[this.chartArray[i]];
 
-      if (shouldCreateChartComponents.call(this, i) || this.options[0].updating) {
+      if (shouldCreateChartComponents.call(this, i) || this.options[0].isUpdating) {
         this.chartComponents = createChartComponents.call(this, i);
       }
 
       // If not updating, create a new chart instance using current chart type, data, and options
-      if (!this.options[0].updating) {
+      if (!this.options[0].isUpdating) {
         this.createChart[this.chartArray[i]](this.data[i], this.options[i], this.chartComponents);
       }
 
-      applyStyling.call(this, i);
+      applyOptions.call(this, i);
       applyActions.call(this, i);
     }
   }
@@ -127,7 +127,7 @@ export default class BasicClass {
   updateInput(input) {
     this.selector = input.selector;
     this.options = input.options;
-    this.options[0].updating = true;
+    this.options[0].isUpdating = true;
     this.data = input.data;
 
     this.processCharts();
@@ -147,7 +147,7 @@ function applyActions(i) {
     relativeNode(this.selector, this.data[i], options);
   }
 
-  if (options.animate || this.options[0].updating) {
+  if (options.animate || this.options[0].isUpdating) {
     addAnimation(
       this.selector,
       this.data[i],
@@ -160,7 +160,7 @@ function applyActions(i) {
   }
 }
 
-function applyStyling(i) {
+function applyOptions(i) {
   const options = this.options[i];
   const elements = d3.selectAll(`svg.${this.svgTypeMap[this.chartArray[0]]} circle, arc, rect, path, line, polygon, node`);
 
@@ -180,7 +180,7 @@ function applyStyling(i) {
 
 function createChartComponents(i) {
   const chartComponents = createAxes(this.data[i], this.chartArray[i], this.options[i]);
-  if (!this.options[0].updating) {
+  if (!this.options[0].isUpdating) {
     chartComponents.svg = createSVG(this.selector, this.chartArray[i], this.options[i]);
   }
   return chartComponents;
@@ -188,7 +188,7 @@ function createChartComponents(i) {
 
 function shouldCreateChartComponents(i) {
   const isFirstStackedChart = this.options[i].stack && i === 0;
-  const isNotUpdating = !this.options[0].updating;
+  const isNotUpdating = !this.options[0].isUpdating;
   const isNotStackedChart = !this.options[i].stack;
 
   return (isFirstStackedChart && isNotUpdating) || (isNotStackedChart && isNotUpdating);

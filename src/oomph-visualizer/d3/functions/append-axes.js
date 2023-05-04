@@ -7,7 +7,7 @@ export default function appendAxes(chart, options, chartComponents) {
   const { yAxis } = chartComponents;
   // this will be checked by graph tags in the future
   if (chart === 'POLAR' || chart === 'RADAR' || chart === 'PIE' || chart === 'DONUT' || chart === 'HEATMAP' || chart === 'BUBBLE') return;
-  if (!options.updating) {
+  if (!options.isUpdating) {
     // X-axis
     const xAxisG = svg.append('g')
       .classed('x-axis', true)

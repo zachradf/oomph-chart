@@ -1,5 +1,5 @@
 export function createYAxisLine(g, options, xAxisPosition) {
-  if (!options.yLine || options.updating) return;
+  if (!options.yLine || options.isUpdating) return;
 
   g.append('line')
     .attr('stroke', options.yAxisColor)
@@ -13,7 +13,7 @@ export function createYAxisLine(g, options, xAxisPosition) {
 }
 
 export function createXAxisLine(g, options) {
-  if (!options.xLine || options.updating) return;
+  if (!options.xLine || options.isUpdating) return;
   g.append('line')
     .attr('stroke', options.xAxisColor)
     .attr('stroke-opacity', options.xAxisOpacity)
