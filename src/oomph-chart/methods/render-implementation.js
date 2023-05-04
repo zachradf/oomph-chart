@@ -1,12 +1,10 @@
 import BasicClass from '../../oomph-visualizer/d3/render-legacy/basic.js';
 import ChartTypes from '../types/chart-types.js';
-import SVGTypes from '../../oomph-visualizer/d3/types/svg-types.js';
 import VisualizerTypes from '../types/visualizer-types.js';
 import OptionTypes from '../../oomph-visualizer/d3/types/option-types.js';
 
 const chartTypes = new ChartTypes();
 const optionTypes = new OptionTypes();
-const svgTypes = new SVGTypes();
 const visualizerTypes = new VisualizerTypes();
 
 export function renderImplementation(
@@ -48,8 +46,7 @@ export function renderImplementation(
 
   // TODO for now, only support basic chart types
   const tempOveride = {
-    svgTypeMap: { [svgTypes[chartType].legacyName]: svgTypes[chartType].legacyValue },
-    chartArray: [chartTypes[chartType].legacyName],
+    chartArray: [chartTypes[chartType]._selfKey],
     options: [optionTypes[chartType].legacyOptions],
     data: [data],
   };

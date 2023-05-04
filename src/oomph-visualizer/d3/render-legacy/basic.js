@@ -1,19 +1,3 @@
-import createAreaChart from '../charts/basic/area.js';
-import createBarChart from '../charts/basic/bar.js';
-import createBoxPlot from '../charts/basic/box.js';
-import createBubbleChart from '../charts/basic/bubble.js';
-import createDonutChart from '../charts/basic/donut.js';
-import createFunnelChart from '../charts/basic/funnel.js';
-import createGaugeChart from '../charts/basic/gauge.js';
-import createHeatMap from '../charts/basic/heat.js';
-import createLineGraph from '../charts/basic/line.js';
-import createPieChart from '../charts/basic/pie.js';
-import createPolarChart from '../charts/basic/polar.js';
-import createRadarChart from '../charts/basic/radar.js';
-import createScatterPlot from '../charts/basic/scatter.js';
-import createStackedBarChart from '../charts/basic/stacked.js';
-import createWaterfallChart from '../charts/basic/waterfall.js';
-
 import appendAxes from '../functions/append-axes.js';
 import createAxes from '../functions/create-axes.js';
 import createSVG from '../functions/create-svg.js';
@@ -21,44 +5,13 @@ import createSVG from '../functions/create-svg.js';
 import addAnimation from '../actions/animate/basic/animate-basic.js';
 import onHover from '../actions/on-hover.js';
 import relativeNode from '../actions/relative-node.js';
+import D3ChartTypes from '../types/chart-types.js';
+
+const d3ChartTypes = new D3ChartTypes();
 
 export default class BasicClass {
   constructor(chartArray, input, tempOveride) {
-    this.createChart = {
-      AREA: createAreaChart,
-      BAR: createBarChart,
-      BOX: createBoxPlot,
-      BUBBLE: createBubbleChart,
-      DONUT: createDonutChart,
-      FUNNEL: createFunnelChart,
-      GAUGE: createGaugeChart,
-      HEATMAP: createHeatMap,
-      LINE: createLineGraph,
-      PIE: createPieChart,
-      POLAR: createPolarChart,
-      RADAR: createRadarChart,
-      SCATTER: createScatterPlot,
-      STACKEDBAR: createStackedBarChart,
-      WATERFALL: createWaterfallChart,
-    };
-
-    let svgTypeMap = {
-      AREA: 'area-chart',
-      BAR: 'bar-chart',
-      BOX: 'box-plot',
-      BUBBLE: 'bubble-chart',
-      DONUT: 'donut-chart',
-      FUNNEL: 'funnel-chart',
-      GAUGE: 'gauge-chart',
-      HEATMAP: 'heat-map',
-      LINE: 'line-graph',
-      PIE: 'pie-chart',
-      POLAR: 'polar-chart',
-      RADAR: 'radar-chart',
-      SCATTER: 'scatter-plot',
-      STACKEDBAR: 'stacked-bar-chart',
-      WATERFALL: 'waterfall-chart',
-    };
+    this.createChart = {};
 
     if (tempOveride) {
       console.log('TEMPORARY OVERRIDE DETECTED');
@@ -72,12 +25,14 @@ export default class BasicClass {
         options: tempOveride.options,
         data: tempOveride.data,
       };
-
-      // eslint-disable-next-line no-param-reassign
-      svgTypeMap = tempOveride.svgTypeMap;
     }
 
-    this.svgTypeMap = svgTypeMap;
+    chartArray.forEach((chart) => {
+      const key = d3ChartTypes[chart].legacyName;
+      const val = d3ChartTypes[chart].render;
+      this.createChart[key] = val;
+    });
+
     this.chartArray = chartArray;
     this.options = input.options;
     this.data = input.data;
@@ -96,8 +51,8 @@ export default class BasicClass {
 
   processCharts() {
     for (let i = 0; i < this.chartArray.length; i++) {
-      // Map chart type to chartClass
-      this.options[i].chartClass = this.svgTypeMap[this.chartArray[i]];
+      // Map chartClass
+      this.options[i].chartClass = d3ChartTypes[this.chartArray[i]].chartClass;
 
       if (shouldCreateChartComponents.call(this, i) || this.options[0].isUpdating) {
         this.chartComponents = createChartComponents.call(this, i);
@@ -105,7 +60,8 @@ export default class BasicClass {
 
       // If not updating, create a new chart instance using current chart type, data, and options
       if (!this.options[0].isUpdating) {
-        this.createChart[this.chartArray[i]](this.data[i], this.options[i], this.chartComponents);
+        const { render } = d3ChartTypes[this.chartArray[i]];
+        render(this.data[i], this.options[i], this.chartComponents);
       }
 
       applyOptions.call(this, i);
@@ -113,15 +69,11 @@ export default class BasicClass {
     }
   }
 
-  removeChart(type) {
-    if (this.svgTypeMap[type]) {
-      d3.select(this.selector)
-        .selectAll(`svg.${this.options[0].chartClass}`)
-        .remove();
-      console.log('removed', this.options.chartClass);
-    } else {
-      console.error(`Invalid chart type: ${type}`);
-    }
+  removeChart() {
+    d3.select(this.selector)
+      .selectAll(`svg.${this.options[0].chartClass}`)
+      .remove();
+    console.log('removed', this.options.chartClass);
   }
 
   updateInput(input) {
@@ -162,7 +114,7 @@ function applyActions(i) {
 
 function applyOptions(i) {
   const options = this.options[i];
-  const elements = d3.selectAll(`svg.${this.svgTypeMap[this.chartArray[0]]} circle, arc, rect, path, line, polygon, node`);
+  const elements = d3.selectAll(`svg.${this.chartClass} circle, arc, rect, path, line, polygon, node`);
 
   // eslint-disable-next-line func-names
   elements.each(function () {
