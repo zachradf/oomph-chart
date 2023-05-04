@@ -1,11 +1,13 @@
 // animateAreaChart.js
 export default function animateArea(chart, sortedData, chartComponents, options, duration) {
+  console.log('animateArea', chart, sortedData, chartComponents, options, duration);
+  const { y } = chartComponents;
   const area = d3.area()
     .x((d) => chartComponents.x(d.x))
-    .y0(options.height - options.margin.bottom)
+    .y0((d) => (d.y >= 0 ? y(0) : y(-d.y)))
     .y1((d) => chartComponents.y(d.y));
 
-  chart.select('.area-chart0')
+  chart.select('svg .area-chart0')
     .datum(sortedData)
     .transition()
     .duration(duration)

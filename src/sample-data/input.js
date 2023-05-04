@@ -17,7 +17,7 @@ inputData.input1 = {
 
 inputData.input2 = {
   data: [
-    chartData.scatterPlotRandom,
+    chartData.scatterPlotRandom2,
     chartData.scatterPlotRandom2,
     chartData.scatterPlot,
   ],
@@ -134,7 +134,7 @@ inputData.input20 = {
 };
 
 inputData.input21 = {
-  data: [chartData.scatterPlotRandom2],
+  data: [chartData.scatterPlotRandom],
   // data: [chartData.scatterPlot, chartData.scatterPlot2, chartData.scatterPlot3],
   selector: '#chart',
   options: [options.options13],

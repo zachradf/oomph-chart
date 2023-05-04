@@ -181,7 +181,7 @@ chartData.scatterPlot3 = [
 //   item.y = Math.floor(Math.random() * (100 - 10) + 10);
 // });
 // cadidate for y2 axis
-function generateRandomCoordinates(numPoints = 50, range = 5000) {
+function generateRandomCoordinates(numPoints = 1000, range = 5000) {
   const coordinates = [];
 
   for (let i = 0; i < numPoints; i++) {

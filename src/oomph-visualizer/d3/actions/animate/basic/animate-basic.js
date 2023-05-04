@@ -26,14 +26,26 @@ export default function addAnimation(selector, data, options, chartComponents, d
       .call(chartComponents.yAxis);
 
     let chartElements = chart.selectAll('g rect, g circle, .line-graph0, .area-chart0, path');
+    const type = chartElements.nodes()[0].className.baseVal || (chartElements.nodes()[0].nodeName === 'path' && 'pie-chart0');
+    const sortedData = data.slice().sort((a, b) => d3.ascending(a.x, b.x));
+
     // if (options.isUpdating) {
     //   chartElements = d3.selectAll(`svg.${options.chartClass} circle, arc, rect, path, line, polygon, node`);
     // }
+
     // Calculate the difference between the length of the new dataset and the number of elements
     // in the initial chart
-    let numPlaceholders = data.length - chartElements.size();
-    console.log('numPlaceholders', numPlaceholders);
+    // console.log('numPlaceholders', numPlaceholders);
+    if (type === 'area-chart0' || type === 'line-graph0') {
+      if (type === 'area-chart0') {
+        animateArea(chart, sortedData, chartComponents, options, duration);
+        return;
+      }
+      animateLine(chartElements, sortedData, chartComponents, duration);
+      return;
+    }
 
+    let numPlaceholders = data.length - chartElements.size();
     if (numPlaceholders > 0) {
       while (numPlaceholders > 0) {
         const selectedElement = chartElements.nodes()[0];
@@ -57,20 +69,13 @@ export default function addAnimation(selector, data, options, chartComponents, d
         numPlaceholders++;
       }
     }
-    chartElements = chart.selectAll('g rect, g circle, .line-graph0, .area-chart0, path').data(data);
+    chartElements = chart.selectAll('g rect, g circle, .line-graph0, .area-chart0 path, path').data(data);
 
-    const sortedData = data.slice().sort((a, b) => d3.ascending(a.x, b.x));
-    const type = chartElements.nodes()[0].className.baseVal || (chartElements.nodes()[0].nodeName === 'path' && 'pie-chart0');
-    console.log('TYPE', type);
-    // Update the area chart separately
+    console.log('TYPE', type, 'chartElements', chartElements);
     switch (type) {
       case 'bar-chart0': animateBar(chartElements, data, chartComponents, options, duration);
         break;
       case 'scatter-plot0': animateScatter(chartElements, data, chartComponents, duration);
-        break;
-      case 'line-graph0': animateLine(chartElements, sortedData, chartComponents, duration);
-        break;
-      case 'area-chart0': animateArea(chart, sortedData, chartComponents, options, duration);
         break;
       case 'pie-chart0': animatePie(chartComponents, data, duration, options);
         break;
