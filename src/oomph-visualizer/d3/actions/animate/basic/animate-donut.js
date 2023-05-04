@@ -37,7 +37,7 @@ export default function animateDonutChart(chartComponents, data, duration, optio
     (update) => update.select('path').transition()
       .duration(duration)
       .attr('d', arc),
-    (exit) => exit.remove(),
+    (exit) => exit.remove()
   );
 
   // Update labels
@@ -56,6 +56,6 @@ export default function animateDonutChart(chartComponents, data, duration, optio
       .duration(duration)
       .attr('transform', (d) => `translate(${labelArc.centroid(d)})`)
       .text((d) => d.data.x),
-    (exit) => exit.remove(),
+    (exit) => exit.remove()
   );
 }

@@ -34,8 +34,8 @@ const superBarObject = new OomphChart(superData.basic);
 // }, '#chart');
 // Adds Charts
 // Basic Charts
-// const areaObject2 = new BasicClass(['scatter'], inputData.input2);
-const barObject = new BasicClass(['pie'], inputData.input6);
+// const areaObject2 = new BasicClass(['line'], inputData.input2);
+// const barObject = new BasicClass(['pie'], inputData.input6);
 // const wordCloudObject = new HierarchyClass(['wordcloud'], inputData.input30);
 // onHover('#chart', [options]);
 // const bubbleObject = new BasicClass(['bubble'], inputData.input5);// fix category labels
@@ -84,7 +84,7 @@ const barObject = new BasicClass(['pie'], inputData.input6);
 // setTimeout(() => barObject.updateInput(inputData.input2), 5000);
 // setTimeout(() => barObject.updateInput(inputData.input21), 8000);
 
-// setTimeout(() => areaObject2.updateInput(inputData.input24), 6500);
+// setTimeout(() => areaObject2.updateInput(inputData.input21), 2000);
 // setTimeout(() => areaObject2.updateInput(inputData.input2), 10000);
 // setTimeout(() => areaObject2.removeChart('scatter'), 15000);
 

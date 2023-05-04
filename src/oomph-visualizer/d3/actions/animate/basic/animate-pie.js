@@ -36,7 +36,7 @@ export default function animatePie(chartComponents, data, duration, options) {
     (update) => update.transition()
       .duration(duration)
       .attr('d', arc),
-    (exit) => exit.remove(),
+    (exit) => exit.remove()
   );
 
   // Update labels
@@ -53,6 +53,6 @@ export default function animatePie(chartComponents, data, duration, options) {
       .duration(duration)
       .attr('transform', (d) => `translate(${labelArc.centroid(d)})`)
       .text((d) => d.data.x),
-    (exit) => exit.remove(),
+    (exit) => exit.remove()
   );
 }

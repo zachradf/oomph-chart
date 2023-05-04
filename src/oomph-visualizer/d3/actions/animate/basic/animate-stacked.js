@@ -1,3 +1,5 @@
+import animateBar from './animate-bar';
+
 export default function createD3StackedBarChart(data, options, chartComponents) {
   const {
     x, y, svg,
@@ -31,7 +33,7 @@ export default function createD3StackedBarChart(data, options, chartComponents) 
         .attr('width', x.bandwidth())
         .call((enterSelection) => animateBar(enterSelection, data, chartComponents, options, options.duration)),
       (update) => update
-        .call((updateSelection) => animateBar(updateSelection, data, chartComponents, options, options.duration)),
+        .call((updateSelection) => animateBar(updateSelection, data, chartComponents, options, options.duration))
     )
     .transition()
     .duration(options.duration)

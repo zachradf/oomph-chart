@@ -118,6 +118,6 @@ export default function updateD3FunnelChart(chartComponents, data, duration, opt
       .attr('height', y.bandwidth())
       .attr('fill', (d) => colorScale(d.x)),
     // .attr('transform', (d, i) => `translate(0, ${y(d.x)})`),
-    (exit) => exit.remove(),
+    (exit) => exit.remove()
   );
 }
