@@ -6,12 +6,12 @@ export default function appendAxes(chart, options, chartComponents) {
   const { xAxis } = chartComponents;
   const { yAxis } = chartComponents;
   // this will be checked by graph tags in the future
-  if (chart === 'POLAR' || chart === 'RADAR' || chart === 'PIE' || chart === 'DONUT' || chart === 'HEATMAP' || chart === 'BUBBLE') return;
+  if (chart === 'polar' || chart === 'radar' || chart === 'pie' || chart === 'donut' || chart === 'heatmap' || chart === 'bubble') return;
   if (!options.isUpdating) {
     // X-axis
     const xAxisG = svg.append('g')
       .classed('x-axis', true)
-      .attr('transform', chart === 'STACKEDBAR' ? `translate(0,${height - margin.bottom})` : '')
+      .attr('transform', chart === 'stackedbar' ? `translate(0,${height - margin.bottom})` : '')
       .call(xAxis);
 
     // Style X-axis ticks
@@ -39,7 +39,7 @@ export default function appendAxes(chart, options, chartComponents) {
     // Y-axis
     const yAxisG = svg.append('g')
       .classed('y-axis', true)
-      .attr('transform', chart === 'STACKEDBAR' ? `translate(${margin.left},0)` : '')
+      .attr('transform', chart === 'stackedbar' ? `translate(${margin.left},0)` : '')
       .call(yAxis);
 
     // Style Y-axis ticks

@@ -21,7 +21,7 @@ export default function applyColorGradient(selector, color1, color2, type, axis,
     .attr('offset', '100%')
     .attr('stop-color', color2);
 
-  if (type === 'BAR') {
+  if (type === 'bar') {
     if (axis === 'y') {
       gradient.attr('y1', svg.select('.y-axis').node().getBBox().height)
         .attr('y2', 0);
@@ -37,7 +37,7 @@ export default function applyColorGradient(selector, color1, color2, type, axis,
 
       svg.selectAll('rect').style('fill', (d) => colorScale(d.y));
     }
-  } else if (type === 'scatter-plot') {
+  } else if (type === 'scatter') {
     let maxValue; let minValue; let
       valueAccessor;
     if (axis === 'x') {
@@ -54,7 +54,7 @@ export default function applyColorGradient(selector, color1, color2, type, axis,
       .range([color1, color2]);
 
     svg.selectAll('circle').style('fill', (d) => colorScale(valueAccessor(d)));
-  } else if (type === 'pie-chart') {
+  } else if (type === 'pie') {
     const minValue = d3.min(data, (d) => d.y);
     const maxValue = d3.max(data, (d) => d.y);
 
@@ -64,7 +64,7 @@ export default function applyColorGradient(selector, color1, color2, type, axis,
 
     svg.selectAll('path')
       .attr('fill', (d) => colorScale(d.y));
-  } else if (type === 'donut-chart') {
+  } else if (type === 'donut') {
     const minValue = d3.min(data, (d) => d.y);
     const maxValue = d3.max(data, (d) => d.y);
 
@@ -74,9 +74,8 @@ export default function applyColorGradient(selector, color1, color2, type, axis,
 
     svg.selectAll('path')
       .attr('fill', (d) => colorScale(d.data.y));
-  } else if (type === 'area-chart' || type === 'line-chart') {
+  } else if (type === 'area' || type === 'line') {
     const elements = svg.selectAll('path');
-    console.log('ELEMENTS', elements);
     const minValue = d3.min(data, (d) => d[axis]);
     const maxValue = d3.max(data, (d) => d[axis]);
 
@@ -85,7 +84,6 @@ export default function applyColorGradient(selector, color1, color2, type, axis,
       .range([color1, color2]);
 
     if (axis === 'x') {
-      console.log('X AXIS', svg.select('.x-axis'));
       gradient
         .attr('x1', svg.select('.x-axis').node().getBBox().x)
         .attr('x2', svg.select('.x-axis').node().getBBox().width)
@@ -98,7 +96,7 @@ export default function applyColorGradient(selector, color1, color2, type, axis,
         .attr('y1', svg.select('.y-axis').node().getBBox().height)
         .attr('y2', 0);
     }
-    if (type === 'area-chart') {
+    if (type === 'area') {
       elements.style('fill', 'url(#gradient)');
     } else { // LINE
       const lineGradient = svg.append('linearGradient')
@@ -126,54 +124,55 @@ export default function applyColorGradient(selector, color1, color2, type, axis,
 
       elements.style('stroke', 'url(#line-gradient)');
     }
-  } else if (type === 'radar-chart') {
-    // Get the width and height of the SVG element
-    const svgBoundingBox = svg.node().getBBox();
-    const { width } = svgBoundingBox;
-    const { height } = svgBoundingBox;
-    const minValue = 0;
-    const maxValue = d3.max(data, (d) => d.value); // Calculate the max value from data
-
-    const colorScale = d3.scaleLinear()
-      .domain([minValue, maxValue])
-      .range([color1, color2]);
-
-    // Calculate the rScale for the radar chart
-    const radius = Math.min(width, height) / 2;
-    const rScale = d3.scaleLinear().domain([0, maxValue]).range([0, radius]);
-
-    // Compute the distance from the center for each point
-    const distanceFromCenter = data.map((d) => {
-      const { value } = d;
-      const scaledValue = rScale(value);
-      return scaledValue;
-    });
-
-    // Update the radar chart path fill using the computed distance
-    svg.selectAll('.radar-chart-path')
-      .attr('fill', (d, i) => {
-        const distances = d.map((point, index) => distanceFromCenter[index]);
-        const gradientId = `radar-gradient-${i}`;
-        const gradient = svg.append('linearGradient')
-          .attr('id', gradientId)
-          .attr('gradientUnits', 'userSpaceOnUse')
-          .attr('x1', 0)
-          .attr('x2', 0)
-          .attr('y1', 0)
-          .attr('y2', radius);
-
-        distances.forEach((distance, index) => {
-          const color = colorScale(distance);
-          const offset = (index / (distances.length - 1)) * 100;
-
-          gradient.append('stop')
-            .attr('offset', `${offset}%`)
-            .attr('stop-color', color);
-        });
-
-        return `url(#${gradientId})`;
-      });
   } else {
     throw new Error(`Unsupported chart type ${type}`);
   }
 }
+// else if (type === 'radar') {
+//   // Get the width and height of the SVG element
+//   const svgBoundingBox = svg.node().getBBox();
+//   const { width } = svgBoundingBox;
+//   const { height } = svgBoundingBox;
+//   const minValue = 0;
+//   const maxValue = d3.max(data, (d) => d.value); // Calculate the max value from data
+
+//   const colorScale = d3.scaleLinear()
+//     .domain([minValue, maxValue])
+//     .range([color1, color2]);
+
+//   // Calculate the rScale for the radar chart
+//   const radius = Math.min(width, height) / 2;
+//   const rScale = d3.scaleLinear().domain([0, maxValue]).range([0, radius]);
+
+//   // Compute the distance from the center for each point
+//   const distanceFromCenter = data.map((d) => {
+//     const { value } = d;
+//     const scaledValue = rScale(value);
+//     return scaledValue;
+//   });
+
+//   // Update the radar chart path fill using the computed distance
+//   svg.selectAll('.radar-chart-path')
+//     .attr('fill', (d, i) => {
+//       const distances = d.map((point, index) => distanceFromCenter[index]);
+//       const gradientId = `radar-gradient-${i}`;
+//       const gradient = svg.append('linearGradient')
+//         .attr('id', gradientId)
+//         .attr('gradientUnits', 'userSpaceOnUse')
+//         .attr('x1', 0)
+//         .attr('x2', 0)
+//         .attr('y1', 0)
+//         .attr('y2', radius);
+
+//       distances.forEach((distance, index) => {
+//         const color = colorScale(distance);
+//         const offset = (index / (distances.length - 1)) * 100;
+
+//         gradient.append('stop')
+//           .attr('offset', `${offset}%`)
+//           .attr('stop-color', color);
+//       });
+
+//       return `url(#${gradientId})`;
+//     });
+// }

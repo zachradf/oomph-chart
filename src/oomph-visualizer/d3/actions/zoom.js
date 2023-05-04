@@ -28,7 +28,7 @@
 //   svg.call(zoom);
 // }
 export default function addZooming(selector, type) {
-  if (type === 'SCATTER' || type === 'STACKEDBAR' || type === 'BAR') {
+  if (type === 'scatter' || type === 'stackedbar' || type === 'bar') {
     const svg = d3.select(selector).select('svg');
     const group = svg.select('g');
 
@@ -44,7 +44,7 @@ export default function addZooming(selector, type) {
     const y = d3.scaleLinear().range([+svg.attr('height'), 0]);
 
     svg.call(zoom);
-  } else if (type === 'PIE' || type === 'DONUT') {
+  } else if (type === 'pie' || type === 'donut') {
     const svg = d3.select(selector).select('svg');
     const group = svg.select('g');
 
@@ -55,7 +55,7 @@ export default function addZooming(selector, type) {
       });
 
     svg.call(zoom);
-  } else if (type === 'LINE') {
+  } else if (type === 'line') {
     const svg = d3.select(selector).select('svg');
     const x = d3.scaleLinear().range([margin.left, width - margin.right]);
     const y = d3.scaleLinear().range([height - margin.bottom, margin.top]);
@@ -74,7 +74,7 @@ export default function addZooming(selector, type) {
   }
 }
 // export default function addZooming(selector, type) {
-//   if (type === 'SCATTER' || type === 'STACKEDBAR' || type === 'BAR' || type === 'LINE') {
+//   if (type === 'scatter' || type === 'stackedbar' || type === 'bar' || type === 'line') {
 //     const svg = d3.select(selector).select('svg');
 //     const group = svg.select('g');
 //     const xAxis = svg.select('.x-axis');
@@ -105,7 +105,7 @@ export default function addZooming(selector, type) {
 //       });
 
 //     svg.call(zoom);
-//   } else if (type === 'PIE' || type === 'DONUT') {
+//   } else if (type === 'pie' || type === 'donut') {
 //     const svg = d3.select(selector).select('svg');
 //     const group = svg.select('g');
 

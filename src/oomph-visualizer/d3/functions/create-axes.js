@@ -4,8 +4,8 @@ export default function createAxes(data, chart, options) {
   let x;
 
   switch (chart) {
-    case 'BAR':
-    case 'BOX':
+    case 'bar':
+    case 'box':
       data.sort((a, b) => d3.ascending(a.x, b.x));
       if (typeof data[0].x === 'string') {
         x = d3.scaleBand()
@@ -18,20 +18,20 @@ export default function createAxes(data, chart, options) {
           .range([options.margin.left, options.width - options.margin.right]);
       }
       break;
-    case 'FUNNEL':
+    case 'funnel':
       const totalValue = data.reduce((acc, curr) => acc + curr.y, 0);
       x = d3
         .scaleLinear()
         .domain([0, totalValue])
         .range([options.margin.left, options.width - options.margin.right]);
       break;
-    case 'WATERFALL':
+    case 'waterfall':
       x = d3.scaleBand()
         .domain([data[0].category, ...data.map((d) => d.category), data[data.length - 1].category])
         .range([options.margin.left, options.width - options.margin.right])
         .padding(0.1);
       break;
-    case 'STACKEDBAR':
+    case 'stackedbar':
       x = d3.scaleBand()
         .domain(data.map((d) => d.category))
         .range([options.margin.left, options.width - options.margin.right])
@@ -45,18 +45,18 @@ export default function createAxes(data, chart, options) {
 
   // Convert this to a switch case
   const scaleFunctions = {
-    BAR: () => d3.scaleLinear()
+    bar: () => d3.scaleLinear()
       .domain([0, d3.max(data, (d) => d.y)]).nice()
       .range([options.height - options.margin.bottom, options.margin.top]),
-    FUNNEL: () => d3.scaleBand()
+    funnel: () => d3.scaleBand()
       .domain(data.map((d) => d.x))
       .range([options.margin.top, options.height - options.margin.bottom])
       .padding(0.1),
-    STACKEDBAR: () => d3.scaleLinear()
+    stackedbar: () => d3.scaleLinear()
       .domain([0, d3.max(data, (d) => d3.sum(d.values.map((v) => v.value)))])
       .nice()
       .range([options.height - options.margin.bottom, options.margin.top]),
-    WATERFALL: () => d3.scaleLinear()
+    waterfall: () => d3.scaleLinear()
       .domain([d3.min(data, (d) => d.start), d3.max(data, (d) => d.end)])
       .nice()
       .range([options.height - options.margin.bottom, options.margin.top]),
@@ -99,7 +99,7 @@ export default function createAxes(data, chart, options) {
   };
   let yAxis;
   switch (chart) {
-    case 'WATERFALL':
+    case 'waterfall':
       yAxis = (g) => g
         .attr('transform', `translate(${yAxisPosition},0)`)
         .call(d3.axisLeft(y).tickSize(0)).ticks(yTickFrequency)
@@ -125,7 +125,7 @@ export default function createAxes(data, chart, options) {
     default:
       yAxis = (g) => g
         .attr('transform', `translate(${yAxisPosition},0)`)
-        .call(d3.axisLeft(y).ticks(chart === 'STACKEDBAR' ? null : yTickFrequency).tickSize(0))
+        .call(d3.axisLeft(y).ticks(chart === 'stackedbar' ? null : yTickFrequency).tickSize(0))
         .call((g) => {
           g.selectAll('.tick')
             .each(function () {

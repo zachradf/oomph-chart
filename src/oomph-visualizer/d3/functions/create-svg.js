@@ -13,13 +13,12 @@ export default function createSVG(selector, chart, options) {
       .attr('width', options.width)
       .attr('height', options.height);
 
-    if (chart === 'PIE' || chart === 'DONUT' || chart === 'GAUGE' || chart === 'POLAR' || chart === 'RADAR') {
+    if (chart === 'pie' || chart === 'donut' || chart === 'gauge' || chart === 'polar' || chart === 'radar') {
       svg.classed(`${options.chartClass}`, true);
-      console.log('SVG', svg);
       const g = svg.append('g')
         .attr('transform', `translate(${options.width / 2}, ${options.height / 2})`);
 
-      if (chart === 'DONUT') {
+      if (chart === 'donut') {
         svg.attr('viewBox', `0 0 ${options.width} ${options.height}`);
       }
 
@@ -41,7 +40,7 @@ export default function createSVG(selector, chart, options) {
     }
     return svg;
   }
-  if (chart === 'PIE' || chart === 'DONUT' || chart === 'GAUGE' || chart === 'POLAR' || chart === 'RADAR' || chart === 'CHORD' || chart === 'CLUSTER') {
+  if (chart === 'pie' || chart === 'donut' || chart === 'gauge' || chart === 'polar' || chart === 'radar' || chart === 'chord' || chart === 'cluster') {
     svg = d3.select(selector)
       .append('svg')
       .classed(`${options.chartClass}`, true)
@@ -50,9 +49,9 @@ export default function createSVG(selector, chart, options) {
       .append('g');
     // .attr('transform', `translate(${options.width / 2}, ${options.height / 2})`);
 
-    if (chart === 'DONUT') {
+    if (chart === 'donut') {
       svg.attr('viewBox', `0 0 ${options.width} ${options.height}`);
-    } else if (chart === 'BUBBLE') {
+    } else if (chart === 'bubble') {
       svg = d3.select(selector)
         .append('svg')
         .classed('bubble-chart', true)
