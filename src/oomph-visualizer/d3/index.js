@@ -3,6 +3,7 @@ import createAxes from './functions/create-axes.js';
 import createSVG from './functions/create-svg.js';
 
 import addAnimation from './actions/animate/basic/animate-basic.js';
+import addGradient from './actions/gradient.js';
 import onHover from './actions/on-hover.js';
 import relativeNode from './actions/relative-node.js';
 import D3ChartTypes from './types/chart-types.js';
@@ -75,6 +76,14 @@ export default class D3Visualizer {
 
 function applyActions(i) {
   const options = this.options[i];
+  if (options.gradient) {
+    addGradient(
+      this.selector,
+      this.chartArray[i],
+      this.data,
+      options
+    );
+  }
 
   if (options.onHover) {
     onHover(this.selector, this.options);

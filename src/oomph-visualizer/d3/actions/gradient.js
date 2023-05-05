@@ -1,8 +1,9 @@
-export default function applyColorGradient(selector, color1, color2, type, axis, data) {
+export default function applyColorGradient(selector, type, data, options) {
+  const {
+    color1, color2, gradientAxis,
+  } = options;
   const svg = d3.select(selector).select('svg');
-  // type = type.slice(0, -1);
-  console.log('TYPE', type);
-  console.log('X AXIS', svg.select('.x-axis'));
+  console.log('TYPE', type, 'axis', gradientAxis);
 
   // Create the gradient element
   const gradient = svg.append('linearGradient')
@@ -22,29 +23,34 @@ export default function applyColorGradient(selector, color1, color2, type, axis,
     .attr('stop-color', color2);
 
   if (type === 'bar') {
-    if (axis === 'y') {
+    if (gradientAxis === 'y') {
       gradient.attr('y1', svg.select('.y-axis').node().getBBox().height)
         .attr('y2', 0);
 
       svg.selectAll('rect').style('fill', 'url(#gradient)');
-    } else if (axis === 'x') {
-      const maxValue = d3.max(svg.selectAll('rect').data(), (d) => d.y);
-      const minValue = d3.min(svg.selectAll('rect').data(), (d) => d.y);
+    } else if (gradientAxis === 'x') {
+      const maxValue = d3.max(svg.selectAll(`rect.${options.chartClass}${0}`).data(), (d) => d.y);
+      const minValue = d3.min(svg.selectAll(`rect.${options.chartClass}${0}`).data(), (d) => d.y);
 
       const colorScale = d3.scaleLinear()
         .domain([minValue, maxValue])
         .range([color1, color2]);
-
-      svg.selectAll('rect').style('fill', (d) => colorScale(d.y));
+      const elements = d3.selectAll(`rect.${options.chartClass}${0}`);
+      console.log('ELEMENTS', elements);
+      elements.style('fill', (d) => {
+        console.log('D', colorScale(d.y));
+        colorScale(d.y);
+      });
+      d3.selectAll(`rect.${options.chartClass}${0}`).style('fill', (d) => colorScale(d.y));
     }
   } else if (type === 'scatter') {
     let maxValue; let minValue; let
       valueAccessor;
-    if (axis === 'x') {
+    if (gradientAxis === 'x') {
       maxValue = d3.max(svg.selectAll('circle').data(), (d) => d.x);
       minValue = d3.min(svg.selectAll('circle').data(), (d) => d.x);
       valueAccessor = (d) => d.x;
-    } else if (axis === 'y') {
+    } else if (gradientAxis === 'y') {
       maxValue = d3.max(svg.selectAll('circle').data(), (d) => d.y);
       minValue = d3.min(svg.selectAll('circle').data(), (d) => d.y);
       valueAccessor = (d) => d.y;
@@ -76,14 +82,14 @@ export default function applyColorGradient(selector, color1, color2, type, axis,
       .attr('fill', (d) => colorScale(d.data.y));
   } else if (type === 'area' || type === 'line') {
     const elements = svg.selectAll('path');
-    const minValue = d3.min(data, (d) => d[axis]);
-    const maxValue = d3.max(data, (d) => d[axis]);
+    const minValue = d3.min(data, (d) => d[gradientAxis]);
+    const maxValue = d3.max(data, (d) => d[gradientAxis]);
 
     const colorScale = d3.scaleLinear()
       .domain([minValue, maxValue])
       .range([color1, color2]);
 
-    if (axis === 'x') {
+    if (gradientAxis === 'x') {
       gradient
         .attr('x1', svg.select('.x-axis').node().getBBox().x)
         .attr('x2', svg.select('.x-axis').node().getBBox().width)
@@ -102,17 +108,17 @@ export default function applyColorGradient(selector, color1, color2, type, axis,
       const lineGradient = svg.append('linearGradient')
         .attr('id', 'line-gradient')
         .attr('gradientUnits', 'userSpaceOnUse')
-        .attr('x1', axis === 'x' ? 0 : svg.select('.x-axis').node().getBBox().width)
-        .attr('x2', axis === 'x' ? svg.select('.x-axis').node().getBBox().width : 0)
-        .attr('y1', axis === 'y' ? 0 : svg.select('.y-axis').node().getBBox().height)
-        .attr('y2', axis === 'y' ? svg.select('.y-axis').node().getBBox().height : 0);
+        .attr('x1', gradientAxis === 'x' ? 0 : svg.select('.x-axis').node().getBBox().width)
+        .attr('x2', gradientAxis === 'x' ? svg.select('.x-axis').node().getBBox().width : 0)
+        .attr('y1', gradientAxis === 'y' ? 0 : svg.select('.y-axis').node().getBBox().height)
+        .attr('y2', gradientAxis === 'y' ? svg.select('.y-axis').node().getBBox().height : 0);
 
       data.forEach((d, i, arr) => {
         if (i === arr.length - 1) {
           return;
         }
 
-        const color = colorScale(d[axis]);
+        const color = colorScale(d[gradientAxis]);
         lineGradient.append('stop')
           .attr('offset', `${(i / (arr.length - 1)) * 100}%`)
           .attr('stop-color', color);
