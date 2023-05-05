@@ -21,9 +21,7 @@ export default defineConfig({
     sourcemap: true,
     rollupOptions: {
       input: {
-        'oomph-chart': 'src/oomph-chart/index.js',
-        // oomph-visualizer: 'src/oomph-visualizer/index.js', // TODO WIP
-        // oomph-interface: 'src/oomph-interface/index.js', // TODO WIP
+        'oomph-chart': 'src/oomph-chart/main/index.js',
       },
       output: [
         {

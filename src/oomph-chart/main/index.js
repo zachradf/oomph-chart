@@ -1,11 +1,11 @@
+import OomphModel from '../model/index.js';
+import OomphInterface from '../interfaces/index.js';
+
 import { renderImplementation } from './methods/render-implementation.js';
 import {
   getCompatibleChartTypes,
   verifyVisualizer,
 } from './validators/visualizer-validator.js';
-import { getCompatibleInputTypes } from './validators/input-validator.js';
-import { getInputToTagAdjacencies } from './edges/input-to-tag-getter.js';
-import { getTagToChartAdjacencies } from './edges/tag-to-chart-getter.js';
 
 /**
  * Determines and defines the relationship between input data and resulting charts.
@@ -22,13 +22,18 @@ import { getTagToChartAdjacencies } from './edges/tag-to-chart-getter.js';
 export default class OomphChart {
   constructor(userInput, visualizer = 'd3') {
     this.data = userInput;
-    this.inputs = getCompatibleInputTypes(this.data);
-    this.tags = getInputToTagAdjacencies(this.inputs);
-    this.chartsEligible = getTagToChartAdjacencies(this.tags);
+
+    const model = new OomphModel(this.data);
+    this.inputs = model.inputs;
+    this.tags = model.tags;
+    this.chartsEligible = model.chartsEligible;
 
     // Determine which of the eligible charts are supported by the visualizer.
     this.visualizer = verifyVisualizer(visualizer);
     this.charts = getCompatibleChartTypes(this.chartsEligible, this.visualizer);
+
+    const oomphInterface = new OomphInterface();
+    // oomphInterface.render();
   }
 
   render(chartType) {

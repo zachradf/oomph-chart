@@ -1,5 +1,5 @@
-// import geoJsonData from '../../../../sample-data/geo-json/geo';
-import geoJsonData from '../../../../sample-data/geo-json/geo-usa';
+// import geoJsonData from '../../../../../sample-data/geo-json/geo';
+import geoJsonData from '../../../../../sample-data/geo-json/geo-usa';
 
 export default function createPointMap(dataset, options, selector) {
   console.log('geoJsonData:', geoJsonData);

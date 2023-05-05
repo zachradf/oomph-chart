@@ -1,7 +1,7 @@
 import { chartData } from './chart.js';
 import { optionData as options } from './options.js';
 
-import OptionTypes from '../oomph-visualizer/d3/types/option-types.js';
+import OptionTypes from '../oomph-chart/visualizers/d3/types/option-types.js';
 
 const optionTypes = new OptionTypes();
 

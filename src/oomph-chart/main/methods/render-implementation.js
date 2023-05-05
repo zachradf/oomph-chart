@@ -1,7 +1,7 @@
-import ChartTypes from '../types/chart-types.js';
+import ChartTypes from '../../model/types/chart-types.js';
 import VisualizerTypes from '../types/visualizer-types.js';
-import OptionTypes from '../../oomph-visualizer/d3/types/option-types.js';
-import D3Visualizer from '../../oomph-visualizer/d3/index.js';
+import OptionTypes from '../../visualizers/d3/types/option-types.js';
+import D3Visualizer from '../../visualizers/d3/index.js';
 
 const chartTypes = new ChartTypes();
 const optionTypes = new OptionTypes();

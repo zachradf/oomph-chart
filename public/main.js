@@ -1,32 +1,31 @@
 // import { create } from 'd3-selection';
-// import BasicClass from '../src/oomph-visualizer/d3/render-legacy/basic.js';
-// import HierarchyClass from '../src/oomph-visualizer/d3/render-legacy/hierarchy.js';
-import D3Visualizer from '../src/oomph-visualizer/d3/index.js';
-import OomphChart from '../src/oomph-chart/index.js';
-import OptionTypes from '../src/oomph-visualizer/d3/types/option-types.js';
+import D3Visualizer from '../src/oomph-chart/visualizers/d3/index.js';
+import OomphChart from '../src/oomph-chart/main/index.js';
+import OptionTypes from '../src/oomph-chart/visualizers/d3/types/option-types.js';
 
 // import { inputData } from '../src/sample-data/input.js';
 import { superData } from '../src/sample-data/super.js';
 
-import onHover from '../src/oomph-visualizer/d3/actions/on-hover.js';
-import zoom from '../src/oomph-visualizer/d3/actions/zoom.js';
-import gradient from '../src/oomph-visualizer/d3/actions/gradient.js';
-import createChoropleth from '../src/oomph-visualizer/d3/charts/geographical/choropleth.js';
-import createPointMap from '../src/oomph-visualizer/d3/charts/geographical/point.js';
+import onHover from '../src/oomph-chart/visualizers/d3/actions/on-hover.js';
+import zoom from '../src/oomph-chart/visualizers/d3/actions/zoom.js';
+import gradient from '../src/oomph-chart/visualizers/d3/actions/gradient.js';
+import createChoropleth from '../src/oomph-chart/visualizers/d3/charts/geographical/choropleth.js';
+import createPointMap from '../src/oomph-chart/visualizers/d3/charts/geographical/point.js';
 import { chartData } from '../src/sample-data/chart.js';
 import { optionData } from '../src/sample-data/options.js';
 
 const optionTypes = new OptionTypes();
 
-const superObjects = {};
-superObjects.testFor_string_number = new OomphChart(superData.basic);
-superObjects.testFor_number_number = new OomphChart(superData.hierarchic);
-console.log(superObjects);
+// const superObjects = {};
+// superObjects.testFor_string_number = new OomphChart(superData.basic);
+// superObjects.testFor_number_number = new OomphChart(superData.hierarchic);
+// console.log(superObjects);
 
 /* EXAMPLE CODE */
 
 // Example 1: Invoking a bar chart via OomphChart (ultimately, the intended technique)
-// const barExample1 = new OomphChart(superData.basic);
+const barExample1 = new OomphChart(superData.basic);
+console.log(barExample1);
 // barExample1.render('bar');
 
 // Example 2: *Interim* workflow with optionTypes

@@ -1,4 +1,4 @@
-import D3ChartTypes from '../../oomph-visualizer/d3/types/chart-types.js';
+import D3ChartTypes from '../../visualizers/d3/types/chart-types.js';
 
 const d3ChartTypes = new D3ChartTypes();
 
