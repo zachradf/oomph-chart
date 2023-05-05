@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
-
+import compression from 'vite-plugin-compression';
 import path from 'path';
-
 import pkg from './package.json';
 
 const isDevelopment = process.env.NODE_ENV === 'development';
@@ -24,6 +23,7 @@ export default defineConfig({
       input: {
         'oomph-chart': 'src/oomph-chart/index.js',
         // oomph-visualizer: 'src/oomph-visualizer/index.js', // TODO WIP
+        // oomph-interface: 'src/oomph-interface/index.js', // TODO WIP
       },
       output: [
         {
@@ -42,6 +42,16 @@ export default defineConfig({
       external: [], // List any external dependencies here
     },
   },
+
+  // Compress outputted files to .gz format
+  plugins: [
+    compression({
+      algorithm: 'gzip',
+      ext: '.gz',
+      threshold: 10240, // Minimum file size (in bytes) to compress
+      deleteOriginalAssets: false,
+    }),
+  ],
 
   // Used as part of the development build
   publicDir: publicDirValue,
