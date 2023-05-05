@@ -1,9 +1,11 @@
 // import { create } from 'd3-selection';
-import BasicClass from '../src/oomph-visualizer/d3/render-legacy/basic.js';
-import HierarchyClass from '../src/oomph-visualizer/d3/render-legacy/hierarchy.js';
+// import BasicClass from '../src/oomph-visualizer/d3/render-legacy/basic.js';
+// import HierarchyClass from '../src/oomph-visualizer/d3/render-legacy/hierarchy.js';
+import D3Visualizer from '../src/oomph-visualizer/d3/index.js';
 import OomphChart from '../src/oomph-chart/index.js';
+import OptionTypes from '../src/oomph-visualizer/d3/types/option-types.js';
 
-import { inputData } from '../src/sample-data/input.js';
+// import { inputData } from '../src/sample-data/input.js';
 import { superData } from '../src/sample-data/super.js';
 
 import onHover from '../src/oomph-visualizer/d3/actions/on-hover.js';
@@ -12,14 +14,29 @@ import gradient from '../src/oomph-visualizer/d3/actions/gradient.js';
 import createChoropleth from '../src/oomph-visualizer/d3/charts/geographical/choropleth.js';
 import createPointMap from '../src/oomph-visualizer/d3/charts/geographical/point.js';
 import { chartData } from '../src/sample-data/chart.js';
+import { optionData } from '../src/sample-data/options.js';
+
+const optionTypes = new OptionTypes();
 
 const superObjects = {};
 superObjects.testFor_string_number = new OomphChart(superData.basic);
 superObjects.testFor_number_number = new OomphChart(superData.hierarchic);
 console.log(superObjects);
 
-const superBarObject = new OomphChart(superData.basic);
-// superBarObject.render('bar');
+/* EXAMPLE CODE */
+
+// Example 1: Invoking a bar chart via OomphChart (ultimately, the intended technique)
+// const barExample1 = new OomphChart(superData.basic);
+// barExample1.render('bar');
+
+// Example 2: *Interim* workflow with optionTypes
+// const barExample2 = new D3Visualizer(['bar'], [chartData.barChart], [optionTypes.bar.legacyOptions]);
+
+// Example 3: *Interim* workflow with optionData (in case more granual control is needed)
+// const barExample3 = new D3Visualizer(['bar'], [chartData.barChart], [optionData.options5]);
+
+/* END EXAMPLE CODE */
+
 // const barObjectTemp = new BasicClass(['bar'], inputData.input1);
 // onHover('#scatter', options);
 // createPointMap(chartData.choropleth, {
@@ -34,12 +51,12 @@ const superBarObject = new OomphChart(superData.basic);
 // }, '#chart');
 // Adds Charts
 // Basic Charts
-const areaObject2 = new BasicClass(['line'], inputData.input2);
+// const areaObject2 = new BasicClass(['line'], inputData.input2);
 // const barObject = new BasicClass(['pie'], inputData.input6);
 // const wordCloudObject = new HierarchyClass(['wordcloud'], inputData.input30);
 // onHover('#chart', [options]);
 // const bubbleObject = new BasicClass(['bubble'], inputData.input5);// fix category labels
-const areaObject = new BasicClass(['bar'], inputData.input23);
+// const areaObject = new BasicClass(['bar'], inputData.input23);
 // const donutChartObject2 = new BasicClass(['donut'], inputData.input4);
 // const funnelObject = new BasicClass(['funnel'], inputData.input11);
 // const gaugeObject = new BasicClass(['gauge'], inputData.input14); // STILL NEEDS WORK

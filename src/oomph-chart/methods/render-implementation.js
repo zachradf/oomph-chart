@@ -1,7 +1,7 @@
-import BasicClass from '../../oomph-visualizer/d3/render-legacy/basic.js';
 import ChartTypes from '../types/chart-types.js';
 import VisualizerTypes from '../types/visualizer-types.js';
 import OptionTypes from '../../oomph-visualizer/d3/types/option-types.js';
+import D3Visualizer from '../../oomph-visualizer/d3/index.js';
 
 const chartTypes = new ChartTypes();
 const optionTypes = new OptionTypes();
@@ -44,16 +44,11 @@ export function renderImplementation(
 
   console.log(`Drawing a ${chartTypes[chartType].nameLong} with ${data.length} data point(s) using ${visualizerTypes[visualizer].name}.`);
 
-  // TODO for now, only support basic chart types
-  const tempInput = {
-    data: [data],
-    options: [optionTypes[chartType].legacyOptions],
-    selector: '#chart',
-  };
-
   // eslint-disable-next-line no-underscore-dangle
-  const tempChartArray = [chartTypes[chartType]._selfKey];
+  const tempCharts = [chartTypes[chartType]._selfKey];
+  const tempData = [data];
+  const tempOptions = [optionTypes[chartType].legacyOptions];
 
-  // TODO note: for now, invoking the legacy class also draws it
-  const basicClass = new BasicClass(tempChartArray, tempInput);
+  // TODO note: for now, invoking the visualizer also draws it
+  const d3Visualizer = new D3Visualizer(tempCharts, tempData, tempOptions);
 }

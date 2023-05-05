@@ -6,6 +6,8 @@ superData.basic = [
   { x: 'C', y: 30 },
   { x: 'D', y: 40 },
   { x: 'E', y: 50 },
+  { x: 'F', y: 60 },
+  { x: 'G', y: 70 },
 ];
 
 superData.hierarchic = [

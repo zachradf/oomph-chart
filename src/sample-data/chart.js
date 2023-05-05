@@ -76,8 +76,8 @@ chartData.barChart = [
   { x: 'C', y: 30 },
   { x: 'D', y: 40 },
   { x: 'E', y: 50 },
-  { x: 'F', y: 40 },
-  { x: 'G', y: 50 },
+  { x: 'F', y: 60 },
+  { x: 'G', y: 70 },
 ];
 
 chartData.barChart2 = [

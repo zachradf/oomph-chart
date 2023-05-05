@@ -17,7 +17,6 @@ export default class ChartTypes {
       },
       bar: {
         _selfKey: 'bar',
-        legacyName: 'BAR',
         name: 'Bar',
         nameLong: 'Bar Chart',
       },
@@ -33,7 +32,6 @@ export default class ChartTypes {
       },
       donut: {
         _selfKey: 'donut',
-        legacyName: 'DONUT',
         name: 'Donut',
         nameLong: 'Donut Chart',
       },

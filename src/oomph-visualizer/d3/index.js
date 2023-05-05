@@ -1,50 +1,48 @@
-import appendAxes from '../functions/append-axes.js';
-import createAxes from '../functions/create-axes.js';
-import createSVG from '../functions/create-svg.js';
+import appendAxes from './functions/append-axes.js';
+import createAxes from './functions/create-axes.js';
+import createSVG from './functions/create-svg.js';
 
-import addAnimation from '../actions/animate/basic/animate-basic.js';
-import onHover from '../actions/on-hover.js';
-import relativeNode from '../actions/relative-node.js';
-import D3ChartTypes from '../types/chart-types.js';
+import addAnimation from './actions/animate/basic/animate-basic.js';
+import onHover from './actions/on-hover.js';
+import relativeNode from './actions/relative-node.js';
+import D3ChartTypes from './types/chart-types.js';
 
 const d3ChartTypes = new D3ChartTypes();
 
-export default class BasicClass {
-  constructor(chartArray, input) {
-    this.createChart = {};
+export default class D3Visualizer {
+  constructor(chartArray, data, options, selector = '#chart') {
+    // this.createChart = {};
 
-    chartArray.forEach((chart) => {
-      const key = d3ChartTypes[chart].legacyName;
-      const val = d3ChartTypes[chart].render;
-      this.createChart[key] = val;
-    });
+    // chartArray.forEach((chart) => {
+    //   const key = d3ChartTypes[chart].legacyName;
+    //   const val = d3ChartTypes[chart].render;
+    //   this.createChart[key] = val;
+    // });
 
     this.chartArray = chartArray;
-    this.data = input.data;
-    this.options = input.options;
-    this.selector = input.selector;
+    this.data = data;
+    this.options = options;
+    this.selector = selector;
 
-    this.processCharts();
+    this.processCharts(); // TODO possibly rename to 'render' or 'renderCharts'
   }
 
-  addCharts(type) { // This method probably needs to be refactored
-    this.chartArray.push(...type);
-    for (let i = 0; i < type.length; i++) {
-      this.createChart[type[i]](this.data, this.options, this.chartComponents);
-      appendAxes(this.chartArray[i], this.options, this.chartComponents);
-    }
-  }
+  // addCharts(type) { // This method probably needs to be refactored
+  //   this.chartArray.push(...type);
+  //   for (let i = 0; i < type.length; i++) {
+  //     this.createChart[type[i]](this.data, this.options, this.chartComponents);
+  //     appendAxes(this.chartArray[i], this.options, this.chartComponents);
+  //   }
+  // }
 
   processCharts() {
     for (let i = 0; i < this.chartArray.length; i++) {
-      // Map chartClass
       this.options[i].chartClass = d3ChartTypes[this.chartArray[i]].chartClass;
 
       if (shouldCreateChartComponents.call(this, i) || this.options[0].isUpdating) {
         this.chartComponents = createChartComponents.call(this, i);
       }
 
-      // If not updating, create a new chart instance using current chart type, data, and options
       if (!this.options[0].isUpdating) {
         const { render } = d3ChartTypes[this.chartArray[i]];
         render(this.data[i], this.options[i], this.chartComponents);
@@ -62,11 +60,12 @@ export default class BasicClass {
     console.log('removed', this.options.chartClass);
   }
 
-  updateInput(input) {
-    this.selector = input.selector;
-    this.options = input.options;
+  updateInput(data, options, selector = '#chart') {
     this.options[0].isUpdating = true;
-    this.data = input.data;
+
+    this.data = data;
+    this.options = options;
+    this.selector = selector;
 
     this.processCharts();
   }

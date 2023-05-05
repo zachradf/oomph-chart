@@ -45,7 +45,6 @@ export default class D3ChartTypes {
       area: {
         _selfKey: 'area',
         chartClass: 'area-chart',
-        legacyName: 'AREA',
         name: 'Area',
         nameLong: 'Area Chart',
         render: renderAreaChart,
@@ -53,7 +52,6 @@ export default class D3ChartTypes {
       bar: {
         _selfKey: 'bar',
         chartClass: 'bar-chart',
-        legacyName: 'BAR',
         name: 'Bar',
         nameLong: 'Bar Chart',
         render: renderBarChart,
@@ -61,7 +59,6 @@ export default class D3ChartTypes {
       box: {
         _selfKey: 'box',
         chartClass: 'box-plot',
-        legacyName: 'BOX',
         name: 'Box',
         nameLong: 'Box Plot',
         render: renderBoxPlot,
@@ -69,7 +66,6 @@ export default class D3ChartTypes {
       bubble: {
         _selfKey: 'bubble',
         chartClass: 'bubble-chart',
-        legacyName: 'BUBBLE',
         name: 'Bubble',
         nameLong: 'Bubble Chart',
         render: renderBubbleChart,
@@ -77,7 +73,6 @@ export default class D3ChartTypes {
       donut: {
         _selfKey: 'donut',
         chartClass: 'donut-chart',
-        legacyName: 'DONUT',
         name: 'Donut',
         nameLong: 'Donut Chart',
         render: renderDonutChart,
@@ -85,7 +80,6 @@ export default class D3ChartTypes {
       funnel: {
         _selfKey: 'funnel',
         chartClass: 'funnel-chart',
-        legacyName: 'FUNNEL',
         name: 'Funnel',
         nameLong: 'Funnel Chart',
         render: renderFunnelChart,
@@ -93,7 +87,6 @@ export default class D3ChartTypes {
       gauge: {
         _selfKey: 'gauge',
         chartClass: 'gauge-chart',
-        legacyName: 'GAUGE',
         name: 'Gauge',
         nameLong: 'Gauge Chart',
         render: renderGaugeChart,
@@ -101,7 +94,6 @@ export default class D3ChartTypes {
       heat: { // TODO note: was previously 'heat-map', verify if is now type-safe to use 'heat'
         _selfKey: 'heat',
         chartClass: 'heat-map',
-        legacyName: 'HEATMAP',
         name: 'Heat',
         nameLong: 'Heat Map',
         render: renderHeatMap,
@@ -109,7 +101,6 @@ export default class D3ChartTypes {
       line: {
         _selfKey: 'line',
         chartClass: 'line-graph',
-        legacyName: 'LINE',
         name: 'Line',
         nameLong: 'Line Graph',
         render: renderLineGraph,
@@ -117,7 +108,6 @@ export default class D3ChartTypes {
       pie: {
         _selfKey: 'pie',
         chartClass: 'pie-chart',
-        legacyName: 'PIE',
         name: 'Pie',
         nameLong: 'Pie Chart',
         render: renderPieChart,
@@ -125,7 +115,6 @@ export default class D3ChartTypes {
       polar: {
         _selfKey: 'polar',
         chartClass: 'polar-chart',
-        legacyName: 'POLAR',
         name: 'Polar',
         nameLong: 'Polar Chart',
         render: renderPolarChart,
@@ -133,7 +122,6 @@ export default class D3ChartTypes {
       radar: {
         _selfKey: 'radar',
         chartClass: 'radar-chart',
-        legacyName: 'RADAR',
         name: 'Radar',
         nameLong: 'Radar Chart',
         render: renderRadarChart,
@@ -141,7 +129,6 @@ export default class D3ChartTypes {
       scatter: {
         _selfKey: 'scatter',
         chartClass: 'scatter-plot',
-        legacyName: 'SCATTER',
         name: 'Scatter',
         nameLong: 'Scatter Plot',
         render: renderScatterPlot,
@@ -149,7 +136,6 @@ export default class D3ChartTypes {
       stackedbar: {
         _selfKey: 'stackedbar',
         chartClass: 'stacked-bar-chart-plot', // TODO match more closely with key
-        legacyName: 'STACKEDBAR',
         name: 'Stacked Bar',
         nameLong: 'Stacked Bar Chart',
         render: renderStackedBarChart,
@@ -157,7 +143,6 @@ export default class D3ChartTypes {
       waterfall: {
         _selfKey: 'waterfall',
         chartClass: 'waterfall-chart',
-        legacyName: 'WATERFALL',
         name: 'Waterfall',
         nameLong: 'Waterfall Chart',
         render: renderWaterfallChart,
