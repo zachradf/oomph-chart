@@ -30,8 +30,8 @@ export default function animatePie(chartComponents, data, duration, options) {
   update.join(
     (enter) => enter.append('path')
       .attr('fill', (d) => color(d.data.y))
-      .attr('stroke', 'white')
-      .attr('stroke-width', '2px')
+      .attr('stroke', `${options.strokeColor}` || 'white')
+      .attr('stroke-width', `${options.strokeWidth}` || 2)
       .attr('d', arc),
     (update) => update.transition()
       .duration(duration)

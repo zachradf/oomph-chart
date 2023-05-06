@@ -27,14 +27,14 @@ export default function createVoronoiTreemap(data, options, chartComponents) {
         return interpolator(d.data.value / d.parent.value);
       }
     })
-    .attr('stroke', 'black')
+    .attr('stroke', `${options.strokeColor}`)
     .attr('font-size', `${options.parentTextSize}`);
 
   groups
     .append('path')
     .attr('d', (d) => d3.line().curve(d3.curveLinearClosed)(d.polygon))
     .attr('opacity', 0.8)
-    .attr('stroke-width', 1);
+    .attr('stroke-width', `${options.strokeWidth}` || 1);
 
   groups
     .append('text')

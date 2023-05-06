@@ -30,8 +30,8 @@ export default function createD3PieChart(data, options, chartComponents) {
     .append('path')
     .attr('fill', (d) => color(d.data.y))
     .attr('d', arc)
-    .attr('stroke', 'white')
-    .attr('stroke-width', '2px');
+    .attr('stroke', `${options.strokeColor}` || 'white')
+    .attr('stroke-width', `${options.strokeWidth}px` || '2px');
 
   // If the showCategories option is set, add categories to the pie chart
   if (options.showCategories) {

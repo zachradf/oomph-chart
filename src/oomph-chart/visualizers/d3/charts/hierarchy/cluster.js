@@ -20,7 +20,7 @@ export default function createClusterDiagram(data, options, chartComponents) {
     .join('line')
     .attr('class', 'link')
     .attr('stroke', strokeColor)
-    .attr('stroke-width', 1.5)
+    .attr('stroke-width', `${options.strokeWidth}` || 1.5)
     .attr('x1', (d) => d.source.y * Math.cos((d.source.x - 90) * Math.PI / 180))
     .attr('y1', (d) => d.source.y * Math.sin((d.source.x - 90) * Math.PI / 180))
     .attr('x2', (d) => d.target.y * Math.cos((d.target.x - 90) * Math.PI / 180))

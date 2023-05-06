@@ -383,7 +383,7 @@ optionData.options5 = {
   stack: false,
   startAngle: -Math.PI / 1.25,
   strokeColor: 'blue',
-  strokeWidth: 100,
+  strokeWidth: 10,
   textAnchor: 'middle',
   textColor: 'white',
   width: 900,

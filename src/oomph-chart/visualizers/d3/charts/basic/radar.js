@@ -21,7 +21,7 @@ export default function createD3RadarChart(data, options, chartComponents) {
     .attr('fill', colorScheme[0])
     .attr('fill-opacity', 0.6)
     .attr('stroke', colorScheme[1])
-    .attr('stroke-width', 2);
+    .attr('stroke-width', `${options.strokeWidth}` || 2);
 
   // Add ticks
   for (let level = 0; level < levels; level++) {
@@ -37,7 +37,7 @@ export default function createD3RadarChart(data, options, chartComponents) {
       .attr('y2', (d, i) => levelFactor * Math.sin(angleSlice * (i + 1) - Math.PI / 2))
       .attr('stroke', 'gray')
       .attr('stroke-opacity', 0.6)
-      .attr('stroke-width', 0.5);
+      .attr('stroke-width', `${options.strokeWidth}` || 0.5);
   }
 
   // Add labels

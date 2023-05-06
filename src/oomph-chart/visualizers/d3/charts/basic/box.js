@@ -33,7 +33,7 @@ export default function createD3BoxPlot(data, options, chartComponents) {
       .attr('x2', boxWidth / 2)
       .attr('y1', (d) => y(d.min))
       .attr('y2', (d) => y(d.q1))
-      .attr('stroke', 'black');
+      .attr('stroke', `${options.strokeColor}` || 'black');
 
     box.selectAll('.max')
       .data((d) => [d])
@@ -43,7 +43,7 @@ export default function createD3BoxPlot(data, options, chartComponents) {
       .attr('x2', boxWidth / 2)
       .attr('y1', (d) => y(d.q3))
       .attr('y2', (d) => y(d.max))
-      .attr('stroke', 'black');
+      .attr('stroke', `${options.strokeColor}` || 'black');
 
     box.selectAll('.box-rect')
       .data((d) => [d])

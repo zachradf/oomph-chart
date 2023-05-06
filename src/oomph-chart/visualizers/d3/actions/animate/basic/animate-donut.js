@@ -28,8 +28,8 @@ export default function animateDonutChart(chartComponents, data, duration, optio
       const arcs = enter.append('g').attr('class', 'arc');
       arcs.append('path')
         .attr('fill', (d, i) => options.fillColor[i])
-        .attr('stroke', 'blue')
-        .style('stroke-width', '2px')
+        .attr('stroke', `${options.strokeColor}` || 'white')
+        .style('stroke-width', `${options.strokeWidth}` || 2)
         .attr('d', arc);
       return arcs;
     },

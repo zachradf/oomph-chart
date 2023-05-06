@@ -137,8 +137,8 @@ export default function createD3GaugeChart(sampleValues, options, chartComponent
   const pointer = svg.append('path')
     .attr('class', 'pointer')
     .attr('fill', pointerColor)
-    .attr('stroke', 'black')
-    .attr('stroke-width', '1px');
+    .attr('stroke', `${options.strokeColor}` || 'black')
+    .attr('stroke-width', `${options.strokeWidth}` || 1);
 
   function updateGauge(value) {
     const angle = startAngle + (endAngle - startAngle) * value / (majorTicks * minorTicks);

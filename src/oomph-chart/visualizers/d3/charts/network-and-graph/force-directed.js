@@ -29,7 +29,7 @@ export default function createForceDirectedGraph(data, selector, options = {}) {
     .enter()
     .append('line')
     .attr('class', 'link')
-    .attr('stroke', '#999')
+    .attr('stroke', `${options.strokeColor}`)
     .attr('stroke-opacity', 0.6)
     .attr('stroke-width', (d) => Math.sqrt(d.value));
 

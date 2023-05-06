@@ -21,7 +21,7 @@ export default function createD3DonutChart(data, options, chartComponents) {
     .attr('d', arc)
     .attr('fill', (d, i) => options.colorScheme[i])
     .attr('stroke', `${options.strokeColor}`)
-    .style('stroke-width', '2px');
+    .style('stroke-width', `${options.strokeWidth}` || 2);
 
   arcs.append('text')
     .attr('transform', (d) => `translate(${arc.centroid(d)})`)

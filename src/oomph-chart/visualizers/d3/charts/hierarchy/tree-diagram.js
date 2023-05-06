@@ -21,7 +21,7 @@ export default function createTreeDiagram(data, options, chartComponents) {
     .attr('class', 'link')
     .attr('fill', 'none')
     .attr('stroke', strokeColor)
-    .attr('stroke-width', 1.5)
+    .attr('stroke-width', `${options.strokeWidth}` || 1.5)
     .attr('stroke-opacity', options.opacity)
     .attr('d', d3.linkHorizontal().x((d) => d.y).y((d) => d.x));
 

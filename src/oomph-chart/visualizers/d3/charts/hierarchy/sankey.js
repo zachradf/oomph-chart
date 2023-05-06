@@ -28,7 +28,7 @@ export default function createSankeyDiagram(data, options, chartComponents) {
     .attr('height', (d) => d.y1 - d.y0)
     .attr('width', (d) => d.x1 - d.x0)
     .attr('fill', (d) => color(d.index))
-    .attr('stroke', '#000');
+    .attr('stroke', `${options.strokeColor}`);
 
   svg.append('g')
     .selectAll('text')
