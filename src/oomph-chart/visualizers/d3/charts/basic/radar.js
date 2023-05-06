@@ -1,6 +1,6 @@
 export default function createD3RadarChart(data, options, chartComponents) {
   const {
-    width, height, colors, maxValue, levels,
+    width, height, colorScheme, maxValue, levels,
   } = options;
   const { svg } = chartComponents;
   const radius = Math.min(width, height) / 2;
@@ -18,9 +18,9 @@ export default function createD3RadarChart(data, options, chartComponents) {
     .join('path')
     .attr('class', 'radar-chart-path')
     .attr('d', lineGenerator.radius((d) => rScale(d.y)).angle((d, i) => i * angleSlice))
-    .attr('fill', colors[0])
+    .attr('fill', colorScheme[0])
     .attr('fill-opacity', 0.6)
-    .attr('stroke', colors[1])
+    .attr('stroke', colorScheme[1])
     .attr('stroke-width', 2);
 
   // Add ticks

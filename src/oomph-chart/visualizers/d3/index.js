@@ -76,11 +76,14 @@ export default class D3Visualizer {
 
 function applyActions(i) {
   const options = this.options[i];
+  this.chartComponents = appendAxes(this.chartArray[i], options, this.chartComponents);
+
   if (options.gradient) {
     addGradient(
       this.selector,
       this.chartArray[i],
-      this.data,
+      this.chartComponents,
+      this.data[i],
       options
     );
   }
@@ -101,8 +104,6 @@ function applyActions(i) {
       this.chartComponents,
       options.duration
     );
-  } else {
-    appendAxes(this.chartArray[i], options, this.chartComponents);
   }
 }
 

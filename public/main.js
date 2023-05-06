@@ -35,6 +35,7 @@ console.log(barExample1);
 // const barExample3 = new D3Visualizer(['bar'], [chartData.barChart], [optionData.options5]);
 
 /* END EXAMPLE CODE */
+const barExample3 = new D3Visualizer(['donut'], [chartData.radarChart], [optionData.options5]);
 
 // const barObjectTemp = new BasicClass(['bar'], inputData.input1);
 // onHover('#scatter', options);

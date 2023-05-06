@@ -14,6 +14,8 @@ export default function appendAxes(chart, options, chartComponents) {
       .attr('transform', chart === 'stackedbar' ? `translate(0,${height - margin.bottom})` : '')
       .call(xAxis);
 
+    chartComponents.xAxisBBox = xAxisG.node().getBBox();
+
     // Style X-axis ticks
     xAxisG.selectAll('text')
       .style('font-size', `${options.xTickFontSize}px`)
@@ -41,6 +43,8 @@ export default function appendAxes(chart, options, chartComponents) {
       .classed('y-axis', true)
       .attr('transform', chart === 'stackedbar' ? `translate(${margin.left},0)` : '')
       .call(yAxis);
+
+    chartComponents.yAxisBBox = yAxisG.node().getBBox();
 
     // Style Y-axis ticks
     yAxisG.selectAll('text')
@@ -70,4 +74,5 @@ export default function appendAxes(chart, options, chartComponents) {
   if (!options.xLine) {
     svg.select('.x-axis path').remove();
   }
+  return chartComponents;
 }

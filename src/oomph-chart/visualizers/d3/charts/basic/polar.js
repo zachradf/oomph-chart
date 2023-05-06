@@ -1,6 +1,6 @@
 export default function createD3PolarChart(data, options, chartComponents) {
   const {
-    colors, innerRadius, outerRadius,
+    colorScheme, innerRadius, outerRadius,
   } = options;
   const { svg } = chartComponents;
 
@@ -14,8 +14,8 @@ export default function createD3PolarChart(data, options, chartComponents) {
     .scaleLinear()
     .domain([0, d3.max(data, (d) => d.y)])
     .range([innerRadius, outerRadius]);
-
-  const colorScale = d3.scaleOrdinal().domain(data.map((d) => d.name)).range(colors);
+  console.log(data[0].x);
+  const colorScale = d3.scaleOrdinal().domain(data.map((d) => d.x)).range(colorScheme);
 
   const arc = d3
     .arc()

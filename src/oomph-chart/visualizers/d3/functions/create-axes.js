@@ -48,6 +48,8 @@ export default function createAxes(data, chart, options) {
   const yAxisPosition = options.yAxisPosition || margin.left;
   const xAxisColor = options.xAxisColor || '#000';
   const yAxisColor = options.yAxisColor || '#000';
+  let xAxisBBox;
+  let yAxisBBox;
 
   const xAxis = (g) => {
     g.attr('transform', `translate(0,${xAxisPosition})`)
@@ -68,6 +70,7 @@ export default function createAxes(data, chart, options) {
           });
       });
     if (options.xLine) createXAxisLine(g, options, yAxisPosition);
+    xAxisBBox = g.node().getBBox();
   };
 
   const yAxis = (g) => {
@@ -94,9 +97,10 @@ export default function createAxes(data, chart, options) {
           createYAxisLine(g, options, xAxisPosition);
         }
       });
+    yAxisBBox = g.node().getBBox();
   };
   return {
-    x, y, xAxis, yAxis,
+    x, y, xAxis, yAxis, xAxisBBox, yAxisBBox,
   };
 }
 
