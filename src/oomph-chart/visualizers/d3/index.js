@@ -39,6 +39,7 @@ export default class D3Visualizer {
   processCharts() {
     for (let i = 0; i < this.chartArray.length; i++) {
       this.options[i].chartClass = d3ChartTypes[this.chartArray[i]].chartClass;
+      this.options[i].chartNumber = i;
 
       if (shouldCreateChartComponents.call(this, i) || this.options[0].isUpdating) {
         this.chartComponents = createChartComponents.call(this, i);
@@ -66,6 +67,7 @@ export default class D3Visualizer {
 
     this.data = data;
     this.options = options;
+
     this.selector = selector;
 
     this.processCharts();
@@ -76,7 +78,12 @@ export default class D3Visualizer {
 
 function applyActions(i) {
   const options = this.options[i];
-  this.chartComponents = appendAxes(this.chartArray[i], options, this.chartComponents);
+
+  if (!this.options[0].isUpdating) {
+    const axisBBox = appendAxes(this.chartArray[i], options, this.chartComponents);
+    this.chartComponents.xAxisBBox = axisBBox.xAxisBBox ? axisBBox.xAxisBBox : null;
+    this.chartComponents.yAxisBBox = axisBBox.yAxisBBox ? axisBBox.yAxisBBox : null;
+  }
 
   if (options.gradient) {
     addGradient(
@@ -109,7 +116,7 @@ function applyActions(i) {
 
 function applyOptions(i) {
   const options = this.options[i];
-  const elements = d3.selectAll(`svg.${this.chartClass} circle, arc, rect, path, line, polygon, node`);
+  const elements = d3.selectAll(`svg.${options.chartClass} circle, arc, rect, path, line, polygon, node`);
 
   // eslint-disable-next-line func-names
   elements.each(function () {
@@ -122,12 +129,15 @@ function applyOptions(i) {
     if (options.opacity && classList[0] === `${options.chartClass}${i}`) {
       element.style('opacity', options.opacity);
     }
+    if (options.boxShadow) {
+      element.style('filter', 'drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5))');
+    }
   });
 }
 
 function createChartComponents(i) {
   const chartComponents = createAxes(this.data[i], this.chartArray[i], this.options[i]);
-  if (!this.options[0].isUpdating) {
+  if (!this.options[0].isUpdating) { // figure out if its best to have [0] be updated or include it in the most recent
     chartComponents.svg = createSVG(this.selector, this.chartArray[i], this.options[i]);
   }
   return chartComponents;
