@@ -5,8 +5,8 @@ import OptionTypes from './visualizers/d3/types/option-types.js';
 
 import { getCompatibleChartTypes } from './model/validators/chart-validator.js';
 import { getCompatibleInputTypes } from './model/validators/input-validator.js';
-import { getInputToTagAdjacencies } from './model/edges/input-to-tag-getter.js';
-import { getTagToChartAdjacencies } from './model/edges/tag-to-chart-getter.js';
+import { getInputToTagAssociations } from './model/associations/input-to-tag-getter.js';
+import { getTagToChartAssociations } from './model/associations/tag-to-chart-getter.js';
 import { hasValidRenderVisualizerArguments } from './model/validators/render-validator.js';
 import { verifyInterface } from './model/validators/interface-validator.js';
 import { verifyVisualizer } from './model/validators/visualizer-validator.js';
@@ -32,8 +32,8 @@ export default class OomphChart {
   constructor(inputData, visualizer = 'd3', iface = 'default') {
     this.data = inputData;
     this.inputs = getCompatibleInputTypes(this.data);
-    this.tags = getInputToTagAdjacencies(this.inputs);
-    this.chartsEligible = getTagToChartAdjacencies(this.tags);
+    this.tags = getInputToTagAssociations(this.inputs);
+    this.chartsEligible = getTagToChartAssociations(this.tags);
 
     // Determine which of the eligible charts are supported by the visualizer.
     this.visualizer = verifyVisualizer(visualizer);

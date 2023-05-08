@@ -11,19 +11,19 @@ const chartTypes = new ChartTypes();
  * @type {Object.<string, string[]>}
  */
 // TODO this section is heavily dependant on graph types being defined, so is very much a WIP.
-function getChartToChartEdges() {
+function getChartToChartAssociations() {
   try {
-    const edges = {
+    const associations = {
       [chartTypes.donut._selfKey]: [
         chartTypes.bar._selfKey,
       ],
     };
 
-    return edges;
+    return associations;
   } catch (error) {
     console.error(`Possible reference to non-existent chart type: ${error.message}`);
     return {};
   }
 }
 
-export const chartToChartEdges = getChartToChartEdges();
+export const chartToChartAssociations = getChartToChartAssociations();

@@ -8,16 +8,14 @@ const tagTypes = new TagTypes();
 
 /**
  * Defines the relationships between tag types and chart types, mapping
- * each tag type to an array of associated chart types. This is necessary
- * for determining the edge connections in a graph based on the tag types
- * provided.
+ * each tag type to an array of associated chart types.
  *
  * @type {Object.<string, string[]>}
  */
 // TODO this section is heavily dependant on graph types being defined, so is very much a WIP.
-function createTagToChartEdges() {
+function createTagToChartAssociations() {
   try {
-    const edges = {
+    const associations = {
       [tagTypes.basic._selfKey]: [
         chartTypes.bar._selfKey,
         chartTypes.donut._selfKey,
@@ -30,11 +28,11 @@ function createTagToChartEdges() {
       ],
     };
 
-    return edges;
+    return associations;
   } catch (error) {
     console.error(`Possible reference to non-existent tag or chart type: ${error.message}`);
     return {};
   }
 }
 
-export const tagToChartEdges = createTagToChartEdges();
+export const tagToChartAssociations = createTagToChartAssociations();

@@ -1,6 +1,6 @@
 import TagTypes from '../types/tag-types.js';
 
-import { tagToChartEdges } from './tag-to-chart-edges.js';
+import { tagToChartAssociations } from './tag-to-chart-associations.js';
 
 /**
  * Determines which charts are valid based off of provided tag types.
@@ -9,30 +9,31 @@ import { tagToChartEdges } from './tag-to-chart-edges.js';
  * @returns {Array.<TagTypes} An array of tag types.
 */
 
-export function getTagToChartAdjacencies(tags) {
+export function getTagToChartAssociations(tags) {
   if (!tags || tags.length === 0) {
     console.error('No tags provided.');
     return [];
   }
 
   try {
-    const tagToChartAdjacencies = new Set();
+    const associations = new Set();
+    const associationsBuilder = [];
     const tagTypes = new TagTypes();
-    const adjacencies = [];
 
+    // TODO for now, flatten all tags associations into a single associations list.
     tags.forEach((tagType) => {
       if (!tagTypes[tagType]) throw new Error(`Invalid tag type: ${tagType}`);
-      if (!tagToChartEdges[tagType]) throw new Error(`No tag-to-chart edges found for: ${tagType}`);
+      if (!tagToChartAssociations[tagType]) throw new Error(`No tag-to-chart associations found for: ${tagType}`);
 
       // TODO verify if '...' is needed below. Seems to work either way, but needed for input-to-tag
-      adjacencies.push(...tagToChartEdges[tagType]);
+      associationsBuilder.push(...tagToChartAssociations[tagType]);
     });
 
-    adjacencies.forEach((adjacency) => {
-      tagToChartAdjacencies.add(adjacency);
+    associationsBuilder.forEach((association) => {
+      associations.add(association);
     });
 
-    return tagToChartAdjacencies;
+    return associations;
   } catch (error) {
     console.error(error.message);
     return new Set();

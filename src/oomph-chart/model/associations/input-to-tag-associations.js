@@ -8,16 +8,14 @@ const tagTypes = new TagTypes();
 
 /**
  * Defines the relationships between input types and tag types, mapping
- * each input type to an array of associated tag types. This is necessary
- * for determining the edge connections in a graph based on the input types
- * provided.
+ * each input type to an array of associated tag types.
  *
  * @type {Object.<string, string[]>}
  */
 // TODO this section is heavily dependant on graph types being defined, so is very much a WIP.
-function createInputToTagEdges() {
+function createInputToTagAssociations() {
   try {
-    const edges = {
+    const associations = {
       [inputTypes.number_number._selfKey]: [
         tagTypes.hierarchic._selfKey,
       ],
@@ -26,11 +24,11 @@ function createInputToTagEdges() {
       ],
     };
 
-    return edges;
+    return associations;
   } catch (error) {
     console.error(`Possible reference to non-existent input or tag type: ${error.message}`);
     return {};
   }
 }
 
-export const inputToTagEdges = createInputToTagEdges();
+export const inputToTagAssociations = createInputToTagAssociations();
