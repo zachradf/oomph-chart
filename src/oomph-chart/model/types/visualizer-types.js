@@ -1,6 +1,8 @@
 import D3ChartTypes from '../../visualizers/d3/types/chart-types.js';
+import D3OptionTypes from '../../visualizers/d3/types/option-types.js';
 
 const d3ChartTypes = new D3ChartTypes();
+const d3OptionsTypes = new D3OptionTypes();
 
 /**
  * Defines available visualizer types
@@ -19,6 +21,7 @@ export default class VisualizerTypes {
         name: 'D3',
         nameLong: 'D3 Visualizer',
         chartTypes: d3ChartTypes,
+        optionTypes: d3OptionsTypes,
       },
     };
 

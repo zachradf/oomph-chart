@@ -1,6 +1,6 @@
 // import { create } from 'd3-selection';
 import D3Visualizer from '../src/oomph-chart/visualizers/d3/index.js';
-import OomphChart from '../src/oomph-chart/main/index.js';
+import OomphChart from '../src/oomph-chart/index.js';
 import OptionTypes from '../src/oomph-chart/visualizers/d3/types/option-types.js';
 
 // import { inputData } from '../src/sample-data/input.js';

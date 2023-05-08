@@ -1,9 +1,9 @@
 export default class OomphInterface {
-  constructor() {
-    this.placeholder = 'OomphInterface render placeholder';
+  constructor(interfaceType) {
+    this.interface = interfaceType;
   }
 
   render() {
-    console.log(`${this.placeholder}`);
+    console.log(`Rendering interface (placeholder): ${this.interface}`);
   }
 }

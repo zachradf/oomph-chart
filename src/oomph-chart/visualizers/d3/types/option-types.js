@@ -1,6 +1,6 @@
 import { optionData as options } from '../../../../sample-data/options.js';
 
-export default class OptionTypes {
+export default class OptionTypes { // TODO rename to D3OptionTypes
   constructor() {
     const types = {
       area: {
