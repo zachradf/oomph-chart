@@ -15,12 +15,14 @@ export default function createSVG(selector, chart, options) {
 
     if (chart === 'pie' || chart === 'donut' || chart === 'gauge' || chart === 'polar' || chart === 'radar') {
       svg.classed(`${options.chartClass}`, true);
-      const g = svg.append('g')
-        .attr('transform', `translate(${options.width / 2}, ${options.height / 2})`);
-
-      if (chart === 'donut') {
-        svg.attr('viewBox', `0 0 ${options.width} ${options.height}`);
+      const g = svg.append('g');
+      if (chart === 'polar') {
+        g.attr('transform', `translate(${options.width / 2}, ${options.height / 2})`);
       }
+
+      // if (chart === 'donut') {
+      //  svg.attr('viewBox', `0 0 ${options.width} ${options.height}`);
+      // }
 
       svg = g;
     } else {
@@ -50,9 +52,7 @@ export default function createSVG(selector, chart, options) {
     if (chart !== 'pie') {
       svg.attr('transform', `translate(${options.width / 2}, ${options.height / 2})`);
     }
-    if (chart === 'donut') {
-      svg.attr('viewBox', `0 0 ${options.width} ${options.height}`);
-    } else if (chart === 'bubble') {
+    if (chart === 'bubble') {
       svg = d3.select(selector)
         .append('svg')
         .classed('bubble-chart', true)

@@ -5,8 +5,10 @@ export default function appendAxes(chart, options, chartComponents) {
   const { svg } = chartComponents;
   const { xAxis } = chartComponents;
   const { yAxis } = chartComponents;
+  let xAxisBBox;
+  let yAxisBBox;
   // this will be checked by graph tags in the future
-  if (chart === 'polar' || chart === 'radar' || chart === 'pie' || chart === 'donut' || chart === 'heatmap' || chart === 'bubble') return;
+  if (chart === 'polar' || chart === 'radar' || chart === 'pie' || chart === 'donut' || chart === 'heatmap' || chart === 'bubble') return { xAxisBBox, yAxisBBox };
   if (!options.isUpdating) {
     // X-axis
     const xAxisG = svg.append('g')
@@ -14,7 +16,7 @@ export default function appendAxes(chart, options, chartComponents) {
       .attr('transform', chart === 'stackedbar' ? `translate(0,${height - margin.bottom})` : '')
       .call(xAxis);
 
-    chartComponents.xAxisBBox = xAxisG.node().getBBox();
+    xAxisBBox = xAxisG.node().getBBox();
 
     // Style X-axis ticks
     xAxisG.selectAll('text')
@@ -44,7 +46,7 @@ export default function appendAxes(chart, options, chartComponents) {
       .attr('transform', chart === 'stackedbar' ? `translate(${margin.left},0)` : '')
       .call(yAxis);
 
-    chartComponents.yAxisBBox = yAxisG.node().getBBox();
+    yAxisBBox = yAxisG.node().getBBox();
 
     // Style Y-axis ticks
     yAxisG.selectAll('text')
@@ -74,5 +76,5 @@ export default function appendAxes(chart, options, chartComponents) {
   if (!options.xLine) {
     svg.select('.x-axis path').remove();
   }
-  return chartComponents;
+  return { xAxisBBox, yAxisBBox };
 }
