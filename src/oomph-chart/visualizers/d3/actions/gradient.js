@@ -3,6 +3,7 @@ export default function addGradient(selector, type, chartElements, data, options
   let xAxisBBox;
   let yAxisBBox;
   let xScale;
+  let svg;
   if (type !== 'donut' && type !== 'pie' && type !== 'polar' && type !== 'radar') {
     xAxisBBox = chartElements.xAxisBBox ? chartElements.xAxisBBox : null;
     yAxisBBox = chartElements.yAxisBBox ? chartElements.yAxisBBox : null;
@@ -11,8 +12,11 @@ export default function addGradient(selector, type, chartElements, data, options
 
   const color1 = options.gradientColor[0];
   const color2 = options.gradientColor[1];
-
-  const svg = d3.select(selector).select('svg');
+  if (!options.stack) {
+    svg = d3.select(selector).select('svg');
+  } else {
+    svg = d3.select('.chart-wrapper').select('svg');
+  }
 
   let minValue;
   let maxValue;
@@ -53,11 +57,11 @@ export default function addGradient(selector, type, chartElements, data, options
       const colorScale = d3.scaleLinear()
         .domain([minValue, maxValue])
         .range([color1, color2]);
-      const elements = d3.selectAll(`rect.${options.chartClass}${0}`);
+      const elements = d3.selectAll(`rect.${options.chartClass}${options.chartNumber}`);
       elements.style('fill', (d) => {
         colorScale(d.y);
       });
-      d3.selectAll(`rect.${options.chartClass}${0}`).style('fill', (d) => colorScale(d.y));
+      d3.selectAll(`rect.${options.chartClass}${options.chartNumber}`).style('fill', (d) => colorScale(d.y));
     }
   } else if (type === 'scatter') {
     const colorScale = d3.scaleLinear()
@@ -69,9 +73,10 @@ export default function addGradient(selector, type, chartElements, data, options
     const colorScale = d3.scaleLinear()
       .domain([minValue, maxValue])
       .range([color1, color2]);
+    console.log(colorScale);
 
     svg.selectAll('path')
-      .attr('fill', (d) => colorScale(d.y));
+      .attr('fill', (d) => colorScale(d.data.y));
   } else if (type === 'donut') {
     const colorScale = d3.scaleLinear()
       .domain([minValue, maxValue])
@@ -80,7 +85,7 @@ export default function addGradient(selector, type, chartElements, data, options
     svg.selectAll('path')
       .attr('fill', (d) => colorScale(d.data.y));
   } else if (type === 'area' || type === 'line') {
-    const elements = svg.selectAll(`path.${options.chartClass}${0}`);
+    const elements = svg.selectAll(`path.${options.chartClass}${options.chartNumber}`);
 
     const colorScale = d3.scaleLinear()
       .domain([minValue, maxValue])
