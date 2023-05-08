@@ -71,7 +71,7 @@ export default function addGradient(selector, type, chartElements, data, options
       .range([color1, color2]);
 
     svg.selectAll('path')
-      .attr('fill', (d) => colorScale(d.data.y));
+      .attr('fill', (d) => colorScale(d.y));
   } else if (type === 'donut') {
     const colorScale = d3.scaleLinear()
       .domain([minValue, maxValue])

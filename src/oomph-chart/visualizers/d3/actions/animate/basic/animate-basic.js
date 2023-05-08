@@ -26,16 +26,11 @@ export default function addAnimation(selector, data, options, chartComponents, d
       .call(chartComponents.yAxis);
 
     let chartElements = chart.selectAll('g rect, g circle, .line-graph0, .area-chart0, path');
-    const type = chartElements.nodes()[0].className.baseVal || (chartElements.nodes()[0].nodeName === 'path' && 'pie-chart0');
+    console.log('chartElements', chartElements.nodes()[0]);
+    const type = chartElements.nodes()[0].className.baseVal;
+    // || (chartElements.nodes()[0].nodeName === 'path' && 'pie-chart0');
     const sortedData = data.slice().sort((a, b) => d3.ascending(a.x, b.x));
 
-    // if (options.isUpdating) {
-    //   chartElements = d3.selectAll(`svg.${options.chartClass} circle, arc, rect, path, line, polygon, node`);
-    // }
-
-    // Calculate the difference between the length of the new dataset and the number of elements
-    // in the initial chart
-    // console.log('numPlaceholders', numPlaceholders);
     if (type === 'area-chart0' || type === 'line-graph0') {
       if (type === 'area-chart0') {
         animateArea(chart, sortedData, chartComponents, options, duration);
@@ -85,7 +80,7 @@ export default function addAnimation(selector, data, options, chartComponents, d
         break;
       case 'stacked-bar-chart0': animateStacked(chartComponents, data, duration, options);
         break;
-      default: console.log('No animation for this chart type');
+      default: console.log('No animation for this chart type', type);
     }
 
     if (!options.yLine) {
