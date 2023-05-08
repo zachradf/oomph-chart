@@ -15,6 +15,7 @@ module.exports = {
   rules: {
     'comma-dangle': ['error', 'always-multiline'],
     'import/extensions': 'off',
+    'import/no-extraneous-dependencies': 'warn',
     'import/prefer-default-export': 'off',
     'max-len': 'warn',
     'no-console': 'off',
