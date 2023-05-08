@@ -1,8 +1,9 @@
 import ChartTypes from './model/types/chart-types.js';
+import D3OptionTypes from './visualizers/d3/types/option-types.js';
 import D3Visualizer from './visualizers/d3/index.js';
 import OomphInterface from './interfaces/index.js';
-import OptionTypes from './visualizers/d3/types/option-types.js';
 
+import { getChartToOptionAssociations } from './visualizers/d3/associations/chart-to-option-getter.js';
 import { getCompatibleChartTypes } from './model/validators/chart-validator.js';
 import { getCompatibleInputTypes } from './model/validators/input-validator.js';
 import { getInputToTagAssociations } from './model/associations/input-to-tag-getter.js';
@@ -14,7 +15,7 @@ import { verifyVisualizer } from './model/validators/visualizer-validator.js';
 /**
  * Determines and defines the relationship between input data and resulting charts.
  * Example:
- *    inputs --> tags --> charts --> options
+ *    inputs --> tags --> charts (-WIP-> options)
  * @constructor
  * @property {Set.string} charts - Compatible chart types, matched to <ChartTypes>.
  * @property {Set.string} chartsEligible - Compatible chart types, matched to <ChartTypes>.
@@ -56,11 +57,14 @@ export default class OomphChart {
   renderVisualizer(chartType) {
     if (hasValidRenderVisualizerArguments(this, chartType)) {
       const chartTypes = new ChartTypes();
-      const optionTypes = new OptionTypes();
+      const optionTypes = new D3OptionTypes();
+
+      // TODO allow more than one association
+      const tempSingleOption = getChartToOptionAssociations([chartType]);
 
       // eslint-disable-next-line no-underscore-dangle
       const charts = chartTypes[chartType]._selfKey;
-      const options = optionTypes[chartType].legacyOptions;
+      const options = optionTypes[tempSingleOption];
 
       // TODO separate invoking visualizer with rendering it
       // TODO load appropriate visualizer
