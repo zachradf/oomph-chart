@@ -63,10 +63,12 @@ export default class D3Visualizer {
   }
 
   updateInput(data, options, selector = '#chart') {
-    this.options[0].isUpdating = true;
-
-    this.data = data;
     this.options = options;
+
+    if (options[0].animate) {
+      this.options[0].isUpdating = true;
+    }
+    this.data = data;
 
     this.selector = selector;
 
@@ -80,6 +82,7 @@ function applyActions(i) {
   const options = this.options[i];
 
   if (!this.options[0].isUpdating) {
+    console.log('in the appendaxes', this.options[i].chartClass, i, this.options[0].isUpdating);
     const axisBBox = appendAxes(this.chartArray[i], options, this.chartComponents);
     this.chartComponents.xAxisBBox = axisBBox.xAxisBBox ? axisBBox.xAxisBBox : null;
     this.chartComponents.yAxisBBox = axisBBox.yAxisBBox ? axisBBox.yAxisBBox : null;
@@ -103,7 +106,8 @@ function applyActions(i) {
     relativeNode(this.selector, this.data[i], options);
   }
 
-  if (options.animate || this.options[0].isUpdating) {
+  if (options.animate && this.options[0].isUpdating) {
+    console.log(options.animate, this.options[0].isUpdating);
     addAnimation(
       this.selector,
       this.data[i],
@@ -116,7 +120,14 @@ function applyActions(i) {
 
 function applyOptions(i) {
   const options = this.options[i];
-  const elements = d3.selectAll(`svg.${options.chartClass} circle, arc, rect, path, line, polygon, node`);
+  const { isUpdating } = this.options[0];
+  const allElements = d3.selectAll(`svg.${options.chartClass} circle, arc, rect, path, line, polygon, node`);
+  const excludedElements = d3.selectAll('.y-axis, .x-axis, .y-axis * , .x-axis *');
+
+  const elements = allElements.filter(function () {
+    const currentElement = d3.select(this);
+    return !excludedElements.nodes().includes(currentElement.node());
+  });
 
   // eslint-disable-next-line func-names
   elements.each(function () {
@@ -130,7 +141,13 @@ function applyOptions(i) {
       element.style('opacity', options.opacity);
     }
     if (options.boxShadow) {
+      console.log('in box shadow', i);
       element.style('filter', 'drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5))');
+    }
+    if (isUpdating) {
+      elements.attr('fill', `${options.color}`);
+      elements.attr('data-initialFill', `${options.color}`);
+      console.log(options.color, i);
     }
   });
 }
