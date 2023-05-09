@@ -17,13 +17,6 @@ export default function onHover(selector, options) {
       .style('z-index', '10')
       .style('display', 'none');
 
-    // .style("z-index", "10")
-    // .style("visibility", "hidden")
-    // .style("padding", "15px")
-    // .style("background", "rgba(0,0,0,0.6)")
-    // .style("border-radius", "5px")
-    // .style("color", "#fff")
-
     elements.each(function () {
       // console.log(option.onHover);
       // console.log(this);
@@ -47,7 +40,7 @@ export default function onHover(selector, options) {
               // Set the fill style to the desired hover color or 4 shades darker than the initial fill color
               el.style('fill', option.hoverColor || fillColor.darker(4));
               // Apply the scaling transformation to expand the element
-              // el.attr('transform', `${initialTransform} scale(1.1)`);
+              // el.attr('transform', `${initialTransform} scale(1.05)`);
             }
           })
           // #! Thank you to Sanket from Perials for the mousemove and tooltip styling code

@@ -37,17 +37,20 @@ export default function createAxes(data, chart, options) {
       .range([height - margin.bottom, margin.top]),
   };
 
-  const y = (scaleFunctions[chart] || scaleFunctions.default)();
-  const yTickLength = options.yTickLength || height - margin.top - margin.bottom;
-  const xTickLength = options.xTickLength || width - margin.left - margin.right;
-  const xTickExtension = options.xTickExtension || 0;
-  const yTickExtension = options.yTickExtension || 0;
-  const xTickFrequency = options.xTickFrequency || width / 80;
-  const yTickFrequency = options.yTickFrequency || width / 80;
-  const xAxisPosition = options.xAxisPosition || (height - margin.bottom);
-  const yAxisPosition = options.yAxisPosition || margin.left;
   const xAxisColor = options.xAxisColor || '#000';
+  const xAxisPosition = options.xAxisPosition || (height - margin.bottom);
+  const xAxisWidth = options.xAxistWidth || 2;
+  const xTickExtension = options.xTickExtension || 0;
+  const xTickFrequency = options.xTickFrequency || width / 80;
+  const xTickLength = options.xTickLength || width - margin.left - margin.right;
   const yAxisColor = options.yAxisColor || '#000';
+  const yAxisPosition = options.yAxisPosition || margin.left;
+  const yAxisWidth = options.yAxistWidth || 2;
+  const yTickExtension = options.yTickExtension || 0;
+  const yTickFrequency = options.yTickFrequency || width / 80;
+  const yTickLength = options.yTickLength || height - margin.top - margin.bottom;
+  const y = (scaleFunctions[chart] || scaleFunctions.default)();
+
   let xAxisBBox;
   let yAxisBBox;
 
@@ -60,6 +63,7 @@ export default function createAxes(data, chart, options) {
             d3.select(this)
               .append('line')
               .attr('stroke', `${xAxisColor}`)
+              .attr('stroke-width', `${xAxisWidth}`)
               .attr('y2', -xTickLength)
               .attr('opacity', options.xTickOpacity || 1);
             d3.select(this)
