@@ -8,11 +8,20 @@ export default function createWordCloud(data, options, chartComponents) {
     .range([0, options.maxRadius]);
 
   // Create the force simulation
+  // const simulation = d3.forceSimulation(data)
+  //   .force('charge', d3.forceManyBody().strength(options.chargeStrength))
+  //   .force('center', d3.forceCenter(width / 2, height / 2))
+  //   .force('collision', d3.forceCollide().radius((d) => radiusScale(d.value) + fontSize(d)))
+  //   .force('y2Force', y2Force(y2ForceStrength)) // Use y2ForceStrength from options
+  //   .on('tick', ticked);
+  const clusterStrengthVal = 0.005;
+
   const simulation = d3.forceSimulation(data)
     .force('charge', d3.forceManyBody().strength(options.chargeStrength))
     .force('center', d3.forceCenter(width / 2, height / 2))
-    .force('collision', d3.forceCollide().radius((d) => radiusScale(d.value) + fontSize(d)))
-    .force('y2Force', y2Force(y2ForceStrength)) // Use y2ForceStrength from options
+    .force('collision', d3.forceCollide().radius((d) => radiusScale(d.value) + 1))
+    .force('y2Force', y2Force(y2ForceStrength))
+    .force('clusterForce', clusterForce(clusterStrengthVal, data))
     .on('tick', ticked);
 
   // Create color scales object
@@ -23,13 +32,6 @@ export default function createWordCloud(data, options, chartComponents) {
     0.5: d3.interpolateViridis,
     0.8: d3.interpolateInferno,
   };
-
-  //   uniqueY2Values.forEach((y2Value, index) => {
-  //     const colorInterpolator = d3.interpolateTurbo;
-  //     colorScales[y2Value] = d3.scaleSequential(colorInterpolator)
-  //       .domain(d3.extent(data.filter((item) => item.y2 === y2Value), (item) => item.value));
-  //     console.log('COLOR SCALES', colorScales, 'Y2 VALUE', y2Value, 'INDEX', index);
-  //   });
 
   // Create the bubbles if options.bubble is true
   if (options.bubble) {
@@ -65,18 +67,31 @@ export default function createWordCloud(data, options, chartComponents) {
     .text((d) => d.name);
 
   // Update the positions of the bubbles and labels on each tick
+  // function ticked() {
+  //   if (options.bubble) {
+  //     svg.selectAll('circle')
+  //       .attr('cx', (d) => d.x)
+  //       .attr('cy', (d) => {
+  //         console.log(d.y);
+  //         return d.y;
+  //       });
+  //   }
+
+  //   labels
+  //     .attr('x', (d) => d.x)
+  //     .attr('y', (d) => d.y);
+  // }
   function ticked() {
     if (options.bubble) {
       svg.selectAll('circle')
-        .attr('cx', (d) => d.x)
-        .attr('cy', (d) => d.y);
+        .attr('cx', (d) => Math.max(radiusScale(d.value), Math.min(width - radiusScale(d.value), d.x)))
+        .attr('cy', (d) => Math.max(radiusScale(d.value), Math.min(height - radiusScale(d.value), d.y)));
     }
 
     labels
-      .attr('x', (d) => d.x)
-      .attr('y', (d) => d.y);
+      .attr('x', (d) => Math.max(fontSize(d) / 2, Math.min(width - fontSize(d) / 2, d.x)))
+      .attr('y', (d) => Math.max(fontSize(d) / 2, Math.min(height - fontSize(d) / 2, d.y)));
   }
-
   // Define the y2Force function
   function y2Force(strength) {
     return (alpha) => {
@@ -88,6 +103,56 @@ export default function createWordCloud(data, options, chartComponents) {
       });
     };
   }
+  function clusterForce(strength, data) {
+    return (alpha) => {
+      data.forEach((d) => {
+        if (d.y2 !== undefined) {
+          const targetBubbles = data.filter((bubble) => bubble.y2 === d.y2);
+          targetBubbles.forEach((target) => {
+            if (target !== d) {
+              const dx = d.x - target.x;
+              const dy = d.y - target.y;
+              const distance = Math.sqrt(dx * dx + dy * dy);
+              const desiredDistance = (radiusScale(d.value) + radiusScale(target.value)) * strength;
+
+              if (distance < desiredDistance) {
+                const k = (distance - desiredDistance) / distance * alpha;
+                d.vx -= dx * k;
+                d.vy -= dy * k;
+                target.vx += dx * k;
+                target.vy += dy * k;
+              }
+            }
+          });
+        }
+      });
+    };
+  }
+}
+function clusterForce(strength, data) {
+  return (alpha) => {
+    data.forEach((d) => {
+      if (d.y2 !== undefined) {
+        const targetBubbles = data.filter((bubble) => bubble.y2 === d.y2);
+        targetBubbles.forEach((target) => {
+          if (target !== d) {
+            const dx = d.x - target.x;
+            const dy = d.y - target.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            const desiredDistance = (radiusScale(d.value) + radiusScale(target.value)) * strength;
+
+            if (distance < desiredDistance) {
+              const k = (distance - desiredDistance) / distance * alpha;
+              d.vx -= dx * k;
+              d.vy -= dy * k;
+              target.vx += dx * k;
+              target.vy += dy * k;
+            }
+          }
+        });
+      }
+    });
+  };
 }
 
 // // UNDER CONSTRUCTION
