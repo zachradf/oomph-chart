@@ -9,9 +9,13 @@ import { superData } from '../src/sample-data/super.js';
 import onHover from '../src/oomph-chart/visualizers/d3/actions/on-hover.js';
 import zoom from '../src/oomph-chart/visualizers/d3/actions/zoom.js';
 import gradient from '../src/oomph-chart/visualizers/d3/actions/gradient.js';
+import menu from '../src/oomph-chart/interfaces/default/menu.js';
+import { getChartToOptionAssociations } from '../src/oomph-chart/visualizers/d3/associations/chart-to-option-getter.js';
+
 import createChoropleth from '../src/oomph-chart/visualizers/d3/charts/geographical/choropleth.js';
 import createPointMap from '../src/oomph-chart/visualizers/d3/charts/geographical/point.js';
-import { getChartToOptionAssociations } from '../src/oomph-chart/visualizers/d3/associations/chart-to-option-getter.js';
+import createWordCloud from '../src/oomph-chart/visualizers/d3/charts/hierarchy/cloud.js';
+import createVoronoiTreemap from '../src/oomph-chart/visualizers/d3/charts/hierarchy/voronoi.js';
 import { chartData } from '../src/sample-data/chart.js';
 
 const optionTypes = new D3OptionTypes();
@@ -37,7 +41,11 @@ const optionTypes = new D3OptionTypes();
 // const barExample3 = new D3Visualizer(['bar'], [chartData.barChart], [optionTypes.options5]);
 
 /* END EXAMPLE CODE */
+const barExample3 = new D3Visualizer(['scatter'], [chartData.scatterPlot2, chartData.scatterPlot, chartData.scatterPlot3], [optionData.options5, optionData.options6, optionData.options7]);
+menu(barExample3, '#chart', [chartData.scatterPlot2, chartData.scatterPlot2, chartData.scatterPlot2, chartData.scatterPlot2], [optionData.options5, optionData.options6, optionData.options7, optionData.options8], ['Scatter Cluster One', 'Scatter Cluster Two', 'Scatter Cluster Three', 'Scatter Cluster Four']);
+menu(barExample3, '#chart', [chartData.scatterPlotRandom, chartData.scatterPlot, chartData.scatterPlot3], [optionData.options11, optionData.options12, optionData.options13], ['Completely Customizable', 'Buttons Can be Whatever', 'Any Kind of Button']);
 
+// createWordCloud(chartData.bubbleChart2, optionData.options10, { svg });
 // const barObjectTemp = new BasicClass(['bar'], inputData.input1);
 // onHover('#scatter', options);
 // createPointMap(chartData.choropleth, {
