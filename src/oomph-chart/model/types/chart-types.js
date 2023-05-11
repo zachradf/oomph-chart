@@ -85,6 +85,73 @@ export default class ChartTypes {
         name: 'Waterfall',
         nameLong: 'Waterfall Chart',
       },
+
+      // HIERARCHY CHARTS
+      adjacency: {
+        _selfKey: 'adjacency',
+        name: 'Adjacency',
+        nameLong: 'Adjacency Matrix',
+      },
+      chord: {
+        _selfKey: 'chord',
+        name: 'Chord',
+        nameLong: 'Chord Diagram',
+      },
+      cloud: {
+        _selfKey: 'cloud',
+        name: 'Cloud',
+        nameLong: 'Cloud Diagram',
+      },
+      cluster: {
+        _selfKey: 'cluster',
+        name: 'Cluster',
+        nameLong: 'Cluster Diagram',
+      },
+      dendrogram: {
+        _selfKey: 'dendrogram',
+        name: 'Dendrogram',
+        nameLong: 'Dendrogram Chart',
+      },
+      icicle: {
+        _selfKey: 'icicle',
+        name: 'Icicle',
+        nameLong: 'Icicle Plot',
+      },
+      marimekko: {
+        _selfKey: 'marimekko',
+        name: 'Marimekko',
+        nameLong: 'Marimekko Diagram',
+      },
+      radialTree: {
+        _selfKey: 'radialTree',
+        name: 'Radial Tree',
+        nameLong: 'Radial Tree Diagram',
+      },
+      sankey: {
+        _selfKey: 'sankey',
+        name: 'Sankey',
+        nameLong: 'Sankey Diagram',
+      },
+      sun: {
+        _selfKey: 'sun',
+        name: 'Sun Burst',
+        nameLong: 'Sun Burst Diagram',
+      },
+      treeDiagram: {
+        _selfKey: 'treeDiagram',
+        name: 'Tree Diagram',
+        nameLong: 'Tree Diagram',
+      },
+      treeMap: {
+        _selfKey: 'treeMap',
+        name: 'Tree Map',
+        nameLong: 'Tree Map',
+      },
+      voronoi: {
+        _selfKey: 'voronoi',
+        name: 'Voronoi',
+        nameLong: 'Voronoi Diagram',
+      },
     };
 
     Object.assign(this, types);

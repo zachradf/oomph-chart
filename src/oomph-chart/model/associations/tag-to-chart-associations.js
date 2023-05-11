@@ -17,14 +17,35 @@ function createTagToChartAssociations() {
   try {
     const associations = {
       [tagTypes.basic._selfKey]: [
+        chartTypes.area._selfKey,
         chartTypes.bar._selfKey,
+        chartTypes.box._selfKey,
         chartTypes.donut._selfKey,
         chartTypes.funnel._selfKey,
+        chartTypes.gauge._selfKey,
+        chartTypes.heat._selfKey,
+        chartTypes.line._selfKey,
+        chartTypes.pie._selfKey,
         chartTypes.polar._selfKey,
         chartTypes.radar._selfKey,
+        chartTypes.scatter._selfKey,
+        chartTypes.stackedBar._selfKey,
+        chartTypes.waterfall._selfKey,
       ],
       [tagTypes.hierarchic._selfKey]: [
-        chartTypes.scatter._selfKey,
+        chartTypes.adjacency._selfKey,
+        chartTypes.chord._selfKey,
+        chartTypes.cloud._selfKey,
+        chartTypes.cluster._selfKey,
+        chartTypes.dendrogram._selfKey,
+        chartTypes.icicle._selfKey,
+        chartTypes.marimekko._selfKey,
+        chartTypes.radialTree._selfKey,
+        chartTypes.sankey._selfKey,
+        chartTypes.sun._selfKey,
+        chartTypes.treeDiagram._selfKey,
+        chartTypes.treeMap._selfKey,
+        chartTypes.voronoi._selfKey,
       ],
     };
 
