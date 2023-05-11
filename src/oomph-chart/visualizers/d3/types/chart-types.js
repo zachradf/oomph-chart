@@ -19,7 +19,7 @@ import renderWaterfallChart from '../charts/basic/waterfall.js';
 // import renderAdjacencyMatrix from '../charts/hierarchy/adjacency.js';
 // import renderChordDiagram from '../charts/hierarchy/chord.js';
 // import renderClusterDiagram from '../charts/hierarchy/cluster.js';
-// import renderDendrogram from '../charts/hierarchy/dendogram.js';
+// import renderDendrogram from '../charts/hierarchy/dendrogram.js';
 // import renderIcicleChart from '../charts/hierarchy/icicle.js';
 // import renderMarimekkoChart from '../charts/hierarchy/marimekko.js';
 // import renderRadialTree from '../charts/hierarchy/radial-tree.js';

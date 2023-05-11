@@ -115,7 +115,7 @@ menu(barExample3, '#chart', [chartData.scatterPlot2, chartData.scatterPlot2, cha
 // const sankeyDiagramObject = new HierarchyClass(['sankey'], inputData.input17);
 // const clusterDiagramObject = new HierarchyClass(['cluster'], inputData.input18);
 // const voronoiTreemapObject = new HierarchyClass(['voronoi'], inputData.input8);
-// const dendrogramObject = new HierarchyClass(['dendogram'], inputData.input8);
+// const dendrogramObject = new HierarchyClass(['dendrogram'], inputData.input8);
 // const radialTreeObject = new HierarchyClass(['radialtree'], inputData.input22);
 // const scatterObject = new BasicClass(['scatter'], inputData.input3);
 // const marimekkoChartObject = new HierarchyClass(['marimekko'], inputData.input19);
