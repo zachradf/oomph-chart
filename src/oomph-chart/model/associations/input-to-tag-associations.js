@@ -22,6 +22,9 @@ function createInputToTagAssociations() {
       [inputTypes.string_number._selfKey]: [
         tagTypes.basic._selfKey,
       ],
+      [inputTypes.string_number_string._selfKey]: [
+        tagTypes.hierarchic._selfKey,
+      ],
     };
 
     return associations;

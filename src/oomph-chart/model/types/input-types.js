@@ -36,6 +36,12 @@ export default class InputTypes {
         nameLong: 'String Number Input',
         dataFormat: ['string', 'number'],
       },
+      string_number_string: {
+        _selfKey: 'string_number_string',
+        name: 'String Number String',
+        nameLong: 'String Number String Input',
+        dataFormat: ['string', 'number', 'string'],
+      },
     };
 
     Object.assign(this, types);

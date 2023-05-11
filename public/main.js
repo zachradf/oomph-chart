@@ -28,7 +28,7 @@ const optionTypes = new D3OptionTypes();
 /* EXAMPLE CODE */
 
 // Example 1: Invoking a bar chart via OomphChart (ultimately, the intended technique)
-// const barExample1 = new OomphChart(superData.basic);
+// const barExample1 = new OomphChart(superData.string_number);
 // console.log(barExample1);
 // barExample1.render('bar');
 
