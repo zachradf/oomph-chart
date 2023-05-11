@@ -13,7 +13,6 @@ import animateStacked from './animate-stacked';
 export default function addAnimation(selector, data, options, chartComponents, duration = 1000) {
   setTimeout(() => {
     const chart = d3.select(selector);
-    console.log('chart', chart);
 
     chart.select('.x-axis')
       .transition()
@@ -25,8 +24,15 @@ export default function addAnimation(selector, data, options, chartComponents, d
       .duration(duration)
       .call(chartComponents.yAxis);
 
-    let chartElements = chart.selectAll('g rect, g circle, .line-graph0, .area-chart0, path');
-    console.log('chartElements', chartElements.nodes()[0]);
+    const elements = chart.selectAll('g rect, g circle, .line-graph0, .area-chart0, path');
+    // const elements = d3.selectAll(`svg.${options.chartClass} circle, arc, rect, path, line, polygon, node`);
+    const excludedElements = d3.selectAll('.shape-label, .shape-pointer');
+
+    let chartElements = elements.filter(function () {
+      const currentElement = d3.select(this);
+      return !excludedElements.nodes().includes(currentElement.node());
+    });
+    console.log('chartElements should exclude pointer', chartElements);
     const type = chartElements.nodes()[0].className.baseVal;
     // || (chartElements.nodes()[0].nodeName === 'path' && 'pie-chart0');
     const sortedData = data.slice().sort((a, b) => d3.ascending(a.x, b.x));

@@ -90,6 +90,7 @@
 //       rectsUpdate.exit().remove();
 //     });
 //   }
+// UNDER CONSTRUCTION
 export default function updateD3FunnelChart(chartComponents, data, duration, options) {
   const { width } = options;
   const { colors } = options;
