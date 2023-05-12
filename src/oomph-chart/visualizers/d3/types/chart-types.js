@@ -16,19 +16,19 @@ import renderStackedBarChart from '../charts/basic/stacked.js';
 import renderWaterfallChart from '../charts/basic/waterfall.js';
 
 /* Hierarchy Charts */
-// import renderAdjacencyMatrix from '../charts/hierarchy/adjacency.js';
-// import renderChordDiagram from '../charts/hierarchy/chord.js';
-// import renderClusterDiagram from '../charts/hierarchy/cluster.js';
-// import renderDendrogram from '../charts/hierarchy/dendrogram.js';
-// import renderIcicleChart from '../charts/hierarchy/icicle.js';
-// import renderMarimekkoChart from '../charts/hierarchy/marimekko.js';
-// import renderRadialTree from '../charts/hierarchy/radial-tree.js';
-// import renderSankeyDiagram from '../charts/hierarchy/sankey.js';
-// import renderSunburstChart from '../charts/hierarchy/sun.js';
-// import renderTreeDiagram from '../charts/hierarchy/tree-diagram.js';
-// import renderTreeMap from '../charts/hierarchy/tree-map.js';
-// import renderVoronoiTreemap from '../charts/hierarchy/voronoi.js';
-// import renderWordCloud from '../charts/hierarchy/cloud.js';
+import renderAdjacencyMatrix from '../charts/hierarchy/adjacency.js';
+import renderChordDiagram from '../charts/hierarchy/chord.js';
+import renderClusterDiagram from '../charts/hierarchy/cluster.js';
+import renderDendrogram from '../charts/hierarchy/dendrogram.js';
+import renderIcicleChart from '../charts/hierarchy/icicle.js';
+import renderMarimekkoChart from '../charts/hierarchy/marimekko.js';
+import renderRadialTree from '../charts/hierarchy/radial-tree.js';
+import renderSankeyDiagram from '../charts/hierarchy/sankey.js';
+import renderSunburstChart from '../charts/hierarchy/sun.js';
+import renderTreeDiagram from '../charts/hierarchy/tree-diagram.js';
+import renderTreeMap from '../charts/hierarchy/tree-map.js';
+import renderVoronoiTreemap from '../charts/hierarchy/voronoi.js';
+import renderWordCloud from '../charts/hierarchy/cloud.js';
 
 /**
  * Defines the nature of chart types. Will associate with tags, but not
@@ -42,6 +42,8 @@ import renderWaterfallChart from '../charts/basic/waterfall.js';
 export default class D3ChartTypes {
   constructor() {
     const types = {
+
+      // BASIC CHARTS
       area: {
         _selfKey: 'area',
         chartClass: 'area-chart',
@@ -146,6 +148,86 @@ export default class D3ChartTypes {
         name: 'Waterfall',
         nameLong: 'Waterfall Chart',
         render: renderWaterfallChart,
+      },
+
+      // HIERARCHY CHARTS
+      adjacency: {
+        _selfKey: 'adjacency',
+        name: 'Adjacency',
+        nameLong: 'Adjacency Matrix',
+        render: renderAdjacencyMatrix,
+      },
+      chord: {
+        _selfKey: 'chord',
+        name: 'Chord',
+        nameLong: 'Chord Diagram',
+        render: renderChordDiagram,
+      },
+      cloud: {
+        _selfKey: 'cloud',
+        name: 'Cloud',
+        nameLong: 'Cloud Diagram',
+        render: renderWordCloud,
+      },
+      cluster: {
+        _selfKey: 'cluster',
+        name: 'Cluster',
+        nameLong: 'Cluster Diagram',
+        render: renderClusterDiagram,
+      },
+      dendrogram: {
+        _selfKey: 'dendrogram',
+        name: 'Dendrogram',
+        nameLong: 'Dendrogram Chart',
+        render: renderDendrogram,
+      },
+      icicle: {
+        _selfKey: 'icicle',
+        name: 'Icicle',
+        nameLong: 'Icicle Plot',
+        render: renderIcicleChart,
+      },
+      marimekko: {
+        _selfKey: 'marimekko',
+        name: 'Marimekko',
+        nameLong: 'Marimekko Diagram',
+        render: renderMarimekkoChart,
+      },
+      radialTree: {
+        _selfKey: 'radialTree',
+        name: 'Radial Tree',
+        nameLong: 'Radial Tree Diagram',
+        render: renderRadialTree,
+      },
+      sankey: {
+        _selfKey: 'sankey',
+        name: 'Sankey',
+        nameLong: 'Sankey Diagram',
+        render: renderSankeyDiagram,
+      },
+      sun: {
+        _selfKey: 'sun',
+        name: 'Sun Burst',
+        nameLong: 'Sun Burst Diagram',
+        render: renderSunburstChart,
+      },
+      treeDiagram: {
+        _selfKey: 'treeDiagram',
+        name: 'Tree Diagram',
+        nameLong: 'Tree Diagram',
+        render: renderTreeDiagram,
+      },
+      treeMap: {
+        _selfKey: 'treeMap',
+        name: 'Tree Map',
+        nameLong: 'Tree Map',
+        render: renderTreeMap,
+      },
+      voronoi: {
+        _selfKey: 'voronoi',
+        name: 'Voronoi',
+        nameLong: 'Voronoi Diagram',
+        render: renderVoronoiTreemap,
       },
     };
 
