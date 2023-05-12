@@ -10,6 +10,11 @@
 export default class ChartTypes {
   constructor() {
     const types = {
+      adjacency: {
+        _selfKey: 'adjacency',
+        name: 'Adjacency',
+        nameLong: 'Adjacency Matrix',
+      },
       area: {
         _selfKey: 'area',
         name: 'Area',
@@ -29,68 +34,6 @@ export default class ChartTypes {
         _selfKey: 'bubble',
         name: 'Bubble',
         nameLong: 'Bubble Chart',
-      },
-      donut: {
-        _selfKey: 'donut',
-        name: 'Donut',
-        nameLong: 'Donut Chart',
-      },
-      funnel: {
-        _selfKey: 'funnel',
-        name: 'Funnel',
-        nameLong: 'Funnel Chart',
-      },
-      guage: {
-        _selfKey: 'guage',
-        name: 'Gauge',
-        nameLong: 'Gauge Chart',
-      },
-      heat: {
-        _selfKey: 'heat',
-        name: 'Heat',
-        nameLong: 'Heat Map',
-      },
-      line: {
-        _selfKey: 'line',
-        name: 'Line',
-        nameLong: 'Line Graph',
-      },
-      pie: {
-        _selfKey: 'pie',
-        name: 'Pie',
-        nameLong: 'Pie Chart',
-      },
-      polar: {
-        _selfKey: 'polar',
-        name: 'Polar',
-        nameLong: 'Polar Chart',
-      },
-      radar: {
-        _selfKey: 'radar',
-        name: 'Radar',
-        nameLong: 'Radar Chart',
-      },
-      scatter: {
-        _selfKey: 'scatter',
-        name: 'Scatter',
-        nameLong: 'Scatter Plot',
-      },
-      stackedBar: {
-        _selfKey: 'stackedBar',
-        name: 'Stacked Bar',
-        nameLong: 'Stacked Bar Chart',
-      },
-      waterfall: {
-        _selfKey: 'waterfall',
-        name: 'Waterfall',
-        nameLong: 'Waterfall Chart',
-      },
-
-      // HIERARCHY CHARTS
-      adjacency: {
-        _selfKey: 'adjacency',
-        name: 'Adjacency',
-        nameLong: 'Adjacency Matrix',
       },
       chord: {
         _selfKey: 'chord',
@@ -112,15 +55,55 @@ export default class ChartTypes {
         name: 'Dendrogram',
         nameLong: 'Dendrogram Chart',
       },
+      donut: {
+        _selfKey: 'donut',
+        name: 'Donut',
+        nameLong: 'Donut Chart',
+      },
+      funnel: {
+        _selfKey: 'funnel',
+        name: 'Funnel',
+        nameLong: 'Funnel Chart',
+      },
+      guage: {
+        _selfKey: 'guage',
+        name: 'Gauge',
+        nameLong: 'Gauge Chart',
+      },
+      heat: {
+        _selfKey: 'heat',
+        name: 'Heat',
+        nameLong: 'Heat Map',
+      },
       icicle: {
         _selfKey: 'icicle',
         name: 'Icicle',
         nameLong: 'Icicle Plot',
       },
+      line: {
+        _selfKey: 'line',
+        name: 'Line',
+        nameLong: 'Line Graph',
+      },
       marimekko: {
         _selfKey: 'marimekko',
         name: 'Marimekko',
         nameLong: 'Marimekko Diagram',
+      },
+      pie: {
+        _selfKey: 'pie',
+        name: 'Pie',
+        nameLong: 'Pie Chart',
+      },
+      polar: {
+        _selfKey: 'polar',
+        name: 'Polar',
+        nameLong: 'Polar Chart',
+      },
+      radar: {
+        _selfKey: 'radar',
+        name: 'Radar',
+        nameLong: 'Radar Chart',
       },
       radialTree: {
         _selfKey: 'radialTree',
@@ -131,6 +114,16 @@ export default class ChartTypes {
         _selfKey: 'sankey',
         name: 'Sankey',
         nameLong: 'Sankey Diagram',
+      },
+      scatter: {
+        _selfKey: 'scatter',
+        name: 'Scatter',
+        nameLong: 'Scatter Plot',
+      },
+      stackedBar: {
+        _selfKey: 'stackedBar',
+        name: 'Stacked Bar',
+        nameLong: 'Stacked Bar Chart',
       },
       sun: {
         _selfKey: 'sun',
@@ -151,6 +144,11 @@ export default class ChartTypes {
         _selfKey: 'voronoi',
         name: 'Voronoi',
         nameLong: 'Voronoi Diagram',
+      },
+      waterfall: {
+        _selfKey: 'waterfall',
+        name: 'Waterfall',
+        nameLong: 'Waterfall Chart',
       },
     };
 
