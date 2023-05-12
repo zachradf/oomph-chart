@@ -10,7 +10,7 @@ const chartTypes = new ChartTypes();
  *
  * @type {Object.<string, string[]>}
  */
-// TODO this section is heavily dependant on graph types being defined, so is very much a WIP.
+// Chart-to-chart is WIP.
 function getChartToChartAssociations() {
   try {
     const associations = {

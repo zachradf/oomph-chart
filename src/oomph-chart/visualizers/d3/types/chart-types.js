@@ -1,33 +1,30 @@
-/* Basic Charts */
+import renderAdjacencyMatrix from '../charts/hierarchy/adjacency.js';
 import renderAreaChart from '../charts/basic/area.js';
 import renderBarChart from '../charts/basic/bar.js';
 import renderBoxPlot from '../charts/basic/box.js';
 import renderBubbleChart from '../charts/basic/bubble.js';
+import renderChordDiagram from '../charts/hierarchy/chord.js';
+import renderClusterDiagram from '../charts/hierarchy/cluster.js';
+import renderDendrogram from '../charts/hierarchy/dendrogram.js';
 import renderDonutChart from '../charts/basic/donut.js';
 import renderFunnelChart from '../charts/basic/funnel.js';
 import renderGaugeChart from '../charts/basic/gauge.js';
 import renderHeatMap from '../charts/basic/heat.js';
+import renderIcicleChart from '../charts/hierarchy/icicle.js';
 import renderLineGraph from '../charts/basic/line.js';
+import renderMarimekkoChart from '../charts/hierarchy/marimekko.js';
 import renderPieChart from '../charts/basic/pie.js';
 import renderPolarChart from '../charts/basic/polar.js';
 import renderRadarChart from '../charts/basic/radar.js';
-import renderScatterPlot from '../charts/basic/scatter.js';
-import renderStackedBarChart from '../charts/basic/stacked.js';
-import renderWaterfallChart from '../charts/basic/waterfall.js';
-
-/* Hierarchy Charts */
-import renderAdjacencyMatrix from '../charts/hierarchy/adjacency.js';
-import renderChordDiagram from '../charts/hierarchy/chord.js';
-import renderClusterDiagram from '../charts/hierarchy/cluster.js';
-import renderDendrogram from '../charts/hierarchy/dendrogram.js';
-import renderIcicleChart from '../charts/hierarchy/icicle.js';
-import renderMarimekkoChart from '../charts/hierarchy/marimekko.js';
 import renderRadialTree from '../charts/hierarchy/radial-tree.js';
 import renderSankeyDiagram from '../charts/hierarchy/sankey.js';
+import renderScatterPlot from '../charts/basic/scatter.js';
+import renderStackedBarChart from '../charts/basic/stacked.js';
 import renderSunburstChart from '../charts/hierarchy/sun.js';
 import renderTreeDiagram from '../charts/hierarchy/tree-diagram.js';
 import renderTreeMap from '../charts/hierarchy/tree-map.js';
 import renderVoronoiTreemap from '../charts/hierarchy/voronoi.js';
+import renderWaterfallChart from '../charts/basic/waterfall.js';
 import renderWordCloud from '../charts/hierarchy/cloud.js';
 
 /**
@@ -42,8 +39,12 @@ import renderWordCloud from '../charts/hierarchy/cloud.js';
 export default class D3ChartTypes {
   constructor() {
     const types = {
-
-      // BASIC CHARTS
+      adjacency: {
+        _selfKey: 'adjacency',
+        name: 'Adjacency',
+        nameLong: 'Adjacency Matrix',
+        render: renderAdjacencyMatrix,
+      },
       area: {
         _selfKey: 'area',
         chartClass: 'area-chart',
@@ -71,6 +72,30 @@ export default class D3ChartTypes {
         name: 'Bubble',
         nameLong: 'Bubble Chart',
         render: renderBubbleChart,
+      },
+      chord: {
+        _selfKey: 'chord',
+        name: 'Chord',
+        nameLong: 'Chord Diagram',
+        render: renderChordDiagram,
+      },
+      cloud: {
+        _selfKey: 'cloud',
+        name: 'Cloud',
+        nameLong: 'Cloud Diagram',
+        render: renderWordCloud,
+      },
+      cluster: {
+        _selfKey: 'cluster',
+        name: 'Cluster',
+        nameLong: 'Cluster Diagram',
+        render: renderClusterDiagram,
+      },
+      dendrogram: {
+        _selfKey: 'dendrogram',
+        name: 'Dendrogram',
+        nameLong: 'Dendrogram Chart',
+        render: renderDendrogram,
       },
       donut: {
         _selfKey: 'donut',
@@ -100,12 +125,24 @@ export default class D3ChartTypes {
         nameLong: 'Heat Map',
         render: renderHeatMap,
       },
+      icicle: {
+        _selfKey: 'icicle',
+        name: 'Icicle',
+        nameLong: 'Icicle Plot',
+        render: renderIcicleChart,
+      },
       line: {
         _selfKey: 'line',
         chartClass: 'line-graph',
         name: 'Line',
         nameLong: 'Line Graph',
         render: renderLineGraph,
+      },
+      marimekko: {
+        _selfKey: 'marimekko',
+        name: 'Marimekko',
+        nameLong: 'Marimekko Diagram',
+        render: renderMarimekkoChart,
       },
       pie: {
         _selfKey: 'pie',
@@ -128,6 +165,18 @@ export default class D3ChartTypes {
         nameLong: 'Radar Chart',
         render: renderRadarChart,
       },
+      radialTree: {
+        _selfKey: 'radialTree',
+        name: 'Radial Tree',
+        nameLong: 'Radial Tree Diagram',
+        render: renderRadialTree,
+      },
+      sankey: {
+        _selfKey: 'sankey',
+        name: 'Sankey',
+        nameLong: 'Sankey Diagram',
+        render: renderSankeyDiagram,
+      },
       scatter: {
         _selfKey: 'scatter',
         chartClass: 'scatter-plot',
@@ -141,69 +190,6 @@ export default class D3ChartTypes {
         name: 'Stacked Bar',
         nameLong: 'Stacked Bar Chart',
         render: renderStackedBarChart,
-      },
-      waterfall: {
-        _selfKey: 'waterfall',
-        chartClass: 'waterfall-chart',
-        name: 'Waterfall',
-        nameLong: 'Waterfall Chart',
-        render: renderWaterfallChart,
-      },
-
-      // HIERARCHY CHARTS
-      adjacency: {
-        _selfKey: 'adjacency',
-        name: 'Adjacency',
-        nameLong: 'Adjacency Matrix',
-        render: renderAdjacencyMatrix,
-      },
-      chord: {
-        _selfKey: 'chord',
-        name: 'Chord',
-        nameLong: 'Chord Diagram',
-        render: renderChordDiagram,
-      },
-      cloud: {
-        _selfKey: 'cloud',
-        name: 'Cloud',
-        nameLong: 'Cloud Diagram',
-        render: renderWordCloud,
-      },
-      cluster: {
-        _selfKey: 'cluster',
-        name: 'Cluster',
-        nameLong: 'Cluster Diagram',
-        render: renderClusterDiagram,
-      },
-      dendrogram: {
-        _selfKey: 'dendrogram',
-        name: 'Dendrogram',
-        nameLong: 'Dendrogram Chart',
-        render: renderDendrogram,
-      },
-      icicle: {
-        _selfKey: 'icicle',
-        name: 'Icicle',
-        nameLong: 'Icicle Plot',
-        render: renderIcicleChart,
-      },
-      marimekko: {
-        _selfKey: 'marimekko',
-        name: 'Marimekko',
-        nameLong: 'Marimekko Diagram',
-        render: renderMarimekkoChart,
-      },
-      radialTree: {
-        _selfKey: 'radialTree',
-        name: 'Radial Tree',
-        nameLong: 'Radial Tree Diagram',
-        render: renderRadialTree,
-      },
-      sankey: {
-        _selfKey: 'sankey',
-        name: 'Sankey',
-        nameLong: 'Sankey Diagram',
-        render: renderSankeyDiagram,
       },
       sun: {
         _selfKey: 'sun',
@@ -228,6 +214,13 @@ export default class D3ChartTypes {
         name: 'Voronoi',
         nameLong: 'Voronoi Diagram',
         render: renderVoronoiTreemap,
+      },
+      waterfall: {
+        _selfKey: 'waterfall',
+        chartClass: 'waterfall-chart',
+        name: 'Waterfall',
+        nameLong: 'Waterfall Chart',
+        render: renderWaterfallChart,
       },
     };
 
