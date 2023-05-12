@@ -12,7 +12,7 @@ export default function addMenu(chartObject, chartSelector, data, options, menuT
   }
 
   const menu = document.createElement('div');
-  menu.id = 'menu';
+  menu.className = 'menu';
   menu.style.position = 'relative';
   menu.style.zIndex = 10;
 

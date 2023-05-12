@@ -10,7 +10,7 @@ import onHover from '../src/oomph-chart/visualizers/d3/actions/on-hover.js';
 import zoom from '../src/oomph-chart/visualizers/d3/actions/zoom.js';
 import gradient from '../src/oomph-chart/visualizers/d3/actions/gradient.js';
 import menu from '../src/oomph-chart/interfaces/default/menu.js';
-import shape from '../src/oomph-chart/interfaces/default/shape.js';
+import shape from '../src/oomph-chart/interfaces/default/shape/shape.js';
 import { getChartToOptionAssociations } from '../src/oomph-chart/visualizers/d3/associations/chart-to-option-getter.js';
 
 import createChoropleth from '../src/oomph-chart/visualizers/d3/charts/geographical/choropleth.js';
@@ -45,7 +45,7 @@ const optionTypes = new D3OptionTypes();
 const barExample3 = new D3Visualizer(['bar'], [chartData.scatterPlot3], [optionTypes.options5]);
 const svg = d3.select('.bar-chart');
 const arrowOptions = {
-  shapeType: 'arrow',
+  shapeType: 'ellipse',
   width: 500,
   height: 500,
   fillColor: 'blue',
@@ -59,7 +59,7 @@ const arrowOptions = {
 const arrowOptions2 = {
   height: 50,
   width: 15,
-  shapeType: 'circle',
+  shapeType: 'rectangle',
   fillColor: 'red',
   labelText: 'SECOND LABEL',
   initialX: 450,

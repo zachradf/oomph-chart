@@ -1,62 +1,45 @@
+import * as render from './render-shape.js';
+
 export default function createDraggableShape(options, svg) {
   const {
-    scale, shapeType, fillColor, labelText, initialX, initialY, rotation,
+    scale, shapeType, labelText, initialX, initialY, rotation,
   } = options;
-  let shape;
-  //   let scale;
   const stemLength = options.stemLength || 5;
-  const arrowWidth = 100;
-  const arrowHeight = options.arrowHeight || 10;
-  if (shapeType === 'arrow') {
-    const arrowPoints = `M0,${arrowHeight / 2} L${stemLength},${arrowHeight / 2} L${stemLength},0 L${stemLength + arrowWidth}, ${arrowHeight / 2} L${stemLength},${arrowHeight} L${stemLength},${arrowHeight / 2} Z`;
 
-    shape = svg
-      .append('path')
-      .attr('d', arrowPoints)
-      .attr('fill', fillColor);
-  } else if (shapeType === 'ring') {
-    const arcGenerator = d3.arc()
-      .innerRadius(options.innerRadius || 10)
-      .outerRadius(options.outerRadius || 20)
-      .startAngle(0)
-      .endAngle(2 * Math.PI);
+  const shapeCreators = {
+    arrow: render.arrow,
+    circle: render.circle,
+    ellipse: render.ellipse,
+    rectangle: render.rectangle,
+    ring: render.ring,
+  };
 
-    shape = svg
-      .append('path')
-      .attr('d', arcGenerator())
-      .attr('fill', fillColor);
-  } else if (shapeType === 'circle') {
-    shape = svg
-      .append('circle')
-      .attr('r', options.radius) // You can adjust the radius here or add it as an option
-      .attr('fill', fillColor)
-      .attr('opacity', options.opacity || 1);
-  }
+  const shape = shapeCreators[shapeType](svg, options);
+
   shape.classed('shape-pointer', true);
-  // Other shapes can be added here
 
   // Create the label
   const label = svg.append('text')
     .text(labelText)
     .attr('text-anchor', 'middle')
-    .attr('dy', '-1em') // Adjust the vertical offset of the label relative to the shape
+    .attr('dy', options.shapeLabelOffsetY || '-1em')
+    .attr('font-size', options.shapeFontSize || '12px')
+    .attr('font-family', options.shapeFontFamily || 'Arial')
+    .attr('fill', options.shapeLabelColor || 'black')
     .classed('shape-label', true);
 
   // Initial position and rotation
   const transformAttr = `translate(${initialX}, ${initialY}) rotate(${rotation || 0}, ${scale ? 5 * scale : 5}, ${stemLength ? (stemLength + 5) / 2 : 5}) scale(${scale || 1})`;
-
-  //   if (shapeType === 'arrow' && stemLength) {
-  //     arrowHead.attr('transform', transformAttr);
-  //   }
-  //   const transform = `translate(${initialX}, ${initialY}) rotate(${rotation || 0}, 0, 0)`;
   shape.attr('transform', transformAttr);
-  //   //   shape.attr('transform', transform);
   label.attr('x', initialX).attr('y', initialY - 20); // Adjust the Y position to be above the shape
+
+  // // Attach drag behavior
   const drag = d3
     .drag()
     .on('start', dragStarted)
     .on('drag', dragged)
     .on('end', dragEnded);
+  console.log(drag, 'drag');
 
   shape.call(drag);
 
@@ -79,11 +62,9 @@ export default function createDraggableShape(options, svg) {
 
     // Set a new timeout to push the coordinates to the movement array after a quarter second
     dragTimeout = movement.push({ dx: event.dx, dy: event.dy });
-
-    // movement.push({ dx: event.dx, dy: event.dy });
   }
 
-  function dragEnded(event, d) {
+  function dragEnded() {
     startPosition = { x: initialX, y: initialY };
     setTimeout(() => shape.repeatMovement(), 200);
   }
@@ -92,7 +73,7 @@ export default function createDraggableShape(options, svg) {
   shape.repeatMovement = function () {
     if (movement.length === 0) return;
 
-    const intervalDuration = options.repeatInterval || 500; // You can control the interval duration by adding a new option 'repeatInterval'
+    const intervalDuration = options.repeatInterval || 500;
     let current = startPosition;
 
     setInterval(() => {
@@ -101,7 +82,6 @@ export default function createDraggableShape(options, svg) {
           let translate = `translate(${current.x + 17}, ${current.y - 10}) rotate(${rotation || 0}, ${scale ? 5 * scale : 5}, ${stemLength ? (stemLength + 5) / 2 : 5}) scale(${scale || 1})`;
 
           current = { x: current.x + delta.dx, y: current.y + delta.dy };
-          //   shape.attr('transform', `translate(${current.x + 17}, ${current.y - 10})`);
           shape.attr('transform', `${translate}`);
 
           label.attr('x', current.x + 17).attr('y', current.y - 20);
