@@ -5,7 +5,6 @@ export default function createDraggableShape(options, svg) {
     scale, shapeType, labelText, initialX, initialY, rotation,
   } = options;
   const stemLength = options.stemLength || 5;
-
   const shapeCreators = {
     arrow: render.arrow,
     circle: render.circle,
@@ -13,7 +12,6 @@ export default function createDraggableShape(options, svg) {
     rectangle: render.rectangle,
     ring: render.ring,
   };
-
   const shape = shapeCreators[shapeType](svg, options);
 
   shape.classed('shape-pointer', true);

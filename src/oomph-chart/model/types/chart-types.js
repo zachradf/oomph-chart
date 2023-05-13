@@ -65,7 +65,7 @@ export default class ChartTypes {
         name: 'Funnel',
         nameLong: 'Funnel Chart',
       },
-      guage: {
+      gauge: {
         _selfKey: 'guage',
         name: 'Gauge',
         nameLong: 'Gauge Chart',

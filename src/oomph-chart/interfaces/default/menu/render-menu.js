@@ -51,7 +51,7 @@ export function createRectangularButtons(menu, data, menuHandler, menuText) {
     .attr('class', 'rectangular-button')
     .text((d) => d.text)
     .on('click', function () {
-      const selectedOption = d3.select(this).attr('value');
+      const selectedOption = this.value;
       menuHandler(selectedOption);
     })
     .attr('value', (d) => d.value);

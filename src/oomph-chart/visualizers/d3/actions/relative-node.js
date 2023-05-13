@@ -1,7 +1,7 @@
 /**
  * adjustNodeSize - Adjusts the size of the nodes in a chart based on their values.
  *
- * @param {Object} selector The CSS selector for the chart object containing nodes
+ * @param {String} selector The CSS selector for the chart object containing nodes
  * @param {Array}  data The dataset containing node values
  * @param {Object} options Configuration options for the chart
  */

@@ -1,7 +1,9 @@
 import * as render from './render-menu';
 
-export default function addMenu(chartObject, chartSelector, data, options, menuText = []) {
-  const chart = document.querySelector(chartSelector);
+export default function addMenu(visualizerInstance) {
+  const { selector, data, options } = visualizerInstance;
+  const menuText = options[0].menuText || [];
+  const chart = document.querySelector(selector);
   let wrapper = chart.querySelector('.chart-wrapper');
   if (!wrapper) {
     wrapper = document.createElement('div');
@@ -22,7 +24,10 @@ export default function addMenu(chartObject, chartSelector, data, options, menuT
   wrapper.appendChild(svgElement);
 
   const menuHandler = (selectedOption) => {
-    updateChart(chartObject, selectedOption, data, options);
+    if (options.callback) {
+      ({ data, options } = options.callback[selectedOption]());
+    }
+    updateChart(visualizerInstance, selectedOption, data, options);
   };
   let sortingOptions;
   if (menuText.length !== data.length) {
@@ -52,15 +57,15 @@ export default function addMenu(chartObject, chartSelector, data, options, menuT
   }
 }
 
-function updateChart(chartObject, sortBy, data, options) {
+function updateChart(visualizerInstance, selectedOption, data, options) {
   console.log('in the updateChart function');
-  const sortByIndex = parseInt(sortBy, 10);
+  const sortByIndex = parseInt(selectedOption, 10);
 
   if (!Array.isArray(options)) {
-    chartObject.removeChart(options[0].chartType);
-    chartObject.updateInput([data[sortByIndex]], [options[sortByIndex]]);
+    visualizerInstance.removeChart(options[0].chartType);
+    visualizerInstance.updateInput([data[sortByIndex]], [options[sortByIndex]]);
   } else {
-    chartObject.updateInput([data[sortByIndex]], [options[sortByIndex]]);
+    visualizerInstance.updateInput([data[sortByIndex]], [options[sortByIndex]]);
   }
   // Update the chart with the selected dataset
 

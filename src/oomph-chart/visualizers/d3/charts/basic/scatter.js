@@ -1,3 +1,10 @@
+// import simplify from 'simplify-js';
+
+// const originalData = [...]; // Array of {x, y} points
+// const tolerance = 1; // Adjust this value to increase/decrease simplification
+// const highQuality = false; // Whether to use slower but higher-quality algorithm
+
+// const simplifiedData = simplify(originalData, tolerance, highQuality);
 export default function createD3ScatterPlot(data, options, chartComponents) {
   const { x } = chartComponents;
   const { y } = chartComponents;
