@@ -6,10 +6,8 @@ import OomphChart from '../src/oomph-chart/index.js';
 // import { inputData } from '../src/sample-data/input.js';
 import { superData } from '../src/sample-data/super.js';
 
-import onHover from '../src/oomph-chart/visualizers/d3/actions/on-hover.js';
-import zoom from '../src/oomph-chart/visualizers/d3/actions/zoom.js';
-import gradient from '../src/oomph-chart/visualizers/d3/actions/gradient.js';
-import menu from '../src/oomph-chart/interfaces/default/menu.js';
+import priority from '../src/oomph-chart/interfaces/default/option-priority.js';
+import menu from '../src/oomph-chart/interfaces/default/menu/menu.js';
 import shape from '../src/oomph-chart/interfaces/default/shape/shape.js';
 import { getChartToOptionAssociations } from '../src/oomph-chart/visualizers/d3/associations/chart-to-option-getter.js';
 
@@ -52,6 +50,7 @@ const arrowOptions = {
   labelText: 'Arrow',
   initialX: 250,
   initialY: 250,
+  priority: ['shapeType', 'width'],
   rotation: 90,
   scale: 3,
   stemLength: 30,
@@ -64,10 +63,12 @@ const arrowOptions2 = {
   labelText: 'SECOND LABEL',
   initialX: 450,
   initialY: 450,
+  priority: ['labelText', 'height'],
   radius: 30,
   rotation: 90,
   opacity: 0.4,
 };
+priority(arrowOptions, arrowOptions2);
 console.log(svg);
 shape(arrowOptions, svg);
 shape(arrowOptions2, svg);
