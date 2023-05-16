@@ -16,8 +16,10 @@
     }
   },
   "scripts": {
-    "build": "vite build",
-    "dev": "vite",
+    "build": "npm run build:minified && npm run build:nonminified",
+    "build:minified": "vite build --config vite.config.minified.js",
+    "build:nonminified": "vite build --config vite.config.nonminified.js",
+    "dev": "vite --config vite.config.minified.js",
     "lint:read-only": "eslint '**/*.js' --ext .js --no-fix",
     "test": "jest --verbose --coverage",
     "start": "npm run dev"
