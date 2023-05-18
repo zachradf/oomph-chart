@@ -8,6 +8,9 @@ import onHover from './actions/on-hover.js';
 import relativeNode from './actions/relative-node.js';
 import D3ChartTypes from './types/chart-types.js';
 
+import { d3OptionShape } from './types/option-shape.js';
+import { validateOptionShape } from '../../model/validators/options-validator.js';
+
 const d3ChartTypes = new D3ChartTypes();
 
 export default class D3Visualizer {
@@ -24,6 +27,9 @@ export default class D3Visualizer {
     this.data = data;
     this.options = options;
     this.selector = selector;
+
+    // WIP
+    validateOptionShape(d3OptionShape, this.options[0]);
 
     this.processCharts(); // TODO possibly rename to 'render' or 'renderCharts'
   }

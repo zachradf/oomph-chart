@@ -1,4 +1,27 @@
-function validateInputs(data, selector, options) {
+export const validOptionShapeTypes = ['string', 'number', 'boolean'];
+
+export function validateOptionShape(shape, input) {
+  Object.keys(shape).forEach((key) => {
+    if (typeof shape[key] === 'object') {
+      validateOptionShape(shape[key], input[key]);
+    } else {
+      // Validates that the shape's values themselves adhere to valid option types
+      if (!validOptionShapeTypes.includes(shape[key])) {
+        throw new Error(`Invalid type specified for ${key}`);
+      }
+
+      // Validates the input
+      // NOTE that above codeblock makes shape[key] effectively typesafe
+      // eslint-disable-next-line valid-typeof
+      if (typeof input[key] !== shape[key]) {
+        throw new Error(`${key} must be a ${shape[key]}`);
+      }
+    }
+  });
+}
+
+// TODO WIP
+export function validateOptions(data, selector, options) {
   if (typeof selector !== 'string' || !selector) {
     throw new Error('Invalid selector. Selector should be a non-empty string.');
   }
@@ -24,5 +47,3 @@ function validateInputs(data, selector, options) {
     throw new Error('Invalid margin. Margin should have "top", "right", "bottom", and "left" properties with numeric values.');
   }
 }
-
-module.exports = validateInputs;
