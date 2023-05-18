@@ -10,13 +10,7 @@ const createColorScale = (dataset, colorRange) => {
     .domain([minVal, maxVal]);
 };
 
-export default function createPointMap(dataset, selector, options) {
-  // Parse the data
-  const parsedData = {};
-  dataset.forEach((d) => {
-    parsedData[d.id] = +d.value;
-  });
-
+export default function createFlowMap(dataset, selector, options) {
   // Set the options
   const { width, height, colorRange } = options;
 
@@ -43,15 +37,23 @@ export default function createPointMap(dataset, selector, options) {
     .attr('stroke', 'black')
     .attr('fill', 'white');
 
-  // Create the points
+  // Create the lines using d3.line
+  const line = d3.line()
+    .x((d) => d[0])
+    .y((d) => d[1]);
+
   svg.append('g')
-    .selectAll('circle')
+    .selectAll('path')
     .data(dataset)
     .enter()
-    .append('circle')
-    .attr('cx', (d) => projection([d.long, d.lat])[0])
-    .attr('cy', (d) => projection([d.long, d.lat])[1])
-    .attr('r', (d) => (options.relativeNode ? Math.sqrt(d.value) : options.radius)) // Change this to set the size of the circles
-    .attr('fill', (d) => colorScale(d.value))
-    .attr('opacity', options.opacity);
+    .append('path')
+    .attr('d', (d) => {
+      const from = projection([d.from.long, d.from.lat]);
+      const to = projection([d.to.long, d.to.lat]);
+      return line([from, to]);
+    })
+    .attr('stroke', (d) => colorScale(d.value))
+    .attr('stroke-width', (d) => (options.relativeNode ? d.value / 10 : 1))
+    .attr('opacity', options.opacity)
+    .attr('fill', 'none');
 }
