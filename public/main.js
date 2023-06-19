@@ -2,7 +2,6 @@
 import D3OptionTypes from '../src/oomph-chart/visualizers/d3/types/option-types.js';
 import D3Visualizer from '../src/oomph-chart/visualizers/d3/index.js';
 import OomphChart from '../src/oomph-chart/index.js';
-
 // import { inputData } from '../src/sample-data/input.js';
 import { superData } from '../src/sample-data/super.js';
 

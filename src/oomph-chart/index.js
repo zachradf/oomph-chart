@@ -1,3 +1,4 @@
+/* eslint-disable max-classes-per-file */
 import ChartTypes from './model/types/chart-types.js';
 import D3OptionTypes from './visualizers/d3/types/option-types.js';
 import D3Visualizer from './visualizers/d3/index.js';
@@ -29,8 +30,8 @@ import { verifyVisualizer } from './model/validators/visualizer-validator.js';
  * @param {string} iface - Declared interface type, matched to <InterfaceTypes>. Since 'interface'
  *                         is a reserved word in JavaScript, sometimes 'iface' will be used.
  */
-export default class OomphChart {
-  constructor(inputData, visualizer = 'd3', iface = 'default') {
+class OomphChart {
+  constructor(inputData = null, visualizer = 'd3', iface = 'default') {
     this.data = inputData;
     this.inputs = getCompatibleInputTypes(this.data);
     this.tags = getInputToTagAssociations(this.inputs);
@@ -72,3 +73,21 @@ export default class OomphChart {
     } else console.error('Could not render visualizer due to invalid arguments.');
   }
 }
+const oomphChartExport = (obj) => {
+  obj.OomphChart = OomphChart;
+  return obj;
+};
+
+const returnOomphChartExport = () => oomphChartExport;
+returnOomphChartExport();
+// export { oomphChartExport };
+// oomphChartExport({});
+// const createOomphChart = function () {
+//   return OomphChart;
+// };
+
+// New function that accepts an export object and assigns the OomphChart class to it
+// const OC = function (exportObj) {
+//   exportObj.OomphChart = OomphChart;
+//   return exportObj;
+// };

@@ -15,11 +15,17 @@ export default defineConfig({
       input: {
         'oomph-chart': 'src/oomph-chart/index.js',
       },
+      treeshake: false,
       output: {
-        format: 'iife',
+        format: 'es',
+        name: 'OomphChart',
         dir: 'dist',
         entryFileNames: `[name]/[name].${pkg.version}.js`,
         chunkFileNames: `[name]/[name]-${pkg.version}-[hash].js`,
+        exports: 'named',
+        globals: {
+          'oomph-chart': 'OomphChart',
+        },
       },
       external: [],
     },
