@@ -55,10 +55,20 @@ require(['../dist/oomph-chart/oomph-chart.0.0.2.js'], function(myModule) {
     </script> -->
     <!-- <script src = '../dist/oomph-chart/oomph-chart.0.0.2' ></script> -->
     <script src="https://cdn.jsdelivr.net/npm/d3@7.8.4/dist/d3.min.js"></script>
-      <script src="../dist/oomph-chart/oomph-chart.0.0.2.js" type="module"></script>
-      <script type="module">
-      console.log(window)
-        // Use myChart...
+      <script src="../dist/oomph-chart/oomph-chart.0.0.4.js"></script>
+      <script>
+        const myExportObj = {};
+        OomphChart(d3, myExportObj)
+        // console.log('myExport', new myExportObj.OomphChart([{x:1, y:2}]))
+        // console.log('myExport', new myExportObj.OomphChart([{x:1, y:2}]).chartsEligible)
+        // console.log('myExport', new myExportObj.OomphChart([{x:1, y:2}]).render)
+        // console.log('myExport', new myExportObj.OomphChart([{x:1, y:2}]).renderVisualizer)
+        console.log('chartTypes', new myExportObj.ChartTypes())
+        console.log('chartTypes', new myExportObj.D3OptionTypes())
+        console.log('chartTypes', new myExportObj.VisualizerTypes())
+
+
+
       </script>
       
       

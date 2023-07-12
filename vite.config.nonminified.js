@@ -17,7 +17,7 @@ export default defineConfig({
       },
       treeshake: false,
       output: {
-        format: 'es',
+        format: 'iife',
         name: 'OomphChart',
         dir: 'dist',
         entryFileNames: `[name]/[name].${pkg.version}.js`,

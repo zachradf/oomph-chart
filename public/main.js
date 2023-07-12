@@ -1,8 +1,9 @@
 // import { create } from 'd3-selection';
+
 import D3OptionTypes from '../src/oomph-chart/visualizers/d3/types/option-types.js';
 import D3Visualizer from '../src/oomph-chart/visualizers/d3/index.js';
 import OomphChart from '../src/oomph-chart/index.js';
-// import { inputData } from '../src/sample-data/input.js';
+import { inputData } from '../src/sample-data/input.js';
 import { superData } from '../src/sample-data/super.js';
 
 import priority from '../src/oomph-chart/interfaces/default/option-priority.js';
@@ -16,6 +17,8 @@ import createWordCloud from '../src/oomph-chart/visualizers/d3/charts/hierarchy/
 import createVoronoiTreemap from '../src/oomph-chart/visualizers/d3/charts/hierarchy/voronoi.js';
 import { chartData } from '../src/sample-data/chart.js';
 
+// const oomphChartExport = require('../dist/oomph-chart/oomph-chart.0.0.4');
+
 const optionTypes = new D3OptionTypes();
 
 // const superObjects = {};
@@ -26,9 +29,9 @@ const optionTypes = new D3OptionTypes();
 /* EXAMPLE CODE */
 
 // Example 1: Invoking a bar chart via OomphChart (ultimately, the intended technique)
-// const barExample1 = new OomphChart(superData.string_number);
+const barExample1 = new OomphChart(superData.string_number);
 // console.log(barExample1);
-// barExample1.render('bar');
+barExample1.render('bar');
 
 // Example 2: *Interim* workflow with optionTypes
 // TODO NOTE: only the first chart-to-option association is returned. for mapping, please see:
@@ -39,39 +42,39 @@ const optionTypes = new D3OptionTypes();
 // const barExample3 = new D3Visualizer(['bar'], [chartData.barChart], [optionTypes.options5]);
 
 /* END EXAMPLE CODE */
-const barExample3 = new D3Visualizer(['bar'], [chartData.scatterPlot3], [optionTypes.options5]);
-const svg = d3.select('.bar-chart');
-const arrowOptions = {
-  shapeType: 'ellipse',
-  width: 500,
-  height: 500,
-  fillColor: 'blue',
-  labelText: 'Arrow',
-  initialX: 250,
-  initialY: 250,
-  priority: ['shapeType', 'width'],
-  rotation: 90,
-  scale: 3,
-  stemLength: 30,
-};
-const arrowOptions2 = {
-  height: 50,
-  width: 15,
-  shapeType: 'rectangle',
-  fillColor: 'red',
-  labelText: 'SECOND LABEL',
-  initialX: 450,
-  initialY: 450,
-  priority: ['labelText', 'height'],
-  radius: 30,
-  rotation: 90,
-  opacity: 0.4,
-};
-priority(arrowOptions, arrowOptions2);
-console.log(svg);
-shape(arrowOptions, svg);
-shape(arrowOptions2, svg);
-menu(barExample3, '#chart', [chartData.scatterPlot2, chartData.scatterPlot2, chartData.scatterPlot2, chartData.scatterPlot2], [optionTypes.options5, optionTypes.options5, optionTypes.options5, optionTypes.options5], ['Scatter Cluster One', 'Scatter Cluster Two', 'Scatter Cluster Three', 'Scatter Cluster Four']);
+// const barExample3 = new D3Visualizer(['bar'], [chartData.scatterPlot3], [optionTypes.options5]);
+// const svg = d3.select('.bar-chart');
+// const arrowOptions = {
+//   shapeType: 'ellipse',
+//   width: 500,
+//   height: 500,
+//   fillColor: 'blue',
+//   labelText: 'Arrow',
+//   initialX: 250,
+//   initialY: 250,
+//   priority: ['shapeType', 'width'],
+//   rotation: 90,
+//   scale: 3,
+//   stemLength: 30,
+// };
+// const arrowOptions2 = {
+//   height: 50,
+//   width: 15,
+//   shapeType: 'rectangle',
+//   fillColor: 'red',
+//   labelText: 'SECOND LABEL',
+//   initialX: 450,
+//   initialY: 450,
+//   priority: ['labelText', 'height'],
+//   radius: 30,
+//   rotation: 90,
+//   opacity: 0.4,
+// };
+// priority(arrowOptions, arrowOptions2);
+// console.log(svg);
+// shape(arrowOptions, svg);
+// shape(arrowOptions2, svg);
+// menu(barExample3, '#chart', [chartData.scatterPlot2, chartData.scatterPlot2, chartData.scatterPlot2, chartData.scatterPlot2], [optionTypes.options5, optionTypes.options5, optionTypes.options5, optionTypes.options5], ['Scatter Cluster One', 'Scatter Cluster Two', 'Scatter Cluster Three', 'Scatter Cluster Four']);
 // menu(barExample3, '#chart', [chartData.scatterPlotRandom, chartData.scatterPlot, chartData.scatterPlotRandom2], [optionTypes.options10, optionTypes.options9, optionTypes.options8], ['Completely Customizable', 'Buttons Can Say Whatever', 'And Correspond to Any Data/Options']);
 
 // createWordCloud(chartData.bubbleChart2, optionData.options10, { svg });
