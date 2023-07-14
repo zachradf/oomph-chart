@@ -21,10 +21,10 @@ export default function appendAxes(chart, options, chartComponents) {
     // Style X-axis ticks
     xAxisG.selectAll('text')
       .style('font-size', `${options.xTickFontSize}px`)
-      .style('fill', `${options.xFontColor}`)
-      .style('font-family', `${options.xFontFamily}`)
-      .style('font-weight', `${options.xFontWeight}`)
-      .style('opacity', `${options.xFontOpacity}`);
+      .style('fill', `${options.xTickFontColor}`)
+      .style('font-family', `${options.xTickFontFamily}`)
+      .style('font-weight', `${options.xTickFontWeight}`)
+      .style('opacity', `${options.xTickFontOpacity}`);
 
     // Create and style X-axis label
     xAxisG.append('text')
@@ -51,10 +51,10 @@ export default function appendAxes(chart, options, chartComponents) {
     // Style Y-axis ticks
     yAxisG.selectAll('text')
       .style('font-size', `${options.yTickFontSize}px`)
-      .style('fill', `${options.yFontColor}`)
-      .style('font-family', `${options.yFontFamily}`)
-      .style('font-weight', `${options.yFontWeight}`)
-      .style('opacity', `${options.yFontOpacity}`);
+      .style('fill', `${options.yTickFontColor}`)
+      .style('font-family', `${options.yTickFontFamily}`)
+      .style('font-weight', `${options.yTickFontWeight}`)
+      .style('opacity', `${options.yTickFontOpacity}`);
 
     // Create and style Y-axis label
     yAxisG.append('text')

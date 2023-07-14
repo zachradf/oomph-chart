@@ -14,8 +14,6 @@ export default function createAxes(data, chart, options) {
     default: (data) => createDefault(data, options),
   };
 
-  const x = (chartFunctions[chart] || chartFunctions.default)(data);
-
   const scaleFunctions = {
     bar: () => d3.scaleLinear()
       .domain(yDomain || [0, d3.max(data, (d) => d.y)]).nice()
@@ -39,13 +37,15 @@ export default function createAxes(data, chart, options) {
 
   const xAxisColor = options.xAxisColor || '#000';
   const xAxisPosition = options.xAxisPosition || (height - margin.bottom);
-  const xAxisWidth = options.xAxistWidth || 2;
+  const xAxisWidth = options.xAxisWidth || 2;
   const xTickExtension = options.xTickExtension || 0;
   const xTickFrequency = options.xTickFrequency || width / 80;
   const xTickLength = options.xTickLength || width - margin.left - margin.right;
+  const x = (chartFunctions[chart] || chartFunctions.default)(data);
+
   const yAxisColor = options.yAxisColor || '#000';
   const yAxisPosition = options.yAxisPosition || margin.left;
-  const yAxisWidth = options.yAxistWidth || 2;
+  const yAxisWidth = options.yAxisWidth || 2;
   const yTickExtension = options.yTickExtension || 0;
   const yTickFrequency = options.yTickFrequency || width / 80;
   const yTickLength = options.yTickLength || height - margin.top - margin.bottom;
@@ -87,6 +87,7 @@ export default function createAxes(data, chart, options) {
               .append('line')
               .attr('stroke', `${yAxisColor}`)
               .attr('x2', yTickLength)
+              .attr('stroke-width', `${yAxisWidth}`)
               .attr('class', 'tick-line') // Add a class to the tick lines for non-waterfall charts
               .attr('opacity', options.yTickOpacity || 1);
             d3.select(this)
