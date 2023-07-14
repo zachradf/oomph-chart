@@ -2,14 +2,14 @@ export default function createD3PieChart(data, options, chartComponents) {
   const { width } = options;
   const { height } = options;
   const { svg } = chartComponents;
-  const radius = Math.min(width, height) / 2;
+  const { radius } = options;
 
   // Centers the pie chart within the svg element
   const chartGroup = svg.append('g')
     .attr('transform', `translate(${width / 2}, ${height / 2})`);
 
   // Create a color scale using the provided data labels and a predefined color scheme
-  const color = d3.scaleOrdinal()
+  const colorScale = options.colorScale || d3.scaleOrdinal()
     .domain(data.map((d) => d.x))
     .range(d3.schemeCategory10);
 
@@ -28,7 +28,7 @@ export default function createD3PieChart(data, options, chartComponents) {
     .data(pie(data))
     .enter()
     .append('path')
-    .attr('fill', (d) => color(d.data.y))
+    .attr('fill', (d) => colorScale(d.data.y))
     .attr('d', arc)
     .attr('stroke', `${options.strokeColor}` || 'white')
     .attr('stroke-width', `${options.strokeWidth}px` || '2px');
@@ -46,6 +46,11 @@ export default function createD3PieChart(data, options, chartComponents) {
       .join('text')
       .attr('transform', (d) => `translate(${categoryArc.centroid(d)})`)
       .attr('text-anchor', `${options.textAnchor}`)
+      .style('font-size', `${options.xLabelFontSize}px`)
+      .style('fill', `${options.fontColor}`)
+      .style('font-family', `${options.fontFamily}`)
+      .style('font-weight', `${options.fontWeight}`)
+      .style('opacity', `${options.fontOpacity}`)
       .attr('alignment-baseline', 'central')
       .text((d) => d.data.x);
   }

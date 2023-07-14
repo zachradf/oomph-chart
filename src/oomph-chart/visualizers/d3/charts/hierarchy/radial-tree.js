@@ -49,7 +49,7 @@ export default function createRadialTree(data, options, chartComponents) {
     })
     .text((d) => d.data.name)
     .style('font-size', options.childTextSize)
-    .style('fill', options.textColor);
+    .style('fill', options.fontColor);
 
   function radialPoint(x, y) {
     return [(y = +y) * Math.cos(x -= Math.PI / 2), y * Math.sin(x)];

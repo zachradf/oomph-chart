@@ -40,6 +40,6 @@ export default function createDendrogram(data, options, chartComponents) {
     .attr('x', (d) => (d.children ? -options.nodeRadius - 2 : options.nodeRadius + 2))
     .style('text-anchor', (d) => (d.children ? 'end' : 'start'))
     .text((d) => d.data.name)
-    .style('font-size', options.textSize)
-    .style('fill', options.textColor);
+    .style('font-size', options.childTextSize)
+    .style('fill', options.fontColor);
 }
