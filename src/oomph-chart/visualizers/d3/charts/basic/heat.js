@@ -1,6 +1,6 @@
 export default function createD3Heatmap(data, options, chartComponents) {
   const {
-    width, height, margin, colorScale, x = 'x', y = 'y',
+    width, height, margin, colorScheme, x = 'x', y = 'y',
   } = options;
   const { svg } = chartComponents;
 
@@ -17,7 +17,7 @@ export default function createD3Heatmap(data, options, chartComponents) {
     .padding(0.25);
 
   // Create the color scale
-  const color = d3.scaleSequential(colorScale)
+  const color = d3.scaleSequential(colorScheme)
     .domain(d3.extent(data, (d) => d.y));
 
   // Append a group element for the heatmap cells and bind the data

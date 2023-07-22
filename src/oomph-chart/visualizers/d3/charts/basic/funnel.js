@@ -1,10 +1,10 @@
 export default function createD3FunnelChart(data, options, chartComponents) {
   const { width } = options;
-  const { colors } = options;
+  const { colorScheme } = options;
   const { x } = chartComponents;
   const { y } = chartComponents;
   const { svg } = chartComponents;
-  const colorScale = d3.scaleOrdinal().domain(data.map((d) => d.x)).range(colors);
+  const colorScale = d3.scaleOrdinal().domain(data.map((d) => d.x)).range(colorScheme);
 
   const funnel = svg
     .selectAll('g')

@@ -44,7 +44,7 @@ export default function createBubbleChart(data, options, chartComponents) {
     .text((d) => {
       if (d.depth === 1) {
         // Add category label for parent categories (category1 and category2)
-        return d.data.name;
+        return d.data.category;
       } if (d.depth === 2) {
         // Add label for subcategories
         return d.data.name;

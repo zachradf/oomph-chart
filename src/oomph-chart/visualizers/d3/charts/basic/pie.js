@@ -9,9 +9,9 @@ export default function createD3PieChart(data, options, chartComponents) {
     .attr('transform', `translate(${width / 2}, ${height / 2})`);
 
   // Create a color scale using the provided data labels and a predefined color scheme
-  const colorScale = options.colorScale || d3.scaleOrdinal()
-    .domain(data.map((d) => d.x))
-    .range(d3.schemeCategory10);
+  const colorScale = d3.scaleOrdinal()
+    .domain(d3.range(options.colorScheme.length))
+    .range(options.colorScheme);
 
   // Define the pie layout function with value accessor and sort function
   const pie = d3.pie()

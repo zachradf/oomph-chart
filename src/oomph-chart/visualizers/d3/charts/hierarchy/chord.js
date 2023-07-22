@@ -2,12 +2,34 @@ export default function createChordDiagram(data, options, chartComponents) {
   const {
     width,
     height,
-    color,
+    colorScheme,
     strokeColor,
     outerRadius,
     innerRadius,
   } = options;
-  const labels = data.pop();
+  const color = d3.scaleOrdinal()
+    .domain(d3.range(colorScheme.length))
+    .range(colorScheme);  
+
+  function convertToMatrix(chordData) {
+    const labels = chordData.map((d) => d.category);
+    console.log("Labels: ", labels);  // Debug line
+
+    const matrix = chordData.map((d) =>
+      labels.map((label) =>
+        d.children.find((child) => child.name === label)?.value || 0
+      )
+    );
+    matrix.push(labels);
+        console.log(matrix, '====');
+
+    return matrix;
+  }
+
+  const matrixData = convertToMatrix(data);
+
+  const labels = matrixData.pop();
+  console.log(labels, 'labels')
 
   const { svg } = chartComponents;
 
@@ -17,7 +39,7 @@ export default function createChordDiagram(data, options, chartComponents) {
 
   const ribbon = d3.ribbon().radius(innerRadius);
 
-  const chords = chord(data);
+  const chords = chord(matrixData);
 
   const group = svg
     .append('g')
