@@ -8,7 +8,12 @@ export default function appendAxes(chart, options, chartComponents) {
   let xAxisBBox;
   let yAxisBBox;
   // this will be checked by graph tags in the future
-  if (chart === 'polar' || chart === 'radar' || chart === 'pie' || chart === 'donut' || chart === 'heatmap' || chart === 'bubble') return { xAxisBBox, yAxisBBox };
+  const nonAxialCharts = ['polar', 'radar', 'pie', 'donut', 'heatmap', 'bubble', 'sun', 'chord'];
+
+  if (nonAxialCharts.includes(chart)) {
+    return { xAxisBBox, yAxisBBox };
+  }
+
   if (!options.isUpdating) {
     // X-axis
     const xAxisG = svg.append('g')

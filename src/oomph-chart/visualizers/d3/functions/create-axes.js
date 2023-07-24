@@ -1,10 +1,16 @@
 import { createXAxisLine, createYAxisLine } from './axis-lines.js';
 
 export default function createAxes(data, chart, options) {
+  const nonAxialCharts = ['polar', 'radar', 'pie', 'donut', 'heatmap', 'bubble', 'sun', 'chord'];
+
+  if (nonAxialCharts.includes(chart)) {
+    return {};
+  }
+
   const {
     margin, width, height, yDomain,
   } = options;
-
+  console.log('in createAxes', chart);
   const chartFunctions = {
     bar: (data) => createBarBox(data, options),
     box: (data) => createBarBox(data, options),
@@ -23,7 +29,7 @@ export default function createAxes(data, chart, options) {
       .range([margin.top, height - margin.bottom])
       .padding(0.1),
     stackedbar: () => d3.scaleLinear()
-      .domain(yDomain || [0, d3.max(data, (d) => d3.sum(d.values.map((v) => v.value)))])
+      .domain(yDomain || [0, d3.max(data, (d) => d3.sum(d.children.map((v) => v.value)))])
       .nice()
       .range([height - margin.bottom, margin.top]),
     waterfall: () => d3.scaleLinear()
@@ -136,6 +142,12 @@ function createWaterfall(data, options) {
     .padding(0.1);
 }
 
+// function createStackedBar(data, options) {
+//   return d3.scaleBand()
+//     .domain(options.xDomain ? options.xDomain : data.map((d) => d.category))
+//     .range([options.margin.left, options.width - options.margin.right])
+//     .padding(0.1);
+// }
 function createStackedBar(data, options) {
   return d3.scaleBand()
     .domain(options.xDomain ? options.xDomain : data.map((d) => d.category))
