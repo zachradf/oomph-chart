@@ -4,16 +4,17 @@ export default function createSankeyDiagram(data, options, chartComponents) {
   const {
     width,
     height,
-    nodeWidth,
+    nodeRadius,
     nodePadding,
   } = options;
-  const color = d3.scaleOrdinal(d3.schemeCategory10);
+  const color = d3.scaleOrdinal(options.colorScheme);
   const { svg } = chartComponents;
+  data = convertData(data);
 
   svg.append('g');
 
   const sankey = d3Sankey()
-    .nodeWidth(nodeWidth)
+    .nodeWidth(nodeRadius)
     .nodePadding(nodePadding)
     .extent([[1, 1], [width - 1, height - 5]]);
 
@@ -54,4 +55,42 @@ export default function createSankeyDiagram(data, options, chartComponents) {
     .attr('stroke', (d) => color(d.source.index))
     .attr('stroke-opacity', 0.5)
     .attr('stroke-width', (d) => Math.max(1, d.width));
+}
+
+function convertData(inputData) {
+  const outputData = {
+    nodes: [],
+    links: [],
+  };
+
+  // create an index mapping for node names
+  const indexMap = {};
+  let index = 0;
+
+  inputData.forEach((item) => {
+    // push node name to outputData if not already present
+    if (!indexMap.hasOwnProperty(item.category)) {
+      outputData.nodes.push({ name: item.category });
+      indexMap[item.category] = index;
+      index++;
+    }
+
+    item.children.forEach((child) => {
+      // push child node name to outputData if not already present
+      if (!indexMap.hasOwnProperty(child.name)) {
+        outputData.nodes.push({ name: child.name });
+        indexMap[child.name] = index;
+        index++;
+      }
+
+      // push link data to outputData
+      outputData.links.push({
+        source: indexMap[item.category],
+        target: indexMap[child.name],
+        value: child.value,
+      });
+    });
+  });
+
+  return outputData;
 }

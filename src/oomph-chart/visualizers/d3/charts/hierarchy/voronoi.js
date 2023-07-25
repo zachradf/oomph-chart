@@ -10,7 +10,9 @@ export default function createVoronoiTreemap(data, options, chartComponents) {
 
   const cells = root.descendants().filter((d) => d.depth);
 
-  const categoryColor = d3.scaleOrdinal(d3.schemeCategory10);
+  const categoryColor = d3.scaleOrdinal()
+    .domain(d3.range(options.colorScheme.length))
+    .range(options.colorScheme);
 
   const groups = svg
     .selectAll('g')

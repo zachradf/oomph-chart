@@ -61,9 +61,21 @@
 //   }
 // }
 export default function createD3SunburstChart(data, options, chartComponents) {
+  // If the data is an array, wrap it into an extra root level.
+  if (Array.isArray(data)) {
+    data = { category: '', children: data };
+  }
+  const root = d3.hierarchy(processData(data))
+    .sum((d) => d.value)
+    .sort((a, b) => b.value - a.value);
+  const nonLeafNames = [...new Set(root.descendants().map((d) => (d.children ? d.data.name : '')))];
+
   const color = d3.scaleOrdinal()
-    .domain(d3.range(options.colorScheme.length))
+    .domain(nonLeafNames)
     .range(options.colorScheme);
+  // const color = d3.scaleOrdinal()
+  //   .domain(d3.range(options.colorScheme.length))
+  //   .range(options.colorScheme);
 
   const {
     width, height, margin, radius,
@@ -83,14 +95,11 @@ export default function createD3SunburstChart(data, options, chartComponents) {
       value: d.value,
     };
   }
-
-  const partition = (data) => {
-    const root = d3.hierarchy(processData(data))
-      .sum((d) => d.value)
-      .sort((a, b) => b.value - a.value);
-    return d3.partition()
-      .size([2 * Math.PI, root.height + 1])(root);
-  };
+  // const root = d3.hierarchy(processData(data))
+  // .sum((d) => d.value)
+  // .sort((a, b) => b.value - a.value);
+  const partition = (data) => d3.partition()
+    .size([2 * Math.PI, root.height + 1])(root);
 
   const arc = d3.arc()
     .startAngle((d) => d.x0)
@@ -106,13 +115,12 @@ export default function createD3SunburstChart(data, options, chartComponents) {
   const nodes = g.selectAll('path')
     .data(partition(data).descendants())
     .enter().append('path')
-    // .attr('fill', (d) => { while (d.depth > 1) d = d.parent; return color(d.data.name); })
-    .attr('fill', (d) => color(d.depth))
+    .attr('fill', (d) => (d.children ? color(d.data.name) : color(d.parent.data.name))) // use node's name as index to color scale if it has children, else use parent's name
     .attr('fill-opacity', (d) => (d.children ? 0.6 : 0.4))
     .attr('d', arc);
 
   function labelVisible(d) {
-    return (d.y1 <= 3) && (d.y0 >= 1) && (d.x1 > d.x0 + 0.01);
+    return (d.x1 > d.x0 + 0.01);
   }
 
   g.selectAll('text')
@@ -121,15 +129,9 @@ export default function createD3SunburstChart(data, options, chartComponents) {
     .attr('transform', (d) => {
       const x = (d.x0 + d.x1) / 2 * 180 / Math.PI;
       const y = (d.y0 + d.y1) / 2 * radius;
-      return `rotate(${x - 90}) translate(${y},0) rotate(${x < 180 ? 0 : 180})`;
+      return `rotate(${x - 90}) translate(${y},0) rotate(${x <= 90 || x >= 270 ? 0 : 180})`;
     })
-    // .attr('transform', (d) => {
-    //   const x = (d.x0 + d.x1) / 360 / Math.PI;
-    //   const y = (d.y0 * radius + d.y1 * radius) / 2;
-    //   console.log('in sun', (d.y0 *  + d.y1), (d.x0 + d.x1 / 360 / Math.PI));
-    //   return `rotate(${x - 90}) translate(${y},0) rotate(${x < 180 ? 0 : 180})`;
-    // })
-    .attr('text-anchor', (d) => (((d.x0 + d.x1) / 2) * 180 / Math.PI < 180 ? 'start' : 'end'))
+    .attr('text-anchor', (d) => ((((d.x0 + d.x1) / 2) * 180) / Math.PI < 180 ? 'start' : 'end'))
     .attr('dy', '0.35em')
     .attr('font-size', options.childTextSize)
     .text((d) => d.data.name)

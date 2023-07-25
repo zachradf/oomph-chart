@@ -9,27 +9,18 @@ export default function createChordDiagram(data, options, chartComponents) {
   } = options;
   const color = d3.scaleOrdinal()
     .domain(d3.range(colorScheme.length))
-    .range(colorScheme);  
+    .range(colorScheme);
 
   function convertToMatrix(chordData) {
     const labels = chordData.map((d) => d.category);
-    console.log("Labels: ", labels);  // Debug line
-
-    const matrix = chordData.map((d) =>
-      labels.map((label) =>
-        d.children.find((child) => child.name === label)?.value || 0
-      )
-    );
+    const matrix = chordData.map((d) => labels.map((label) => d.children.find((child) => child.name === label)?.value || 0));
     matrix.push(labels);
-        console.log(matrix, '====');
-
     return matrix;
   }
-
+  
   const matrixData = convertToMatrix(data);
 
   const labels = matrixData.pop();
-  console.log(labels, 'labels')
 
   const { svg } = chartComponents;
 

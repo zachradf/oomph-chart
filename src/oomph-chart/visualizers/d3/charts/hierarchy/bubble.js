@@ -34,7 +34,7 @@ export default function createBubbleChart(data, options, chartComponents) {
     .style('fill', (d) => colorScheme[d.depth])
     .style('opacity', (d) => (d.depth <= 1 ? 1 : options.opacity));
 
-  // Add labels to the bubbles
+  // // Add labels to the bubbles
   nodes
     .append('text')
     .attr('dy', '.3em')
@@ -45,7 +45,7 @@ export default function createBubbleChart(data, options, chartComponents) {
       if (d.depth === 1) {
         // Add category label for parent categories (category1 and category2)
         return d.data.category;
-      } if (d.depth === 2) {
+      } if (d.depth > 1) {
         // Add label for subcategories
         return d.data.name;
       }

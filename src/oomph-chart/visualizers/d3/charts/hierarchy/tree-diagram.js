@@ -7,10 +7,17 @@ export default function createTreeDiagram(data, options, chartComponents) {
     strokeColor,
   } = options;
   const { svg } = chartComponents;
+  function processData(d) {
+    const children = d.children ? d.children.map(processData) : undefined;
+    return {
+      name: d.name || d.category, // support both 'category' and 'name'
+      children,
+    };
+  }
 
   const tree = d3.tree().size([height - 10, width - 10]); // Adjust size here
 
-  const root = d3.hierarchy(data);
+  const root = d3.hierarchy(processData(data[0])); // Use processData here
 
   tree(root);
 

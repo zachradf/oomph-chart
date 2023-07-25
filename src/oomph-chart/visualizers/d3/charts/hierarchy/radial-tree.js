@@ -11,8 +11,14 @@ export default function createRadialTree(data, options, chartComponents) {
   layout(root);
 
   const linkGenerator = d3.linkRadial()
-    .angle((d) => d.x)
-    .radius((d) => d.y);
+    .angle((d) => {
+      console.log(d, 'data');
+      return d.x;
+    })
+    .radius((d) => {
+      console.log(d, 'data');
+      return d.y;
+    });
 
   const link = g
     .selectAll('.link')

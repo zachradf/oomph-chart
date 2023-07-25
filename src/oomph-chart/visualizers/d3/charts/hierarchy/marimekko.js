@@ -80,7 +80,9 @@ export default function createMarimekkoChart(data, options, chartComponents) {
     .domain([0, 1])
     .range([options.height - options.margin.top - options.margin.bottom, 0]);
 
-  const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+  const colorScale = d3.scaleOrdinal()
+    .domain(d3.range(options.colorScheme.length))
+    .range(options.colorScheme);
 
   const parentRects = g.selectAll('.parent-rect')
     .data(data)
