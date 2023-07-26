@@ -1,3 +1,5 @@
+import { isDataInCorrectFormat } from '../../functions/format-data';
+
 export default function createTreeDiagram(data, options, chartComponents) {
   const {
     width,
@@ -7,22 +9,30 @@ export default function createTreeDiagram(data, options, chartComponents) {
     strokeColor,
   } = options;
   const { svg } = chartComponents;
-  function processData(d) {
-    const children = d.children ? d.children.map(processData) : undefined;
-    return {
-      name: d.name || d.category, // support both 'category' and 'name'
-      children,
+  console.log('in treeD', data);
+  let rootData;
+  if (isDataInCorrectFormat(data)) {
+    rootData = data;
+  } else {
+    rootData = {
+      name: 'root',
+      children: data,
     };
   }
 
-  const tree = d3.tree().size([height - 10, width - 10]); // Adjust size here
+  const topPadding = options.margin.top + radius; // Adjust the padding here based on your requirements
+  const sidePadding = options.margin.left + radius; // Adjust the padding here based on your requirements
 
-  const root = d3.hierarchy(processData(data[0])); // Use processData here
+  const tree = d3.tree().size([height - 2 * topPadding, width - 2 * sidePadding]);
+  const root = d3.hierarchy(rootData); // Use processData here
 
   tree(root);
+  // Create a group (g) element and translate it down by padding
+  const g = svg.append('g')
+    .attr('transform', `translate(${sidePadding}, ${topPadding})`);
 
-  const link = svg
-    .selectAll('.link')
+  // Create links (use g instead of svg)
+  const link = g.selectAll('.link')
     .data(root.links())
     .join('path')
     .attr('class', 'link')
@@ -32,8 +42,8 @@ export default function createTreeDiagram(data, options, chartComponents) {
     .attr('stroke-opacity', options.opacity)
     .attr('d', d3.linkHorizontal().x((d) => d.y).y((d) => d.x));
 
-  const node = svg
-    .selectAll('.node')
+  // Create nodes (use g instead of svg)
+  const node = g.selectAll('.node')
     .data(root.descendants())
     .join('g')
     .attr('class', 'node')
@@ -50,5 +60,5 @@ export default function createTreeDiagram(data, options, chartComponents) {
     .attr('x', (d) => (d.children ? -radius : radius))
     .text((d) => d.data.name)
     .style('font-size', `${options.childTextSize}`)
-    .style('fill', '#000');
+    .style('fill', `${options.fontColor}`);
 }

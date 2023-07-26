@@ -57,40 +57,69 @@ export default function createSankeyDiagram(data, options, chartComponents) {
     .attr('stroke-width', (d) => Math.max(1, d.width));
 }
 
-function convertData(inputData) {
-  const outputData = {
-    nodes: [],
-    links: [],
-  };
+// TODO refactor
+function convertData(hierarchicalData) {
+  let nodeIndex = 0;
+  const nodeIndexMap = new Map();
+  const sankeyData = { nodes: [], links: [] };
 
-  // create an index mapping for node names
-  const indexMap = {};
-  let index = 0;
-
-  inputData.forEach((item) => {
-    // push node name to outputData if not already present
-    if (!indexMap.hasOwnProperty(item.category)) {
-      outputData.nodes.push({ name: item.category });
-      indexMap[item.category] = index;
-      index++;
+  hierarchicalData.forEach((parent) => {
+    if (!nodeIndexMap.has(parent.name)) {
+      nodeIndexMap.set(parent.name, nodeIndex++);
+      sankeyData.nodes.push({ name: parent.name });
     }
 
-    item.children.forEach((child) => {
-      // push child node name to outputData if not already present
-      if (!indexMap.hasOwnProperty(child.name)) {
-        outputData.nodes.push({ name: child.name });
-        indexMap[child.name] = index;
-        index++;
+    parent.children.forEach((child) => {
+      if (!nodeIndexMap.has(child.name)) {
+        nodeIndexMap.set(child.name, nodeIndex++);
+        sankeyData.nodes.push({ name: child.name });
       }
 
-      // push link data to outputData
-      outputData.links.push({
-        source: indexMap[item.category],
-        target: indexMap[child.name],
+      sankeyData.links.push({
+        source: nodeIndexMap.get(parent.name),
+        target: nodeIndexMap.get(child.name),
         value: child.value,
       });
     });
   });
 
-  return outputData;
+  return sankeyData;
 }
+
+// function convertData(inputData) {
+//   const outputData = {
+//     nodes: [],
+//     links: [],
+//   };
+
+//   // create an index mapping for node names
+//   const indexMap = {};
+//   let index = 0;
+
+//   inputData.forEach((item) => {
+//     // push node name to outputData if not already present
+//     if (!indexMap.hasOwnProperty(item.category)) {
+//       outputData.nodes.push({ name: item.category });
+//       indexMap[item.category] = index;
+//       index++;
+//     }
+
+//     item.children.forEach((child) => {
+//       // push child node name to outputData if not already present
+//       if (!indexMap.hasOwnProperty(child.name)) {
+//         outputData.nodes.push({ name: child.name });
+//         indexMap[child.name] = index;
+//         index++;
+//       }
+
+//       // push link data to outputData
+//       outputData.links.push({
+//         source: indexMap[item.category],
+//         target: indexMap[child.name],
+//         value: child.value,
+//       });
+//     });
+//   });
+
+//   return outputData;
+// }

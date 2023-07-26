@@ -145,5 +145,5 @@ export default function createClusterDiagram(data, options, chartComponents) {
     .style('text-anchor', (d) => (d.children ? 'end' : 'start'))
     .style('font-size', `${options.childTextSize}`)
     .style('fill', 'black')
-    .text((d) => d.data.category || d.data.name);
+    .text((d) => d.data.name);
 }

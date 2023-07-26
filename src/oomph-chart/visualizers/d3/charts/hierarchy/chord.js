@@ -12,7 +12,7 @@ export default function createChordDiagram(data, options, chartComponents) {
     .range(colorScheme);
 
   function convertToMatrix(chordData) {
-    const labels = chordData.map((d) => d.category);
+    const labels = chordData.map((d) => d.name);
     const matrix = chordData.map((d) => labels.map((label) => d.children.find((child) => child.name === label)?.value || 0));
     matrix.push(labels);
     return matrix;

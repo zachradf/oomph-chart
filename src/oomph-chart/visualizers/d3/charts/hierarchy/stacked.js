@@ -40,7 +40,7 @@ export default function createD3StackedBarChart(data, options, chartComponents) 
   //   .range(options.color);
   const color = d3.scaleOrdinal()
     .domain(data[0].children.map((v) => v.name))
-    .range(d3.schemeCategory10); // This is an array of 10 colors
+    .range(options.colorScheme || d3.schemeCategory10); // This is an array of 10 colors
 
   // Create a stack generator to transform the data into stacked form
   const stack = d3.stack()
@@ -58,7 +58,7 @@ export default function createD3StackedBarChart(data, options, chartComponents) 
   bars.selectAll('rect')
     .data((d) => d)
     .join('rect')
-    .attr('x', (d, i) => x(data[i].category))
+    .attr('x', (d, i) => x(data[i].name))
     .attr('y', (d) => y(d[1]))
     .attr('height', (d) => y(d[0]) - y(d[1]))
     .attr('width', x.bandwidth());

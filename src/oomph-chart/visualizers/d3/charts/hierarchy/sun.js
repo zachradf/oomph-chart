@@ -86,7 +86,7 @@ export default function createD3SunburstChart(data, options, chartComponents) {
   function processData(d) {
     if (d.children) {
       return {
-        name: d.category,
+        name: d.name,
         children: d.children.map(processData),
       };
     }

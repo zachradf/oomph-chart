@@ -65,20 +65,21 @@
 //     .call(d3.axisLeft(y));
 // }
 export default function createMarimekkoChart(data, options, chartComponents) {
-  const { svg } = chartComponents;
+  const { svg, x, y } = chartComponents;
+  data.forEach((parent) => {
+    const total = parent.children.reduce((sum, child) => sum + child.value, 0);
 
+    // Skip normalization if total is already 1 or 0
+    if (total === 1) return;
+    if (total === 0 || Number.isNaN(total) || total === null) console.error('Sum of children for', parent, 'is', total, ', this shoud be a non-zero number');
+    console.log('total', total);
+    parent.children.forEach((child) => {
+      child.value = total !== 0 ? child.value / total : 0;
+    });
+  });
   const g = svg
     .append('g')
     .attr('transform', `translate(${options.margin.left}, ${options.margin.top})`);
-
-  const x = d3.scaleBand()
-    .domain(data.map((d) => d.category))
-    .range([0, options.width - options.margin.left - options.margin.right])
-    .padding(0.1);
-
-  const y = d3.scaleLinear()
-    .domain([0, 1])
-    .range([options.height - options.margin.top - options.margin.bottom, 0]);
 
   const colorScale = d3.scaleOrdinal()
     .domain(d3.range(options.colorScheme.length))
@@ -89,7 +90,7 @@ export default function createMarimekkoChart(data, options, chartComponents) {
     .enter()
     .append('g')
     .attr('class', 'parent-rect')
-    .attr('transform', (d) => `translate(${x(d.category)}, 0)`);
+    .attr('transform', (d) => `translate(${x(d.name)}, 0)`);
 
   parentRects.each(function (parentData) {
     const parentGroup = d3.select(this);
@@ -125,10 +126,10 @@ export default function createMarimekkoChart(data, options, chartComponents) {
     });
   });
 
-  g.append('g')
-    .attr('transform', `translate(0, ${options.height - options.margin.top - options.margin.bottom})`)
-    .call(d3.axisBottom(x));
+  // g.append('g')
+  //   .attr('transform', `translate(0, ${options.height - options.margin.top - options.margin.bottom})`)
+  //   .call(d3.axisBottom(x));
 
-  g.append('g')
-    .call(d3.axisLeft(y));
+  // g.append('g')
+  //   .call(d3.axisLeft(y));
 }

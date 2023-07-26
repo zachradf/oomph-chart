@@ -93,7 +93,7 @@ export default function createIcicleChart(data, options, chartComponents) {
   const { svg } = chartComponents;
 
   const partition = (data) => {
-    const root = d3.hierarchy({ children: data }, (d) => d.children)
+    const root = d3.hierarchy({ name: `${options.label}`, children: data }, (d) => d.children)
       .sum((d) => d.value)
       .sort((a, b) => b.height - a.height || b.value - a.value);
     return d3.partition()
@@ -121,12 +121,6 @@ export default function createIcicleChart(data, options, chartComponents) {
     .attr('dy', '.35em')
     // .attr('transform', (d) => `translate(${(d.y0 + d.y1) / 2},${(d.x0 + d.x1) / 2})rotate(90)`)
     .attr('transform', (d) => `translate(${(d.x0 + d.x1) / 2},${(d.y0 + d.y1) / 2})rotate(90)`)
-    .text((d) => {
-      if (d.depth === 1) {
-        return d.data.category;
-      } if (d.depth >= 2) {
-        return d.data.name;
-      }
-    })
+    .text((d) => d.data.name)
     .style('font-size', `${options.childTextSize}`);
 }

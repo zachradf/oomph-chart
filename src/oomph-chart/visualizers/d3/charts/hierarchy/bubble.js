@@ -1,11 +1,23 @@
+import { isDataInCorrectFormat } from "../../functions/format-data";
 export default function createBubbleChart(data, options, chartComponents) {
   const { diameter } = options;
   const { svg } = chartComponents;
   const colorScheme = options.colorScheme || d3.schemeCategory10;
+  let rootData;
+  if (isDataInCorrectFormat(data)) {
+
+    rootData = data;
+  } else {
+
+    rootData = {
+      name: 'root',
+      children: data,
+    };
+  }
 
   // Prepare the data for the chart
   const root = d3
-    .hierarchy({ children: data })
+    .hierarchy(rootData)
     .sum((d) => d.value)
     .sort((a, b) => b.value - a.value);
 
@@ -43,8 +55,8 @@ export default function createBubbleChart(data, options, chartComponents) {
     .style('fill', `${options.fontColor}`) // Set the text color explicitly
     .text((d) => {
       if (d.depth === 1) {
-        // Add category label for parent categories (category1 and category2)
-        return d.data.category;
+        // Add name label for parent categories
+        return d.data.name;
       } if (d.depth > 1) {
         // Add label for subcategories
         return d.data.name;
@@ -86,3 +98,11 @@ export default function createBubbleChart(data, options, chartComponents) {
 //     }
 //   });
 // }
+function replaceKey(obj, oldKey, newKey) {
+  const { [oldKey]: oldKeyValue, ...remainingKeys } = obj;
+
+  return {
+    ...remainingKeys,
+    [newKey]: oldKeyValue
+  };
+}

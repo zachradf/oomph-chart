@@ -43,8 +43,21 @@
 //     .style('font-size', options.childTextSize)
 //     .style('fill', options.fontColor);
 // }
+import { isDataInCorrectFormat } from '../../functions/format-data';
+
 export default function createDendrogram(data, options, chartComponents) {
   const { svg } = chartComponents;
+
+  // Convert the data array into a root node object
+  let rootData;
+  if (isDataInCorrectFormat(data)) {
+    rootData = data;
+  } else {
+    rootData = {
+      name: 'root',
+      children: data,
+    };
+  }
 
   const g = svg
     .append('g')
@@ -54,12 +67,12 @@ export default function createDendrogram(data, options, chartComponents) {
     .size([options.height - options.margin.top - options.margin.bottom, options.width - options.margin.left - options.margin.right]);
 
   // const root = d3.hierarchy(data, (d) => d.children);
-  const root = d3.hierarchy(data, (d) => d.children).sum((d) => d.value)
-    .each((d) => {
-      if (d.data.name === undefined) {
-        d.data.name = d.data.category; // Ensure each node has 'name' property.
-      }
-    });
+  const root = d3.hierarchy(rootData, (d) => d.children).sum((d) => d.value);
+  // .each((d) => {
+  //   // if (d.data.name === undefined) {
+  //   //   d.data.name = d.data.category; // Ensure each node has 'name' property.
+  //   // }
+  // });
   layout(root);
 
   const link = g
@@ -92,7 +105,7 @@ export default function createDendrogram(data, options, chartComponents) {
     .style('text-anchor', (d) => (d.children ? 'end' : 'start'))
     .text((d) => {
       console.log(d.data); // debug the data
-      return d.data.name ? d.data.name : d.data.category;
+      return d.data.name;
     })
     .style('font-size', options.childTextSize)
     .style('fill', options.fontColor);

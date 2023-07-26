@@ -5,7 +5,7 @@ export default function createWordCloud(unformattedData, options, chartComponent
   const data = unformattedData.flatMap((d, i) => d.children.map(child => ({
     ...child, 
     y2: i / unformattedData.length,
-    category: d.category
+    category: d.name
   })));
   // Create a linear scale for the radius of the bubbles
   const radiusScale = d3.scaleSqrt()
@@ -48,7 +48,7 @@ export default function createWordCloud(unformattedData, options, chartComponent
     .on('tick', ticked);
 
   // Generate color scale dynamically
-  const categories = Array.from(new Set(data.map((d) => d.category)));
+  const categories = Array.from(new Set(data.map((d) => d.name)));
   const colorScale = d3.scaleOrdinal()
     .domain(categories)
     .range(d3.schemeCategory10);
@@ -61,7 +61,7 @@ export default function createWordCloud(unformattedData, options, chartComponent
       .enter()
       .append('circle')
       .attr('r', (d) => radiusScale(d.value))
-      .style('fill', (d) => colorScale(d.category)) // Use the color scale based on category
+      .style('fill', (d) => colorScale(d.name)) // Use the color scale based on category
       .style('opacity', options.bubbleOpacity);
   }
 

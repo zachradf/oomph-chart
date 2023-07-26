@@ -4,13 +4,13 @@ export default function createAdjacencyMatrix(unformattedData, options, chartCom
   console.log(x, 'x and y');
 
   function convertToAdjacencyList(unformattedData) {
-    const nodes = unformattedData.map((d) => ({ id: d.category }));
+    const nodes = unformattedData.map((d) => ({ id: d.name }));
     const links = [];
 
     unformattedData.forEach((d) => {
       d.children.forEach((child) => {
         links.push({
-          source: d.category,
+          source: d.name,
           target: child.name,
           value: child.value,
         });

@@ -1,5 +1,17 @@
+import { isDataInCorrectFormat } from '../../functions/format-data';
+
 export default function createRadialTree(data, options, chartComponents) {
   const { svg } = chartComponents;
+  // Convert the data array into a root node object
+  let rootData;
+  if (isDataInCorrectFormat(data)) {
+    rootData = data;
+  } else {
+    rootData = {
+      name: 'root',
+      children: data,
+    };
+  }
   const g = svg
     .append('g')
     .attr('transform', `translate(${options.width / 2}, ${options.height / 2})`);
@@ -7,7 +19,7 @@ export default function createRadialTree(data, options, chartComponents) {
   const layout = d3.tree()
     .size([2 * Math.PI, options.radius]);
 
-  const root = d3.hierarchy(data);
+  const root = d3.hierarchy(rootData);
   layout(root);
 
   const linkGenerator = d3.linkRadial()
