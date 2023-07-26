@@ -42,6 +42,12 @@ export default class InputTypes {
         nameLong: 'String Number String Input',
         dataFormat: ['string', 'number', 'string'],
       },
+      string_number_children: {
+        _selfKey: 'string_number_children',
+        name: 'String Number Children',
+        nameLong: 'String Number Children Hierarchy',
+        dataFormat: ['string', 'number', 'children'],
+      },
     };
 
     Object.assign(this, types);

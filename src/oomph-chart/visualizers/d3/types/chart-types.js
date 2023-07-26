@@ -2,7 +2,7 @@ import renderAdjacencyMatrix from '../charts/hierarchy/adjacency.js';
 import renderAreaChart from '../charts/basic/area.js';
 import renderBarChart from '../charts/basic/bar.js';
 import renderBoxPlot from '../charts/basic/box.js';
-import renderBubbleChart from '../charts/basic/bubble.js';
+import renderBubbleChart from '../charts/hierarchy/bubble.js';
 import renderChordDiagram from '../charts/hierarchy/chord.js';
 import renderClusterDiagram from '../charts/hierarchy/cluster.js';
 import renderDendrogram from '../charts/hierarchy/dendrogram.js';
@@ -19,7 +19,7 @@ import renderRadarChart from '../charts/basic/radar.js';
 import renderRadialTree from '../charts/hierarchy/radial-tree.js';
 import renderSankeyDiagram from '../charts/hierarchy/sankey.js';
 import renderScatterPlot from '../charts/basic/scatter.js';
-import renderStackedBarChart from '../charts/basic/stacked.js';
+import renderStackedBarChart from '../charts/hierarchy/stacked.js';
 import renderSunburstChart from '../charts/hierarchy/sun.js';
 import renderTreeDiagram from '../charts/hierarchy/tree-diagram.js';
 import renderTreeMap from '../charts/hierarchy/tree-map.js';
@@ -111,13 +111,13 @@ export default class D3ChartTypes {
         nameLong: 'Funnel Chart',
         render: renderFunnelChart,
       },
-      gauge: {
-        _selfKey: 'gauge',
-        chartClass: 'gauge-chart',
-        name: 'Gauge',
-        nameLong: 'Gauge Chart',
-        render: renderGaugeChart,
-      },
+      // gauge: {
+      //   _selfKey: 'gauge',
+      //   chartClass: 'gauge-chart',
+      //   name: 'Gauge',
+      //   nameLong: 'Gauge Chart',
+      //   render: renderGaugeChart,
+      // },
       heat: { // TODO note: was previously 'heat-map', verify if is now type-safe to use 'heat'
         _selfKey: 'heat',
         chartClass: 'heat-map',
@@ -184,8 +184,8 @@ export default class D3ChartTypes {
         nameLong: 'Scatter Plot',
         render: renderScatterPlot,
       },
-      stackedbar: {
-        _selfKey: 'stackedbar',
+      stackedBar: {
+        _selfKey: 'stackedBar',
         chartClass: 'stacked-bar-chart-plot', // TODO match more closely with key
         name: 'Stacked Bar',
         nameLong: 'Stacked Bar Chart',
@@ -193,24 +193,28 @@ export default class D3ChartTypes {
       },
       sun: {
         _selfKey: 'sun',
+        chartClass: 'sun-burst',
         name: 'Sun Burst',
         nameLong: 'Sun Burst Diagram',
         render: renderSunburstChart,
       },
       treeDiagram: {
         _selfKey: 'treeDiagram',
+        chartClass: 'tree-diagram',
         name: 'Tree Diagram',
         nameLong: 'Tree Diagram',
         render: renderTreeDiagram,
       },
       treeMap: {
         _selfKey: 'treeMap',
+        chartClass: 'tree-map',
         name: 'Tree Map',
         nameLong: 'Tree Map',
         render: renderTreeMap,
       },
       voronoi: {
         _selfKey: 'voronoi',
+        chartClass: 'voronoi',
         name: 'Voronoi',
         nameLong: 'Voronoi Diagram',
         render: renderVoronoiTreemap,

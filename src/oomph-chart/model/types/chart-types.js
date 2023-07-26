@@ -65,11 +65,11 @@ export default class ChartTypes {
         name: 'Funnel',
         nameLong: 'Funnel Chart',
       },
-      gauge: {
-        _selfKey: 'gauge',
-        name: 'Gauge',
-        nameLong: 'Gauge Chart',
-      },
+      // gauge: {
+      //   _selfKey: 'gauge',
+      //   name: 'Gauge',
+      //   nameLong: 'Gauge Chart',
+      // },
       heat: {
         _selfKey: 'heat',
         name: 'Heat',

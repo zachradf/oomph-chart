@@ -16,12 +16,15 @@ function createInputToTagAssociations() {
   try {
     const associations = {
       [inputTypes.number_number._selfKey]: [
-        tagTypes.hierarchic._selfKey,
+        tagTypes.basic._selfKey,
       ],
       [inputTypes.string_number._selfKey]: [
         tagTypes.basic._selfKey,
       ],
       [inputTypes.string_number_string._selfKey]: [
+        // tagTypes.basic._selfKey,
+      ],
+      [inputTypes.string_number_children._selfKey]: [
         tagTypes.hierarchic._selfKey,
       ],
     };
