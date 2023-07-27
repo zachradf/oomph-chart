@@ -29,11 +29,17 @@
 //     .attr('height', (d) => y(d[0]) - y(d[1]))
 //     .attr('width', x.bandwidth());
 // }
+import { hasValues } from "../../functions/format-data";
+
 export default function createD3StackedBarChart(data, options, chartComponents) {
+  if (!hasValues(data)) {
+    console.error(`A ${options.chartClass} diagram requires numeric child values`);
+  }
+  validateStackedBar(data)
+
   const {
     x, y, svg,
   } = chartComponents;
-
   // Create a color scale using the color scheme provided
   // const color = d3.scaleOrdinal()
   //   .domain(data[0].children.map((v) => v.name))
@@ -62,4 +68,29 @@ export default function createD3StackedBarChart(data, options, chartComponents) 
     .attr('y', (d) => y(d[1]))
     .attr('height', (d) => y(d[0]) - y(d[1]))
     .attr('width', x.bandwidth());
+}
+
+function validateStackedBar(data) {
+  const childrenNames = data[0]?.children?.map(child => child.name);
+  for (const item of data) {
+  // Check if children names are consistent across all data objects
+  const currentChildrenNames = item.children.map((child) => child.name);
+  if (!arraysEqual(childrenNames, currentChildrenNames)) {
+    throw new Error('All children arrays must have identical "name" values across all objects for a stackedBar.');
+    }
+  }
+}
+// Helper function to check if two arrays are equal
+function arraysEqual(a, b) {
+  if (a === b) return true;
+  if (a == null || b == null) return false;
+  if (a.length != b.length) return false;
+
+  a.sort();
+  b.sort();
+
+  for (let i = 0; i < a.length; ++i) {
+    if (a[i] !== b[i]) return false;
+  }
+  return true;
 }

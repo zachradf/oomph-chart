@@ -37,9 +37,13 @@
 //     .text((d) => d.data.name)
 //     .style('font-size', `${options.childTextSize}`);
 // }
-import { isDataInCorrectFormat } from '../../functions/format-data';
+import { isDataInCorrectFormat, hasValues } from '../../functions/format-data';
 
 export default function createD3TreeMap(data, options, chartComponents) {
+  if (!hasValues(data)) {
+    console.error(`A ${options.chartClass} diagram requires numeric child values`);
+    return;
+  }
   // Convert the data array into a root node object only if necessary
   let rootData;
   if (isDataInCorrectFormat(data)) {

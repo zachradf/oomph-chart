@@ -17,20 +17,14 @@ export default function createRadialTree(data, options, chartComponents) {
     .attr('transform', `translate(${options.width / 2}, ${options.height / 2})`);
 
   const layout = d3.tree()
-    .size([2 * Math.PI, options.radius]);
+    .size([`${2 * Math.PI + options.angle}`, options.radius]);
 
   const root = d3.hierarchy(rootData);
   layout(root);
 
   const linkGenerator = d3.linkRadial()
-    .angle((d) => {
-      console.log(d, 'data');
-      return d.x;
-    })
-    .radius((d) => {
-      console.log(d, 'data');
-      return d.y;
-    });
+    .angle((d) => d.x)
+    .radius((d) => d.y);
 
   const link = g
     .selectAll('.link')
@@ -40,7 +34,7 @@ export default function createRadialTree(data, options, chartComponents) {
     .attr('class', 'link')
     .attr('d', linkGenerator)
     .style('stroke', options.linkColor)
-    .style('fill', 'none');
+    .style('fill', options.fillColor ? `${options.fillColor}` : 'none');
 
   const node = g
     .selectAll('.node')
@@ -67,6 +61,8 @@ export default function createRadialTree(data, options, chartComponents) {
     })
     .text((d) => d.data.name)
     .style('font-size', options.childTextSize)
+    .style('font-family', options.fontFamily)
+    .style('font-weight', options.fontWeight)
     .style('fill', options.fontColor);
 
   function radialPoint(x, y) {

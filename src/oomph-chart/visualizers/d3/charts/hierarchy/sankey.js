@@ -1,6 +1,11 @@
 import { sankey as d3Sankey, sankeyLinkHorizontal } from 'd3-sankey';
+import { hasValues } from '../../functions/format-data';
 
 export default function createSankeyDiagram(data, options, chartComponents) {
+  if (!hasValues(data)) {
+    console.error(`A ${options.chartClass} diagram requires numeric child values`);
+    return;
+  }
   const {
     width,
     height,

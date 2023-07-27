@@ -1,16 +1,19 @@
-import { isDataInCorrectFormat } from "../../functions/format-data";
+import { isDataInCorrectFormat, hasValues } from '../../functions/format-data';
+
 export default function createBubbleChart(data, options, chartComponents) {
+  if (!hasValues(data)) {
+    console.error(`An ${options.chartClass} diagram requires numeric child values`);
+    return;
+  }
   const { diameter } = options;
   const { svg } = chartComponents;
   const colorScheme = options.colorScheme || d3.schemeCategory10;
   let rootData;
   if (isDataInCorrectFormat(data)) {
-
     rootData = data;
   } else {
-
     rootData = {
-      name: 'root',
+      name: `${options.label}`,
       children: data,
     };
   }
@@ -47,24 +50,48 @@ export default function createBubbleChart(data, options, chartComponents) {
     .style('opacity', (d) => (d.depth <= 1 ? 1 : options.opacity));
 
   // // Add labels to the bubbles
+  // nodes
+  //   .append('text')
+  //   .attr('dy', '.3em')
+  //   .style('text-anchor', `${options.textAnchor}`)
+  //   .style('font-size', (d) => (d.depth === 1 ? `${options.parentTextSize}` : `${options.childTextSize}`))
+  //   .style('fill', `${options.fontColor}`) // Set the text color explicitly
+  //   .text((d) => {
+  //     if (d.depth === 0) {
+  //       return d.data.name;
+  //     }
+  //     return d.data.name;
+  //   })
+  //   .attr('x', 0) // Center the text horizontally
+  //   .attr('y', (d) => (d.depth === 1 ? -options.height / 6 : 0)); // Adjust the text placement
   nodes
     .append('text')
     .attr('dy', '.3em')
     .style('text-anchor', `${options.textAnchor}`)
-    .style('font-size', (d) => (d.depth === 1 ? `${options.parentTextSize}` : `${options.childTextSize}`))
-    .style('fill', `${options.fontColor}`) // Set the text color explicitly
-    .text((d) => {
-      if (d.depth === 1) {
-        // Add name label for parent categories
-        return d.data.name;
-      } if (d.depth > 1) {
-        // Add label for subcategories
-        return d.data.name;
+    .style('font-size', (d) => {
+      console.log('===', d);
+      if (d.depth === 0) {
+        return (`${options.parentTextSize}` * 2); // Specify a rootTextSize in options for the root node text size
       }
-      return null;
+      if (d.depth === 1) {
+        return `${options.parentTextSize}`;
+      }
+
+      return `${options.childTextSize}`;
     })
+    .style('fill', `${options.fontColor}`) // Set the text color explicitly
+    .text((d) => d.data.name)
     .attr('x', 0) // Center the text horizontally
-    .attr('y', (d) => (d.depth === 1 ? -options.height / 6 : 0)); // Adjust the text placement
+    .attr('y', (d) => {
+      if (d.depth === 0) {
+        return -options.height / 3.5; // Adjust position for the root node text
+      }
+      if (d.depth === 1) {
+        return -options.height / 6;
+      }
+
+      return 0;
+    });
 
   // Adjust the position of parent category labels to be closer to their respective circles
   nodes.selectAll('text')
@@ -98,11 +125,3 @@ export default function createBubbleChart(data, options, chartComponents) {
 //     }
 //   });
 // }
-function replaceKey(obj, oldKey, newKey) {
-  const { [oldKey]: oldKeyValue, ...remainingKeys } = obj;
-
-  return {
-    ...remainingKeys,
-    [newKey]: oldKeyValue
-  };
-}

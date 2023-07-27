@@ -60,10 +60,16 @@
 //     return (d.y1 <= 3) && (d.y0 >= 1) && (d.x1 > d.x0 + 0.01);
 //   }
 // }
+import { hasValues } from '../../functions/format-data';
+
 export default function createD3SunburstChart(data, options, chartComponents) {
+  if (!hasValues(data)) {
+    console.error(`An ${options.chartClass} diagram requires numeric child values`);
+    return;
+  }
   // If the data is an array, wrap it into an extra root level.
   if (Array.isArray(data)) {
-    data = { category: '', children: data };
+    data = { name: `${options.label}`, children: data };
   }
   const root = d3.hierarchy(processData(data))
     .sum((d) => d.value)
@@ -73,12 +79,9 @@ export default function createD3SunburstChart(data, options, chartComponents) {
   const color = d3.scaleOrdinal()
     .domain(nonLeafNames)
     .range(options.colorScheme);
-  // const color = d3.scaleOrdinal()
-  //   .domain(d3.range(options.colorScheme.length))
-  //   .range(options.colorScheme);
 
   const {
-    width, height, margin, radius,
+    width, height, radius,
   } = options;
   const { svg } = chartComponents;
 

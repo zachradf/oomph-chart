@@ -82,7 +82,13 @@
 //     })
 //     .style('font-size', `${options.childTextSize}`);
 // }
+import { hasValues } from '../../functions/format-data';
+
 export default function createIcicleChart(data, options, chartComponents) {
+  if (!hasValues(data)) {
+    console.error(`An ${options.chartClass} diagram requires numeric child values`);
+    return;
+  }
   const width = options.width || 960;
   const height = options.height || 500;
 

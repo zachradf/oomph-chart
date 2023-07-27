@@ -1,4 +1,10 @@
+import { hasValues } from "../../functions/format-data";
+
 export default function createWordCloud(unformattedData, options, chartComponents) {
+  if (!hasValues(data)) {
+    console.error(`A ${options.chartClass} diagram requires numeric child values`);
+    return;
+  }
   const { width, height, y2ForceStrength } = options;
   const fontSize = (d) => Math.sqrt(d.value) * 2;
   const { svg } = chartComponents;

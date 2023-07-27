@@ -1,4 +1,10 @@
+import { hasValues } from "../../functions/format-data";
+
 export default function createChordDiagram(data, options, chartComponents) {
+  if (!hasValues(data)) {
+    console.error(`An ${options.chartClass} diagram requires numeric child values`);
+    return;
+  }
   const {
     width,
     height,

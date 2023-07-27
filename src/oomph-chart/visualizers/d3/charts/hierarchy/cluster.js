@@ -97,6 +97,8 @@
 //     .style('fill', 'black')
 //     .text((d) => d.data.category || d.data.name);
 // }
+import { isDataInCorrectFormat } from '../../functions/format-data';
+
 export default function createClusterDiagram(data, options, chartComponents) {
   const {
     width,
@@ -106,11 +108,19 @@ export default function createClusterDiagram(data, options, chartComponents) {
     strokeColor,
   } = options;
   const { svg } = chartComponents;
-  const g = svg.append('g').attr('transform', `translate(${width / 2}, ${height / 2})`);
+  const g = svg.append('g').attr('transform', `translate(${width / (width / 10)}, ${height / (height / 10)})`);
   const color = d3.scaleOrdinal(colorScheme);
   const cluster = d3.cluster().size([2 * Math.PI, height / 2 - 100]); // Angles are now in radians
-
-  const root = d3.hierarchy(data, (d) => d.children);
+  let rootData;
+  if (isDataInCorrectFormat(data)) {
+    rootData = data;
+  } else {
+    rootData = {
+      name: `${options.label}`,
+      children: data,
+    };
+  }
+  const root = d3.hierarchy(rootData);
 
   cluster(root);
 
@@ -131,7 +141,10 @@ export default function createClusterDiagram(data, options, chartComponents) {
     .data(root.descendants())
     .join('g')
     .attr('class', 'node')
-    .attr('transform', (d) => `translate(${d.y * Math.cos(d.x)}, ${d.y * Math.sin(d.x)})`);
+    .attr('transform', (d) => {
+      console.log(`translate(${d.y * Math.cos(d.x)}, ${d.y * Math.sin(d.x)})`);
+      return `translate(${d.y * Math.cos(d.x)}, ${d.y * Math.sin(d.x)})`;
+    });
 
   node
     .append('circle')

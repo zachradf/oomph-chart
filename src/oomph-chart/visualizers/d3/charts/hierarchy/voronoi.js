@@ -1,10 +1,13 @@
 import { voronoiTreemap } from 'd3-voronoi-treemap';
-import { isDataInCorrectFormat } from '../../functions/format-data';
+import { isDataInCorrectFormat, hasValues } from '../../functions/format-data';
 
 export default function createVoronoiTreemap(data, options, chartComponents) {
-  // Convert the data array into a root node object only if necessary
-  if (!Array.isArray(data) && !data.value) console.error('Voronoi diagram must have a `value` key at every level');
   let rootData;
+
+  if (!hasValues(data)) {
+    console.error(`An ${options.chartClass} diagram requires numeric child values`);
+    return;
+  }
   if (isDataInCorrectFormat(data)) {
     rootData = data;
   } else {
@@ -41,8 +44,8 @@ export default function createVoronoiTreemap(data, options, chartComponents) {
         return interpolator(d.data.value / d.parent.value);
       }
     })
-    .attr('stroke', `${options.strokeColor}`)
-    .attr('font-size', `${options.parentTextSize}`);
+    .attr('font-size', `${options.parentTextSize}`)
+    .attr('stroke', `${options.strokeColor}`);
 
   groups
     .append('path')
@@ -57,8 +60,8 @@ export default function createVoronoiTreemap(data, options, chartComponents) {
     .attr('text-anchor', `${options.textAnchor}}`)
     .attr('dy', '.35em')
     .text((d) => d.data.name)
-    .style('font-size', `${options.childTextSize}`)
-    .style('fill', 'white');
+    .style('font-size', (d) => (d.depth === 1 ? `${options.parentTextSize}` : `${options.childTextSize}`))
+    .style('fill', 'black');
 }
 // import { voronoiTreemap } from 'd3-voronoi-treemap';
 
