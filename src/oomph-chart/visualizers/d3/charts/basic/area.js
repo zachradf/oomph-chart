@@ -5,23 +5,24 @@
 // const highQuality = false; // Whether to use slower but higher-quality algorithm
 
 // const simplifiedData = simplify(originalData, tolerance, highQuality);
-
 export default function createD3AreaChart(data, options, chartComponents) {
-  const { x } = chartComponents;
-  const { y } = chartComponents;
-  const { svg } = chartComponents;
+  const { x, y, svg } = chartComponents;
+  const { fillColor } = options; // Destructuring the fillColor from options
+
+  const isXValueNumeric = typeof data[0].x === 'number';
+
   // Define the area generator function using the x and y scales
   const area = d3.area()
-    .x((d) => x(d.x))
+    .x((d) => (isXValueNumeric ? x(d.x) : x(d.x) + x.bandwidth() / 2))
     .y0((d) => (d.y >= 0 ? y(0) : y(-d.y)))
     .y1((d) => y(d.y));
 
-  const sortedData = data.sort((a, b) => a.x - b.x);
+  const sortedData = isXValueNumeric ? data.sort((a, b) => a.x - b.x) : data;
 
   // Create a path element for the area chart using the data and area generator
-  // Fill the area with a color specified in the options or a default color
+  // Fill the area with a color specified in the fillColor or a default color
   svg.append('path')
     .datum(sortedData)
-    .attr('fill', `${options.fillColor}`)
+    .attr('fill', `${fillColor}`) // Using fillColor directly instead of options.fillColor
     .attr('d', area);
 }

@@ -1,6 +1,5 @@
 export default function createD3FunnelChart(data, options, chartComponents) {
-  const { width } = options;
-  const { colorScheme } = options;
+  const { width, colorScheme } = options;
   const { x } = chartComponents;
   const { y } = chartComponents;
   const { svg } = chartComponents;

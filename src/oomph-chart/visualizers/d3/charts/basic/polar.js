@@ -1,6 +1,14 @@
 export default function createD3PolarChart(data, options, chartComponents) {
   const {
-    colorScheme, innerRadius, outerRadius,
+    colorScheme,
+    innerRadius,
+    outerRadius,
+    opacity,
+    showCategories,
+    textAnchor,
+    fontColor,
+    fontOpacity,
+    fontSize,
   } = options;
   const { svg } = chartComponents;
 
@@ -14,7 +22,7 @@ export default function createD3PolarChart(data, options, chartComponents) {
     .scaleLinear()
     .domain([0, d3.max(data, (d) => d.y)])
     .range([innerRadius, outerRadius]);
-  console.log(data[0].x);
+
   const colorScale = d3.scaleOrdinal().domain(data.map((d) => d.x)).range(colorScheme);
 
   const arc = d3
@@ -31,16 +39,21 @@ export default function createD3PolarChart(data, options, chartComponents) {
     .data(data)
     .join('path')
     .attr('d', arc)
-    .attr('fill', (d) => colorScale(d.x));
+    .attr('fill', (d) => colorScale(d.x))
+    .style('opacity', opacity);
 
   // Add names
-  svg
-    .selectAll('text')
-    .data(data)
-    .join('text')
-    .attr('x', (d) => (y(d.y) + 10) * Math.cos((x(d.x) + x.bandwidth() / 2) - Math.PI / 2))
-    .attr('y', (d) => (y(d.y) + 10) * Math.sin((x(d.x) + x.bandwidth() / 2) - Math.PI / 2))
-    .text((d) => d.x)
-    .attr('text-anchor', `${options.textAnchor}`)
-    .attr('font-size', `${options.fontSize}`);
+  if (showCategories) {
+    svg
+      .selectAll('text')
+      .data(data)
+      .join('text')
+      .attr('x', (d) => (y(d.y) + 10) * Math.cos((x(d.x) + x.bandwidth() / 2) - Math.PI / 2))
+      .attr('y', (d) => (y(d.y) + 10) * Math.sin((x(d.x) + x.bandwidth() / 2) - Math.PI / 2))
+      .text((d) => d.x)
+      .attr('text-anchor', textAnchor)
+      .style('fill', fontColor)
+      .style('opacity', fontOpacity)
+      .attr('font-size', fontSize);
+  }
 }

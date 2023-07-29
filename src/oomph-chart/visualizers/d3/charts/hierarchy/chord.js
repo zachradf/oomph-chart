@@ -1,17 +1,14 @@
-import { hasValues } from "../../functions/format-data";
 
 export default function createChordDiagram(data, options, chartComponents) {
-  if (!hasValues(data)) {
-    console.error(`An ${options.chartClass} diagram requires numeric child values`);
-    return;
-  }
   const {
     width,
     height,
     colorScheme,
+    childTextSize,
     strokeColor,
     outerRadius,
     innerRadius,
+    textAnchor
   } = options;
   const color = d3.scaleOrdinal()
     .domain(d3.range(colorScheme.length))
@@ -70,8 +67,8 @@ export default function createChordDiagram(data, options, chartComponents) {
         .attr('x', centroid[0])
         .attr('y', centroid[1])
         .attr('dy', '0.35em')
-        .attr('text-anchor', `${options.textAnchor}`)
-        .style('font-size', `${options.childTextSize}`)
+        .attr('text-anchor', `${textAnchor}`)
+        .style('font-size', `${childTextSize}`)
         .text(labels[d.index]);
     });
 }

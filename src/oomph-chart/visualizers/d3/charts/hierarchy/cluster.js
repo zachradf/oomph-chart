@@ -103,9 +103,12 @@ export default function createClusterDiagram(data, options, chartComponents) {
   const {
     width,
     height,
+    childTextSize,
     colorScheme = d3.schemeCategory10,
+    label,
     nodeRadius,
     strokeColor,
+    strokeWidth,
   } = options;
   const { svg } = chartComponents;
   const g = svg.append('g').attr('transform', `translate(${width / (width / 10)}, ${height / (height / 10)})`);
@@ -116,7 +119,7 @@ export default function createClusterDiagram(data, options, chartComponents) {
     rootData = data;
   } else {
     rootData = {
-      name: `${options.label}`,
+      name: `${label}`,
       children: data,
     };
   }
@@ -130,7 +133,7 @@ export default function createClusterDiagram(data, options, chartComponents) {
     .join('line')
     .attr('class', 'link')
     .attr('stroke', strokeColor)
-    .attr('stroke-width', `${options.strokeWidth}` || 1.5)
+    .attr('stroke-width', `${strokeWidth}` || 1.5)
     .attr('x1', (d) => d.source.y * Math.cos(d.source.x))
     .attr('y1', (d) => d.source.y * Math.sin(d.source.x))
     .attr('x2', (d) => d.target.y * Math.cos(d.target.x))
@@ -156,7 +159,7 @@ export default function createClusterDiagram(data, options, chartComponents) {
     .attr('dy', '0.31em')
     .attr('x', (d) => (d.children ? -nodeRadius : nodeRadius))
     .style('text-anchor', (d) => (d.children ? 'end' : 'start'))
-    .style('font-size', `${options.childTextSize}`)
+    .style('font-size', `${childTextSize}`)
     .style('fill', 'black')
     .text((d) => d.data.name);
 }

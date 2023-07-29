@@ -1,8 +1,20 @@
 export default function createD3PieChart(data, options, chartComponents) {
-  const { width } = options;
-  const { height } = options;
+  const {
+    width,
+    height,
+    radius,
+    colorScheme,
+    strokeColor = 'white',
+    strokeWidth = '2px',
+    showCategories,
+    textAnchor,
+    xLabelFontSize,
+    fontColor,
+    fontFamily,
+    fontWeight,
+    fontOpacity,
+  } = options;
   const { svg } = chartComponents;
-  const { radius } = options;
 
   // Centers the pie chart within the svg element
   const chartGroup = svg.append('g')
@@ -10,8 +22,8 @@ export default function createD3PieChart(data, options, chartComponents) {
 
   // Create a color scale using the provided data labels and a predefined color scheme
   const colorScale = d3.scaleOrdinal()
-    .domain(d3.range(options.colorScheme.length))
-    .range(options.colorScheme);
+    .domain(d3.range(colorScheme.length))
+    .range(colorScheme);
 
   // Define the pie layout function with value accessor and sort function
   const pie = d3.pie()
@@ -30,11 +42,11 @@ export default function createD3PieChart(data, options, chartComponents) {
     .append('path')
     .attr('fill', (d) => colorScale(d.data.y))
     .attr('d', arc)
-    .attr('stroke', `${options.strokeColor}` || 'white')
-    .attr('stroke-width', `${options.strokeWidth}px` || '2px');
+    .attr('stroke', strokeColor)
+    .attr('stroke-width', strokeWidth);
 
   // If the showCategories option is set, add categories to the pie chart
-  if (options.showCategories) {
+  if (showCategories) {
     // Define a label arc generator with a fixed radius value
     const categoryArc = d3.arc()
       .innerRadius(radius * 0.6)
@@ -45,12 +57,12 @@ export default function createD3PieChart(data, options, chartComponents) {
       .data(pie(data))
       .join('text')
       .attr('transform', (d) => `translate(${categoryArc.centroid(d)})`)
-      .attr('text-anchor', `${options.textAnchor}`)
-      .style('font-size', `${options.xLabelFontSize}px`)
-      .style('fill', `${options.fontColor}`)
-      .style('font-family', `${options.fontFamily}`)
-      .style('font-weight', `${options.fontWeight}`)
-      .style('opacity', `${options.fontOpacity}`)
+      .attr('text-anchor', textAnchor)
+      .style('font-size', `${xLabelFontSize}px`)
+      .style('fill', fontColor)
+      .style('font-family', fontFamily)
+      .style('font-weight', fontWeight)
+      .style('opacity', fontOpacity)
       .attr('alignment-baseline', 'central')
       .text((d) => d.data.x);
   }

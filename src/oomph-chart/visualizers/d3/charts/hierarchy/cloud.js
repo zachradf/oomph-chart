@@ -1,11 +1,16 @@
-import { hasValues } from "../../functions/format-data";
-
 export default function createWordCloud(unformattedData, options, chartComponents) {
-  if (!hasValues(data)) {
-    console.error(`A ${options.chartClass} diagram requires numeric child values`);
-    return;
-  }
-  const { width, height, y2ForceStrength } = options;
+  const { 
+    width, 
+    height, 
+    colorScheme,
+    y2ForceStrength, 
+    maxRadius, 
+    textAnchor, 
+    fontColor, 
+    bubble, 
+    chargeStrength, 
+    bubbleOpacity 
+  } = options;
   const fontSize = (d) => Math.sqrt(d.value) * 2;
   const { svg } = chartComponents;
   const data = unformattedData.flatMap((d, i) => d.children.map(child => ({
@@ -16,20 +21,20 @@ export default function createWordCloud(unformattedData, options, chartComponent
   // Create a linear scale for the radius of the bubbles
   const radiusScale = d3.scaleSqrt()
     .domain([0, d3.max(data, (d) => d.value)])
-    .range([0, options.maxRadius]);
+    .range([0, maxRadius]);
   const labels = svg
     .selectAll('text')
     .data(data)
     .enter()
     .append('text')
     .attr('dy', '.35em')
-    .style('text-anchor', `${options.textAnchor}`)
+    .style('text-anchor', `${textAnchor}`)
     .style('font-size', (d) => `${fontSize(d)}px`)
-    .style('fill', `${options.fontColor}`)
+    .style('fill', `${fontColor}`)
     .text((d) => d.name);
 
   function ticked() {
-    if (options.bubble) {
+    if (bubble) {
       svg.selectAll('circle')
         .attr('cx', (d) => Math.max(radiusScale(d.value), Math.min(width - radiusScale(d.value), d.x)))
         .attr('cy', (d) => Math.max(radiusScale(d.value), Math.min(height - radiusScale(d.value), d.y)));
@@ -45,7 +50,7 @@ export default function createWordCloud(unformattedData, options, chartComponent
   const clusterStrengthVal = 0.005;
 
   const simulation = d3.forceSimulation(data)
-    .force('charge', d3.forceManyBody().strength(options.chargeStrength))
+    .force('charge', d3.forceManyBody().strength(chargeStrength))
     .force('center', d3.forceCenter(width / 2, height / 2))
     // Increase the strength or radius here
     .force('collision',  d3.forceCollide().radius((d) => radiusScale(d.value) + 1).strength(1))
@@ -54,22 +59,39 @@ export default function createWordCloud(unformattedData, options, chartComponent
     .on('tick', ticked);
 
   // Generate color scale dynamically
-  const categories = Array.from(new Set(data.map((d) => d.name)));
-  const colorScale = d3.scaleOrdinal()
-    .domain(categories)
-    .range(d3.schemeCategory10);
+  // const categories = Array.from(new Set(data.map((d) => d.name)));
+  // const colorScale = d3.scaleOrdinal()
+  //   .domain(categories)
+  //   .range(d3.schemeCategory10);
 
-  // Create the bubbles if options.bubble is true
-  if (options.bubble) {
-    const nodes = svg
-      .selectAll('circle')
-      .data(data)
-      .enter()
-      .append('circle')
-      .attr('r', (d) => radiusScale(d.value))
-      .style('fill', (d) => colorScale(d.name)) // Use the color scale based on category
-      .style('opacity', options.bubbleOpacity);
-  }
+  // // Create the bubbles if options.bubble is true
+  // if (bubble) {
+  //   const nodes = svg
+  //     .selectAll('circle')
+  //     .data(data)
+  //     .enter()
+  //     .append('circle')
+  //     .attr('r', (d) => radiusScale(d.value))
+  //     .style('fill', (d) => colorScale(d.name)) // Use the color scale based on category
+  //     .style('opacity', bubbleOpacity);
+  // }
+// Generate color scale dynamically
+const categories = Array.from(new Set(data.map((d) => d.category)));
+const colorScale = d3.scaleOrdinal()
+  .domain(categories)
+  .range(colorScheme);
+
+// Create the bubbles if options.bubble is true
+if (bubble) {
+  const nodes = svg
+    .selectAll('circle')
+    .data(data)
+    .enter()
+    .append('circle')
+    .attr('r', (d) => radiusScale(d.value))
+    .style('fill', (d) => colorScale(d.category)) // Use the color scale based on category
+    .style('opacity', bubbleOpacity);
+}
 
   // Define the y2Force function
   function y2Force(strength) {

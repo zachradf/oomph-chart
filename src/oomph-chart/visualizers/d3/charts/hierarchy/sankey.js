@@ -1,16 +1,13 @@
 import { sankey as d3Sankey, sankeyLinkHorizontal } from 'd3-sankey';
-import { hasValues } from '../../functions/format-data';
 
 export default function createSankeyDiagram(data, options, chartComponents) {
-  if (!hasValues(data)) {
-    console.error(`A ${options.chartClass} diagram requires numeric child values`);
-    return;
-  }
   const {
     width,
     height,
     nodeRadius,
     nodePadding,
+    strokeColor,
+    textAnchor,
   } = options;
   const color = d3.scaleOrdinal(options.colorScheme);
   const { svg } = chartComponents;
@@ -34,7 +31,7 @@ export default function createSankeyDiagram(data, options, chartComponents) {
     .attr('height', (d) => d.y1 - d.y0)
     .attr('width', (d) => d.x1 - d.x0)
     .attr('fill', (d) => color(d.index))
-    .attr('stroke', `${options.strokeColor}`);
+    .attr('stroke', `${strokeColor}`);
 
   svg.append('g')
     .selectAll('text')
@@ -43,7 +40,7 @@ export default function createSankeyDiagram(data, options, chartComponents) {
     .attr('x', (d) => d.x0 - 6)
     .attr('y', (d) => (d.y1 + d.y0) / 2)
     .attr('dy', '0.35em')
-    .attr('text-anchor', `${options.textAnchor}`)
+    .attr('text-anchor', `${textAnchor}`)
     .text((d) => d.name)
     .style('font-size', '12px')
     .style('fill', '#000')

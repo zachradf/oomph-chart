@@ -1,27 +1,30 @@
 // export default function createMarimekkoChart(data, options, chartComponents) {
-//   const { svg } = chartComponents;
+//   const { svg, x, y } = chartComponents;
+//   data.forEach((parent) => {
+//     const total = parent.children.reduce((sum, child) => sum + child.value, 0);
 
+//     // Skip normalization if total is already 1 or 0
+//     if (total === 1) return;
+//     if (total === 0 || Number.isNaN(total) || total === null) console.error('Sum of children for', parent, 'is', total, ', this shoud be a non-zero number');
+//     console.log('total', total);
+//     parent.children.forEach((child) => {
+//       child.value = total !== 0 ? child.value / total : 0;
+//     });
+//   });
 //   const g = svg
 //     .append('g')
 //     .attr('transform', `translate(${options.margin.left}, ${options.margin.top})`);
 
-//   const x = d3.scaleBand()
-//     .domain(data.map((d) => d.category))
-//     .range([0, options.width - options.margin.left - options.margin.right])
-//     .padding(0.1);
-
-//   const y = d3.scaleLinear()
-//     .domain([0, 1])
-//     .range([options.height - options.margin.top - options.margin.bottom, 0]);
-
-//   const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+//   const colorScale = d3.scaleOrdinal()
+//     .domain(d3.range(options.colorScheme.length))
+//     .range(options.colorScheme);
 
 //   const parentRects = g.selectAll('.parent-rect')
 //     .data(data)
 //     .enter()
 //     .append('g')
 //     .attr('class', 'parent-rect')
-//     .attr('transform', (d) => `translate(${x(d.category)}, 0)`);
+//     .attr('transform', (d) => `translate(${x(d.name)}, 0)`);
 
 //   parentRects.each(function (parentData) {
 //     const parentGroup = d3.select(this);
@@ -32,16 +35,16 @@
 //         .append('rect')
 //         .datum(childData)
 //         .attr('x', 0)
-//         .attr('y', (d) => {
+//         .attr('y', () => {
 //           const yPos = yOffset;
-//           yOffset += y(0) - y(d.percentage);
+//           yOffset += y(0) - y(childData.value);
 //           return yPos;
 //         })
 //         .attr('width', x.bandwidth())
-//         .attr('height', (d) => y(0) - y(d.percentage))
-//         .style('fill', (d) => colorScale(d.subCategory))
+//         .attr('height', () => y(0) - y(childData.value))
+//         .style('fill', () => colorScale(childData.name))
 //         .attr('class', 'child-rect')
-//         .text((d) => d.subCategory)
+//         .text(() => childData.name)
 //         .attr('text-color', 'white');
 
 //       // Add subcategory text
@@ -52,19 +55,19 @@
 //         .attr('y', yOffset - 30 / 2) // Adjust the position of the text
 //         .attr('text-anchor', 'middle')
 //         .attr('dominant-baseline', 'central')
-//         .text((d) => d.subCategory)
+//         .text(() => childData.name)
 //         .style('fill', 'white');
 //     });
 //   });
 
-//   g.append('g')
-//     .attr('transform', `translate(0, ${options.height - options.margin.top - options.margin.bottom})`)
-//     .call(d3.axisBottom(x));
+//   // g.append('g')
+//   //   .attr('transform', `translate(0, ${options.height - options.margin.top - options.margin.bottom})`)
+//   //   .call(d3.axisBottom(x));
 
-//   g.append('g')
-//     .call(d3.axisLeft(y));
+//   // g.append('g')
+//   //   .call(d3.axisLeft(y));
 // }
-export default function createMarimekkoChart(data, options, chartComponents) {
+export default function createMarimekkoChart(data, { margin, colorScheme }, chartComponents) {
   const { svg, x, y } = chartComponents;
   data.forEach((parent) => {
     const total = parent.children.reduce((sum, child) => sum + child.value, 0);
@@ -72,18 +75,17 @@ export default function createMarimekkoChart(data, options, chartComponents) {
     // Skip normalization if total is already 1 or 0
     if (total === 1) return;
     if (total === 0 || Number.isNaN(total) || total === null) console.error('Sum of children for', parent, 'is', total, ', this shoud be a non-zero number');
-    console.log('total', total);
     parent.children.forEach((child) => {
       child.value = total !== 0 ? child.value / total : 0;
     });
   });
   const g = svg
     .append('g')
-    .attr('transform', `translate(${options.margin.left}, ${options.margin.top})`);
+    .attr('transform', `translate(${margin.left}, ${margin.top})`);
 
   const colorScale = d3.scaleOrdinal()
-    .domain(d3.range(options.colorScheme.length))
-    .range(options.colorScheme);
+    .domain(d3.range(colorScheme.length))
+    .range(colorScheme);
 
   const parentRects = g.selectAll('.parent-rect')
     .data(data)
@@ -127,7 +129,7 @@ export default function createMarimekkoChart(data, options, chartComponents) {
   });
 
   // g.append('g')
-  //   .attr('transform', `translate(0, ${options.height - options.margin.top - options.margin.bottom})`)
+  //   .attr('transform', `translate(0, ${height - margin.top - margin.bottom})`)
   //   .call(d3.axisBottom(x));
 
   // g.append('g')

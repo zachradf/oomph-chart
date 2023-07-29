@@ -6,6 +6,7 @@
 
 // const simplifiedData = simplify(originalData, tolerance, highQuality);
 export default function createD3LineGraph(data, options, chartComponents) {
+  const { strokeColor, strokeWidth } = options;
   const { x } = chartComponents;
   const { y } = chartComponents;
   const { svg } = chartComponents;
@@ -23,7 +24,7 @@ export default function createD3LineGraph(data, options, chartComponents) {
   svg.append('path')
     .datum(sortedData) // TO DO LOOK INTO DATA VS DATUM
     .attr('fill', 'none')
-    .attr('stroke', options.strokeColor || 'steelblue')
-    .attr('stroke-width', options.strokeWidth || 1.5)
+    .attr('stroke', strokeColor || 'steelblue')
+    .attr('stroke-width', strokeWidth || 1.5)
     .attr('d', line);
 }

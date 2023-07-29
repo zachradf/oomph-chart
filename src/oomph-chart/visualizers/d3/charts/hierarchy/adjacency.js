@@ -1,7 +1,6 @@
 export default function createAdjacencyMatrix(unformattedData, options, chartComponents) {
   const { svg, x, y } = chartComponents;
-  console.log(y, 'x and y');
-  console.log(x, 'x and y');
+  const { margin: { left, top }, minColor, maxColor } = options;
 
   function convertToAdjacencyList(unformattedData) {
     const nodes = unformattedData.map((d) => ({ id: d.name }));
@@ -22,11 +21,11 @@ export default function createAdjacencyMatrix(unformattedData, options, chartCom
   const data = convertToAdjacencyList(unformattedData);
   const g = svg
     .append('g')
-    .attr('transform', `translate(${options.margin.left}, ${options.margin.top})`);
+    .attr('transform', `translate(${left}, ${top})`);
 
   const colorScale = d3.scaleLinear()
     .domain([0, d3.max(data.links.map((d) => d.value))])
-    .range([options.minColor, options.maxColor]);
+    .range([minColor, maxColor]);
 
   g.selectAll('rect')
     .data(data.links)

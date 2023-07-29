@@ -1,23 +1,22 @@
-import { isDataInCorrectFormat, hasValues } from '../../functions/format-data';
+import { isDataInCorrectFormat } from '../../functions/format-data';
 
 export default function createBubbleChart(data, options, chartComponents) {
-  if (!hasValues(data)) {
-    console.error(`An ${options.chartClass} diagram requires numeric child values`);
-    return;
-  }
-  const { diameter } = options;
+  const {
+    diameter, padding, opacity, textAnchor, parentTextSize, childTextSize, fontColor, height, label, colorScheme = d3.schemeCategory10,
+  } = options;
   const { svg } = chartComponents;
-  const colorScheme = options.colorScheme || d3.schemeCategory10;
   let rootData;
   if (isDataInCorrectFormat(data)) {
     rootData = data;
   } else {
     rootData = {
-      name: `${options.label}`,
+      name: `${label}`,
       children: data,
     };
   }
-
+  const color = d3.scaleOrdinal()
+    .domain(data.map((d) => d.name)) // Assuming the parent categories are identified by 'name'
+    .range(colorScheme);
   // Prepare the data for the chart
   const root = d3
     .hierarchy(rootData)
@@ -28,7 +27,7 @@ export default function createBubbleChart(data, options, chartComponents) {
   const bubbleLayout = d3
     .pack()
     .size([diameter, diameter])
-    .padding(options.padding); // Increase padding to prevent overlap
+    .padding(padding);
 
   // Apply the layout to the data
   bubbleLayout(root);
@@ -46,50 +45,34 @@ export default function createBubbleChart(data, options, chartComponents) {
   nodes
     .append('circle')
     .attr('r', (d) => d.r)
-    .style('fill', (d) => colorScheme[d.depth])
-    .style('opacity', (d) => (d.depth <= 1 ? 1 : options.opacity));
-
-  // // Add labels to the bubbles
+    .style('fill', (d) => color[d.depth])
+    .style('opacity', (d) => (d.depth <= 1 ? 1 : opacity));
   // nodes
-  //   .append('text')
-  //   .attr('dy', '.3em')
-  //   .style('text-anchor', `${options.textAnchor}`)
-  //   .style('font-size', (d) => (d.depth === 1 ? `${options.parentTextSize}` : `${options.childTextSize}`))
-  //   .style('fill', `${options.fontColor}`) // Set the text color explicitly
-  //   .text((d) => {
-  //     if (d.depth === 0) {
-  //       return d.data.name;
-  //     }
-  //     return d.data.name;
-  //   })
-  //   .attr('x', 0) // Center the text horizontally
-  //   .attr('y', (d) => (d.depth === 1 ? -options.height / 6 : 0)); // Adjust the text placement
+  // .append('circle')
+  // .attr('r', (d) => d.r)
+  // .style('fill', (d) => {
+  //   // if (d.depth === 0) return '#ffffff'; // You can set the color for the root node if needed
+  //   // if (d.depth === 1) return color(d.data.name); // Color based on parent category name
+  //   console.log('Parent name and color', d.parent.name, color(d.parent.data.name));
+  //   return color(d.parent.data.name); // Color based on parent's name for children
+  // })
+  // .style('opacity', (d) => (d.depth <= 1 ? 1 : opacity));
+
   nodes
     .append('text')
     .attr('dy', '.3em')
-    .style('text-anchor', `${options.textAnchor}`)
+    .style('text-anchor', textAnchor)
     .style('font-size', (d) => {
-      console.log('===', d);
-      if (d.depth === 0) {
-        return (`${options.parentTextSize}` * 2); // Specify a rootTextSize in options for the root node text size
-      }
-      if (d.depth === 1) {
-        return `${options.parentTextSize}`;
-      }
-
-      return `${options.childTextSize}`;
+      if (d.depth === 0) return `${parentTextSize * 2}`;
+      if (d.depth === 1) return `${parentTextSize}`;
+      return `${childTextSize}`;
     })
-    .style('fill', `${options.fontColor}`) // Set the text color explicitly
+    .style('fill', fontColor)
     .text((d) => d.data.name)
-    .attr('x', 0) // Center the text horizontally
+    .attr('x', 0)
     .attr('y', (d) => {
-      if (d.depth === 0) {
-        return -options.height / 3.5; // Adjust position for the root node text
-      }
-      if (d.depth === 1) {
-        return -options.height / 6;
-      }
-
+      if (d.depth === 0) return -height / 3.5;
+      if (d.depth === 1) return -height / 6;
       return 0;
     });
 
@@ -98,6 +81,7 @@ export default function createBubbleChart(data, options, chartComponents) {
     .filter((d) => d.depth === 1)
     .attr('y', (d) => -d.r);
 }
+
 // Could be used to wrap text in child elements if needed
 // function wrap(text, width) {
 //   text.each(function () {

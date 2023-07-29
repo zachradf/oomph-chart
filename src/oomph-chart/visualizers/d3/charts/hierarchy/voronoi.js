@@ -1,13 +1,8 @@
 import { voronoiTreemap } from 'd3-voronoi-treemap';
-import { isDataInCorrectFormat, hasValues } from '../../functions/format-data';
+import { isDataInCorrectFormat } from '../../functions/format-data';
 
 export default function createVoronoiTreemap(data, options, chartComponents) {
   let rootData;
-
-  if (!hasValues(data)) {
-    console.error(`An ${options.chartClass} diagram requires numeric child values`);
-    return;
-  }
   if (isDataInCorrectFormat(data)) {
     rootData = data;
   } else {
@@ -18,7 +13,18 @@ export default function createVoronoiTreemap(data, options, chartComponents) {
   }
   const { svg } = chartComponents;
 
-  const layout = voronoiTreemap().size([options.width, options.height]);
+  const {
+    width,
+    height,
+    colorScheme,
+    parentTextSize,
+    strokeColor,
+    strokeWidth = 1, // Default value if not provided in options
+    textAnchor,
+    childTextSize,
+  } = options;
+
+  const layout = voronoiTreemap().size([width, height]);
 
   const root = d3.hierarchy(rootData).sum((d) => d.value);
   layout(root);
@@ -26,8 +32,8 @@ export default function createVoronoiTreemap(data, options, chartComponents) {
   const cells = root.descendants().filter((d) => d.depth);
 
   const categoryColor = d3.scaleOrdinal()
-    .domain(d3.range(options.colorScheme.length))
-    .range(options.colorScheme);
+    .domain(d3.range(colorScheme.length))
+    .range(colorScheme);
 
   const groups = svg
     .selectAll('g')
@@ -44,25 +50,26 @@ export default function createVoronoiTreemap(data, options, chartComponents) {
         return interpolator(d.data.value / d.parent.value);
       }
     })
-    .attr('font-size', `${options.parentTextSize}`)
-    .attr('stroke', `${options.strokeColor}`);
+    .attr('font-size', `${parentTextSize}`)
+    .attr('stroke', `${strokeColor}`);
 
   groups
     .append('path')
     .attr('d', (d) => d3.line().curve(d3.curveLinearClosed)(d.polygon))
     .attr('opacity', 0.8)
-    .attr('stroke-width', `${options.strokeWidth}` || 1);
+    .attr('stroke-width', `${strokeWidth}`);
 
   groups
     .append('text')
     .attr('x', (d) => d3.polygonCentroid(d.polygon)[0])
     .attr('y', (d) => d3.polygonCentroid(d.polygon)[1])
-    .attr('text-anchor', `${options.textAnchor}}`)
+    .attr('text-anchor', `${textAnchor}`)
     .attr('dy', '.35em')
     .text((d) => d.data.name)
-    .style('font-size', (d) => (d.depth === 1 ? `${options.parentTextSize}` : `${options.childTextSize}`))
+    .style('font-size', (d) => (d.depth === 1 ? `${parentTextSize}` : `${childTextSize}`))
     .style('fill', 'black');
 }
+
 // import { voronoiTreemap } from 'd3-voronoi-treemap';
 
 // export default function createVoronoiTreemap(data, options, chartComponents) {
