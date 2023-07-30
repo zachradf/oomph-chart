@@ -32,11 +32,14 @@ import { verifyVisualizer } from './model/validators/visualizer-validator.js';
  */
 class OomphChart {
   constructor(inputData = null, visualizer = 'd3', iface = 'default') {
+    if (inputData === null || inputData === undefined) console.error('Please provide a data input, received: ', inputData);
     this.data = inputData;
     this.inputs = getCompatibleInputTypes(this.data);
     this.tags = getInputToTagAssociations(this.inputs);
     this.chartsEligible = getTagToChartAssociations(this.tags);
-
+    this.currentChartType = null;
+    this.currentOptionsShape = null;
+    this.options = null;
     // Determine which of the eligible charts are supported by the visualizer.
     this.visualizer = verifyVisualizer(visualizer);
     this.charts = getCompatibleChartTypes(this.chartsEligible, this.visualizer);
@@ -45,9 +48,29 @@ class OomphChart {
     this.interface = verifyInterface(iface);
   }
 
-  render(chartType, interfaceType = this.interface) {
+  getOptionsShape(chartType) {
+    if (hasValidRenderVisualizerArguments(this, chartType)) {
+      const chartTypes = new ChartTypes();
+      // eslint-disable-next-line no-underscore-dangle
+      const charts = chartTypes[chartType]._selfKey;
+      if (this.charts.has(charts)) {
+      // Expand from d3 options types in the future
+        this.currentChartType = charts;
+        const optionTypes = new D3OptionTypes();
+        const tempSingleOption = getChartToOptionAssociations([charts]);
+        const optionShape = optionTypes[tempSingleOption];
+        this.currentOptionsShape = optionShape;
+
+        return optionShape;
+      }
+    }
+    return console.error('Provided chart is not within your eligible charts. Received: ', chartType);
+  }
+
+  render(chartType, options, interfaceType = this.interface) {
+    this.getOptionsShape(chartType);
     this.renderInterface(interfaceType);
-    this.renderVisualizer(chartType);
+    this.renderVisualizer(chartType, options);
   }
 
   renderInterface() {
@@ -55,39 +78,64 @@ class OomphChart {
     oomphInterface.render();
   }
 
-  renderVisualizer(chartType) {
+  renderVisualizer(chartType, options) {
     if (hasValidRenderVisualizerArguments(this, chartType)) {
+      this.options = options;
       const chartTypes = new ChartTypes();
-      const optionTypes = new D3OptionTypes();
-
-      // TODO allow more than one association
-      const tempSingleOption = getChartToOptionAssociations([chartType]);
-
       // eslint-disable-next-line no-underscore-dangle
       const charts = chartTypes[chartType]._selfKey;
-      const options = optionTypes[tempSingleOption];
-
-      // TODO separate invoking visualizer with rendering it
+      this.currentChartType = charts;
       // TODO load appropriate visualizer
-      const d3Visualizer = new D3Visualizer([charts], [this.data], [options]);
+      this.visualizerInstance = new D3Visualizer(
+        [charts],
+        [this.data],
+        [this.options],
+        [this.currentOptionsShape]
+      );
+      this.visualizerInstance.renderCharts();
     } else console.error('Could not render visualizer due to invalid arguments.');
   }
+
+  updateData(data) {
+    if (!data) return;
+    this.data = data;
+    this.inputs = getCompatibleInputTypes(this.data);
+    this.tags = getInputToTagAssociations(this.inputs);
+    this.chartsEligible = getTagToChartAssociations(this.tags);
+    this.charts = getCompatibleChartTypes(this.chartsEligible, this.visualizer);
+  }
+
+  updateChartType(chartType) {
+    if (!chartType || !hasValidRenderVisualizerArguments(this, chartType)) return;
+    const chartTypes = new ChartTypes();
+    // eslint-disable-next-line no-underscore-dangle
+    const charts = chartTypes[chartType]._selfKey;
+    this.currentChartType = charts;
+    this.getOptionsShape(charts);
+  }
+
+  updateOptions(options = this.options) {
+    if (!options) return;
+    // Run this through validator
+    this.options = options;
+    this.visualizerInstance.updateInput(
+      [this.currentChartType],
+      [this.data],
+      [this.options],
+      [this.currentOptionsShape]
+    );
+  }
+
+  updateVisualizerInstance({ data, options, chartType }) {
+    if (!this.visualizerInstance) return console.error('Cannot update without an existing visualizer instance.');
+    if (!data && !options && !chartType) return console.error('Please provide inputs to update visualizer instance.');
+
+    this.updateData(data);
+    this.updateChartType(chartType);
+    this.updateOptions(options);
+
+    return true;
+  }
 }
-const oomphChartExport = (obj) => {
-  obj.OomphChart = OomphChart;
-  return obj;
-};
 
-const returnOomphChartExport = () => oomphChartExport;
-returnOomphChartExport();
-// export { oomphChartExport };
-// oomphChartExport({});
-// const createOomphChart = function () {
-//   return OomphChart;
-// };
-
-// New function that accepts an export object and assigns the OomphChart class to it
-// const OC = function (exportObj) {
-//   exportObj.OomphChart = OomphChart;
-//   return exportObj;
-// };
+export default OomphChart;

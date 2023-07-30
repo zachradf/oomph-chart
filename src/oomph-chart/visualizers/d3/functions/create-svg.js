@@ -11,7 +11,8 @@ export default function createSVG(selector, chart, options) {
     svg = container
       .append('svg')
       .attr('width', options.width)
-      .attr('height', options.height);
+      .attr('height', options.height)
+      .attr('id', options.chartClass + options.chartNumber);
 
     if (chart === 'pie' || chart === 'donut' || chart === 'gauge' || chart === 'polar' || chart === 'radar') {
       svg.classed(`${options.chartClass}`, true);
@@ -46,6 +47,7 @@ export default function createSVG(selector, chart, options) {
     svg = d3.select(selector)
       .append('svg')
       .classed(`${options.chartClass}`, true)
+      .attr('id', options.chartClass + options.chartNumber)
       .attr('width', options.width)
       .attr('height', options.height)
       .append('g');
@@ -63,6 +65,7 @@ export default function createSVG(selector, chart, options) {
     svg = d3.select(selector)
       .append('svg')
       .classed(`${options.chartClass}`, true)
+      .attr('id', options.chartClass + options.chartNumber)
       .attr('width', options.width)
       .attr('height', options.height);
   }

@@ -8,43 +8,25 @@ import onHover from './actions/on-hover.js';
 import relativeNode from './actions/relative-node.js';
 import D3ChartTypes from './types/chart-types.js';
 
-import { d3OptionShape } from './types/option-shape.js';
 import { validateOptionShape } from '../../model/validators/options-validator.js';
 
 const d3ChartTypes = new D3ChartTypes();
 
 export default class D3Visualizer {
-  constructor(chartArray, data, options, selector = '#chart') {
-    // this.createChart = {};
-
-    // chartArray.forEach((chart) => {
-    //   const key = d3ChartTypes[chart].legacyName;
-    //   const val = d3ChartTypes[chart].render;
-    //   this.createChart[key] = val;
-    // });
-
+  constructor(chartArray, data, options, optionsShape, selector = '#chart') {
     this.chartArray = chartArray;
+    this.optionsShape = optionsShape;
     this.data = data;
     this.options = options;
     this.selector = selector;
 
     // WIP
-    validateOptionShape(d3OptionShape, this.options[0]);
-
-    this.processCharts(); // TODO possibly rename to 'render' or 'renderCharts'
+    validateOptionShape(optionsShape[0], this.options[0]);
   }
 
-  // addCharts(type) { // This method probably needs to be refactored
-  //   this.chartArray.push(...type);
-  //   for (let i = 0; i < type.length; i++) {
-  //     this.createChart[type[i]](this.data, this.options, this.chartComponents);
-  //     appendAxes(this.chartArray[i], this.options, this.chartComponents);
-  //   }
-  // }
-
-  processCharts() {
+  renderCharts() {
     for (let i = 0; i < this.chartArray.length; i++) {
-      this.options[i].chartClass = d3ChartTypes[this.chartArray[i]].chartClass;
+      this.options[i].chartClass = d3ChartTypes[this.chartArray[i]]._selfKey;
       this.options[i].chartNumber = i;
 
       if (shouldCreateChartComponents.call(this, i) || this.options[0].isUpdating) {
@@ -62,23 +44,26 @@ export default class D3Visualizer {
   }
 
   removeChart() {
-    d3.select(this.selector)
-      .selectAll(`svg.${this.options[0].chartClass}`)
+    d3.select(`#${this.options[0].chartClass}${this.options[0].chartNumber}`)
+      // .selectAll(`svg.${this.options[0].chartClass}`)
       .remove();
-    console.log('removed', this.options.chartClass);
+    console.log('removed', this.options[0].chartClass);
   }
 
-  updateInput(data, options, selector = '#chart') {
-    this.options = options;
-
+  updateInput(charts, data, options, optionsShape, selector = '#chart') {
     if (options[0].animate) {
       this.options[0].isUpdating = true;
+    } else {
+      this.removeChart();
     }
+    validateOptionShape(optionsShape, options);
+    this.options = options;
+    this.optionsShape = optionsShape;
+    this.chartArray = charts;
     this.data = data;
-
     this.selector = selector;
 
-    this.processCharts();
+    this.renderCharts();
   }
 }
 
@@ -107,9 +92,11 @@ function applyActions(i) {
     onHover(this.selector, this.options);
   }
 
-  if (options.relativeNodeSize) {
+  if (options.relativeNode) {
     relativeNode(this.selector, this.data[i], options);
   }
+
+  // TODO add a regression line function
 
   if (options.animate && this.options[0].isUpdating) {
     addAnimation(
@@ -150,7 +137,6 @@ function applyOptions(i) {
     if (isUpdating) {
       elements.attr('fill', `${options.color}`);
       elements.attr('data-initialFill', `${options.color}`);
-      console.log(options.color, i);
     }
   });
 }
