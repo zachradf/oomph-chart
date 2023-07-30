@@ -30,7 +30,6 @@ export default function adjustNodeSize(selector, data, options) {
   console.log(nodes);
   nodes.each(function () {
     const el = d3.select(this);
-    console.log('relative node', el);
     el.attr('r', (d) => {
       if (nodeSizeScale(d.y) <= 0) {
         return 1;
