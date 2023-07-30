@@ -15,6 +15,11 @@ export default class TagTypes {
         name: 'Basic',
         nameLong: 'Basic Tag',
       },
+      basicExtended: {
+        _selfKey: 'basicExtended',
+        name: 'Basic Extended',
+        nameLong: 'Basic Extended Tag',
+      },
       geographic: {
         _selfKey: 'geographic',
         name: 'Geographic',
@@ -25,7 +30,11 @@ export default class TagTypes {
         name: 'Hierarchic',
         nameLong: 'Hierarchic Tag',
       },
-
+      hierarchicValue: {
+        _selfKey: 'hierarchicValue',
+        name: 'Hierarchic Value',
+        nameLong: 'Hierarchic Value Tag',
+      },
     };
 
     Object.assign(this, types);

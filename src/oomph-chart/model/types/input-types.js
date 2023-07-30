@@ -36,11 +36,17 @@ export default class InputTypes {
         nameLong: 'String Number Input',
         dataFormat: ['string', 'number'],
       },
-      string_number_string: {
-        _selfKey: 'string_number_string',
-        name: 'String Number String',
-        nameLong: 'String Number String Input',
-        dataFormat: ['string', 'number', 'string'],
+      string_number_number: {
+        _selfKey: 'string_number_number',
+        name: 'String Number Number',
+        nameLong: 'String Number Number Input',
+        dataFormat: ['string', 'number', 'number'],
+      },
+      string_children: {
+        _selfKey: 'string_children',
+        name: 'String Children',
+        nameLong: 'String Children Hierarchy',
+        dataFormat: ['string', 'children'],
       },
       string_number_children: {
         _selfKey: 'string_number_children',

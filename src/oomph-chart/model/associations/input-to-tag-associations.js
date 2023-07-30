@@ -21,14 +21,17 @@ function createInputToTagAssociations() {
       [inputTypes.string_number._selfKey]: [
         tagTypes.basic._selfKey,
       ],
-      [inputTypes.string_number_string._selfKey]: [
-        // tagTypes.basic._selfKey,
+      [inputTypes.string_number_number._selfKey]: [
+        tagTypes.basicExtended._selfKey,
       ],
-      [inputTypes.string_number_children._selfKey]: [
+      [inputTypes.string_children._selfKey]: [
         tagTypes.hierarchic._selfKey,
       ],
+      [inputTypes.string_number_children._selfKey]: [
+        tagTypes.hierarchicValue._selfKey,
+      ],
     };
-
+    console.log(associations);
     return associations;
   } catch (error) {
     console.error(`Possible reference to non-existent input or tag type: ${error.message}`);
