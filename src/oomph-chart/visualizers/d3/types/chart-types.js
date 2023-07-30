@@ -186,7 +186,7 @@ export default class D3ChartTypes {
       },
       stackedBar: {
         _selfKey: 'stackedBar',
-        chartClass: 'stacked-bar-chart-plot', // TODO match more closely with key
+        chartClass: 'stacked-bar', // TODO match more closely with key
         name: 'Stacked Bar',
         nameLong: 'Stacked Bar Chart',
         render: renderStackedBarChart,
