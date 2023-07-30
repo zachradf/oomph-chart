@@ -1,65 +1,97 @@
 export const chartData = {};
+chartData.cluster = [
+  {
+    name: 'child1',
+    value: 100,
+    children: [
+      {
+        name: 'grandchild1',
+        value: 50,
+      },
+      {
+        name: 'grandchild2',
+        value: 60,
+      },
+    ],
+  },
+  {
+    name: 'child2',
+    value: 80,
+    children: [
+      {
+        name: 'grandchild3',
+        value: 30,
+      },
+      {
+        name: 'grandchild4',
+        value: 70,
+      },
+    ],
+  },
+];
 
-chartData.treeDiagram = {
+chartData.treeDiagram = [{
   name: 'A',
+  value: null,
   children: [
     {
       name: 'B',
+      value: null,
       children: [
-        { name: 'C' },
-        { name: 'D' },
+        { name: 'C', value: null },
+        { name: 'D', value: null },
       ],
     },
     {
       name: 'E',
+      value: null,
       children: [
-        { name: 'F' },
+        { name: 'F', value: null },
       ],
     },
   ],
-};
+}];
 
-chartData.treeMap = {
-  name: 'root',
+chartData.treeMap = [{
+  name: 'Category A',
+  value: null,
   children: [
-    {
-      name: 'Category A',
-      children: [
-        { name: 'Item A1', value: 50 },
-        { name: 'Item A2', value: 30 },
-        { name: 'Item A3', value: 40 },
-        { name: 'Item A4', value: 50 },
-        { name: 'Item A5', value: 20 },
-        { name: 'Item A6', value: 45 },
-      ],
-    },
-    {
-      name: 'Category B',
-      children: [
-        { name: 'Item B1', value: 20 },
-        { name: 'Item B2', value: 60 },
-        { name: 'Item B3', value: 35 },
-        { name: 'Item B4', value: 5 },
-        { name: 'Item B5', value: 80 },
-        { name: 'Item B6', value: 35 },
-      ],
-    },
-    {
-      name: 'Category C',
-      children: [
-        { name: 'Item C1', value: 25 },
-        { name: 'Item C2', value: 45 },
-        { name: 'Item C3', value: 15 },
-        { name: 'Item C4', value: 25 },
-        { name: 'Item C5', value: 45 },
-        { name: 'Item C6', value: 25 },
-        { name: 'Item C7', value: 55 },
-        { name: 'Item C8', value: 5 },
-        { name: 'Item C9', value: 15 },
-      ],
-    },
+    { name: 'Item A1', value: 50 },
+    { name: 'Item A2', value: 30 },
+    { name: 'Item A3', value: 40 },
+    { name: 'Item A4', value: 50 },
+    { name: 'Item A5', value: 20 },
+    { name: 'Item A6', value: 45 },
   ],
-};
+},
+{
+  name: 'Category B',
+  value: null,
+  children: [
+    { name: 'Item B1', value: 20 },
+    { name: 'Item B2', value: 60 },
+    { name: 'Item B3', value: 35 },
+    { name: 'Item B4', value: 5 },
+    { name: 'Item B5', value: 80 },
+    { name: 'Item B6', value: 35 },
+  ],
+},
+{
+  name: 'Category C',
+  value: null,
+  children: [
+    { name: 'Item C1', value: 25 },
+    { name: 'Item C2', value: 45 },
+    { name: 'Item C3', value: 15 },
+    { name: 'Item C4', value: 25 },
+    { name: 'Item C5', value: 45 },
+    { name: 'Item C6', value: 25 },
+    { name: 'Item C7', value: 55 },
+    { name: 'Item C8', value: 5 },
+    { name: 'Item C9', value: 15 },
+  ],
+},
+];
 
 chartData.forceDirected = {
   nodes: [
@@ -100,7 +132,7 @@ chartData.barChart2 = [
   { x: 'E', y: 50 },
   { x: 'F', y: 40 },
   { x: 'G', y: 50 },
-  { x: 'H', y: 60 },
+  // { x: 'H', y: 60 },
 ];
 
 chartData.donutChart = [
@@ -241,32 +273,32 @@ chartData.heatMap2 = [
 ];
 
 // TODO change category to name or vice versa
-chartData.stackedBarChart2 = [
-  {
-    category: 'Jan',
-    values: [
-      { group: 'Group A', value: 10 },
-      { group: 'Group B', value: 20 },
-      { group: 'Group C', value: 30 },
-    ],
-  },
-  {
-    category: 'Feb',
-    values: [
-      { group: 'Group A', value: 15 },
-      { group: 'Group B', value: 25 },
-      { group: 'Group C', value: 35 },
-    ],
-  },
-  {
-    category: 'Mar',
-    values: [
-      { group: 'Group A', value: 20 },
-      { group: 'Group B', value: 30 },
-      { group: 'Group C', value: 40 },
-    ],
-  },
-];
+// chartData.stackedBarChart2 = [
+//   {
+//     category: 'Jan',
+//     values: [
+//       { group: 'Group A', value: 10 },
+//       { group: 'Group B', value: 20 },
+//       { group: 'Group C', value: 30 },
+//     ],
+//   },
+//   {
+//     category: 'Feb',
+//     values: [
+//       { group: 'Group A', value: 15 },
+//       { group: 'Group B', value: 25 },
+//       { group: 'Group C', value: 35 },
+//     ],
+//   },
+//   {
+//     category: 'Mar',
+//     values: [
+//       { group: 'Group A', value: 20 },
+//       { group: 'Group B', value: 30 },
+//       { group: 'Group C', value: 40 },
+//     ],
+//   },
+// ];
 
 // extreme scatter plot data
 // Generate a high volume data set with 1 million data points
@@ -274,6 +306,65 @@ chartData.extremeScatterPlot1 = Array.from({ length: 10000 }, () => ({
   x: Math.random(),
   y: Math.random(),
 }));
+chartData.voronoi = [
+  {
+    name: 'Category A',
+    value: 300, // The sum of the child values should be equal to or less than this.
+    children: [
+      {
+        name: 'Sub-Category A1',
+        value: 100,
+        children: [
+          { name: 'Item A1.1', value: 30 },
+          { name: 'Item A1.2', value: 20 },
+          { name: 'Item A1.3', value: 50 },
+        ],
+      },
+      {
+        name: 'Sub-Category A2',
+        value: 200,
+        children: [
+          { name: 'Item A2.1', value: 100 },
+          { name: 'Item A2.2', value: 50 },
+          { name: 'Item A2.3', value: 50 },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Category B',
+    value: 700, // The sum of the child values should be equal to or less than this.
+    children: [
+      {
+        name: 'Sub-Category B1',
+        value: 200,
+        children: [
+          { name: 'Item B1.1', value: 100 },
+          { name: 'Item B1.2', value: 50 },
+          { name: 'Item B1.3', value: 50 },
+        ],
+      },
+      {
+        name: 'Sub-Category B2',
+        value: 300,
+        children: [
+          { name: 'Item B2.1', value: 100 },
+          { name: 'Item B2.2', value: 100 },
+          { name: 'Item B2.3', value: 100 },
+        ],
+      },
+      {
+        name: 'Sub-Category B3',
+        value: 200,
+        children: [
+          { name: 'Item B3.1', value: 50 },
+          { name: 'Item B3.2', value: 75 },
+          { name: 'Item B3.3', value: 75 },
+        ],
+      },
+    ],
+  },
+];
 
 // Generate a high variation data set with values between -1000 and 1000
 chartData.extremeScatterPlot2 = Array.from({ length: 25000 }, () => ({
@@ -286,20 +377,55 @@ chartData.dataSet1 = Array.from({ length: 1000 }, (_, i) => ({
   category: i,
   value: Math.floor(Math.random() * 1000),
 }));
-
-// bubble chart data
-chartData.bubbleChart = [
+chartData.chordData = [
   {
-    name: 'Category 1',
-    value: 20,
+    category: 'Category 1',
+    value: 100,
     children: [
-      { name: 'Subcategory 1A', value: 10 },
-      { name: 'Subcategory 1B', value: 5 },
-      { name: 'Subcategory 1C', value: 5 },
+      { name: 'Category 2', value: 30 },
+      { name: 'Category 3', value: 20 },
+      { name: 'Category 4', value: 50 },
     ],
   },
   {
-    name: 'Category 2',
+    category: 'Category 2',
+    value: 80,
+    children: [
+      { name: 'Category 1', value: 10 },
+      { name: 'Category 3', value: 40 },
+      { name: 'Category 4', value: 30 },
+    ],
+  },
+  {
+    category: 'Category 3',
+    value: 120,
+    children: [
+      { name: 'Category 1', value: 20 },
+      { name: 'Category 2', value: 50 },
+      { name: 'Category 4', value: 50 },
+    ],
+  },
+  {
+    category: 'Category 4',
+    value: 90,
+    children: [
+      { name: 'Category 1', value: 30 },
+      { name: 'Category 2', value: 30 },
+      { name: 'Category 3', value: 30 },
+    ],
+  },
+];
+
+chartData.bubbleChartFlat = [
+  {
+    category: 'Category 1',
+    value: 20,
+    children: [
+      { name: 'Subcategory 1A', value: 10 },
+    ],
+  },
+  {
+    category: 'Category 2',
     value: 10,
     children: [
       { name: 'Subcategory 2A', value: 7.5 },
@@ -307,7 +433,7 @@ chartData.bubbleChart = [
     ],
   },
   {
-    name: 'Category 3',
+    category: 'Category 3',
     value: 21,
     children: [
       { name: 'Subcategory 3A: this is a brief description of what this category is incase anyone wants to do that idk.', value: 7.5 },
@@ -317,6 +443,91 @@ chartData.bubbleChart = [
     ],
   },
 ];
+chartData.bubbleChart = [
+  {
+    name: 'Category 1',
+    value: 175,
+    children: [
+      {
+        name: 'Subcategory 1A',
+        value: 50,
+        children: [
+          { name: 'SubSubCategory 1AA', value: 25 },
+          { name: 'SubSubCategory 2AA', value: 25 },
+          { name: 'SubSubCategory 3AA', value: 25 },
+
+        ],
+      },
+      { name: 'Subcategory 1B', value: 50 },
+    ],
+  },
+  {
+    name: 'Category 2',
+    value: 200,
+    children: [
+      { name: 'Subcategory 2A', value: 100 },
+      { name: 'Subcategory 2B', value: 100 },
+    ],
+  },
+  {
+    name: 'Category 3',
+    value: 150,
+    children: [
+      { name: 'Subcategory 3A', value: 50 },
+      { name: 'Subcategory 3B', value: 50 },
+      { name: 'Subcategory 3C', value: 50 },
+    ],
+  },
+];
+
+// chartData.bubbleChart = [
+//   {
+//     name: 'Category 1',
+//     value: 20,
+//     children: [
+//       {
+//         name: 'Subcategory 1A',
+//         value: 10,
+//         children: [
+//           { name: 'Sub-subcategory 1A1', value: 5 },
+//           { name: 'Sub-subcategory 1A2', value: 5 },
+//         ],
+//       },
+//     ],
+//   },
+//   {
+//     name: 'Category 2',
+//     value: 10,
+//     children: [
+//       {
+//         name: 'Subcategory 2A',
+//         value: 7.5,
+//         children: [
+//           { name: 'Sub-subcategory 2A1', value: 3.75 },
+//           { name: 'Sub-subcategory 2A2', value: 3.75 },
+//         ],
+//       },
+//       { name: 'Subcategory 2B', value: 2 },
+//     ],
+//   },
+//   {
+//     name: 'Category 3',
+//     value: 21,
+//     children: [
+//       {
+//         name: 'Subcategory 3A: this is a brief description of what this category is incase anyone wants to do that idk.',
+//         value: 7.5,
+//         children: [
+//           { name: 'Sub-subcategory 3A1', value: 3.75 },
+//           { name: 'Sub-subcategory 3A2', value: 3.75 },
+//         ],
+//       },
+//       { name: 'Subcategory 3B', value: 2 },
+//       { name: 'Subcategory 3A', value: 9.5 },
+//       { name: 'Subcategory 3B', value: 12 },
+//     ],
+//   },
+// ];
 
 // Heat map data candidate for y2 axis
 chartData.heatMap = [
@@ -337,121 +548,226 @@ chartData.heatMap = [
 ];
 
 // see if this can be broken up into seperate objects that are compativle with barchart
+// chartData.stackedBarChart = [
+//   {
+//     category: 'Category A',
+//     values: [
+//       { name: 'Value 1', value: 10 },
+//       { name: 'Value 2', value: 20 },
+//       { name: 'Value 3', value: 15 },
+//     ],
+//   },
+//   {
+//     category: 'Category B',
+//     values: [
+//       { name: 'Value 1', value: 25 },
+//       { name: 'Value 2', value: 5 },
+//       { name: 'Value 3', value: 18 },
+//     ],
+//   },
+//   {
+//     category: 'Category C',
+//     values: [
+//       { name: 'Value 1', value: 12 },
+//       { name: 'Value 2', value: 30 },
+//       { name: 'Value 3', value: 8 },
+//     ],
+//   },
+//   {
+//     category: 'Category D',
+//     values: [
+//       { name: 'Value 1', value: 12 },
+//       { name: 'Value 2', value: 30 },
+//       { name: 'Value 3', value: 8 },
+//     ],
+//   },
+// ];
 chartData.stackedBarChart = [
   {
-    category: 'Category A',
-    values: [
+    name: 'Category A',
+    value: 45,
+    children: [
       { name: 'Value 1', value: 10 },
       { name: 'Value 2', value: 20 },
       { name: 'Value 3', value: 15 },
     ],
   },
   {
-    category: 'Category B',
-    values: [
+    name: 'Category B',
+    value: 48,
+    children: [
       { name: 'Value 1', value: 25 },
       { name: 'Value 2', value: 5 },
       { name: 'Value 3', value: 18 },
     ],
   },
   {
-    category: 'Category C',
-    values: [
+    name: 'Category C',
+    value: 50,
+    children: [
       { name: 'Value 1', value: 12 },
       { name: 'Value 2', value: 30 },
       { name: 'Value 3', value: 8 },
     ],
   },
   {
-    category: 'Category D',
-    values: [
+    name: 'Category D',
+    value: 50,
+    children: [
       { name: 'Value 1', value: 12 },
       { name: 'Value 2', value: 30 },
       { name: 'Value 3', value: 8 },
     ],
   },
 ];
+chartData.sunburst = [
+  {
+    name: 'A',
+    value: 55,
+    children: [
+      {
+        name: 'B',
+        children: [
+          { name: 'B1', value: 4 },
+          { name: 'B2', value: 4 },
+          { name: 'B3', value: 4 },
+          { name: 'B4', value: 4 },
+          { name: 'B5', value: 4 },
+        ],
+      },
+      {
+        name: 'C',
+        children: [
+          { name: 'C1', value: 3 },
+          { name: 'C2', value: 3 },
+          { name: 'C3', value: 3 },
+          { name: 'C4', value: 3 },
+          { name: 'C5', value: 3 },
+        ],
+      },
+      {
+        name: 'D',
+        children: [
+          { name: 'D1', value: 2 },
+          { name: 'D2', value: 2 },
+          { name: 'D3', value: 2 },
+          { name: 'D4', value: 2 },
+          { name: 'D5', value: 2 },
+        ],
+      },
+      {
+        name: 'E',
+        children: [
+          { name: 'E1', value: 1 },
+          { name: 'E2', value: 1 },
+          { name: 'E3', value: 1 },
+          { name: 'E4', value: 1 },
+          { name: 'E5', value: 1 },
+        ],
+      },
+      {
+        name: 'F',
+        children: [
+          { name: 'F1', value: 1 },
+          { name: 'F2', value: 1 },
+          { name: 'F3', value: 1 },
+          { name: 'F4', value: 1 },
+          { name: 'F5', value: 1 },
+        ],
+      },
+    ],
+  },
+];
 
-chartData.sunburst = {
-  name: 'A',
-  children: [
-    {
-      name: 'B',
-      children: [
-        { name: 'B1', value: 4 },
-        { name: 'B2', value: 4 },
-        { name: 'B3', value: 4 },
-        { name: 'B4', value: 4 },
-        { name: 'B5', value: 4 },
-      ],
-    },
-    {
-      name: 'C',
-      children: [
-        { name: 'C1', value: 3 },
-        { name: 'C2', value: 3 },
-        { name: 'C3', value: 3 },
-        { name: 'C4', value: 3 },
-        { name: 'C5', value: 3 },
-      ],
-    },
-    {
-      name: 'D',
-      children: [
-        { name: 'D1', value: 2 },
-        { name: 'D2', value: 2 },
-        { name: 'D3', value: 2 },
-        { name: 'D4', value: 2 },
-        { name: 'D5', value: 2 },
-      ],
-    },
-    {
-      name: 'E',
-      children: [
-        { name: 'E1', value: 1 },
-        { name: 'E2', value: 1 },
-        { name: 'E3', value: 1 },
-        { name: 'E4', value: 1 },
-        { name: 'E5', value: 1 },
-      ],
-    },
-    {
-      name: 'F',
-      children: [
-        { name: 'F1', value: 1 },
-        { name: 'F2', value: 1 },
-        { name: 'F3', value: 1 },
-        { name: 'F4', value: 1 },
-        { name: 'F5', value: 1 },
-      ],
-    },
-  ],
-};
+// chartData.sunburst = {
+//   name: 'A',
+//   children: [
+//     {
+//       name: 'B',
+//       children: [
+//         { name: 'B1', value: 4 },
+//         { name: 'B2', value: 4 },
+//         { name: 'B3', value: 4 },
+//         { name: 'B4', value: 4 },
+//         { name: 'B5', value: 4 },
+//       ],
+//     },
+//     {
+//       name: 'C',
+//       children: [
+//         { name: 'C1', value: 3 },
+//         { name: 'C2', value: 3 },
+//         { name: 'C3', value: 3 },
+//         { name: 'C4', value: 3 },
+//         { name: 'C5', value: 3 },
+//       ],
+//     },
+//     {
+//       name: 'D',
+//       children: [
+//         { name: 'D1', value: 2 },
+//         { name: 'D2', value: 2 },
+//         { name: 'D3', value: 2 },
+//         { name: 'D4', value: 2 },
+//         { name: 'D5', value: 2 },
+//       ],
+//     },
+//     {
+//       name: 'E',
+//       children: [
+//         { name: 'E1', value: 1 },
+//         { name: 'E2', value: 1 },
+//         { name: 'E3', value: 1 },
+//         { name: 'E4', value: 1 },
+//         { name: 'E5', value: 1 },
+//       ],
+//     },
+//     {
+//       name: 'F',
+//       children: [
+//         { name: 'F1', value: 1 },
+//         { name: 'F2', value: 1 },
+//         { name: 'F3', value: 1 },
+//         { name: 'F4', value: 1 },
+//         { name: 'F5', value: 1 },
+//       ],
+//     },
+//   ],
+// };
 
 // TODO value can be calculated from start and end, candidate for y2 axis
 chartData.waterfall = [
-  {
-    category: 'A', value: 20, start: 0, end: 20,
-  },
-  {
-    category: 'B', value: 10, start: 20, end: 30,
-  },
-  {
-    category: 'C', value: -5, start: 30, end: 25,
-  },
-  {
-    category: 'D', value: 15, start: 25, end: 40,
-  },
-  {
-    category: 'E', value: -10, start: 40, end: 30,
-  },
-  {
-    category: 'F', value: 5, start: 30, end: 35,
-  },
-  {
-    category: 'G', value: 15, start: 35, end: 50,
-  },
+  { x: 'A', y1: 0, y2: 20 },
+  { x: 'B', y1: 20, y2: 30 },
+  { x: 'C', y1: 30, y2: 25 },
+  { x: 'D', y1: 25, y2: 40 },
+  { x: 'E', y1: 40, y2: 30 },
+  { x: 'F', y1: 30, y2: 35 },
+  { x: 'G', y1: 35, y2: 50 },
 ];
+// [
+//   {
+//     category: 'A', start: 0, end: 20,
+//   },
+//   {
+//     category: 'B', start: 20, end: 30,
+//   },
+//   {
+//     category: 'C', start: 30, end: 25,
+//   },
+//   {
+//     category: 'D', start: 25, end: 40,
+//   },
+//   {
+//     category: 'E', start: 40, end: 30,
+//   },
+//   {
+//     category: 'F', start: 30, end: 35,
+//   },
+//   {
+//     category: 'G', start: 35, end: 50,
+//   },
+// ];
 
 // TODO funnelChart 'x' values would actually be on the y axis, do you still convert?
 chartData.funnelChart = [
@@ -479,6 +795,32 @@ chartData.polarChart = [
   { x: 'D', y: 75 },
   { x: 'E', y: 125 },
 ];
+chartData.radialTree = [
+  {
+    name: 'child 1',
+    children: [
+      {
+        name: 'grandchild 1',
+
+      },
+      {
+        name: 'grandchild 2',
+
+      },
+    ],
+  },
+  {
+    name: 'child 2',
+    children: [
+      {
+        name: 'grandchild 3',
+      },
+      {
+        name: 'grandchild 4',
+      },
+    ],
+  },
+];
 
 chartData.radarChart = [
   { x: 'A', y: 100 },
@@ -486,6 +828,8 @@ chartData.radarChart = [
   { x: 'C', y: 10 },
   { x: 'D', y: 75 },
   { x: 'E', y: 25 },
+  { x: 'F', y: 25 },
+
 ];
 
 chartData.boxPlot = [
@@ -519,84 +863,278 @@ chartData.boxPlot = [
   },
 ];
 
+// chartData.chord = [
+//   [4, 5, 1, 0],
+//   [2, 3, 2, 1],
+//   [0, 6, 9, 10],
+//   [1, 2, 3, 4],
+//   ['A', 'B', 'C', 'D'],
+// ];
 chartData.chord = [
-  [4, 5, 1, 0],
-  [2, 3, 2, 1],
-  [0, 6, 9, 10],
-  [1, 2, 3, 4],
-  ['A', 'B', 'C', 'D'],
+  {
+    name: 'A',
+    value: null,
+    children: [
+      { name: 'A', value: 4 },
+      { name: 'B', value: 5 },
+      { name: 'C', value: 1 },
+      { name: 'D', value: 0 },
+    ],
+  },
+  {
+    name: 'B',
+    value: null,
+    children: [
+      { name: 'A', value: 2 },
+      { name: 'B', value: 3 },
+      { name: 'C', value: 2 },
+      { name: 'D', value: 1 },
+    ],
+  },
+  {
+    name: 'C',
+    value: null,
+    children: [
+      { name: 'A', value: 0 },
+      { name: 'B', value: 6 },
+      { name: 'C', value: 9 },
+      { name: 'D', value: 10 },
+    ],
+  },
+  {
+    name: 'D',
+    value: null,
+    children: [
+      { name: 'A', value: 1 },
+      { name: 'B', value: 2 },
+      { name: 'C', value: 3 },
+      { name: 'D', value: 4 },
+    ],
+  },
+];
+chartData.dendrogram = [
+  {
+    name: 'Category 1',
+    value: 10,
+    children: [
+      {
+        name: 'Subcategory 1A',
+        value: 5,
+        children: [
+          { name: 'Sub-subcategory 1A1', value: 2 },
+          { name: 'Sub-subcategory 1A2', value: 3 },
+        ],
+      },
+      {
+        name: 'Subcategory 1B',
+        value: 5,
+        children: [
+          { name: 'Sub-subcategory 1B1', value: 2 },
+          { name: 'Sub-subcategory 1B2', value: 3 },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Category 2',
+    value: 15,
+    children: [
+      {
+        name: 'Subcategory 2A',
+        value: 7,
+        children: [
+          { name: 'Sub-subcategory 2A1', value: 3 },
+          { name: 'Sub-subcategory 2A2', value: 4 },
+        ],
+      },
+      { name: 'Subcategory 2B', value: 8 },
+    ],
+  },
+];
+chartData.icicle = [
+  {
+    name: 'Electronics',
+    value: 1000,
+    children: [
+      {
+        name: 'Laptops',
+        value: 400,
+      },
+      {
+        name: 'Mobile Phones',
+        value: 600,
+      },
+    ],
+  },
+  {
+    name: 'Books',
+    value: 300,
+    children: [
+      {
+        name: 'Fiction',
+        value: 150,
+      },
+      {
+        name: 'Non-Fiction',
+        value: 150,
+      },
+    ],
+  },
+  {
+    name: 'Apparel',
+    value: 700,
+    children: [
+      {
+        name: "Men's",
+        value: 350,
+      },
+      {
+        name: "Women's",
+        value: 350,
+      },
+    ],
+  },
 ];
 
-chartData.sankeyDiagram = {
-  nodes: [
-    { name: 'Agriculture' },
-    { name: 'Industry' },
-    { name: 'Residential' },
-    { name: 'Electricity' },
-    { name: 'Natural Gas' },
-    { name: 'Coal' },
-    { name: 'Petroleum' },
-  ],
-  links: [
-    { source: 0, target: 3, value: 20 },
-    { source: 0, target: 4, value: 15 },
-    { source: 0, target: 5, value: 5 },
-    { source: 0, target: 6, value: 30 },
-    { source: 1, target: 3, value: 50 },
-    { source: 1, target: 4, value: 40 },
-    { source: 1, target: 5, value: 20 },
-    { source: 1, target: 6, value: 35 },
-    { source: 2, target: 3, value: 100 },
-    { source: 2, target: 4, value: 60 },
-    { source: 2, target: 5, value: 5 },
-    { source: 2, target: 6, value: 10 },
-  ],
-};
+// chartData.sankey = {
+//   nodes: [
+//     { name: 'Agriculture' },
+//     { name: 'Industry' },
+//     { name: 'Residential' },
+//     { name: 'Electricity' },
+//     { name: 'Natural Gas' },
+//     { name: 'Coal' },
+//     { name: 'Petroleum' },
+//   ],
+//   links: [
+//     { source: 0, target: 3, value: 20 },
+//     { source: 0, target: 4, value: 15 },
+//     { source: 0, target: 5, value: 5 },
+//     { source: 0, target: 6, value: 30 },
+//     { source: 1, target: 3, value: 50 },
+//     { source: 1, target: 4, value: 40 },
+//     { source: 1, target: 5, value: 20 },
+//     { source: 1, target: 6, value: 35 },
+//     { source: 2, target: 3, value: 100 },
+//     { source: 2, target: 4, value: 60 },
+//     { source: 2, target: 5, value: 5 },
+//     { source: 2, target: 6, value: 10 },
+//   ],
+// };
+chartData.sankey = [
+  {
+    name: 'Agriculture',
+    children: [
+      { name: 'Electricity', value: 20 },
+      { name: 'Natural Gas', value: 15 },
+      { name: 'Coal', value: 5 },
+      { name: 'Petroleum', value: 30 },
+    ],
+    value: 70,
+  },
+  {
+    name: 'Industry',
+    children: [
+      { name: 'Electricity', value: 50 },
+      { name: 'Natural Gas', value: 40 },
+      { name: 'Coal', value: 20 },
+      { name: 'Petroleum', value: 35 },
+    ],
+    value: 145,
+  },
+  {
+    name: 'Residential',
+    children: [
+      { name: 'Electricity', value: 100 },
+      { name: 'Natural Gas', value: 60 },
+      { name: 'Coal', value: 5 },
+      { name: 'Petroleum', value: 10 },
+    ],
+    value: 175,
+  },
+];
 
 chartData.marimekko = [
   {
-    category: 'Fruits',
+    name: 'Fruits',
+    value: null,
     children: [
-      { subCategory: 'Apples', percentage: 0.2 },
-      { subCategory: 'Oranges', percentage: 0.3 },
-      { subCategory: 'Bananas', percentage: 0.5 },
+      { name: 'Apples', value: 0.2 },
+      { name: 'Oranges', value: 0.3 },
+      { name: 'Bananas', value: 0.5 },
     ],
   },
   {
-    category: 'Vegetables',
+    name: 'Vegetables',
+    value: null,
     children: [
-      { subCategory: 'Carrots', percentage: 0.6 },
-      { subCategory: 'Potatoes', percentage: 0.3 },
-      { subCategory: 'Tomatoes', percentage: 0.1 },
+      { name: 'Carrots', value: 0.6 },
+      { name: 'Potatoes', value: 0.3 },
+      { name: 'Tomatoes', value: 0.1 },
     ],
   },
   {
-    category: 'Grains',
+    name: 'Grains',
+    value: null,
     children: [
-      { subCategory: 'Wheat', percentage: 0.4 },
-      { subCategory: 'Rice', percentage: 0.4 },
-      { subCategory: 'Oats', percentage: 0.2 },
+      { name: 'Wheat', value: 0.4 },
+      { name: 'Rice', value: 0.4 },
+      { name: 'Oats', value: 0.2 },
     ],
   },
 ];
 
-chartData.adjacency = {
-  nodes: [
-    { id: 'A' },
-    { id: 'B' },
-    { id: 'C' },
-    { id: 'D' },
-    { id: 'E' },
-  ],
-  links: [
-    { source: 'A', target: 'B', value: 5 },
-    { source: 'A', target: 'C', value: 3 },
-    { source: 'B', target: 'D', value: 2 },
-    { source: 'B', target: 'E', value: 1 },
-    { source: 'C', target: 'D', value: 4 },
-    { source: 'D', target: 'E', value: 6 },
-  ],
-};
+// marimekko = [
+//   {
+//     category: 'Fruits',
+//     children: [
+//       { subCategory: 'Apples', percentage: 0.2 },
+//       { subCategory: 'Oranges', percentage: 0.3 },
+//       { subCategory: 'Bananas', percentage: 0.5 },
+//     ],
+//   },
+//   {
+//     category: 'Vegetables',
+//     children: [
+//       { subCategory: 'Carrots', percentage: 0.6 },
+//       { subCategory: 'Potatoes', percentage: 0.3 },
+//       { subCategory: 'Tomatoes', percentage: 0.1 },
+//     ],
+//   },
+//   {
+//     category: 'Grains',
+//     children: [
+//       { subCategory: 'Wheat', percentage: 0.4 },
+//       { subCategory: 'Rice', percentage: 0.4 },
+//       { subCategory: 'Oats', percentage: 0.2 },
+//     ],
+//   },
+// ];
+
+// chartData.adjacency = {
+//   nodes: [
+//     { id: 'A' },
+//     { id: 'B' },
+//     { id: 'C' },
+//     { id: 'D' },
+//     { id: 'E' },
+//   ],
+//   links: [
+//     { source: 'A', target: 'B', value: 5 },
+//     { source: 'A', target: 'C', value: 3 },
+//     { source: 'B', target: 'D', value: 2 },
+//     { source: 'B', target: 'E', value: 1 },
+//     { source: 'C', target: 'D', value: 4 },
+//     { source: 'D', target: 'E', value: 6 },
+//   ],
+// };
+chartData.adjacency = [
+  { name: 'A', value: 8, children: [{ name: 'B', value: 5 }, { name: 'C', value: 3 }] },
+  { name: 'B', value: 3, children: [{ name: 'D', value: 2 }, { name: 'E', value: 1 }] },
+  { name: 'C', value: 4, children: [{ name: 'D', value: 4 }] },
+  { name: 'D', value: 6, children: [{ name: 'E', value: 6 }] },
+  { name: 'E', value: 0, children: [] },
+];
 
 chartData.choropleth = [
   { coordinates: [40.7128, -74.0060] }, // New York City
@@ -606,40 +1144,40 @@ chartData.choropleth = [
   { coordinates: [37.7749, -122.4194] }, // San Francisco
 ];
 
-chartData.bubbleChart2 = [
-  { name: 'A2', value: 600, y2: 0.2 },
-  { name: 'B2', value: 500, y2: 0.2 },
-  { name: 'C2', value: 400, y2: 0.2 },
-  { name: 'CC2', value: 400, y2: 0.2 },
-  { name: 'D2', value: 300, y2: 0.2 },
-  { name: 'E2', value: 200, y2: 0.2 },
-  { name: 'A5', value: 600, y2: 0.5 },
-  { name: 'B5', value: 500, y2: 0.5 },
-  { name: 'C5', value: 400, y2: 0.5 },
-  { name: 'CC5', value: 400, y2: 0.5 },
-  { name: 'D5', value: 300, y2: 0.5 },
-  { name: 'E5', value: 200, y2: 0.5 },
-  { name: 'G8', value: 1550, y2: 0.8 },
-  { name: 'H8', value: 1200, y2: 0.8 },
-  { name: 'I8', value: 950, y2: 0.8 },
-  { name: 'M8', value: 1550, y2: 0.8 },
-  { name: 'A2', value: 600, y2: 0.2 },
-  { name: 'B2', value: 500, y2: 0.2 },
-  { name: 'C2', value: 400, y2: 0.2 },
-  { name: 'CC2', value: 400, y2: 0.2 },
-  { name: 'D2', value: 300, y2: 0.2 },
-  { name: 'E2', value: 200, y2: 0.2 },
-  { name: 'A5', value: 600, y2: 0.5 },
-  { name: 'B5', value: 500, y2: 0.5 },
-  { name: 'C5', value: 400, y2: 0.5 },
-  // { name: 'CC5', value: 400, y2: 0.5 },
-  // { name: 'D5', value: 300, y2: 0.5 },
-  // { name: 'E5', value: 200, y2: 0.5 },
-  // { name: 'G8', value: 1550, y2: 0.8 },
-  // { name: 'H8', value: 1200, y2: 0.8 },
-  // { name: 'I8', value: 950, y2: 0.8 },
-  // { name: 'M8', value: 1550, y2: 0.8 },
-];
+// chartData.bubbleChart2 = [
+//   { name: 'A2', value: 600, y2: 0.2 },
+//   { name: 'B2', value: 500, y2: 0.2 },
+//   { name: 'C2', value: 400, y2: 0.2 },
+//   { name: 'CC2', value: 400, y2: 0.2 },
+//   { name: 'D2', value: 300, y2: 0.2 },
+//   { name: 'E2', value: 200, y2: 0.2 },
+//   { name: 'A5', value: 600, y2: 0.5 },
+//   { name: 'B5', value: 500, y2: 0.5 },
+//   { name: 'C5', value: 400, y2: 0.5 },
+//   { name: 'CC5', value: 400, y2: 0.5 },
+//   { name: 'D5', value: 300, y2: 0.5 },
+//   { name: 'E5', value: 200, y2: 0.5 },
+//   { name: 'G8', value: 1550, y2: 0.8 },
+//   { name: 'H8', value: 1200, y2: 0.8 },
+//   { name: 'I8', value: 950, y2: 0.8 },
+//   { name: 'M8', value: 1550, y2: 0.8 },
+//   { name: 'A2', value: 600, y2: 0.2 },
+//   { name: 'B2', value: 500, y2: 0.2 },
+//   { name: 'C2', value: 400, y2: 0.2 },
+//   { name: 'CC2', value: 400, y2: 0.2 },
+//   { name: 'D2', value: 300, y2: 0.2 },
+//   { name: 'E2', value: 200, y2: 0.2 },
+//   { name: 'A5', value: 600, y2: 0.5 },
+//   { name: 'B5', value: 500, y2: 0.5 },
+//   { name: 'C5', value: 400, y2: 0.5 },
+// { name: 'CC5', value: 400, y2: 0.5 },
+// { name: 'D5', value: 300, y2: 0.5 },
+// { name: 'E5', value: 200, y2: 0.5 },
+// { name: 'G8', value: 1550, y2: 0.8 },
+// { name: 'H8', value: 1200, y2: 0.8 },
+// { name: 'I8', value: 950, y2: 0.8 },
+// { name: 'M8', value: 1550, y2: 0.8 },
+// ];
 
 // [
 //   { x: 'A2', y: 1100, y2: 0.2 },

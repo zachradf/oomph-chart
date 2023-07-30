@@ -39,3 +39,13 @@ superData.string_number_string = [
   { x: 'Saturday', y: 130, group: 'B' },
   { x: 'Sunday', y: 140, group: 'B' },
 ];
+
+superData.string_number_number = [
+  { x: 'A', y1: 0, y2: 20 },
+  { x: 'B', y1: 20, y2: 30 },
+  { x: 'C', y1: 30, y2: 25 },
+  { x: 'D', y1: 25, y2: 40 },
+  { x: 'E', y1: 40, y2: 30 },
+  { x: 'F', y1: 30, y2: 35 },
+  { x: 'G', y1: 35, y2: 50 },
+];
