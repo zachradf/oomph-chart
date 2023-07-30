@@ -6,8 +6,8 @@ export default function animateArea(chart, sortedData, chartComponents, options,
     .x((d) => chartComponents.x(d.x))
     .y0((d) => (d.y >= 0 ? y(0) : y(-d.y)))
     .y1((d) => chartComponents.y(d.y));
-
-  chart.select('svg .area-chart0')
+  console.log('chart', chart);
+  chart.select('svg .area0')
     .datum(sortedData)
     .transition()
     .duration(duration)

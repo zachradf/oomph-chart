@@ -6,7 +6,7 @@ export default function animateScatter(chartElements, data, chartComponents, dur
   // Enter selection
   enterSelection
     .append('circle')
-    .attr('class', 'scatter-plot0')
+    .attr('class', 'scatter0')
     .attr('r', 5); // Set radius for new circle elements
 
   // Update selection

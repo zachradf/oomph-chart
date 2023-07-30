@@ -9,10 +9,14 @@ export default function animateBar(selection, data, chartComponents, options, du
 
   selection.transition()
     .duration(duration)
+    .attr('fill', options.fillColor)
+    .attr('width', dynamicBarWidth)
     .attr('x', (d) => (isLinearScale ? x(d.x) - barWidth / 2 : x(d.x)))
     .attr('y', (d) => (d.y >= 0 ? y(d.y) : y(0)))
     .attr('height', (d) => (d.y >= 0 ? y(0) - y(d.y) : y(d.y) - y(0)))
-    .attr('width', dynamicBarWidth);
+    .attr('x', (d) => (isLinearScale ? x(d.x) - barWidth / 2 : x(d.x)))
+    .attr('y', (d) => y(Math.max(0, d.y)))
+    .attr('height', (d) => Math.abs(y(d.y) - y(0)));
 }
 // export default function animateBar(selection, data, chartComponents, options, duration) {
 //   const { width, barWidth } = options;

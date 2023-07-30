@@ -12,33 +12,37 @@ import animateStacked from './animate-stacked';
 
 export default function addAnimation(selector, data, options, chartComponents, duration = 1000) {
   setTimeout(() => {
+    console.log('options.chartClass', options.chartClass);
     const chart = d3.select(selector);
+    const nonAxialCharts = ['voronoi', 'treeMap', 'treeDiagram', 'radialTree', 'icicle', 'polar', 'radar', 'pie', 'donut', 'heatmap', 'bubble', 'sun', 'chord', 'cloud', 'cluster', 'dendrogram', 'sankey'];
+    if (!nonAxialCharts.includes(`${options.chartClass}`)) {
+      chart.select('.x-axis')
+        .transition()
+        .duration(duration)
+        .call(chartComponents.xAxis);
 
-    chart.select('.x-axis')
-      .transition()
-      .duration(duration)
-      .call(chartComponents.xAxis);
-
-    chart.select('.y-axis')
-      .transition()
-      .duration(duration)
-      .call(chartComponents.yAxis);
-
-    const elements = chart.selectAll('g rect, g circle, .line-graph0, .area-chart0, path');
-    // const elements = d3.selectAll(`svg.${options.chartClass} circle, arc, rect, path, line, polygon, node`);
+      chart.select('.y-axis')
+        .transition()
+        .duration(duration)
+        .call(chartComponents.yAxis);
+    }
+    // const elements = chart.selectAll('g rect, g circle, .line, #line0, #area0, path');
+    const elements = chart.selectAll(`.${options.chartClass}0`);
     const excludedElements = d3.selectAll('.shape-label, .shape-pointer');
 
     let chartElements = elements.filter(function () {
       const currentElement = d3.select(this);
       return !excludedElements.nodes().includes(currentElement.node());
     });
-    console.log('chartElements should exclude pointer', chartElements);
+    console.log('chartElements should exclude pointer', options.chartClass);
+    console.log('chartType', chartElements);
+
     const type = chartElements.nodes()[0].className.baseVal;
     // || (chartElements.nodes()[0].nodeName === 'path' && 'pie-chart0');
     const sortedData = data.slice().sort((a, b) => d3.ascending(a.x, b.x));
 
-    if (type === 'area-chart0' || type === 'line-graph0') {
-      if (type === 'area-chart0') {
+    if (type === 'area0' || type === 'line0') {
+      if (type === 'area0') {
         animateArea(chart, sortedData, chartComponents, options, duration);
         return;
       }
@@ -47,12 +51,13 @@ export default function addAnimation(selector, data, options, chartComponents, d
     }
 
     let numPlaceholders = data.length - chartElements.size();
+    console.log('above placeholders', numPlaceholders, data.length, chartElements.size(), chartElements);
     if (numPlaceholders > 0) {
       while (numPlaceholders > 0) {
         const selectedElement = chartElements.nodes()[0];
         // Clone the element
         const clonedElement = selectedElement.cloneNode(true);
-
+        console.log('in placeholders');
         // Append the cloned element to the chart
         const g = chart.select('g');
 
@@ -70,21 +75,21 @@ export default function addAnimation(selector, data, options, chartComponents, d
         numPlaceholders++;
       }
     }
-    chartElements = chart.selectAll('g rect, g circle, .line-graph0, .area-chart0 path, path').data(data);
+    chartElements = chart.selectAll('g rect, g circle, .line0, .area0 path, path').data(data);
 
     console.log('TYPE', type, 'chartElements', chartElements);
     switch (type) {
-      case 'bar-chart0': animateBar(chartElements, data, chartComponents, options, duration);
+      case 'bar0': animateBar(chartElements, data, chartComponents, options, duration);
         break;
-      case 'scatter-plot0': animateScatter(chartElements, data, chartComponents, duration);
+      case 'scatter0': animateScatter(chartElements, data, chartComponents, duration);
         break;
-      case 'pie-chart0': animatePie(chartComponents, data, duration, options);
+      case 'pie0': animatePie(chartComponents, data, duration, options);
         break;
-      case 'donut-chart0': animateDonut(chartComponents, data, duration, options);
+      case 'donut0': animateDonut(chartComponents, data, duration, options);
         break;
-      case 'funnel-chart0': animateFunnel(chartComponents, data, duration, options);
+      case 'funnel0': animateFunnel(chartComponents, data, duration, options);
         break;
-      case 'stacked-bar-chart0': animateStacked(chartComponents, data, duration, options);
+      case 'stackedbar0': animateStacked(chartComponents, data, duration, options);
         break;
       default: console.log('No animation for this chart type', type);
     }

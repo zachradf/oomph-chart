@@ -93,20 +93,20 @@
 // UNDER CONSTRUCTION
 export default function updateD3FunnelChart(chartComponents, data, duration, options) {
   const { width } = options;
-  const { colors } = options;
+  const { colorScheme } = options;
   const { x } = chartComponents;
   const { y } = chartComponents;
-  const colorScale = d3.scaleOrdinal().domain(data.map((d) => d.x)).range(colors);
+  const colorScale = d3.scaleOrdinal().domain(data.map((d) => d.x)).range(colorScheme);
   const svg = d3.select('svg');
 
   // Update rects directly
-  const rectsUpdate = svg.selectAll('rect.funnel-chart0')
+  const rectsUpdate = svg.selectAll('rect.funnel0')
     .data(data, (d) => d.x);
   const rectHeight = options.height / data.length;
 
   rectsUpdate.join(
     (enter) => enter.append('rect')
-      .attr('class', 'funnel-chart0')
+      .attr('class', 'funnel0')
       .attr('x', (d) => (width - x(d.y) + x(0)) / 2)
       .attr('width', (d) => x(d.y) - x(0))
       .attr('height', rectHeight)
