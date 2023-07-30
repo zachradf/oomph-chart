@@ -8,7 +8,7 @@ export default function appendAxes(chart, options, chartComponents) {
   let xAxisBBox;
   let yAxisBBox;
   // this will be checked by graph tags in the future
-  const nonAxialCharts = ['polar', 'radar', 'pie', 'donut', 'heatmap', 'bubble', 'sun', 'chord'];
+  const nonAxialCharts = ['voronoi', 'treeMap', 'treeDiagram', 'sankey', 'radialTree', 'icicle', 'polar', 'radar', 'pie', 'donut', 'heatmap', 'bubble', 'sun', 'chord', 'cloud', 'cluster', 'dendrogram'];
 
   if (nonAxialCharts.includes(chart)) {
     return { xAxisBBox, yAxisBBox };
