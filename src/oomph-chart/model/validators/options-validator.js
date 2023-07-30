@@ -1,8 +1,37 @@
 export const validOptionShapeTypes = ['string', 'number', 'boolean'];
 
 export function validateOptionShape(shape, input) {
+  // Check that all keys in input exist in shape
+  Object.keys(input).forEach((key) => {
+    if (!Object.prototype.hasOwnProperty.call(shape, key)) {
+      throw new Error(`Unexpected key "${key}" found in input. This key does not exist within the expected options.`);
+    }
+  });
+
   Object.keys(shape).forEach((key) => {
-    if (typeof shape[key] === 'object') {
+    // Ignore '_selfKey'
+    if (key === '_selfKey') return;
+    // Skip to the next key if the key does not exist in input, or if the value is null.
+    if (!Object.prototype.hasOwnProperty.call(input, key) || input[key] === null) {
+      return;
+    }
+
+    // Handle array case
+    if (Array.isArray(shape[key])) {
+      // Check if the input's key value is an array
+      if (!Array.isArray(input[key])) {
+        throw new Error(`Input's ${key} is expected to be an array`);
+      }
+
+      input[key].forEach((inputElement, index) => {
+        // Get the first element in the shape's key value which is the expected type for all elements in the input's key array
+        const expectedType = shape[key][0];
+        if (typeof inputElement !== expectedType) {
+          throw new Error(`Element at index ${index} in ${key} must be a ${expectedType}`);
+        }
+      });
+    } else if (typeof shape[key] === 'object') {
+      // Handle object case
       validateOptionShape(shape[key], input[key]);
     } else {
       // Validates that the shape's values themselves adhere to valid option types
@@ -18,6 +47,7 @@ export function validateOptionShape(shape, input) {
       }
     }
   });
+  return true;
 }
 
 // TODO WIP
