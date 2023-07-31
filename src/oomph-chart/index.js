@@ -68,6 +68,7 @@ class OomphChart {
   }
 
   render(chartType, options, interfaceType = this.interface) {
+    if (!chartType || !options) console.error('Please provide both a chart type and options.');
     this.getOptionsShape(chartType);
     this.renderInterface(interfaceType);
     this.renderVisualizer(chartType, options);

@@ -162,7 +162,7 @@ export default class D3OptionTypes {
 
       optionsFunnel: {
         _selfKey: 'optionsFunnel',
-        animate: 'boolean',
+        // animate: 'boolean',
         boxShadow: 'boolean',
         chartClass: 'string',
         chartNumber: 'number',
@@ -172,7 +172,7 @@ export default class D3OptionTypes {
         // gradientColor: ['string'],
         height: 'number',
         hoverColor: 'string',
-        isUpdating: 'boolean',
+        // isUpdating: 'boolean',
         margin: {
           bottom: 'number',
           left: 'number',
@@ -381,7 +381,7 @@ export default class D3OptionTypes {
         _selfKey: 'optionsArea',
         chartClass: 'string',
         chartNumber: 'number',
-        animate: 'boolean',
+        // animate: 'boolean',
         boxShadow: 'boolean',
         fillColor: 'string',
         gradient: 'boolean',
@@ -389,7 +389,7 @@ export default class D3OptionTypes {
         gradientColor: ['string'],
         height: 'number',
         hoverColor: 'string',
-        isUpdating: 'boolean',
+        // isUpdating: 'boolean',
         margin: {
           top: 'number',
           bottom: 'number',
@@ -460,7 +460,7 @@ export default class D3OptionTypes {
         gradientColor: ['string'],
         height: 'number',
         hoverColor: 'string',
-        isUpdating: 'boolean',
+        // isUpdating: 'boolean',
         margin: {
           top: 'number',
           bottom: 'number',
@@ -548,7 +548,7 @@ export default class D3OptionTypes {
         _selfKey: 'optionsBar',
         chartClass: 'string',
         chartNumber: 'number',
-        animate: 'boolean',
+        // animate: 'boolean',
         barWidth: 'number',
         boxShadow: 'boolean',
         fillColor: 'string',
@@ -557,7 +557,7 @@ export default class D3OptionTypes {
         gradientColor: ['string'],
         height: 'number',
         hoverColor: 'string',
-        isUpdating: 'boolean',
+        // isUpdating: 'boolean',
         margin: {
           top: 'number',
           bottom: 'number',
@@ -619,7 +619,7 @@ export default class D3OptionTypes {
 
       optionsPie: {
         _selfKey: 'optionsPie',
-        animate: 'boolean',
+        // animate: 'boolean',
         chartClass: 'string',
         chartNumber: 'number',
         colorScheme: ['string'],
@@ -632,7 +632,7 @@ export default class D3OptionTypes {
         hoverColor: 'string',
         innerRadius: 'number',
         interval: 'number',
-        isUpdating: 'boolean',
+        // isUpdating: 'boolean',
         margin: {
           bottom: 'number',
           left: 'number',
@@ -776,7 +776,7 @@ export default class D3OptionTypes {
 
       optionsLine: {
         _selfKey: 'optionsLine',
-        animate: 'boolean',
+        // animate: 'boolean',
         chartClass: 'string',
         chartNumber: 'number',
         boxShadow: 'boolean',
@@ -785,7 +785,7 @@ export default class D3OptionTypes {
         gradientColor: ['string'],
         height: 'number',
         hoverColor: 'string',
-        isUpdating: 'boolean',
+        // isUpdating: 'boolean',
         margin: {
           top: 'number',
           bottom: 'number',
@@ -1024,7 +1024,7 @@ export default class D3OptionTypes {
 
       optionsScatter: {
         _selfKey: 'optionsScatter',
-        animate: 'boolean',
+        // animate: 'boolean',
         color: 'string',
         chartClass: 'string',
         chartNumber: 'number',
@@ -1034,7 +1034,7 @@ export default class D3OptionTypes {
         gradientColor: ['string'],
         height: 'number',
         hoverColor: 'string',
-        isUpdating: 'boolean',
+        // isUpdating: 'boolean',
         margin: {
           top: 'number',
           bottom: 'number',

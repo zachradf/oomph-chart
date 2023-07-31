@@ -68,7 +68,7 @@ export const optionValues = {
   },
   optionsBar: {
     _selfKey: 'optionsBar',
-    animate: true,
+    // animate: true,
     barWidth: 0,
     boxShadow: true,
     fillColor: 'green',
@@ -77,7 +77,7 @@ export const optionValues = {
     gradientColor: ['blue', 'red'],
     height: 500,
     hoverColor: 'blue',
-    isUpdating: false,
+    // isUpdating: false,
     margin: {
       top: 20,
       bottom: 30,
@@ -340,6 +340,7 @@ export const optionValues = {
   },
   optionsDonut: {
     _selfKey: 'optionsDonut',
+    chartClass: 'donut',
     colorScheme: ['red', 'orange', 'yellow', 'green'],
     fontSize: 12,
     height: 800,
@@ -606,6 +607,7 @@ export const optionValues = {
   optionsPie: {
     _selfKey: 'optionsPie',
     animate: true,
+    chartClass: 'pie',
     colorScheme: ['red', 'orange', 'yellow', 'green'],
     fontColor: 'black',
     fontOpacity: 1,

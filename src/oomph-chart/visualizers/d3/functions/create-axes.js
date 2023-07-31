@@ -97,7 +97,11 @@ export default function createAxes(data, chart, options) {
           });
       });
     if (options.xLine) createXAxisLine(g, options, yAxisPosition);
-    xAxisBBox = g.node().getBBox();
+    if (g.node()) {
+      xAxisBBox = g.node().getBBox();
+    } else {
+      console.error('Node is null');
+    }
   };
 
   const yAxis = (g) => {
